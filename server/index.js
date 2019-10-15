@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 require('./database/db');
-const users = require("./routes/users");
-
-const router = require('./routes');
+const router = require('./routes/index');
+const users = require('./routes/users')
 
 app.use(cors());
-
+app.use(expressValidator())
 app.use(express.json({ extended: false }));
 
 // app.use('/api/v1', router);
@@ -25,4 +25,3 @@ app.use("/users", users);
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-// }

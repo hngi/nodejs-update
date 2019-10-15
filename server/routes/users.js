@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const mongoose = require('mongoose');
-const {User} = require('../model/User')
-const {validate} = require('../model/validations')
+const {User} = require('../models/User')
+const {validate} = require('../models/validations')
 const jwt = require('jsonwebtoken'); 
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
@@ -15,12 +15,8 @@ router.post('/signup', async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send((error.details[0].message));
     //checking if the user already exist 
-    try {
-        let user = await User.fineOne({ email: req.body.email });
-    } catch (error) {
-        res.status(500).send(error);
-    }
-    if (user) return res.status(400).send('User already exist .');
+    let userhere = await User.findOne({ email: req.body.email });
+    if (userhere) return res.status(400)
     //creating user 
     var user = new User({
         username: req.body.username ,
@@ -36,7 +32,7 @@ router.post('/signup', async (req, res) => {
     //     console.log("Token genetarted for " + token)
     // });
     // res.header('x-auth-token', token).send(_.pick(user, ['username', 'email']));
-    const token = user.generateAuthToken();
+    const token = jwt.sign({_id:user._id} , 'secret')
     res.header('x-auth-token', token).send(_.pick(user, ['username', 'email']));
 });
 
