@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codedCoderr/nodejs-update.git"
+    "url": "git+https://github.com/hngi/nodejs-update.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codedCoderr/nodejs-update/issues"
+    "url": "https://github.com/hngi/nodejs-update/issues"
   },
-  "homepage": "https://github.com/codedCoderr/nodejs-update#readme",
+  "homepage": "https://github.com/hngi/nodejs-update#readme",
   "devDependencies": {
     "nodemon": "^1.19.3"
   },
