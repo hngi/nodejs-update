@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 require('./database/db');
 const router = require('./routes/routes');
 
 app.use(cors());
-
+app.use(expressValidator())
 app.use(express.json({
   extended: false
 }));
@@ -17,8 +18,6 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 const port = process.env.PORT || 3500;
 
-// if (!module.parent) {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-// }

@@ -1,9 +1,11 @@
-const User = require('../model/User');
+const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-// const passport = require('passport');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const SECRET_KEY = process.env.SECRET_KEY
+const validateRequest = require('../middleware/newuser');
+const extractErrors = require('../helpers/helper');
+
 /**
  * This function trim a new url that hasn't been trimmed before
  * @param {object} req
@@ -11,6 +13,14 @@ const SECRET_KEY = process.env.SECRET_KEY
  * @returns {object} response object with trimmed url
  */
 exports.login = (req, res) => {
+  const errors = validateRequest(req);
+  if (errors) {
+    return res.status(400).json({
+      status: 'error',
+      error: extractErrors(errors),
+    });
+  }
+
   const {
     email,
     password
