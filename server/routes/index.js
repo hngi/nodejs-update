@@ -4,9 +4,8 @@ const router = express.Router();
 const multer = require("multer");
 
 // Start of Multer //
-// Multer
 
-// Storage fro Multer
+// Storage for Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./uploads/");
@@ -16,8 +15,9 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ storage: storage });
 const fileUpload = upload.single("files");
+
 // End of Multer //
 
 router.post("/login", loginUser);
