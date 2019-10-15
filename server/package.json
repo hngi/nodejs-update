@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.16.0",
     "cors": "^2.8.5",
     "cross-env": "^6.0.3",
     "dotenv": "^8.1.0",

@@ -1,5 +1,5 @@
-let mongoose = require('mongoose');
-require('dotenv').config();
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const { DB_URL } = process.env;
 
@@ -8,11 +8,11 @@ class Database {
     this._connect();
   }
 
-  _connect() {
-    mongoose
+  async _connect() {
+    await mongoose
       .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
-        console.log('Database connected');
+        console.log("Database connected");
       })
       .catch(err => {
         console.error(err);
