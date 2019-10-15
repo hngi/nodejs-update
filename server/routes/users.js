@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {User, validate} = require('../model/User');
 const mongoose = require('mongoose');
+
 router.post('/', async (req, res) => {
     //validating the user's input
     const {error} = validate(req.body);
