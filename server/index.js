@@ -3,11 +3,13 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('./database/db');
-const router = require('./routes');
+const router = require('./routes/routes');
 
 app.use(cors());
 
-app.use(express.json({ extended: false }));
+app.use(express.json({
+  extended: false
+}));
 
 app.use('/api/v1', router);
 
