@@ -1,4 +1,4 @@
-import { UserSchema } from './User';
-import { GuestSchema } from './Guest';
+import User from './User';
+import Guest from './Guest';
 
-export { UserSchema, GuestSchema};
+export { User, Guest};
