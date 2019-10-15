@@ -7,10 +7,10 @@ const validateRequest = require('../middleware/newuser');
 const extractErrors = require('../helpers/helper');
 
 /**
- * This function trim a new url that hasn't been trimmed before
+ * This function logs a user in with the email and password provided
  * @param {object} req
  * @param {object} res
- * @returns {object} response object with trimmed url
+ * @returns {object} response object with token
  */
 exports.login = (req, res) => {
   const errors = validateRequest(req);
