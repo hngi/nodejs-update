@@ -8,8 +8,8 @@ class Database {
     this._connect();
   }
 
-  async _connect() {
-    await mongoose
+  _connect() {
+    mongoose
       .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
         console.log("Database connected");
