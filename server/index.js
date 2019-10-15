@@ -3,6 +3,8 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('./database/db');
+require('./model/ShortenLink');
+require("./routes/urlshorten")(app);
 const router = require('./routes');
 
 app.use(cors());
