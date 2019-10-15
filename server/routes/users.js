@@ -2,8 +2,9 @@ const router = require('express').Router()
 const { User, validate } = require('../model/User');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken')
+const _ = require('lodash') 
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     //validating the user's input
     const { error } = validate(req.body);
     if (error) return res.status(400).send((error.details[0].message));
@@ -25,9 +26,7 @@ router.post('/', async (req, res) => {
     await user.save();
     
     //adding Jwt 
-    jwt.sign({ user }, "screct-key", (err, token) => {
-        console.log("Token genetarted for " + token)
-    });
+    var token = jwt.sign({ user }, "screct-key");
     res.header('x-auth-token', token).send(_.pick(user, ['username', 'email']));
 });
 
