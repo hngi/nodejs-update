@@ -28,6 +28,13 @@ export default function(state = initialState, action) {
         token: payload.token,
         isAuthenticated: true,
         loading: false,
+        // user: {
+        //   id: payload.user._id,
+        //   username: payload.user.username,
+        //   email: payload.user.email
+        // }
+      };
+    
         user: {
           id: payload.user._id,
           username: payload.user.username,
@@ -51,6 +58,7 @@ export default function(state = initialState, action) {
         ...state,
         isSignedInWithGoogle: false,
         loading: false,
+        token: null      };
         token: null
       };
 

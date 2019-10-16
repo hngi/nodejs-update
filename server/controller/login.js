@@ -5,6 +5,7 @@ require('dotenv').config();
 const SECRET_KEY = process.env.SECRET_KEY;
 const validateRequest = require('../middleware/newuser');
 const extractErrors = require('../helpers/helper');
+const { validate } = require('../models/User');
 
 /**
  * This function logs a user in with the email and password provided
@@ -13,6 +14,12 @@ const extractErrors = require('../helpers/helper');
  * @returns {object} response object with token
  */
 const login = (req, res) => {
+  const { error } = validate(req.body);
+  if (error)
+    return res.json({
+      success: false,
+      message: error.details[0].message
+    });
   const errors = validateRequest(req);
   if (errors) {
     return res.json({
