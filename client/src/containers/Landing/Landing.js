@@ -31,7 +31,7 @@ const Landing = ({ isSignedInWithGoogle ,logout}) => {
         </nav>
       </header>
       <main>
-        <section container>
+        <section>
           <div className='left'>
             <h2>The most seamless file transfer experence ever.</h2>
             <button className='upload-btn file'>Upload a file</button>
