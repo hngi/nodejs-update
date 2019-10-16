@@ -1,11 +1,18 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-var fileUpload = require("express-fileupload");
 const expressValidator = require("express-validator");
 const mongoose = require("mongoose");
 require("./database/db");
 const router = require("./routes/index");
+const uploadRoute = require("./routes/upload");
+
+// cloudinary import
+import { urlencoded, json } from "body-parser";
+import { resolve } from "path";
+import { uploader, cloudinaryConfig } from "./config/cloudinary";
+import { multerUploads } from "./middleware/multer";
+app.use("*", cloudinaryConfig);
 
 app.use(cors());
 app.use(expressValidator());
@@ -16,8 +23,8 @@ app.use(
   })
 );
 
-app.use("/api/v1", router);
-app.use("/uploads", express.static("uploads"));
+app.use("/api/auth", router);
+app.use("/api/upload", multerUploads, uploadRoute);
 
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);
