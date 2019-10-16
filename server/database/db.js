@@ -1,6 +1,8 @@
 let mongoose = require('mongoose');
 require('dotenv').config();
-const DB_URL = process.env.DB_URL
+const {
+  DB_URL
+} = process.env
 
 class Database {
   constructor() {
