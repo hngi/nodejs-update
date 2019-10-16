@@ -1,0 +1,33 @@
+.main{
+ text-align: center;
+ padding-top: 15%;
+}
+hr{
+    width: 30%;
+}
+body{
+    background-color:blue;
+    color: white;
+}
+html{
+    height: 100%;
+}
+.nav-link{
+    margin-right: 15px;
+}
+.mid{
+    text-align: center;
+    padding-top: 10%;
+    color: white;
+}
+.Uform{
+    padding-top: 5%;
+    height: 100%;
+}
+.form-group{
+    width: 80%;
+}
+.body{
+    
+    height: 100%;
+}
