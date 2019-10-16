@@ -26,7 +26,7 @@ export const signInWithGoogle = (
   };
   try {
     const response = await axios.post(
-      base_url + '/api/auth/signup',
+      base_url + '/api/auth/register',
       body,
       config
     );
