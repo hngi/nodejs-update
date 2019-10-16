@@ -5,3 +5,4 @@ const extractErrors = (errors) => {
 }
 
 module.exports = extractErrors;
+exports.extractErrors = extractErrors

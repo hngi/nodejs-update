@@ -21,6 +21,7 @@
     "nodemon": "^1.19.3"
   },
   "dependencies": {
+    "@hapi/joi": "^16.1.7",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^6.0.3",
