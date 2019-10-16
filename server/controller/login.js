@@ -29,7 +29,7 @@ const login = (req, res) => {
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'Provided email dooes not exist'
+        message: 'Invalid Credentials'
       })
     }
     bcrypt.compare(req.body.password, user.password).then(
@@ -37,7 +37,7 @@ const login = (req, res) => {
         if (!valid) {
           return res.status(401).json({
             success: false,
-            message: 'Password is incorrect'
+            message: 'Invalid Credentials'
           })
         }
         const token = jwt.sign({
