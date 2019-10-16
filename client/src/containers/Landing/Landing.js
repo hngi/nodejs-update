@@ -133,7 +133,7 @@ const Landing = ({ isSignedInWithGoogle, logout }) => {
             <div>
               <img
                 src='https://res.cloudinary.com/dvbwpicno/image/upload/v1571178848/yg8ch6bhftwzooxugbuo.png'
-                alt='cloud image'
+                alt='cloudimage'
               />
             </div>
           </div>
