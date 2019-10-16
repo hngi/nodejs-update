@@ -16,7 +16,9 @@ app.use('*', cloudinaryConfig);
 
 app.use(cors());
 app.use(expressValidator());
-app.use(express.json({ extended: false }));
+app.use(express.json({
+  extended: false
+}));
 app.use('/uploads', express.static('uploads'));
 
 app.use('/api/auth', router);
