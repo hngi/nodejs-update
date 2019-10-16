@@ -12,14 +12,12 @@ app.use(expressValidator());
 app.use(express.json({ extended: false }));
 app.use(
   fileUpload({
-    createParentPath: true
+    useTempFiles: true
   })
 );
 
 app.use("/api/v1", router);
 app.use("/uploads", express.static("uploads"));
-
-app.use("/api/auth", router);
 
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);
