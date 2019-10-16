@@ -28,14 +28,16 @@ const login = (req, res) => {
   }).then((user) => {
     if (!user) {
       return res.status(401).json({
-        error: new Error('User not found!')
+        success: false,
+        message: 'Provided email dooes not exist'
       })
     }
     bcrypt.compare(req.body.password, user.password).then(
       (valid) => {
         if (!valid) {
           return res.status(401).json({
-            error: new Error('Incorrect password!')
+            success: false,
+            message: 'Password is incorrect'
           })
         }
         const token = jwt.sign({
@@ -46,8 +48,13 @@ const login = (req, res) => {
           }
         )
         res.status(200).json({
-          userId: user._id,
-          token: token
+          user: {
+            id: user._id,
+            username: user.username,
+            email: user.email
+          },
+          token: token,
+          success: true
         })
       }
     )
