@@ -30,7 +30,11 @@ const register = async (req, res) => {
     await user.save();
     //creating jwt
     const token = jwt.sign({_id:user._id} , 'secret')
-    res.header('x-auth-token', token).send(`${user.username} has been created with Token: ${token}`);
+    res.header('x-auth-token', token).json({
+        username: user.username,
+        email : user.email,
+        token: token
+    });
 }
 
 
