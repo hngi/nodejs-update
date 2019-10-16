@@ -16,12 +16,12 @@ const convertToLink = async (req, res) => {
     const file = req.files.file;
 
     cloudinary.uploader
-      .upload(file.tempFilePath, { public_id: file.name })
+      .upload(file.tempFilePath, { public_id: file.name.split(".")[0] })
       .then(result => {
         const fileUploadedUrl = result.url;
         return res.status(200).json({
           messge: "Your File has been uploded successfully!",
-          result
+          fileUploadedUrl
         });
       })
       .catch(err =>

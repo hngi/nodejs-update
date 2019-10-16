@@ -7,7 +7,6 @@ module.exports = async (req, res, next) => {
     const token = req.header("x-auth-token");
 
     const decodeToken = await jwt.verify(token, SECRET_KEY);
-    console.log(decodeToken);
 
     const { userId } = await decodeToken;
     req.user = userId;
