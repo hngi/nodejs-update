@@ -17,13 +17,14 @@ app.use(
 );
 
 app.use("/api/v1", router);
+app.use("/uploads", express.static("uploads"));
+
+app.use("/api/auth", router);
 
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);
 const port = process.env.PORT || 3500;
 
-// if (!module.parent) {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-// }
