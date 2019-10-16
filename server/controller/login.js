@@ -1,14 +1,14 @@
 const validateRequest = require('../middleware/newuser');
 const extractErrors = require('../helpers/helper');
+const { validate } = require('../models/User');
 
 const login = (req, res) => {
-  const errors = validateRequest(req);
-  if (errors) {
-    return res.status(400).json({
-      status: 'error',
-      error: extractErrors(errors),
+  const { error } = validate(req.body);
+  if (error)
+    return res.json({
+      success: false,
+      message: error.details[0].message
     });
-  }
-}
+};
 
 module.exports = login;
