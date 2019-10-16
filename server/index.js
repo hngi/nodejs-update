@@ -4,10 +4,7 @@ const cors = require('cors');
 const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 require('./database/db');
-require('./models/ShortenLink');
-require("./routes/urlshorten")(app);
 const router = require('./routes');
-const router = require('./routes/index');
 const uploadRoute = require('./routes/upload');
 
 // cloudinary import
@@ -26,7 +23,7 @@ app.use(
 );
 app.use('/uploads', express.static('uploads'));
 
-app.use('/api/auth', router);
+app.use(router);
 app.use('/api/upload', multerUploads, uploadRoute);
 
 mongoose.set('useCreateIndex', true);
