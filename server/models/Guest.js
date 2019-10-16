@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 const { Schema }  = mongoose;
 
 const GuestSchema = new Schema({
@@ -7,4 +7,6 @@ const GuestSchema = new Schema({
   deletedAt: { type: Date, default: Date.now }
 });
 
-export default mongoose.model("Guest", GuestSchema);
+const Guest =  mongoose.model("Guest", GuestSchema);
+
+module.exports = Guest;
