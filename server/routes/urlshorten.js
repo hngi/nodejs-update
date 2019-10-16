@@ -3,8 +3,10 @@ const validUrl = require("valid-url");
 const ShortenLink = mongoose.model("ShortenLink");
 const shortid = require("shortid");
 const errorUrl='http://localhost/error';
+
 module.exports = app => {
-  app.get("/api/item/:Xshare", async (req, res) => {
+
+  app.get("/api/Xshare/:code", async (req, res) => {
     const urlCode = req.params.code;
     const item = await ShortenLink.findOne({ urlCode: urlCode });
     if (item) {
@@ -13,7 +15,7 @@ module.exports = app => {
       return res.redirect(errorUrl);
     }
   });
-  app.post("/api/item", async (req, res) => {
+  app.post("/api/Xshare", async (req, res) => {
     const { originalUrl, shortBaseUrl } = req.body;
     if (validUrl.isUri(shortBaseUrl)) {
     } else {
