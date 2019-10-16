@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+const Joi = require('@hapi/joi');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose')
 const {
   Schema
 } = mongoose;
@@ -28,5 +30,25 @@ const UserSchema = new Schema({
     default: Date.now
   }
 });
+UserSchema.methods.generateAuthToken = function () {
+  const token = jwt.sign({
+    _id: this._id
+  }, 'somethingnice');
+  return token;
+}
 
-module.exports = User = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
+
+function validateUser(user) {
+  const schema = Joi.object({
+    username: Joi.string().min(5).max(50).required(),
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().min(5).max(1029).required()
+  });
+  return schema.validate(user);
+}
+
+
+
+exports.User = User;
+exports.validate = validateUser;

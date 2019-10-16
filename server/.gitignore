@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 node_modules/
+=======
+package-lock.json
+>>>>>>> 9772360859d01d77168c890c89cbd92261278753
 .env
 dist
 package-lock.json

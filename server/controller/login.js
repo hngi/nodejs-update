@@ -1,4 +1,6 @@
-const User = require('../models/User');
+const {
+  User
+} = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -12,7 +14,7 @@ const extractErrors = require('../helpers/helper');
  * @param {object} res
  * @returns {object} response object with token
  */
-exports.login = (req, res) => {
+const login = (req, res) => {
   const errors = validateRequest(req);
   if (errors) {
     return res.status(400).json({
@@ -21,43 +23,35 @@ exports.login = (req, res) => {
     });
   }
 
-  const {
-    email,
-    password
-  } = req.body;
   User.findOne({
-      email
-    })
-    .then(user => {
-      if (!user) {
-        errors.email = "No Account Found";
-        return res.status(404).json(errors);
-      }
-      bcrypt.compare(password, user.password)
-        .then(isMatch => {
-          if (isMatch) {
-            const payload = {
-              id: user._id,
-              name: user.username
-            };
-            jwt.sign(payload, SECRET_KEY, {
-                expiresIn: 36000
-              },
-              (err, token) => {
-                if (err) res.status(500)
-                  .json({
-                    error: "Error signing token",
-                    raw: err
-                  });
-                res.json({
-                  success: true,
-                  token: `Bearer ${token}`
-                });
-              });
-          } else {
-            errors.password = "Password is incorrect";
-            res.status(400).json(errors);
+    email: req.body.email
+  }).then((user) => {
+    if (!user) {
+      return res.status(401).json({
+        error: new Error('User not found!')
+      })
+    }
+    bcrypt.compare(req.body.password, user.password).then(
+      (valid) => {
+        if (!valid) {
+          return res.status(401).json({
+            error: new Error('Incorrect password!')
+          })
+        }
+        const token = jwt.sign({
+            userId: user._id
+          },
+          'secret', {
+            expiresIn: '24h'
           }
-        });
-    });
+        )
+        res.status(200).json({
+          userId: user._id,
+          token: token
+        })
+      }
+    )
+  })
 };
+
+module.exports = login
