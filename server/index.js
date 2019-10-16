@@ -7,10 +7,11 @@ require('./database/db');
 const router = require('./routes/index');
 
 app.use(cors());
-app.use(expressValidator())
+app.use(expressValidator());
 app.use(express.json({ extended: false }));
+app.use('/uploads', express.static('uploads'));
 
-app.use('/api/v1', router);
+app.use('/api/auth', router);
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
