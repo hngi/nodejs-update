@@ -4,7 +4,7 @@ const cors = require('cors');
 const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 require('./database/db');
-require('./model/ShortenLink');
+require('./models/ShortenLink');
 require("./routes/urlshorten")(app);
 const router = require('./routes');
 const router = require('./routes/index');

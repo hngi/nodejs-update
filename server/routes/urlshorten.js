@@ -10,13 +10,13 @@ module.exports = app => {
     const urlCode = req.params.code;
     const item = await ShortenLink.findOne({ urlCode: urlCode });
     if (item) {
-      return res.redirect(item.originalUrl);
+      return res.redirect(item.CloudinaryUrl);
     } else {
       return res.redirect(errorUrl);
     }
   });
   app.post("/api/Xshare", async (req, res) => {
-    const { originalUrl, shortBaseUrl } = req.body;
+    const { CloudinaryUrl, shortBaseUrl } = req.body;
     if (validUrl.isUri(shortBaseUrl)) {
     } else {
       return res
@@ -27,15 +27,15 @@ module.exports = app => {
     }
     const urlCode = shortid.generate();
     const updatedAt = new Date();
-    if (validUrl.isUri(originalUrl)) {
+    if (validUrl.isUri(CloudinaryUrl)) {
       try {
-        const item = await ShortenLink.findOne({ originalUrl: originalUrl });
+        const item = await ShortenLink.findOne({ CloudinaryUrl: CloudinaryUrl });
         if (item) {
           res.status(200).json(item);
         } else {
           shortUrl = shortBaseUrl + "/" + urlCode;
           const item = new ShortenLink({
-            originalUrl,
+            CloudinaryUrl,
             shortUrl,
             urlCode,
             updatedAt
