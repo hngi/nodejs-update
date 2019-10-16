@@ -11,6 +11,7 @@ import { setAlert } from './alert';
 
 import axios from 'axios';
 // const base_url = '';
+
 const base_url = 'http://localhost:4000';
 export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({
@@ -29,12 +30,16 @@ export const login = (email, password) => async dispatch => {
       body,
       config
     );
+    // console.log(response)
     if (response.data.success) {
+      console.log('login success');
       dispatch({
         type: LOGIN_SUCCESS,
         payload: response.data
       });
-
+      dispatch({
+        type: SIGN_IN_GOOGLE
+      });
       dispatch(setAlert('Login was successful', 'success'));
     } else {
       dispatch(setAlert(response.data.message, 'danger'));
@@ -72,13 +77,15 @@ export const signInWithGoogle = (
       body,
       config
     );
-    console.log(response)
+    // console.log(response)
     if (response.data.success) {
       dispatch({
         type: REGISTER_SUCCESS,
         payload: response.data
       });
+      dispatch(login(email, password));
     } else if (response.data.message === 'User already exists') {
+      console.log('trying to login with google');
       dispatch(login(email, password));
       dispatch({
         type: SIGN_IN_GOOGLE
@@ -91,8 +98,6 @@ export const signInWithGoogle = (
       });
     }
   } catch (error) {
-    console.log(error);
-
     dispatch(setAlert(error.toString(), 'danger'));
 
     dispatch({
