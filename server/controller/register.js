@@ -1,14 +1,11 @@
 
 const {extractErrors} = require('../helpers/helper');
-//=======================================================
 const mongoose = require('mongoose');
 const {User} = require('../models/User');
-const {validate} = require('../models/validations')
+const {validate} = require('../models/User')
 const jwt = require('jsonwebtoken'); 
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
-
-//=======================================================
 
 const register = async (req, res) => {
     const { error } = validate(req.body);
@@ -33,7 +30,7 @@ const register = async (req, res) => {
     await user.save();
     //creating jwt
     const token = jwt.sign({_id:user._id} , 'secret')
-    res.header('x-auth-token', token).send(_.pick(user, ['username', 'email']));
+    res.header('x-auth-token', token).send(`${user.username} has been created with Token: ${token}`);
 }
 
 
