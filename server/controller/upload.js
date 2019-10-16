@@ -1,4 +1,4 @@
-import Datauri from 'datauri';
+const Datauri =require ('datauri');
 
 // Upload
 exports.upload = (req, res, next) => {

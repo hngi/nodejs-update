@@ -1,6 +1,6 @@
-import multer from 'multer';
-import Datauri from 'datauri';
-import path from 'path';
+const multer = require('multer');
+const Datauri = require('datauri');
+const path = require('path');
 
 const storage = multer.memoryStorage();
 
@@ -13,6 +13,7 @@ const dUri = new Datauri();
  * @param {Object} req containing the field object
  * @returns {String} The data url from the string buffer
  */
-const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
+const dataUri = req =>
+  dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
 
-export { multerUploads, dataUri };
+module.exports = { multerUploads, dataUri };
