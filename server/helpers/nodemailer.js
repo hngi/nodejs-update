@@ -26,9 +26,7 @@ const sendLink = (msg, error, success) => {
     let info = transporter.sendMail({
         from: '', // include senders address
         to: msg.to, // list of receivers(address)
-        subject: msg.subject, // Subject line
         text: msg.text || '', // plain text body
-        html: msg.html || '', // html texts
         attachments: msg.attachments // this should be an array of objects with filename and path properties
     }, (err, succ)=>{
         // send confirmation or error through callback function
