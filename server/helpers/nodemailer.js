@@ -31,10 +31,10 @@ const sendLink = (msg, error, success) => {
         html: msg.html || '', // html texts
         attachments: msg.attachments // this should be an array of objects with filename and path properties
     }, (err, succ)=>{
+        // send confirmation or error through callback function
         (err) ? error(err) : success(succ);
     });
 
-    // send confirmation to user
 }
 
 module.exports = sendLink;
