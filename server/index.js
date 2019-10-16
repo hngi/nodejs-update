@@ -8,15 +8,19 @@ const router = require('./routes/index');
 const uploadRoute = require('./routes/upload');
 
 // cloudinary import
-import { urlencoded, json } from 'body-parser';
-import { resolve } from  'path';
-import { uploader, cloudinaryConfig } from './config/cloudinary'
-import { multerUploads } from './middlewares/multer';
+const { urlencoded, json } = require('body-parser');
+const { resolve } = require('path');
+const { uploader, cloudinaryConfig } = require('./config/cloudinary');
+const { multerUploads } = require('./middleware/multer');
 app.use('*', cloudinaryConfig);
 
 app.use(cors());
 app.use(expressValidator());
-app.use(express.json({ extended: false }));
+app.use(
+  express.json({
+    extended: false
+  })
+);
 app.use('/uploads', express.static('uploads'));
 
 app.use('/api/auth', router);

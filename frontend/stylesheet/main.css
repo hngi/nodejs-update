@@ -1,0 +1,21 @@
+body{
+    background-color:blue !important;
+    color: white;
+}
+html{
+    height: 100%;
+}
+
+.mid{
+    text-align: center;
+    padding-top: 10%;
+    color: black
+}
+.Uform{
+   padding-top: 5%;
+   height: 100%;
+}
+.form-group{
+    width: 80%;
+}
+  
