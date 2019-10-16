@@ -1,5 +1,5 @@
-import { config, uploader } from "cloudinary";
-import dotenv from "dotenv";
+const { config, uploader } = require("cloudinary");
+const dotenv = require("dotenv");
 
 dotenv.config();
 const { CLOUD_NAME, CLOUD_KEY, API_SECRET } = process.env;
@@ -12,4 +12,4 @@ const cloudinaryConfig = (req, res, next) => {
   next();
 };
 
-export { cloudinaryConfig, uploader };
+module.exports = { cloudinaryConfig, uploader };
