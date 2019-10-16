@@ -10,8 +10,6 @@ cloudinary.config({
 
 const convertToLink = async (req, res) => {
   try {
-    console.log(req.files);
-
     if (!req.files) {
       return res.status(400).json({ msg: "No File Uploaded" });
     }

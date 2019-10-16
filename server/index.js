@@ -22,7 +22,7 @@ app.use(
   })
 );
 app.use("/api/auth", router);
-app.use("/api/", uploadRoute);
+app.use("/api/user", uploadRoute);
 
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);

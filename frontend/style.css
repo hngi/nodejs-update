@@ -68,12 +68,106 @@ nav a {
     font-weight: bold;
 }
 
+.file:hover .right{
+    display: none;
+}
+
+.file:hover [upload-file]{
+    display: block;
+}
+
 .left .folder {
     background-color: #EBEBEB;
     color: #3B61FF;
     border: 2px solid #EBEBEB;
     font-weight: bold;  
 }
+
+
+[upload-file] {
+    /* display: none; */
+    padding: 2em 2em 0;
+    background-color: #3B61FF;
+}
+
+[upload-file] .form-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+[upload-file] h2 {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+[upload-file] .add-btn {
+    font-weight: bold;
+    padding: 0.2em 0.5em;
+    font-size: 2em; 
+    color: #3b61ff;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
+
+[upload-file] .file-list .each-file {
+    margin-top: 1.5em;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+[upload-file] .file-list .each-file .delete {
+    height: 20px;
+    position: relative;
+    top: -23px;
+    left: -20px;
+    padding: 2px 2px -2px;
+    border: 1px solid #ffffff;
+    background-color: #3B61FF;
+    border-radius: 100%;
+    color: #D80000;
+    z-index: 1;
+}
+
+[upload-file] .file-list .each-file h4 {
+    color: #00000080;
+}
+
+[upload-file] .file-list .each-file span, p, .file-type {
+    color: #3b61ff;
+    font-weight: bold;
+}
+
+.each-file .file-type-holder {
+    display: flex;
+    justify-content: flex-end;
+}
+
+[upload-file] .send-options {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 0;
+}
+
+[upload-file] .email-btn {
+    background-color: #ffffff;
+    color: #3B61FF;
+    border: 2px solid #FFFFFF;
+    font-weight: bold;
+}
+
+[upload-file] .link-btn {
+    background-color: #3B61FF;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-weight: bold;
+}
+
+
 
 /*  */
 @media only screen and (max-width: 720px) {
