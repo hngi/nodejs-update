@@ -4,11 +4,14 @@ const cors = require('cors');
 const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 require('./database/db');
+<<<<<<< HEAD
 require('./model/ShortenLink');
 require("./routes/urlshorten")(app);
 const router = require('./routes');
+=======
 const router = require('./routes/index');
 const uploadRoute = require('./routes/upload');
+>>>>>>> a4b7667b50a22bd2e2d3b82a86bcabd64e1d1737
 
 // cloudinary import
 import { urlencoded, json } from 'body-parser';
