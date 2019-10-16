@@ -13,10 +13,10 @@ const convertToLink = async (req, res) => {
     if (!req.files) {
       return res.status(400).json({ msg: "No File Uploaded" });
     }
-    const file = req.files.file.tempFilePath;
+    const file = req.files.file;
 
     cloudinary.uploader
-      .upload(file, { public_id: "myfile" })
+      .upload(file.tempFilePath, { public_id: file.name })
       .then(result => {
         const fileUploadedUrl = result.url;
         return res.status(200).json({

@@ -32,7 +32,6 @@ export const login = (email, password) => async dispatch => {
     );
     // console.log(response)
     if (response.data.success) {
-      console.log('login success');
       dispatch({
         type: LOGIN_SUCCESS,
         payload: response.data
@@ -85,7 +84,6 @@ export const signInWithGoogle = (
       });
       dispatch(login(email, password));
     } else if (response.data.message === 'User already exists') {
-      console.log('trying to login with google');
       dispatch(login(email, password));
       dispatch({
         type: SIGN_IN_GOOGLE
