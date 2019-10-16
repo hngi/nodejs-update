@@ -25,7 +25,7 @@ const login = (req, res) => {
     email: req.body.email
   }).then(user => {
     if (!user) {
-      return res.status(401).json({
+      return res.json({
         success: false,
         message: "Invalid Credentials"
       });
