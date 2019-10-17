@@ -5,9 +5,9 @@ const EmailPass = process.env.EMAIL_PASS;
 const nodemailer = require('nodemailer');
 module.exports = sendEmail = async (req, res) => {
   try {
-    const { from, to, message } = req.body;
+    const { name, to, message } = req.body;
     if (
-      from == '' ||
+      name == '' ||
       undefined ||
       to == '' ||
       undefined ||
