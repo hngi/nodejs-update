@@ -75,14 +75,14 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
               </button>
               <button
                 id="btn-link"
-                className="btn"
+                className="btn ml-5"
                 // onClick={() => {
                 //   document
                 //     .getElementsByClassName('form1')[0]
                 //     .classList.add('d-none');
                 //   var form2 = document.getElementsByClassName('form2')[0];
                 //   form2.classList.contains('d-none')
-                //     ? form2.classList.remove('d-none')
+
                 //     : form2.classList.add('d-none');
                 // }}
               >
@@ -118,15 +118,16 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
                     value={to}
                     onChange={e => onChange(e)}
                   />
-                  {/* <label htmlFor='email'>Optional message</label>
+                  {/* {/* <label htmlFor='email'>Optional message</label> */}
+                  <br />
                   <textarea
-                    className='form-control'
+                    className="form-control"
                     name
                     id
                     cols={10}
                     rows={3}
-                    defaultValue={''}
-                  /> */}
+                    defaultValue={"Message"}
+                  />
 
                   <br />
                   <label htmlFor>Upload file</label>
@@ -157,15 +158,15 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
                 }}
               >
                 <div className="form-group">
-                  {/* <label htmlFor='email'>Message</label>
+                  {/* <label htmlFor='email'>Message</label>*/}
                   <textarea
-                    className='form-control'
+                    className="form-control"
                     name
                     id
                     cols={10}
                     rows={3}
-                    defaultValue={''}
-                  /> */}
+                    defaultValue={""}
+                  />
                   <br />
                   <label htmlFor>Upload file</label>
                   <input className="form-control-file" type="file" />
