@@ -41,7 +41,7 @@ const sendLink = (msg, error, success) => {
 /*
 * example
 * sendLink({
-*     "to": "micaiah.effiong@gmail.com",
+*     "to": "xshareng@gmail.com",
 *     "subject": "test",
 *     "text": "I have arrived"
 * }, console.log, console.log);   
