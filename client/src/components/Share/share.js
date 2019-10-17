@@ -72,8 +72,6 @@ function share() {
               rows={3}
               defaultValue={""}
             />
-            <label htmlFor>Upload file</label>
-            <input className="form-control-file" type="file" />
             <input
               type="submit"
               className="btn btn-primary float-right"
