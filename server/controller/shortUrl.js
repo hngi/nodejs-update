@@ -9,7 +9,7 @@ const ShortenLink = {
       const createShortUrl = await new ShortLink({
         cloudinaryUrl,
         shortUrlParam,
-        shortUrl: `http://localhost:3500/${shortUrlParam}`
+        shortUrl: `http://localhost:4000/${shortUrlParam}`
       });
 
       createShortUrl.save();
