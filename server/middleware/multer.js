@@ -14,7 +14,6 @@ const dUri = new Datauri();
  * @returns {String} The data url from the string buffer
  */
 const dataUri = req => {
-  console.log(2,req.file.originalname);
   return dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
 };
 

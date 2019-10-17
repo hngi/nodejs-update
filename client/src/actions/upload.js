@@ -1,7 +1,4 @@
-import {
-  UPLOAD_FILE_SUCCESS,
-  UPLOAD_FILE_FAIL
-} from './types';
+import { UPLOAD_FILE_SUCCESS, UPLOAD_FILE_FAIL } from './types';
 import { setAlert } from './alert';
 
 import axios from 'axios';
@@ -22,7 +19,7 @@ export const upload = (name, to, file, link, isEmail) => async dispatch => {
   //   isEmail: true
   // };
   console.log(fd.get('file'));
-  
+
   const config = {
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -35,11 +32,6 @@ export const upload = (name, to, file, link, isEmail) => async dispatch => {
       fd,
       config
     );
-    // const response = await fetch(base_url + '/api/auth/upload', {
-    //   method: 'POST',
-    //   config,
-    //   body: fd
-    // });
     console.log(response);
     if (response.data.success) {
       dispatch({
@@ -47,10 +39,7 @@ export const upload = (name, to, file, link, isEmail) => async dispatch => {
         payload: response.data
       });
       dispatch(setAlert(response.data.message, 'success'));
-    } else if (response.data.message === 'Link shortened successfully') {
-      dispatch(setAlert(response.data.message, 'danger'));
-    } else if (response.data.message.includes('File successfully sent to')) {
-      dispatch(setAlert(response.data.message, 'danger'));
+      dispatch(setAlert(`Email sent to ${to}`,'success'));
     } else {
       dispatch(setAlert(response.data.message, 'danger'));
       dispatch({
