@@ -22,10 +22,7 @@ app.use(
     extended: false
   })
 );
-app.use('/uploads', express.static('uploads'));
-
 app.use(router);
-app.use('/api/upload', multerUploads, uploadRoute);
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);

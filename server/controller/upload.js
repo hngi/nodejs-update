@@ -1,22 +1,31 @@
-const Datauri =require ('datauri');
-
-// Upload
-exports.upload = (req, res, next) => {
-    if(req.file) {
-        const file = dataUri(req).content;
-        return uploader.upload(file).then((result) => {
-          const fileUploadedUrl = result.url;
-          return res.status(200).json({
-            messge: 'Your File has been uploded successfully!',
-            data: {
-                fileUploadedUrl
-            }
-          })
-        }).catch((err) => res.status(400).json({
-          messge: 'someting went wrong while processing your request',
+const multerHelper = require('../middleware/multer');
+const dataUri = multerHelper.dataUri;
+const { uploader, cloudinaryConfig } = require('../config/cloudinary');
+const upload = (req, res, next) => {
+  // console.log(req.file, req.body)
+  if (req.file) {
+    console.log(true)
+    const file = dataUri(req).content;
+    return uploader
+      .upload(file)
+      .then(result => {
+        const fileUploadedUrl = result.url;
+        res.locals['cloudinaryUrl'] = fileUploadedUrl;
+        next();
+      })
+      .catch(err => {
+        res.json({
+          message: 'Something went wrong while processing your request',
+          success: false,
           data: {
             err
           }
-        }))
-       }
+        });
+      });
+  }
+  else{
+    
+    console.log(false);
+  }
 };
+module.exports = upload;
