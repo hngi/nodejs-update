@@ -4,7 +4,7 @@ const path = require('path');
 
 const storage = multer.memoryStorage();
 
-const multerUploads = multer({ storage }).single('image');
+const multerUploads = multer({ storage }).single('file');
 
 const dUri = new Datauri();
 

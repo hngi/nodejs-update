@@ -38,7 +38,6 @@ const sendLink = (msg, error, success) => {
     });
 
 }
-
 /*
 * example
 * sendLink({
