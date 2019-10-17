@@ -1,12 +1,23 @@
-node{
-  def image = 'ubuntu/hng6-devops4'
-  stage('SCM Checkout'){
-    git 'https://github.com/hngi/nodejs-update.git'
+pipeline {
+  agent {
+    docker {
+      image 'node:10-alpine'
+      args '-p 3000:3000'
+    }
   }
-  stage('Build Application'){
-    sh "docker-compose build"
+  environment {
+    CI = 'true'
   }
-  stage('Run Application'){
-    sh "docker-compose up"
+  stages {
+    stage('Build') {
+      steps {
+        sh 'docker-compose build'
+      }
+    }
+    stage('Finish') {
+      steps {
+        sh 'echo "FINISHED BUILDING"'
+      }
+    }
   }
 }
