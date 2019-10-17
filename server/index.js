@@ -5,7 +5,6 @@ const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 require('./database/db');
 const router = require('./routes');
-const uploadRoute = require('./routes/upload');
 
 // cloudinary import
 const { urlencoded, json } = require('body-parser');
@@ -21,10 +20,7 @@ app.use(
     extended: false
   })
 );
-app.use('/uploads', express.static('uploads'));
-
 app.use(router);
-app.use('/api/upload', multerUploads, uploadRoute);
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
