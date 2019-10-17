@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const urlShortenSchema = new Schema({
 
-  _id:mongoose.Schema.Types,ObjectId,
+  _id: mongoose.Schema.Types.ObjectId,
   cloudinaryUrl: String,
   shortUrlParam: String,
   shortUrl: String,
