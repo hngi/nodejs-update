@@ -15,7 +15,6 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
   });
   const { name, to, link, file } = formData;
   const onChange = e => {
-    console.log(e.target.files)
     setFormData({
       ...formData,
       [e.target.name]:
@@ -23,7 +22,6 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
     });
     console.log(formData);
   };
-  const IsEmail = true;
   console.log(uploadstate);
   return (
     <div>
@@ -87,7 +85,7 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  upload(name,to,file,IsEmail)
+                  upload(name,to,file,true)
                 }}>
                 <div className='form-group'>
                   <label htmlFor='name'>Name</label>
@@ -119,7 +117,7 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
                     rows={3}
                     defaultValue={''}
                   /> */}
-                  <label htmlFor>Upload file</label>
+                  <label htmlFor='file'>Upload file</label>
                   <input
                     name='file'
                     //value={file}
@@ -142,7 +140,8 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  // upload(link,file)
+                  upload(link,file,
+                    false)
                 }}>
                 <div className='form-group'>
                   {/* <label htmlFor='email'>Message</label>
@@ -154,7 +153,7 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
                     rows={3}
                     defaultValue={''}
                   /> */}
-                  <label htmlFor>Upload file</label>
+                  <label htmlFor='file '>Upload file</label>
                   <input className='form-control-file' type='file' />
                   <input
                     name='file'
