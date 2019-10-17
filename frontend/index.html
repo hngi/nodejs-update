@@ -30,51 +30,77 @@
                 <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1571178848/yg8ch6bhftwzooxugbuo.png"
                     alt="cloud image">
             </div>
+            <!-- file upload field -->
             <div upload-file>
-              <div class="form-header">
-                 <h2>Upload a file</h2>
-                 <button class="add-btn"><span>&plus;</span> add</button>
-              </div>
-              <div class="file-list">
-                 <div class="each-file">
-                     <span class="delete">X</span>
-                  <p>#1</p>
-                  <h4>My image.jpg</h4>
-                  <div>
-                        <p class="file-type">jpg</p>
-                        <span>4mb</span>
-                  </div>
-                 </div>
-              </div>
-              <div class="file-list">
+                <span class="back for-upload" title="back">&lessdot;</span>
+                <div class="form-header">
+                    <h2>Upload a file</h2>
+                    <button class="add-btn"><span>&plus;</span> add</button>
+                </div>
+                <div class="file-list">
                     <div class="each-file">
                         <span class="delete">X</span>
-                     <p>#1</p>
-                     <h4>My image.jpg</h4>
-                     <div>
-                           <p class="file-type">jpg</p>
-                           <span>4mb</span>
-                     </div>
-                    </div>
-                 </div>
-                 <div class="file-list">
-                        <div class="each-file">
-                            <span class="delete">X</span>
-                         <p>#1</p>
-                         <h4>My image.jpg</h4>
-                         <div class="file-type-holder">
-                               <p class="file-type">jpg</p>
-                               <span>4mb</span>
-                         </div>
+                        <p>#1</p>
+                        <h4>My image.jpg</h4>
+                        <div>
+                            <p class="file-type">jpg</p>
+                            <span>4mb</span>
                         </div>
-                     </div>
-                     <div class="send-options">
-                         <button class="upload-btn email-btn">send email</button>
-                         <button class="upload-btn link-btn">generate link</button>
-                     </div>
+                    </div>
+                </div>
+                <div class="file-list">
+                    <div class="each-file">
+                        <span class="delete">X</span>
+                        <p>#2</p>
+                        <h4>My image.jpg</h4>
+                        <div>
+                            <p class="file-type">jpg</p>
+                            <span>4mb</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="file-list">
+                    <div class="each-file">
+                        <span class="delete">X</span>
+                        <p>#3</p>
+                        <h4>My image.jpg</h4>
+                        <div>
+                            <p class="file-type">jpg</p>
+                            <span>4mb</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="send-options">
+                    <button class="upload-btn email-btn">send email</button>
+                    <button class="upload-btn link-btn">generate link</button>
+                </div>
+            </div>
+            <!-- send by email -->
+            <div send-email>
+                <span class="back for-email" title="back">&lessdot;</span>
+                <div class="email-field-content">
+                        <input type="email" placeholder="Your email address" /><br>
+                        <input type="email" placeholder="Receiver's email address" /><br>
+                        <input type="email" placeholder="Subject" /><br>
+                        <textarea name="" id="" cols="30" rows="9" placeholder="Message"></textarea><br>
+                        <div class="send-options">
+                            <a href="index.html" class="cancel">cancel</a>
+                            <button class="upload-btn send">send</button>
+                        </div>
+                </div>
+            </div>
+            <!-- send by link -->
+            <div generate-link>
+                <span class="back for-link" title="back">&lessdot;</span>
+                <div class="gen-link-content">
+                    <h2>Link generated successfully!</h2>
+                    <p class="generated-link">https://github.com/shonubijerry/Andela-BootCamp-44-Slack-Resources</p>
+                    <button class="upload-btn copy">copy link</button>
+                </div>
             </div>
         </section>
     </main>
+    <script src="index.js"></script>
 </body>
 
 </html>
