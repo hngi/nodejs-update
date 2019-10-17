@@ -55,33 +55,35 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
             <button
               id='btn-email'
               className='btn btn-primary'
-              onClick={() => {
-                document
-                  .getElementsByClassName('form2')[0]
-                  .classList.add('d-none');
-                var form1 = document.getElementsByClassName('form1')[0];
-                form1.classList.contains('d-none')
-                  ? form1.classList.remove('d-none')
-                  : form1.classList.add('d-none');
-              }}>
+              // onClick={() => {
+              //   document
+              //     .getElementsByClassName('form2')[0]
+              //     .classList.add('d-none');
+              //   var form1 = document.getElementsByClassName('form1')[0];
+              //   form1.classList.contains('d-none')
+              //     ? form1.classList.remove('d-none')
+              //     : form1.classList.add('d-none');
+              // }}
+              >
               Upload by email
             </button>
             <button
               id='btn-link'
               className='btn btn-primary ml-5'
-              onClick={() => {
-                document
-                  .getElementsByClassName('form1')[0]
-                  .classList.add('d-none');
-                var form2 = document.getElementsByClassName('form2')[0];
-                form2.classList.contains('d-none')
-                  ? form2.classList.remove('d-none')
-                  : form2.classList.add('d-none');
-              }}>
-              Upload by link
+              // onClick={() => {
+              //   document
+              //     .getElementsByClassName('form1')[0]
+              //     .classList.add('d-none');
+              //   var form2 = document.getElementsByClassName('form2')[0];
+              //   form2.classList.contains('d-none')
+              //     ? form2.classList.remove('d-none')
+              //     : form2.classList.add('d-none');
+              // }}
+              >
+              Copy link
             </button>
             {''}
-            <div className='form1 d-none'>
+            <div className='form1'>
               <form
                 onSubmit={e => {
                   e.preventDefault();
