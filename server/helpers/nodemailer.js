@@ -8,33 +8,44 @@
 const nodemailer = require('nodemailer');
 
 const sendLink = (msg, error, success) => {
-    //using test account for now
-    let testAccount = nodemailer.createTestAccount();
-
+    //using xshareng@gmail.com account
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
+        service: 'gmail',
         port: 587,
         secure: false,
         auth: {
-            user: testAccount.user, // generated user
-            pass: testAccount.pass // generated password
+            user: "xshareng@gmail.com", // senders address
+            pass: "nodejs-update" // generated password
+        },
+        
+        tls: {
+            rejectUnauthorized: false
         }
     });
 
     // send mail with defined transport object
-    let info = transporter.sendMail({
-        from: '', // include senders address
-        to: msg.to, // list of receivers(address)
+    transporter.sendMail({
+        from: "xshareng@gmail.com", // senders address
+        to: msg.to, // receivers address
         subject: msg.subject, // Subject line
         text: msg.text || '', // plain text body
         html: msg.html || '', // html texts
-        attachments: msg.attachments // this should be an array of objects with filename and path properties
+        attachments: msg.attachments || '' // this should be an array of objects with filename and path properties
     }, (err, succ)=>{
         // send confirmation or error through callback function
         (err) ? error(err) : success(succ);
     });
 
 }
+
+/*
+* example
+* sendLink({
+*     "to": "micaiah.effiong@gmail.com",
+*     "subject": "test",
+*     "text": "I have arrived"
+* }, console.log, console.log);   
+*/
 
 module.exports = sendLink;
