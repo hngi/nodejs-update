@@ -15,7 +15,6 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
   });
   const { name, to, link, file } = formData;
   const onChange = e => {
-    console.log(e.target.files);
     setFormData({
       ...formData,
       [e.target.name]:
@@ -23,7 +22,6 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
     });
     console.log(formData);
   };
-  const IsEmail = true;
   console.log(uploadstate);
   return (
     <div>
@@ -52,6 +50,7 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
           </ul>
         </nav>
       </header>
+
       <div className="container">
         <div className="row">
           <div className="col-lg-6">
@@ -62,44 +61,43 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
               <button
                 id="btn-email"
                 className="btn"
-                onClick={() => {
-                  document
-                    .getElementsByClassName("form2")[0]
-                    .classList.add("d-none");
-                  var form1 = document.getElementsByClassName("form1")[0];
-                  form1.classList.contains("d-none")
-                    ? form1.classList.remove("d-none")
-                    : form1.classList.add("d-none");
-                }}
+                // onClick={() => {
+                //   document
+                //     .getElementsByClassName('form2')[0]
+                //     .classList.add('d-none');
+                //   var form1 = document.getElementsByClassName('form1')[0];
+                //   form1.classList.contains('d-none')
+                //     ? form1.classList.remove('d-none')
+                //     : form1.classList.add('d-none');
+                // }}
               >
                 Upload by email
               </button>
               <button
                 id="btn-link"
-                className="btn ml-5"
-                onClick={() => {
-                  document
-                    .getElementsByClassName("form1")[0]
-                    .classList.add("d-none");
-                  var form2 = document.getElementsByClassName("form2")[0];
-                  form2.classList.contains("d-none")
-                    ? form2.classList.remove("d-none")
-                    : form2.classList.add("d-none");
-                }}
+                className="btn"
+                // onClick={() => {
+                //   document
+                //     .getElementsByClassName('form1')[0]
+                //     .classList.add('d-none');
+                //   var form2 = document.getElementsByClassName('form2')[0];
+                //   form2.classList.contains('d-none')
+                //     ? form2.classList.remove('d-none')
+                //     : form2.classList.add('d-none');
+                // }}
               >
-                Upload by link
+                Copy link
               </button>
             </div>
             {""}
-            <div className="form1 d-none">
+            <div className="form1">
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  upload(name, to, file, IsEmail);
+                  upload(name, to, file, true);
                 }}
               >
                 <div className="form-group">
-                  {/* <label htmlFor="name">Name</label> */}
                   <input
                     className="form-control"
                     type="name"
@@ -129,6 +127,7 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
                     rows={3}
                     defaultValue={''}
                   /> */}
+
                   <br />
                   <label htmlFor>Upload file</label>
                   <input
@@ -154,7 +153,7 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  upload(link, file);
+                  upload(link, file, false);
                 }}
               >
                 <div className="form-group">

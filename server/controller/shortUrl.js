@@ -1,5 +1,6 @@
 const shortid = require('shortid');
 const ShortLink = require('../models/ShortenLink');
+const sendEmail = require('../middleware/sendEmail');
 
 const ShortenLink = {
   async shortenUrl(req, res, next) {
@@ -11,18 +12,16 @@ const ShortenLink = {
         shortUrlParam,
         shortUrl: `http://localhost:4000/${shortUrlParam}`
       });
-
       createShortUrl.save();
-      if (!req.body.isEmail) {
-        res.json({
-          success: true,
-          message: 'Link shortened successfully',
-          shortUrl: createShortUrl.shortUrl,
-          longUrl: cloudinaryUrl
-        });
-      } else {
-        next();
+      if (req.body.isEmail) {
+        sendEmail(req, createShortUrl.shortUrl, res);
       }
+      res.json({
+        success: true,
+        message: 'Link shortened successfully',
+        shortUrl: createShortUrl.shortUrl,
+        longUrl: cloudinaryUrl
+      });
     } catch (error) {
       res.json({
         success: true,

@@ -2,7 +2,6 @@ const multerHelper = require('../middleware/multer');
 const dataUri = multerHelper.dataUri;
 const { uploader, cloudinaryConfig } = require('../config/cloudinary');
 const upload = (req, res, next) => {
- 
   if (req.file) {
     const file = dataUri(req).content;
     return uploader
@@ -21,6 +20,10 @@ const upload = (req, res, next) => {
           }
         });
       });
+  }
+  else{
+    
+    console.log(false);
   }
 };
 module.exports = upload;
