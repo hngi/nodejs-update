@@ -4,6 +4,7 @@ node{
     git 'https://github.com/hngi/nodejs-update.git'
   }
   stage('Build Application'){
+    sh "cd nodejs-update"
     sh "docker-compose build"
   }
   stage('Run Application'){
