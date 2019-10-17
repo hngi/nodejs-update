@@ -24,10 +24,10 @@ const Landing = ({ isSignedInWithGoogle, logout }) => {
                 />
               </li>
             ) : (
-              <li>
-                <GoogleAuth />
-              </li>
-            )}
+                <li>
+                  <GoogleAuth />
+                </li>
+              )}
           </ul>
         </nav>
       </header>
@@ -90,8 +90,15 @@ const Landing = ({ isSignedInWithGoogle, logout }) => {
                     rows={3}
                     defaultValue={''}
                   />
+                  <label htmlFor='password'>Optional Password to protect File</label>
+                  <input
+                    className='form-control'
+                    type='password'
+                    placeholder='Password'
+                    id='password'
+                  />
                   <label htmlFor>Upload file</label>
-                  <input className='form-control-file' type='file' />
+                  <input className='form-control-file py-2' type='file' />
                   <input
                     type='submit'
                     className='btn btn-primary float-right'
@@ -115,8 +122,15 @@ const Landing = ({ isSignedInWithGoogle, logout }) => {
                     rows={3}
                     defaultValue={''}
                   />
+                  <label htmlFor='password'>Optional Password to protect File</label>
+                  <input
+                    className='form-control'
+                    type='password'
+                    placeholder='Password'
+                    id='password'
+                  />
                   <label htmlFor>Upload file</label>
-                  <input className='form-control-file' type='file' />
+                  <input className='form-control-file py-2' type='file' />
                   <input
                     type='submit'
                     className='btn btn-primary float-right'
