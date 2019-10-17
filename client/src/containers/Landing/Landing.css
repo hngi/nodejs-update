@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lora|Roboto+Mono&display=swap');
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+.header {
+    font-family: 'Lora', serif;
+    text-decoration: none;
+    font-weight: bolder;
 }
 
 nav {
@@ -15,6 +23,25 @@ nav a {
     font-weight: bold;
     color: #3b61ff;
     font-size: 1.5em;
+}
+
+.text {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    color: #3b61ff;
+    text-align: center;
+    font-weight: 600;
+    padding: 20px;
+}
+
+.login {
+    padding-left: 5px;
+
+}
+
+.buttons {
+    text-align: center;
+    padding-top: 20px;
 }
 
 .sub-link li{
