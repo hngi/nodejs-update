@@ -1,0 +1,31 @@
+version: "2"
+services:
+  client:
+    image: webapp-client
+    build: ./client
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/client
+      - /client/node_modules
+    links:
+      - server
+    networks:
+      - webappnetwork
+
+  server:
+    image: webapp-server
+    build: ./server
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./server:/server
+      - /server/node_modules
+    networks:
+      - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge
