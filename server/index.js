@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 require('./database/db');
 const router = require('./routes');
 const uploadRoute = require('./routes/upload');
+import {someCronJob} from "./cron";
 
 // cloudinary import
 const { urlencoded, json } = require('body-parser');
@@ -29,6 +30,9 @@ app.use('/api/upload', multerUploads, uploadRoute);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 const port = process.env.PORT || 3500;
+
+//starts cronjob
+someCronJob.start();
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
