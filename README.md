@@ -8,7 +8,7 @@ https://res.cloudinary.com/vectormike/image/upload/v1571386756/Screenshot_from_2
 
 <hr>
 
-### Techhnology/Stack
+### Technology/Stack
 
 * React
 * Node/Express
