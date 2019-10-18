@@ -16,3 +16,4 @@ export const SEND_EMAIL_SUCCESS = 'SEND_EMAIL_SUCCESS';
 export const SEND_EMAIL_FAIL = 'SEND_EMAIL_FAIL';
 
 export const SIGN_IN_GOOGLE = 'SIGN_IN_GOOGLE';
+export const HIDE_LINK = 'HIDE_LINK';
