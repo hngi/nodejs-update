@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { GoogleLogout } from 'react-google-login';
 import { logout } from '../../actions/auth';
 import { upload, hidelink } from '../../actions/upload';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
 const Landing = ({
   isSignedInWithGoogle,
   logout,
@@ -17,18 +19,19 @@ const Landing = ({
     name: '',
     to: '',
     link: '',
-    file: ''
+    file: '',
+    value:'',
+    copied:false
   });
-  const { name, to, link, file } = formData;
+  const { name, to, link, file,value,copied } = formData;
   const onChange = e => {
     setFormData({
       ...formData,
       [e.target.name]:
         e.target.name !== 'file' ? e.target.value : e.target.files[0]
     });
-    console.log(formData);
   };
-  console.log(uploadstate);
+const shortUrl=uploadstate.shortUrl
   return (
     <div>
       <header>
@@ -86,20 +89,19 @@ const Landing = ({
               >
                 Send file via email
               </button>
+              <CopyToClipboard text={shortUrl}
+              onCopy={()=>setFormData({copied:true})}
+              >
               <button
                 id='btn-link'
                 className={
                   uploadstate.emailSent ? 'btn ml-5' : 'btn ml-5 d-none'
                 }
-                // onClick={() => {
-                //   var form2 = document.getElementsByClassName('form2')[0];
-                //   form2.classList.contains('d-none')
-                //     ? form2.classList.remove('d-none')
-                //     : form2.classList.add('d-none');
-                // }}
+                
               >
                 Copy link
-              </button>
+              </button></CopyToClipboard>
+              {copied?<span style={{color:'red'}}> Link Copied!</span>:null}
             </div>
             {''}
             <div
