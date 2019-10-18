@@ -1,6 +1,6 @@
 ## XSHARE
 
-A file sharing application that shares any kind of file throught your email or converts it to a link.
+A file sharing application that shares any kind of file through your email or converts it to a link.
 
 <hr/>
 
