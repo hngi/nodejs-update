@@ -10,9 +10,9 @@ import {
 import { setAlert } from './alert';
 
 import axios from 'axios';
-const base_url = 'http://18.233.101.1:4444';
+// const base_url = 'http://18.233.101.1:4444';
 
-// const base_url = 'https://x-shareserver.herokuapp.com';
+const base_url = 'https://x-shareserver.herokuapp.com';
 export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({
     email,
