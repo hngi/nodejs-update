@@ -1,15 +1,14 @@
 const Tracker = require('../models/tracker')
+const geoip = require('geoip-lite')
 
-import geoip from 'geoip-lite';
-
-export const getMetric = (urlShortenId, { ip, device }) => {
+const Tracker = (fileUrlId, { ip, device }) => {
   try {
     ip = '41.190.2.1';
     const geo = geoip.lookup(ip);
     const device_type = getDeviceType(device);
 
-    Metric.create({
-      urlShortenId,
+    Tracker.create({
+      fileUrlId,
       ip,
       country: geo.country,
       city: geo.city,
@@ -28,3 +27,6 @@ export const getMetric = (urlShortenId, { ip, device }) => {
 const getDeviceType = (device) => { 
   return (['tv', 'bot', 'car'].includes(device.type) ? 'other' : device.type);
 };
+
+
+module.exports = Tracker
