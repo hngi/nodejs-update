@@ -3,42 +3,46 @@ require('dotenv').config();
 const Email = process.env.EMAIL;
 const EmailPass = process.env.EMAIL_PASS;
 const nodemailer = require('nodemailer');
-module.exports = sendEmail = async (req, res) => {
+module.exports = sendEmail = async (req, link, res) => {
   try {
-    const { from, to, message } = req.body;
-    if (
-      from == '' ||
-      undefined ||
-      to == '' ||
-      undefined ||
-      message == '' ||
-      undefined
-    ) {
+    const { name, to } = req.body;
+    if (name == '' || undefined || to == '' || undefined) {
       return res.json({ message: 'Input fields are required', success: false });
     }
-    let transporter = nodemailer.createTransport({
-      service: 'gmail',
+    const mail = {
+    smtpConfig: {
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
         user: Email,
-        pass: EmailPass
-      }
-    });
+        pass: EmailPass,
+      },
+    },
+  }
+    let transporter = nodemailer.createTransport(mail.smtpConfig);
 
     let msg = {
       from: Email,
       to: to,
       subject: 'File Share',
-      html: '<div>message</div>'
+      html: `
+      <div>
+        <td align="center" class="esd-block-text">
+          <h1>Welcome to XShare</h1>
+        </td> 
+        <td align="center" class="esd-block-text es-p20t">
+          <p style="font-size: 18px;"><strong>${name} sent you a file</strong></p>
+        </td><td align="center" class="esd-block-text">
+        <ul><br><br></ul>
+        <p>${link}</p>
+      </td></div>`
     };
-
     transporter.sendMail(msg, (error, body) => {
       if (error) {
-        res.json({ message: 'Could not send Email', success: false });
+        return 'failed';
       } else {
-        res.json({
-          message: 'File successfully sent to ' + msg.to,
-          success: true
-        });
+        return 'succesful';
       }
     });
   } catch (error) {
