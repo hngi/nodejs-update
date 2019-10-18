@@ -1,7 +1,7 @@
 const Tracker = require('../models/tracker')
 const geoip = require('geoip-lite')
 
-const Tracker = (fileUrlId, { ip, device }) => {
+const getTracker = (fileUrlId, { ip, device }) => {
   try {
     ip = '41.190.2.1';
     const geo = geoip.lookup(ip);
@@ -29,4 +29,4 @@ const getDeviceType = (device) => {
 };
 
 
-module.exports = Tracker
+module.exports = getTracker

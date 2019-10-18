@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
-const metricSchema = new Schema({
+const trackerSchema = new Schema({
   urlShortenId: { type: Schema.Types.ObjectId, ref: 'UrlShorten', required: true },
   ip: String,
   country: String,
@@ -10,4 +10,4 @@ const metricSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model("Tracker", metricSchema);
+module.exports = mongoose.model("Tracker", trackerSchema);
