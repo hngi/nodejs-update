@@ -8,7 +8,8 @@ import {
 } from '../actions/types';
 const initialState = {
   cloudinaryUrl: null,
-  shortUrl: null
+  shortUrl: null,
+  emailSent: false
 };
 export default function(state = initialState, action) {
   const { type, payload } = action;
@@ -16,7 +17,8 @@ export default function(state = initialState, action) {
     case UPLOAD_FILE_SUCCESS:
       return {
         ...state,
-        cloudinaryUrl: payload.cloudinaryUrl
+        cloudinaryUrl: payload.cloudinaryUrl,
+        shortUrl: payload.shortUrl
       };
 
     case UPLOAD_FILE_FAIL:
@@ -27,25 +29,8 @@ export default function(state = initialState, action) {
     case SEND_EMAIL_SUCCESS:
       return {
         ...state,
-        cloudinaryUrl: payload.longUrl
-      };
-
-    case SEND_EMAIL_FAIL:
-      return {
-        ...state,
-        cloudinaryUrl: null,
-        shortUrl: null
-      };
-    case SHORTEN_LINK_SUCCESS:
-      return {
-        ...state,
-        shortUrl: payload.shortUrl
-      };
-
-    case SHORTEN_LINK_FAIL:
-      return {
-        ...state,
-        shortUrl: null
+        //cloudinaryUrl: payload.longUrl,
+        emailSent: true
       };
 
     default:

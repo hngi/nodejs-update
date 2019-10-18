@@ -1,4 +1,8 @@
-import { UPLOAD_FILE_SUCCESS, UPLOAD_FILE_FAIL } from './types';
+import {
+  UPLOAD_FILE_SUCCESS,
+  UPLOAD_FILE_FAIL,
+  SEND_EMAIL_SUCCESS
+} from './types';
 import { setAlert } from './alert';
 
 import axios from 'axios';
@@ -39,7 +43,10 @@ export const upload = (name, to, file, link, isEmail) => async dispatch => {
         payload: response.data
       });
       dispatch(setAlert(response.data.message, 'success'));
-      dispatch(setAlert(`Email sent to ${to}`,'success'));
+      dispatch(setAlert(`Email sent to ${to}`, 'success'));
+      dispatch({
+        type: SEND_EMAIL_SUCCESS
+      });
     } else {
       dispatch(setAlert(response.data.message, 'danger'));
       dispatch({
