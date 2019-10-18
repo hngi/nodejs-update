@@ -70,16 +70,9 @@ const Landing = ({
                 onClick={() => {
                   var form1 = document.getElementsByClassName('form1')[0];
                   // () =>
-                  return form1.classList.contains('d-none')
-                    ? () => {
-                        console.log('hide');
-                        form1.classList.remove('d-none');
-                        hidelink();
-                      }
-                    : () => {
-                        form1.classList.add('d-none');
-                        console.log('show');
-                      };
+                  form1.classList.contains('d-none')
+                    ? form1.classList.remove('d-none')
+                    : form1.classList.add('d-none');
                 }}
                 // onClick={() => {
                 //   document
