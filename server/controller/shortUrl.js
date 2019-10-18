@@ -10,7 +10,7 @@ const ShortenLink = {
       const createShortUrl = await new ShortLink({
         cloudinaryUrl,
         shortUrlParam,
-        shortUrl: `http://localhost:4000/${shortUrlParam}`
+        shortUrl: `http://18.233.101.1:4444/${shortUrlParam}`
       });
       createShortUrl.save();
       if (req.body.isEmail) {

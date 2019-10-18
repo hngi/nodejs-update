@@ -1,10 +1,20 @@
-import { UPLOAD_FILE_SUCCESS, UPLOAD_FILE_FAIL } from './types';
+import {
+  UPLOAD_FILE_SUCCESS,
+  UPLOAD_FILE_FAIL,
+  SEND_EMAIL_SUCCESS,
+  HIDE_LINK
+} from './types';
 import { setAlert } from './alert';
 
 import axios from 'axios';
-// const base_url = '';
+const base_url = 'http://18.233.101.1:4444';
 
-const base_url = 'http://localhost:4000';
+// const base_url = 'https://x-shareserver.herokuapp.com';
+export const hidelink = () => async => dispatch => {
+  dispatch({
+    type: HIDE_LINK
+  });
+};
 export const upload = (name, to, file, link, isEmail) => async dispatch => {
   const fd = new FormData();
 
@@ -39,7 +49,10 @@ export const upload = (name, to, file, link, isEmail) => async dispatch => {
         payload: response.data
       });
       dispatch(setAlert(response.data.message, 'success'));
-      dispatch(setAlert(`Email sent to ${to}`,'success'));
+      dispatch(setAlert(`The file was sent to ${to} successfully`, 'success'));
+      dispatch({
+        type: SEND_EMAIL_SUCCESS
+      });
     } else {
       dispatch(setAlert(response.data.message, 'danger'));
       dispatch({

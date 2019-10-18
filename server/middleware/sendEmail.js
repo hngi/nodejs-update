@@ -10,18 +10,17 @@ module.exports = sendEmail = async (req, link, res) => {
       return res.json({ message: 'Input fields are required', success: false });
     }
     const mail = {
-    smtpConfig: {
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: Email,
-        pass: EmailPass,
-      },
-    },
-  }
+      smtpConfig: {
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+          user: Email,
+          pass: EmailPass
+        }
+      }
+    };
     let transporter = nodemailer.createTransport(mail.smtpConfig);
-
     let msg = {
       from: Email,
       to: to,
