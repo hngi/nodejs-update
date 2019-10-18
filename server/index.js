@@ -12,7 +12,9 @@ const { resolve } = require('path');
 const { uploader, cloudinaryConfig } = require('./config/cloudinary');
 const { multerUploads } = require('./middleware/multer');
 app.use('*', cloudinaryConfig);
-
+app.get('/', (req, res) => {
+  res.send('Connected');
+});
 app.use(cors());
 app.use(expressValidator());
 app.use(
