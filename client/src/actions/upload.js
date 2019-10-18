@@ -1,7 +1,8 @@
 import {
   UPLOAD_FILE_SUCCESS,
   UPLOAD_FILE_FAIL,
-  SEND_EMAIL_SUCCESS
+  SEND_EMAIL_SUCCESS,
+  HIDE_LINK
 } from './types';
 import { setAlert } from './alert';
 
@@ -9,6 +10,11 @@ import axios from 'axios';
 // const base_url = '';
 
 const base_url = 'http://localhost:4000';
+export const hidelink=()=>async=>dispatch=>{
+dispatch({
+  type:HIDE_LINK
+})
+}
 export const upload = (name, to, file, link, isEmail) => async dispatch => {
   const fd = new FormData();
 

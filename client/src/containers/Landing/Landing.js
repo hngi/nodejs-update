@@ -5,8 +5,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { GoogleLogout } from 'react-google-login';
 import { logout } from '../../actions/auth';
-import { upload } from '../../actions/upload';
-const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
+import { upload, hidelink } from '../../actions/upload';
+const Landing = ({
+  isSignedInWithGoogle,
+  logout,
+  upload,
+  uploadstate,
+  hidelink
+}) => {
   const [formData, setFormData] = useState({
     name: '',
     to: '',
@@ -61,6 +67,20 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
               <button
                 id='btn-email'
                 className='btn'
+                onClick={() => {
+                  var form1 = document.getElementsByClassName('form1')[0];
+                  // () =>
+                  return form1.classList.contains('d-none')
+                    ? () => {
+                        console.log('hide');
+                        form1.classList.remove('d-none');
+                        hidelink();
+                      }
+                    : () => {
+                        form1.classList.add('d-none');
+                        console.log('show');
+                      };
+                }}
                 // onClick={() => {
                 //   document
                 //     .getElementsByClassName('form2')[0]
@@ -71,18 +91,17 @@ const Landing = ({ isSignedInWithGoogle, logout, upload, uploadstate }) => {
                 //     : form1.classList.add('d-none');
                 // }}
               >
-                Upload by email
+                Send file via email
               </button>
               <button
                 id='btn-link'
-                className='btn ml-5'
+                className={
+                  uploadstate.emailSent ? 'btn ml-5' : 'btn ml-5 d-none'
+                }
                 // onClick={() => {
-                //   document
-                //     .getElementsByClassName('form1')[0]
-                //     .classList.add('d-none');
                 //   var form2 = document.getElementsByClassName('form2')[0];
                 //   form2.classList.contains('d-none')
-
+                //     ? form2.classList.remove('d-none')
                 //     : form2.classList.add('d-none');
                 // }}
               >
@@ -208,5 +227,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { logout, upload }
+  { logout, upload, hidelink }
 )(Landing);

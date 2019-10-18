@@ -2,9 +2,7 @@ import {
   UPLOAD_FILE_SUCCESS,
   UPLOAD_FILE_FAIL,
   SEND_EMAIL_SUCCESS,
-  SEND_EMAIL_FAIL,
-  SHORTEN_LINK_SUCCESS,
-  SHORTEN_LINK_FAIL
+  HIDE_LINK
 } from '../actions/types';
 const initialState = {
   cloudinaryUrl: null,
@@ -31,6 +29,12 @@ export default function(state = initialState, action) {
         ...state,
         //cloudinaryUrl: payload.longUrl,
         emailSent: true
+      };
+    case HIDE_LINK:
+      return {
+        ...state,
+        //cloudinaryUrl: payload.longUrl,
+        emailSent: false
       };
 
     default:
