@@ -7,7 +7,7 @@ import {
 import { setAlert } from './alert';
 
 import axios from 'axios';
-const base_url = '18.233.101.1:4444';
+const base_url = 'https://18.233.101.1:4444';
 
 // const base_url = 'https://x-shareserver.herokuapp.com';
 export const hidelink = () => async => dispatch => {
