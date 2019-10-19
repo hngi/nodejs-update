@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import './Landing.css';
-import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
+// import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { GoogleLogout } from 'react-google-login';
-import { logout } from '../../actions/auth';
+// import { GoogleLogout } from 'react-google-login';
+// import { logout } from '../../actions/auth';
 import { upload, hidelink } from '../../actions/upload';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const Landing = ({
-  isSignedInWithGoogle,
-  logout,
+  // isSignedInWithGoogle,
+  // logout,
   upload,
   uploadstate,
   hidelink
@@ -18,12 +18,10 @@ const Landing = ({
   const [formData, setFormData] = useState({
     name: '',
     to: '',
-    link: '',
     file: '',
-    value:'',
     copied:false
   });
-  const { name, to, link, file,value,copied } = formData;
+  const { name, to, file,copied } = formData;
   const onChange = e => {
     setFormData({
       ...formData,
@@ -39,8 +37,7 @@ const shortUrl=uploadstate.shortUrl
           <Link className='header' to='/'>
             XSHARE
           </Link>
-          <ul className='sub-link'>
-            {/* <li>About</li> */}
+          {/* <ul className='sub-link'>
             {isSignedInWithGoogle ? (
               <li>
                 <GoogleLogout
@@ -56,7 +53,7 @@ const shortUrl=uploadstate.shortUrl
                 <GoogleAuth />
               </li>
             )}
-          </ul>
+          </ul> */}
         </nav>
       </header>
 
@@ -106,7 +103,7 @@ const shortUrl=uploadstate.shortUrl
             {''}
             <div
               className={
-                uploadstate.emailSent == false ? 'form1' : 'form1 d-none'
+                uploadstate.emailSent === false ? 'form1' : 'form1 d-none'
               }>
               <form
                 onSubmit={e => {
@@ -217,10 +214,10 @@ const shortUrl=uploadstate.shortUrl
   );
 };
 const mapStateToProps = state => ({
-  isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
+  // isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
   uploadstate: state.upload
 });
 export default connect(
   mapStateToProps,
-  { logout, upload, hidelink }
+  { upload, hidelink }
 )(Landing);
