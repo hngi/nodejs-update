@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import "./Landing.css";
+import Footer from "../../components/Footer/footer";
 // import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -178,6 +180,7 @@ const Landing = ({
                     onChange={e => onChange(e)}
                     className="form-control-file"
                     type="file"
+                    file="file"
                   />
                   <br />
                   {isLoading ? (
@@ -244,6 +247,7 @@ const Landing = ({
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
