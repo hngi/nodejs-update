@@ -217,10 +217,10 @@ const shortUrl=uploadstate.shortUrl
   );
 };
 const mapStateToProps = state => ({
-  isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
+//   isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
   uploadstate: state.upload
 });
 export default connect(
   mapStateToProps,
-  { logout, upload, hidelink }
+  { upload, hidelink }
 )(Landing);
