@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import './Landing.css';
-import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
+// import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { GoogleLogout } from 'react-google-login';
+// import { GoogleLogout } from 'react-google-login';
 import { logout } from '../../actions/auth';
 import { upload, hidelink } from '../../actions/upload';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const Landing = ({
-  isSignedInWithGoogle,
+//   isSignedInWithGoogle,
   logout,
   upload,
   uploadstate,
@@ -39,24 +39,23 @@ const shortUrl=uploadstate.shortUrl
           <Link className='header' to='/'>
             XSHARE
           </Link>
-          <ul className='sub-link'>
-            {/* <li>About</li> */}
-            {isSignedInWithGoogle ? (
-              <li>
-                <GoogleLogout
-                  id='googleLogOutBtn'
-                  clientId='97829381082-8imeelchtkuvfcd47q0dgia1p0l91msr.apps.googleusercontent.com'
-                  buttonText='Logout'
-                  onLogoutSuccess={logout}
-                  onFailure={() => logout()}
-                />
-              </li>
-            ) : (
-              <li className='login'>
-                <GoogleAuth />
-              </li>
-            )}
-          </ul>
+           {/* <ul className='sub-link'>
+             {isSignedInWithGoogle ? (
+               <li>
+                 <GoogleLogout
+                   id='googleLogOutBtn'
+                   clientId='97829381082-8imeelchtkuvfcd47q0dgia1p0l91msr.apps.googleusercontent.com'
+                   buttonText='Logout'
+                   onLogoutSuccess={logout}
+                   onFailure={() => logout()}
+                 />
+               </li>
+             ) : (
+               <li className='login'>
+                 <GoogleAuth />
+               </li>
+             )}
+           </ul> */}
         </nav>
       </header>
 
@@ -217,10 +216,10 @@ const shortUrl=uploadstate.shortUrl
   );
 };
 const mapStateToProps = state => ({
-  isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
+//   isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
   uploadstate: state.upload
 });
 export default connect(
   mapStateToProps,
-  { logout, upload, hidelink }
+  { upload, hidelink }
 )(Landing);
