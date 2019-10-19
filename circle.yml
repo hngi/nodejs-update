@@ -1,0 +1,12 @@
+test:  
+  override:
+    - "true"
+    
+deployment:
+  production:
+    branch: frontend
+    commands:
+      - yarn run build
+      - scp -r build/* ubuntu@18.233.101.1:/var/www/xshareapp.ml/
+
+
