@@ -10,7 +10,8 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Alert />
-        <Switch><Route path='/' component={Landing} />
+        <Switch>
+          <Route path='/' component={Landing} />
         </Switch>
       </Router>
     </Provider>
