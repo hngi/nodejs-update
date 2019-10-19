@@ -24,6 +24,19 @@ const Landing = ({
     copied: false,
     isLoading: false
   });
+
+  const clearState = () => {
+    setFormData({
+      name: "",
+      from: "",
+      to: "",
+      file: "",
+      value: "",
+      copied: false,
+      isLoading: false
+    });
+  };
+
   const { name, to, link, file, value, copied, isLoading } = formData;
   const onChange = e => {
     setFormData({
@@ -120,6 +133,7 @@ const Landing = ({
                   e.preventDefault();
                   upload(name, to, file, true);
                   setFormData({ isLoading: true });
+                  setTimeout(clearState, 80000);
                 }}
               >
                 <div className="form-group">
