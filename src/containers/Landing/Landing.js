@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./Landing.css";
-import GoogleAuth from "../../components/GoogleAuth/GoogleAuth";
+// import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { GoogleLogout } from "react-google-login";
-import { logout } from "../../actions/auth";
+// import { GoogleLogout } from 'react-google-login';
+// import { logout } from '../../actions/auth';
 import { upload, hidelink } from "../../actions/upload";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Landing = ({
-  isSignedInWithGoogle,
-  logout,
+  // isSignedInWithGoogle,
+  // logout,
   upload,
   uploadstate,
   hidelink
@@ -53,8 +53,7 @@ const Landing = ({
           <Link className="header" to="/">
             XSHARE
           </Link>
-          <ul className="sub-link">
-            {/* <li>About</li> */}
+          {/* <ul className='sub-link'>
             {isSignedInWithGoogle ? (
               <li>
                 <GoogleLogout
@@ -70,7 +69,7 @@ const Landing = ({
                 <GoogleAuth />
               </li>
             )}
-          </ul>
+          </ul> */}
         </nav>
       </header>
 
@@ -125,7 +124,7 @@ const Landing = ({
             {""}
             <div
               className={
-                uploadstate.emailSent == false ? "form1" : "form1 d-none"
+                uploadstate.emailSent === false ? "form1" : "form1 d-none"
               }
             >
               <form
@@ -249,10 +248,10 @@ const Landing = ({
   );
 };
 const mapStateToProps = state => ({
-  isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
+  // isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
   uploadstate: state.upload
 });
 export default connect(
   mapStateToProps,
-  { logout, upload, hidelink }
+  { upload, hidelink }
 )(Landing);
