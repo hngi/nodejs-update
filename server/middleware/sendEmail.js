@@ -3,20 +3,24 @@ require('dotenv').config();
 const Email = process.env.EMAIL;
 const EmailPass = process.env.EMAIL_PASS;
 const nodemailer = require('nodemailer');
-module.exports = sendEmail = async (req, res) => {
+module.exports = sendEmail = async (req, link, res) => {
   try {
-    const { name, to, link } = req.body;
+    const { name, to } = req.body;
     if (name == '' || undefined || to == '' || undefined) {
       return res.json({ message: 'Input fields are required', success: false });
     }
-    let transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: Email,
-        pass: EmailPass
+    const mail = {
+      smtpConfig: {
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+          user: Email,
+          pass: EmailPass
+        }
       }
-    });
-
+    };
+    let transporter = nodemailer.createTransport(mail.smtpConfig);
     let msg = {
       from: Email,
       to: to,
@@ -35,12 +39,9 @@ module.exports = sendEmail = async (req, res) => {
     };
     transporter.sendMail(msg, (error, body) => {
       if (error) {
-        res.json({ message: 'Could not send Email', success: false });
+        return 'failed';
       } else {
-        res.json({
-          message: 'File successfully sent to ' + msg.to,
-          success: true
-        });
+        return 'succesful';
       }
     });
   } catch (error) {
