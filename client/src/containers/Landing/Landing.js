@@ -133,7 +133,7 @@ const Landing = ({
                   e.preventDefault();
                   upload(name, to, file, true);
                   setFormData({ isLoading: true });
-                  setTimeout(clearState, 80000);
+                  setTimeout(clearState, 5000);
                 }}
               >
                 <div className="form-group">
