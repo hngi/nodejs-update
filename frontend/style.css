@@ -185,11 +185,11 @@ p,
   background-color: #3b61ff;
 }
 
-[send-email] .email-field-content {
+.email-field-content {
   text-align: center;
 }
 
-[send-email] input, textarea {
+input, textarea {
   width: 50%;
   margin-top: 1.5em;
   background-color: #ffffff;
@@ -198,13 +198,13 @@ p,
   margin: 1em 3em;
 }
 
-[send-email] .send-options {
+.send-options {
   display: flex;
   justify-content: space-between;
   margin: 1em 10em;
 }
 
-[send-email] .send-options .cancel {
+.send-options .cancel {
   font-weight: bold;
   color: #ffffff;
   text-decoration: none;
@@ -212,7 +212,7 @@ p,
   padding: 5px;
 }
 
-[send-email] .send-options .send {
+.send-options .send {
   padding: 10px 30px;
   background-color: #ffffff;
   color: #3b61ff;
@@ -282,7 +282,7 @@ p,
 
   [upload-file] {
     display: none;
-    position: fixed;
+    position: absolute;
     height: 100vh;
     padding: 2em 2em 0;
     background-color: #3b61ff;
@@ -294,20 +294,21 @@ p,
     display: none;
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     padding: 2em 2em 0;
     background-color: #3b61ff;
+    overflow: scroll;
   }
 
-  [send-email] input, textarea {
-    width: 80%;
+   input, textarea {
+    width: 70%;
   }
 
-  [send-email] .send-options {
+  .send-options {
     margin: 1em 2.3rem;
   }
 
-  [send-email] .send-options .cancel {
+  .send-options .cancel {
     padding: 5px 0 0 1.5em;
   }
 
