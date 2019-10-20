@@ -125,7 +125,7 @@ h2 {
   border-radius: 5px;
   padding: 15px;
   display: grid;
-  grid-template-columns: 0.1fr 0.5fr 2fr 0.5fr;
+  grid-template-columns: 0.1fr 1fr;
 }
 
 [upload-file] .file-list .each-file .delete {
@@ -158,8 +158,9 @@ p,
 }
 
 [upload-file] .send-options {
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
+  /* display: flex; */
+  /* justify-content: space-between; */
   margin: 2em 3em;
 }
 
@@ -247,6 +248,19 @@ p,
   font-weight: bold;
 }
 
+/* .copy-feedback {
+  display: none;
+  width: fit-content;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #3b61ff;
+  background-color: #ffffff;
+  padding: 5px;
+  position: relative;
+  top: -40px;
+  left: 90px;
+} */
+
 /* media query */
 @media only screen and (max-width: 720px) {
   body {
@@ -310,4 +324,18 @@ p,
     width: fit-content;
   }
 
+  /*  */
+  /* [copy] {
+    text-align: center;
+  }
+  .copy-feedback {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    color: #3b61ff;
+    background-color: #ffffff;
+    padding: 5px;
+    position: fixed;
+    top: -40px;
+    left: 90px;
+  } */
 }
