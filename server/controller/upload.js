@@ -20,9 +20,8 @@ const upload = (req, res, next) => {
           }
         });
       });
-  }
-  else{
-return;
+  } else {
+    console.log(false);
   }
 };
 module.exports = upload;

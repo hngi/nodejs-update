@@ -40,8 +40,15 @@ const ShortenLink = {
       var parsed = url.parse(cloudinaryUrl);
       var fileName = path.posix.basename;
       // console.log(4,fileName);
-      res.setHeader('content-disposition', `attachment; filename=file.png`);
-      request(cloudinaryUrl).pipe(res);
+      res.setHeader('Content-Disposition', `attachment; filename=file.png`);
+      request(cloudinaryUrl)
+        .once('data', data => {
+          console.log(data);
+        })
+        .on('error', err => {
+          console.log(err);
+        })
+        .pipe(res);
       res.json('Download complete');
     } catch (error) {
       res.json({
