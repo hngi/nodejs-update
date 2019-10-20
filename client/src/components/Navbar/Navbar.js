@@ -11,6 +11,13 @@ const Navbar = () => {
           </Link>
           <ul>
             <li>
+              <Link to='/about'>
+                About
+              </Link>
+            </li>
+            </ul>
+            <ul>
+            <li>
               <Link to='/privacy'>
                 Privacy
               </Link>
