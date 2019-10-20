@@ -22,8 +22,7 @@ const upload = (req, res, next) => {
       });
   }
   else{
-    
-    console.log(false);
+return;
   }
 };
 module.exports = upload;
