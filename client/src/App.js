@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import Privacy from './components/Privacy/Privacy';
 import Footer from './components/Footer/Footer';
 import About from './components/About/About'
+import NewLanding from './containers/Landing/NewLanding';
 const App = () => {
   return (
     <Provider store={store}>
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/about' component={About} />
           <Route path='/privacy' component={Privacy} />
           <Route path='/' component={Landing} />
+          {/* <Route path='/s' component={NewLanding} /> */}
         </Switch>
         <Footer />
       </Router>

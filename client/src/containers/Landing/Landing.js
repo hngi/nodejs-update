@@ -73,7 +73,8 @@ const Landing = ({
               </button>
               <CopyToClipboard
                 text={shortUrl}
-                onCopy={() => setFormData({ copied: true })}>
+                onCopy={() => setFormData({ copied: true })
+                }>
                 <button
                   id='btn-link'
                   className={
