@@ -282,7 +282,7 @@ input, textarea {
 
   [upload-file] {
     display: none;
-    position: fixed;
+    position: absolute;
     height: 100vh;
     padding: 2em 2em 0;
     background-color: #3b61ff;
