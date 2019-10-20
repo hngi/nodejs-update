@@ -1,17 +1,17 @@
-require("dotenv").config();
+require('dotenv').config();
 
 const Email = process.env.EMAIL;
 const EmailPass = process.env.EMAIL_PASS;
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 module.exports = sendEmail = async (req, link, res) => {
   try {
     const { name, to } = req.body;
-    if (name == "" || undefined || to == "" || undefined) {
-      return res.json({ message: "Input fields are required", success: false });
+    if (name == '' || undefined || to == '' || undefined) {
+      return res.json({ message: 'Input fields are required', success: false });
     }
     const mail = {
       smtpConfig: {
-        host: "smtp.gmail.com",
+        host: 'smtp.gmail.com',
         port: 465,
         secure: true,
         auth: {
@@ -24,7 +24,7 @@ module.exports = sendEmail = async (req, link, res) => {
     let msg = {
       from: Email,
       to: to,
-      subject: "File Share",
+      subject: 'File Share',
       html: `
       <div>
          <h1>Welcome to XShare</h1>
@@ -37,11 +37,11 @@ module.exports = sendEmail = async (req, link, res) => {
     };
     transporter.sendMail(msg, (error, body) => {
       if (error) {
-        console.log('failed',error)
-        return "failed";
+        console.log('failed', error);
+        return 'failed';
       } else {
         console.log('success');
-        return "succesful";
+        return 'succesful';
       }
     });
   } catch (error) {

@@ -49,7 +49,6 @@ const ShortenLink = {
           console.log(err);
         })
         .pipe(res);
-      res.json('Download complete');
     } catch (error) {
       res.json({
         success: true,
