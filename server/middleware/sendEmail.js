@@ -27,20 +27,20 @@ module.exports = sendEmail = async (req, link, res) => {
       subject: 'File Share',
       html: `
       <div>
-        <td align="center" class="esd-block-text">
-          <h1>Welcome to XShare</h1>
-        </td> 
-        <td align="center" class="esd-block-text es-p20t">
-          <p style="font-size: 18px;"><strong>${name} sent you a file</strong></p>
-        </td><td align="center" class="esd-block-text">
-        <ul><br><br></ul>
-        <p>${link}</p>
-      </td></div>`
+         <h1>Welcome to XShare</h1>
+        <br>
+        <p>
+            Hello there! Welcome to the XShare file sharing service.<br> ${name} sent you a file.
+            You can access the file using the link below:<br> ${link}
+        </p>
+      </div>`
     };
     transporter.sendMail(msg, (error, body) => {
       if (error) {
+        console.log('failed', error);
         return 'failed';
       } else {
+        console.log('success');
         return 'succesful';
       }
     });

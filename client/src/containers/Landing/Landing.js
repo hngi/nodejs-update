@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
+
 import './Landing.css';
-import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { GoogleLogout } from 'react-google-login';
-import { logout } from '../../actions/auth';
+
 import { upload, hidelink } from '../../actions/upload';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const Landing = ({
-  isSignedInWithGoogle,
-  logout,
   upload,
   uploadstate,
   hidelink
@@ -18,12 +14,24 @@ const Landing = ({
   const [formData, setFormData] = useState({
     name: '',
     to: '',
-    link: '',
     file: '',
-    value:'',
-    copied:false
+    copied: false,
+    isLoading: false
   });
-  const { name, to, link, file,value,copied } = formData;
+
+  const clearState = () => {
+    setFormData({
+      name: '',
+      from: '',
+      to: '',
+      file: '',
+      value: '',
+      copied: false,
+      isLoading: false
+    });
+  };
+
+  const { name, to, file, copied, isLoading } = formData;
   const onChange = e => {
     setFormData({
       ...formData,
@@ -31,35 +39,9 @@ const Landing = ({
         e.target.name !== 'file' ? e.target.value : e.target.files[0]
     });
   };
-const shortUrl=uploadstate.shortUrl
+  const shortUrl = uploadstate.shortUrl;
   return (
     <div>
-      <header>
-        <nav>
-          <Link className='header' to='/'>
-            XSHARE
-          </Link>
-          <ul className='sub-link'>
-            {/* <li>About</li> */}
-            {isSignedInWithGoogle ? (
-              <li>
-                <GoogleLogout
-                  id='googleLogOutBtn'
-                  clientId='97829381082-8imeelchtkuvfcd47q0dgia1p0l91msr.apps.googleusercontent.com'
-                  buttonText='Logout'
-                  onLogoutSuccess={logout}
-                  onFailure={() => logout()}
-                />
-              </li>
-            ) : (
-              <li className='login'>
-                <GoogleAuth />
-              </li>
-            )}
-          </ul>
-        </nav>
-      </header>
-
       <div className='container'>
         <div className='row'>
           <div className='col-lg-6'>
@@ -69,7 +51,7 @@ const shortUrl=uploadstate.shortUrl
             <div className='buttons'>
               <button
                 id='btn-email'
-                className='btn'
+                className='btn btn-light'
                 onClick={() => {
                   var form1 = document.getElementsByClassName('form1')[0];
                   // () =>
@@ -89,29 +71,34 @@ const shortUrl=uploadstate.shortUrl
               >
                 Send file via email
               </button>
-              <CopyToClipboard text={shortUrl}
-              onCopy={()=>setFormData({copied:true})}
-              >
-              <button
-                id='btn-link'
-                className={
-                  uploadstate.emailSent ? 'btn ml-5' : 'btn ml-5 d-none'
-                }
-                
-              >
-                Copy link
-              </button></CopyToClipboard>
-              {copied?<span style={{color:'red'}}> Link Copied!</span>:null}
+              <CopyToClipboard
+                text={shortUrl}
+                onCopy={() => setFormData({ copied: true })}>
+                <button
+                  id='btn-link'
+                  className={
+                    uploadstate.emailSent
+                      ? 'btn btn-light ml-5'
+                      : 'btn btn-light ml-5 d-none'
+                  }>
+                  Copy link
+                </button>
+              </CopyToClipboard>
+              {copied ? (
+                <span style={{ color: 'red' }}> Link Copied!</span>
+              ) : null}
             </div>
             {''}
             <div
               className={
-                uploadstate.emailSent == false ? 'form1' : 'form1 d-none'
+                uploadstate.emailSent === false ? 'form1' : 'form1 d-none'
               }>
               <form
                 onSubmit={e => {
                   e.preventDefault();
                   upload(name, to, file, true);
+                  setFormData({ isLoading: true });
+                  setTimeout(clearState, 5000);
                 }}>
                 <div className='form-group'>
                   <input
@@ -156,13 +143,22 @@ const shortUrl=uploadstate.shortUrl
                     onChange={e => onChange(e)}
                     className='form-control-file'
                     type='file'
+                    file='file'
                   />
                   <br />
-                  <input
-                    type='submit'
-                    className='btn float-left'
-                    defaultValue='Transfer'
-                  />
+                  {isLoading ? (
+                    <div class='spinner-border text-primary' role='status'>
+                      <span class='sr-only'>Loading...</span>
+                    </div>
+                  ) : (
+                    <button
+                      type='submit'
+                      className='btn btn-light float-left'
+                      defaultValue='Transfer'>
+                      Share
+                    </button>
+                  )}
+
                   {/* <button id='back' className='btn float-left'>
                     Cancel
                   </button> */}
@@ -217,10 +213,10 @@ const shortUrl=uploadstate.shortUrl
   );
 };
 const mapStateToProps = state => ({
-  isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
+  // isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
   uploadstate: state.upload
 });
 export default connect(
   mapStateToProps,
-  { logout, upload, hidelink }
+  { upload, hidelink }
 )(Landing);

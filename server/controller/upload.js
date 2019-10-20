@@ -20,9 +20,7 @@ const upload = (req, res, next) => {
           }
         });
       });
-  }
-  else{
-    
+  } else {
     console.log(false);
   }
 };
