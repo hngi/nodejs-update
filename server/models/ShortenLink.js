@@ -1,11 +1,15 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
-const urlShortenSchema = new Schema({
+const mongoose = require('mongoose');
 
-  CloudinaryUrl: String,
-  urlCode: String,
+const { Schema } = mongoose;
+
+const urlShortenSchema = new Schema({
+  cloudinaryUrl: String,
+  shortUrlParam: String,
   shortUrl: String,
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
-export default mongoose.model("ShorternLink", urlShortenSchema);
+
+const shortenLink = mongoose.model('ShortLink', urlShortenSchema);
+
+module.exports = shortenLink;

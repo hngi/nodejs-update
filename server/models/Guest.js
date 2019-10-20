@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const { Schema }  = mongoose;
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const GuestSchema = new Schema({
   link: { type: String },
@@ -7,6 +7,6 @@ const GuestSchema = new Schema({
   deletedAt: { type: Date, default: Date.now }
 });
 
-const Guest =  mongoose.model("Guest", GuestSchema);
+const Guest = mongoose.model('Guest', GuestSchema);
 
 module.exports = Guest;
