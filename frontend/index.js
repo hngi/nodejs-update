@@ -12,9 +12,12 @@ const sendEmailBtn = document.querySelector('.email-btn');
 const sendEmailField = document.querySelector('[send-email]');
 
 // //
-const sendLinkBtn = document.querySelector('.link-btn');
+// const sendLinkBtn = document.querySelector('.link-btn');
 // email field
 const sendLinkField = document.querySelector('[generate-link]');
+// 
+const send =  document.querySelector('.send');
+
 
 // all back links
 // back to home
@@ -38,9 +41,9 @@ sendEmailBtn.addEventListener('click', () => {
 });
 
 // link send
-sendLinkBtn.addEventListener('click', () => {
+send.addEventListener('click', () => {
     sendLinkField.style.display = 'block';
-    fileUploadField.style.display = 'none'
+    sendEmailField.style.display = 'none'
 });
 
 // all back links dir
@@ -61,3 +64,14 @@ backForLink.addEventListener('click', () => {
     fileUploadField.style.display = 'block';
     sendLinkField.style.display = 'none';
 });
+
+
+// add files 
+const addFiles = document.querySelector('#add-files');
+// 
+
+const fileName =  document.querySelector('h4');
+
+function add() {
+    fileName.textContent = addFiles.value
+}

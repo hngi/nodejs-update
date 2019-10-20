@@ -158,8 +158,9 @@ p,
 }
 
 [upload-file] .send-options {
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
+  /* display: flex; */
+  /* justify-content: space-between; */
   margin: 2em 3em;
 }
 

@@ -15,7 +15,7 @@
             <a href="index.html">XSHARE</a>
             <ul class="sub-link">
                 <!-- <li>About</li> -->
-                <li><a href="login.html">Log in</a></li>
+                <!-- <li><a href="login.html">Log in</a></li> -->
             </ul>
         </nav>
     </header>
@@ -35,44 +35,24 @@
                 <span class="back for-upload" title="back">&lessdot;</span>
                 <div class="form-header">
                     <h2>Upload a file</h2>
-                    <button class="add-btn"><span>&plus;</span> add</button>
+                    <input type="file" name="add" id="add-files" onchange="add()">
+                    <!-- <button class="add-btn"><span>&plus;</span> add</button> -->
                 </div>
                 <div class="file-list">
                     <div class="each-file">
-                        <span class="delete">X</span>
+                        <!-- <span class="delete">X</span> -->
                         <p>#1</p>
-                        <h4>My image.jpg</h4>
-                        <div>
+                        <h4></h4>
+                        <!-- <div>
                             <p class="file-type">jpg</p>
                             <span>4mb</span>
-                        </div>
+                        </div> -->
                     </div>
-                </div>
-                <div class="file-list">
-                    <div class="each-file">
-                        <span class="delete">X</span>
-                        <p>#2</p>
-                        <h4>My image.jpg</h4>
-                        <div>
-                            <p class="file-type">jpg</p>
-                            <span>4mb</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="file-list">
-                    <div class="each-file">
-                        <span class="delete">X</span>
-                        <p>#3</p>
-                        <h4>My image.jpg</h4>
-                        <div>
-                            <p class="file-type">jpg</p>
-                            <span>4mb</span>
-                        </div>
-                    </div>
+                <!-- </div> -->
                 </div>
                 <div class="send-options">
                     <button class="upload-btn email-btn">send email</button>
-                    <button class="upload-btn link-btn">generate link</button>
+                    <!-- <button class="upload-btn link-btn">generate link</button> -->
                 </div>
             </div>
             <!-- send by email -->
