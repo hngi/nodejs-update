@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/hngi/nodejs-update#readme",
   "devDependencies": {
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.2"
   },
   "dependencies": {
     "@hapi/joi": "^16.1.7",
