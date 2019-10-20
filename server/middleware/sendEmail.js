@@ -37,8 +37,10 @@ module.exports = sendEmail = async (req, link, res) => {
     };
     transporter.sendMail(msg, (error, body) => {
       if (error) {
+        console.log('failed',error)
         return "failed";
       } else {
+        console.log('success');
         return "succesful";
       }
     });
