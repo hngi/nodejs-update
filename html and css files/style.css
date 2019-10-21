@@ -7,7 +7,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 1em 2em;
+  padding: 2.5rem 2rem;
 }
 
 nav a {
