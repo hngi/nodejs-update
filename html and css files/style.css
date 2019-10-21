@@ -57,12 +57,6 @@ nav a span {
   margin: 3em 0;
 }
 
-.right img {
-  padding-left: 4em;
-  width: fit-content;
-  height: 25em;
-}
-
 .left,
 .right {
   padding: 2em;
@@ -70,7 +64,6 @@ nav a span {
 
 /* email field */
 .email-field-content {
-  /* text-align: center; */
   margin: 0 0 0 5em;
 }
 
@@ -86,7 +79,7 @@ input, textarea {
   padding: 15px;
 }
 
-.send-options .send {
+.btn {
   margin: 1em 0;
   padding: 10px 30px;
   background-color: #2680EB;
@@ -94,4 +87,14 @@ input, textarea {
   border: 2px solid #ffffff;
   font-weight: bold;
   border-radius: 5px;
+}
+
+[success] {
+  text-align: center;
+}
+
+[success] span i{
+  font-size: 6em;
+  margin-bottom: 0.5em;
+  color: #2680EB;
 }
