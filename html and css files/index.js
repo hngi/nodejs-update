@@ -1,15 +1,23 @@
-// const uploadBtn = document.querySelector('.file');
-// // image
-// const rightDisplay = document.querySelector('.right');
-// // upload field
-// const fileUploadField = document.querySelector('[upload-file]');
+// // email field
+const sendEmailField = document.querySelector('[send-email]');
+
+// success field
+const successField = document.querySelector('[success]');
+
+// email button
+const sendByEmailBtn = document.querySelector('.for-email');
+
+// 
+const fileUploadField = document.querySelector('[upload-file]');
+
+// 
+const fileUploadBtn = document.querySelector('.upload-btn');
+
 
 
 // //  //
 // // email send button 
 // const sendEmailBtn = document.querySelector('.email-btn');
-// // email field
-// const sendEmailField = document.querySelector('[send-email]');
 
 // // //
 // const sendLinkBtn = document.querySelector('.link-btn');
@@ -22,24 +30,22 @@
 // // all back links
 // // back to home
 // const backForUpload = document.querySelector('.for-upload');
-// // back to upload
-// const backForEmail = document.querySelector('.for-email');
+
 // // back to home
 // const backForLink = document.querySelector('.for-link');
 
 
 // // upload
-// uploadBtn.addEventListener('click', () => {
-//      rightDisplay.style.display = 'none';
-//      fileUploadField.style.display = 'block';
-//      sendLinkField.style.display = 'none';
-// });
+fileUploadBtn.addEventListener('click', () => {
+     fileUploadField.style.display = 'none';
+     successField.style.display = 'block';
+});
 
 // // email send
-// sendEmailBtn.addEventListener('click', () => {
-//     sendEmailField.style.display = 'block';
-//     sendLinkField.style.display = 'none'
-// });
+sendByEmailBtn.addEventListener('click', () => {
+    sendEmailField.style.display = 'block';
+    successField.style.display = 'none'
+});
 
 // // link send
 // sendLinkBtn.addEventListener('click', () => {
@@ -67,23 +73,6 @@
 // });
 
 
-// // add files 
-// const addFiles = document.querySelector('#add-files');
-// // 
-
-// const fileName =  document.querySelector('h4');
-
-// function add() {
-//     fileName.textContent = addFiles.value
-// }
-
-// // copy feed back
-// // const copy =  document.querySelector('.copy');
-// // const feedback =  document.querySelector('.copy-feedback');
-
-// // copy.addEventListener('click', () => {
-// //     feedback.style.display = 'block';
-// // })
 
 
 

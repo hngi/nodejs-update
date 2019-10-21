@@ -8,6 +8,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 1em 2em;
+  margin-top: 2em;
 }
 
 nav a {
@@ -63,6 +64,10 @@ nav a span {
 }
 
 /* email field */
+[send-email] {
+  display: none;
+}
+
 .email-field-content {
   margin: 0 0 0 5em;
 }
@@ -90,15 +95,18 @@ textarea {
   border-radius: 5px;
 }
 
+[upload-file], [success] {
+  margin: 7em 0 0 3em;
+}
+
 .ion-md-add-circle {
   background: white;
   color: #2680EB;
-
   font-size: 60px;
 }
 
 .upload-div {
-  padding-top: 5rem;
+  /* padding-top: 2rem; */
   padding-bottom: 5rem;
 }
 
@@ -109,6 +117,16 @@ textarea {
 .u-text {
   line-height: 1.5em;
   color: #A9A9A9;
+}
+
+.send-options .send {
+  margin: 1em 0;
+  padding: 10px 30px;
+  background-color: #2680EB;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 .send-options .upload {
@@ -125,6 +143,7 @@ textarea {
 }
 
 [success] {
+  display: none;
   text-align: center;
 }
 
@@ -132,4 +151,27 @@ textarea {
   font-size: 6em;
   margin-bottom: 0.5em;
   color: #2680EB;
+}
+
+[success] p {
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 5px;
+  background-color: rgba(38, 128, 235, 0.05);
+  color: #2680EB;
+footer {
+  background: rgb(37, 104, 187);
+}
+
+footer p,
+footer a {
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-size: 1.23rem;
+}
+
+footer a {
+  text-decoration: none;
+  padding-left: 0.3rem;
 }
