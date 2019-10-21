@@ -5,9 +5,11 @@ import store from './store';
 import Alert from './components/Alert/Alert';
 import Landing from './containers/Landing/Landing';
 import Navbar from './components/Navbar/Navbar';
-import Privacy from './components/Privacy/Privacy';
 import Footer from './components/Footer/Footer';
-// import DownloadComplete from './components/DownloadComplete/DownloadComplete'
+import Team from './components/Team/Team'
+import Privacy from './components/Privacy/Privacy';
+
+import NewLanding from './containers/Landing/NewLanding';
 const App = () => {
   return (
     <Provider store={store}>
@@ -15,9 +17,10 @@ const App = () => {
         <Navbar />
         <Alert />
         <Switch>
-          {/* <Route path='http://localhost:4000/:code' component={DownloadComplete} /> */}
           <Route path='/privacy' component={Privacy} />
+          <Route path='/team' component={Team} />
           <Route path='/' component={Landing} />
+          {/* <Route path='/s' component={NewLanding} /> */}
         </Switch>
         <Footer />
       </Router>

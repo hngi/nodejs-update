@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import './Landing.css';
 import { connect } from 'react-redux';
 
-import { upload, hidelink } from '../../actions/upload';
+import { uploadFile, hidelink } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const Landing = ({
-  upload,
+  uploadFile,
   uploadstate,
   hidelink
 }) => {
@@ -73,7 +73,8 @@ const Landing = ({
               </button>
               <CopyToClipboard
                 text={shortUrl}
-                onCopy={() => setFormData({ copied: true })}>
+                onCopy={() => setFormData({ copied: true })
+                }>
                 <button
                   id='btn-link'
                   className={
@@ -96,7 +97,7 @@ const Landing = ({
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  upload(name, to, file, true);
+                  uploadFile(name, to, file, true);
                   setFormData({ isLoading: true });
                   setTimeout(clearState, 5000);
                 }}>
@@ -218,5 +219,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { upload, hidelink }
+  { uploadFile, hidelink }
 )(Landing);
