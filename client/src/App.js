@@ -6,9 +6,9 @@ import Alert from './components/Alert/Alert';
 import Landing from './containers/Landing/Landing';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import Team from './components/Team/Team'
+import Team from './components/Team/Team';
 import Privacy from './components/Privacy/Privacy';
-
+import NotFound from './components/NotFound/NotFound';
 import NewLanding from './containers/Landing/NewLanding';
 const App = () => {
   return (
@@ -17,10 +17,11 @@ const App = () => {
         <Navbar />
         <Alert />
         <Switch>
-          <Route path='/privacy' component={Privacy} />
-          <Route path='/team' component={Team} />
-          <Route path='/' component={Landing} />
-          {/* <Route path='/s' component={NewLanding} /> */}
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/s' component={NewLanding} />
+          <Route exact path='/privacy' component={Privacy} />
+          <Route exact path='/team' component={Team} />
+          <Route component={NotFound} />
         </Switch>
         <Footer />
       </Router>
