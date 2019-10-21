@@ -64,6 +64,10 @@ nav a span {
 }
 
 /* email field */
+[send-email] {
+  display: none;
+}
+
 .email-field-content {
   margin: 0 0 0 5em;
 }
@@ -91,15 +95,18 @@ textarea {
   border-radius: 5px;
 }
 
+[upload-file], [success] {
+  margin: 7em 0 0 3em;
+}
+
 .ion-md-add-circle {
   background: white;
   color: #2680EB;
-
   font-size: 60px;
 }
 
 .upload-div {
-  padding-top: 5rem;
+  /* padding-top: 2rem; */
   padding-bottom: 5rem;
 }
 
@@ -136,6 +143,7 @@ textarea {
 }
 
 [success] {
+  display: none;
   text-align: center;
 }
 
@@ -145,6 +153,12 @@ textarea {
   color: #2680EB;
 }
 
+[success] p {
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 5px;
+  background-color: rgba(38, 128, 235, 0.05);
+  color: #2680EB;
 footer {
   background: rgb(37, 104, 187);
 }
