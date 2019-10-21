@@ -5,9 +5,10 @@ import store from './store';
 import Alert from './components/Alert/Alert';
 import Landing from './containers/Landing/Landing';
 import Navbar from './components/Navbar/Navbar';
-import Privacy from './components/Privacy/Privacy';
 import Footer from './components/Footer/Footer';
-import About from './components/About/About'
+import Team from './components/Team/Team'
+import Privacy from './components/Privacy/Privacy';
+
 import NewLanding from './containers/Landing/NewLanding';
 const App = () => {
   return (
@@ -16,8 +17,8 @@ const App = () => {
         <Navbar />
         <Alert />
         <Switch>
-          <Route path='/about' component={About} />
           <Route path='/privacy' component={Privacy} />
+          <Route path='/team' component={Team} />
           <Route path='/' component={Landing} />
           {/* <Route path='/s' component={NewLanding} /> */}
         </Switch>
