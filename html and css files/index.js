@@ -7,15 +7,15 @@ const fileUploadField = document.querySelector('[upload-file]');
 
 //  //
 // email send button 
-// const sendEmailBtn = document.querySelector('.email-btn');
+const sendEmailBtn = document.querySelector('.email-btn');
 // email field
 const sendEmailField = document.querySelector('[send-email]');
 
 // //
-// const sendLinkBtn = document.querySelector('.link-btn');
+const sendLinkBtn = document.querySelector('.link-btn');
 // email field
 const sendLinkField = document.querySelector('[generate-link]');
-//
+// 
 const send =  document.querySelector('.send');
 
 
@@ -23,7 +23,7 @@ const send =  document.querySelector('.send');
 // back to home
 const backForUpload = document.querySelector('.for-upload');
 // back to upload
-// const backForEmail = document.querySelector('.for-email');
+const backForEmail = document.querySelector('.for-email');
 // back to home
 const backForLink = document.querySelector('.for-link');
 
@@ -36,13 +36,13 @@ uploadBtn.addEventListener('click', () => {
 });
 
 // email send
-// sendEmailBtn.addEventListener('click', () => {
-//     sendEmailField.style.display = 'block';
-//     fileUploadField.style.display = 'none'
-// });
+sendEmailBtn.addEventListener('click', () => {
+    sendEmailField.style.display = 'block';
+    sendLinkField.style.display = 'none'
+});
 
 // link send
-send.addEventListener('click', () => {
+sendLinkBtn.addEventListener('click', () => {
     sendLinkField.style.display = 'block';
     fileUploadField.style.display = 'none'
 });
@@ -55,10 +55,10 @@ backForUpload.addEventListener('click', () => {
 });
 
 // back to upload from email
-// backForEmail.addEventListener('click', () => {
-//     fileUploadField.style.display = 'block';
-//     sendEmailField.style.display = 'none';
-// });
+backForEmail.addEventListener('click', () => {
+    sendLinkField.style.display = 'block';
+    sendEmailField.style.display = 'none';
+});
 
 // back to upload from link
 backForLink.addEventListener('click', () => {
