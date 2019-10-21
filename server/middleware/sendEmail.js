@@ -24,8 +24,10 @@ module.exports = sendEmail = async (req, link, res) => {
       <div>
         <p>
             Hello there! Welcome to the XShare file sharing service.<br> ${name} sent you a file.
+            <br>
             You can access the file using the link below:<br> ${link}
         </p>
+        <p>${message}</p>
       </div>`
     };
 

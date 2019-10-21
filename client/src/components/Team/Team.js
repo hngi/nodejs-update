@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css';
+import './Team.css';
 import { Link } from 'react-router-dom';
 const About = () => {
   return (

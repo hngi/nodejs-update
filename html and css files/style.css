@@ -161,17 +161,18 @@ p,
   text-align: center;
   /* display: flex; */
   /* justify-content: space-between; */
-  margin: 2em 3em;
+  /* margin: 2em 3em; */
 }
 
-[upload-file] .email-btn {
+/* .email-btn {
   background-color: #ffffff;
   color: #3b61ff;
   border: 2px solid #ffffff;
   font-weight: bold;
-}
+} */
 
 [upload-file] .link-btn {
+  width: 100%;
   background-color: #3b61ff;
   color: #ffffff;
   border: 2px solid #ffffff;
@@ -190,6 +191,15 @@ p,
 }
 
 input, textarea {
+  width: 50%;
+  margin-top: 1.5em;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 1em 3em;
+}
+
+#add-files {
   width: 50%;
   margin-top: 1.5em;
   background-color: #ffffff;
@@ -240,8 +250,7 @@ input, textarea {
   margin: 3em 2em;
 }
 
-.gen-link-content .copy {
-  padding: 10px 30px;
+.gen-link-content .sends {
   background-color: #ffffff;
   color: #3b61ff;
   border: 2px solid #ffffff;
@@ -312,11 +321,19 @@ input, textarea {
     padding: 5px 0 0 1.5em;
   }
 
+  /* email field */
+  [send-email] {
+    display: none;
+    height: 100vh;
+    padding: 2em 2em 0;
+    background-color: #3b61ff;
+  }
+
   /* generate link */
 
   [generate-link] {
     display: none;
-    position: fixed;
+    position: absolute;
     height: 100vh;
   }
 
@@ -324,6 +341,19 @@ input, textarea {
     margin: 5em -1em;
     width: fit-content;
   }
+
+  [copy] {
+    display: flex;
+  }
+
+  .gen-link-content .sends {
+    /* width: 2%; */
+    background-color: #ffffff;
+    color: #3b61ff;
+    border: 2px solid #ffffff;
+    font-weight: bold;
+  }
+  
 
   /*  */
   /* [copy] {
