@@ -77,7 +77,12 @@
         </section>
     </main>
     <footer>
-        <p>2019 Built by HNG 6.0 Interns | <a href="privacy.html">Privacy Policy</a></p>
+        <p id="year">
+            <script>
+                document.getElementById('year').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>
+            Built by HNG 6.0 Interns | <a href="privacy.html">Privacy Policy</a>
+        </p>
     </footer>
     <script src="index.js"></script>
 </body>
