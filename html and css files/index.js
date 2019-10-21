@@ -1,15 +1,20 @@
+// // email field
+const sendEmailField = document.querySelector('[send-email]');
+
+// success field
+const successField = document.querySelector('[success]');
+
+// email button
+const sendByEmailBtn = document.querySelector('.for-email');
 // const uploadBtn = document.querySelector('.file');
 // // image
 // const rightDisplay = document.querySelector('.right');
 // // upload field
-// const fileUploadField = document.querySelector('[upload-file]');
 
 
 // //  //
 // // email send button 
 // const sendEmailBtn = document.querySelector('.email-btn');
-// // email field
-// const sendEmailField = document.querySelector('[send-email]');
 
 // // //
 // const sendLinkBtn = document.querySelector('.link-btn');
@@ -22,8 +27,7 @@
 // // all back links
 // // back to home
 // const backForUpload = document.querySelector('.for-upload');
-// // back to upload
-// const backForEmail = document.querySelector('.for-email');
+
 // // back to home
 // const backForLink = document.querySelector('.for-link');
 
@@ -36,10 +40,10 @@
 // });
 
 // // email send
-// sendEmailBtn.addEventListener('click', () => {
-//     sendEmailField.style.display = 'block';
-//     sendLinkField.style.display = 'none'
-// });
+sendByEmailBtn.addEventListener('click', () => {
+    sendEmailField.style.display = 'block';
+    successField.style.display = 'none'
+});
 
 // // link send
 // sendLinkBtn.addEventListener('click', () => {

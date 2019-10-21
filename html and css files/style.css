@@ -63,6 +63,10 @@ nav a span {
 }
 
 /* email field */
+[send-email] {
+  display: none;
+}
+
 .email-field-content {
   margin: 0 0 0 5em;
 }
@@ -90,11 +94,19 @@ input, textarea {
 }
 
 [success] {
+  /* display: none; */
   text-align: center;
 }
 
-[success] span i{
+[success] span i {
   font-size: 6em;
   margin-bottom: 0.5em;
+  color: #2680EB;
+}
+
+[success] p {
+  margin-bottom: 20px;
+  padding: 2px;
+  background-color: rgba(38, 128, 235, 0.05);
   color: #2680EB;
 }
