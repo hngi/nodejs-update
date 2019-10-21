@@ -17,10 +17,10 @@ body{
     font-weight: bolder;
 }
 
-nav {
+nav ul{
     display: flex;
-    justify-content: space-between;
-    padding: 1em 2em;
+    justify-content: space-evenly;
+    /* padding: 1em 2em; */
 }
 
 nav a {
@@ -49,7 +49,7 @@ nav a {
     padding-top: 20px;
 }
 
-.sub-link li{
+ li{
     list-style: none;
     font-weight: bold;
     color: #3B61FF;

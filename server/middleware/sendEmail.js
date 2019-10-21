@@ -1,50 +1,47 @@
 require('dotenv').config();
+const sgMail = require('@sendgrid/mail');
 
 const Email = process.env.EMAIL;
-const EmailPass = process.env.EMAIL_PASS;
-const nodemailer = require('nodemailer');
+// const EmailPass = process.env.EMAIL_PASS;
+// const nodemailer = require('nodemailer');
 module.exports = sendEmail = async (req, link, res) => {
+  // console.log(link)
   try {
-    const { name, to } = req.body;
+    const { name, to, message, link } = req.body;
     if (name == '' || undefined || to == '' || undefined) {
-      return res.json({ message: 'Input fields are required', success: false });
+      return res.json({
+        message: 'Input fields are required',
+        success: false
+      });
     }
-    const mail = {
-      smtpConfig: {
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-          user: Email,
-          pass: EmailPass
-        }
-      }
-    };
-    let transporter = nodemailer.createTransport(mail.smtpConfig);
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     let msg = {
       from: Email,
       to: to,
       subject: 'File Share',
+      text: message,
       html: `
       <div>
-        <td align="center" class="esd-block-text">
-          <h1>Welcome to XShare</h1>
-        </td> 
-        <td align="center" class="esd-block-text es-p20t">
-          <p style="font-size: 18px;"><strong>${name} sent you a file</strong></p>
-        </td><td align="center" class="esd-block-text">
-        <ul><br><br></ul>
-        <p>${link}</p>
-      </td></div>`
+        <p>
+            Hello there! Welcome to the XShare file sharing service.<br> ${name} sent you a file.
+            <br>
+            You can access the file using the link below:<br> ${link}
+        </p>
+        <p>${message}</p>
+      </div>`
     };
-    transporter.sendMail(msg, (error, body) => {
+
+    sgMail.send(msg, (error, body) => {
       if (error) {
+        console.log('failed', error);
         return 'failed';
       } else {
+        console.log('success');
         return 'succesful';
       }
     });
   } catch (error) {
-    res.status(200).json({ message: error, success: false });
+    console.log(error);
+    res.json({ message: error, success: false });
   }
 };

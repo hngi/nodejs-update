@@ -4,7 +4,7 @@ A file sharing application that shares any kind of file through your email or co
 
 <hr/>
 
-https://res.cloudinary.com/vectormike/image/upload/v1571386756/Screenshot_from_2019-10-17_21-51-40.png
+![Photo](https://res.cloudinary.com/vectormike/image/upload/v1571386756/Screenshot_from_2019-10-17_21-51-40.png)
 
 <hr>
 
