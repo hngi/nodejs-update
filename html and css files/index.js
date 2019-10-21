@@ -84,3 +84,9 @@
 // // copy.addEventListener('click', () => {
 // //     feedback.style.display = 'block';
 // // })
+
+
+
+function thisFileUpload() {
+  document.getElementById("file").click();
+};

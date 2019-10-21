@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>XSHARE</title>
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
@@ -26,16 +30,54 @@
                 <div class="text">
                     <p>Fast safe and secure</p>
                     <p>Enter Your And Receiver's email and upload file(s)</p>
+                    <img style='margin:0 auto;width: 400px;height: auto;'
+                        src="https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg" alt="cloudimage">
                 </div>
-                <button class="upload-btn file">Get Started</button>
+                <!-- <button class="upload-btn file">Get Started</button> -->
                 <!-- <button class="upload-btn folder">Upload a folder</button> -->
             </div>
             <div class="right">
-                <img style='margin:0 auto;width: 700px;height: auto;'
-                    src="https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg" alt="cloudimage">
+                <!-- send by email -->
+                <div send-email>
+                    <div class="email-field-content">
+                        <p>Email File</p>
+
+                        <input type="text" placeholder="Name" /><br>
+                        <input type="email" placeholder="Receiver's email address" /><br>
+                        <textarea name="" id="" cols="30" rows="9" placeholder="Message"></textarea><br>
+                        <div class="send-options">
+
+                            <button class="upload-btn send">send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Upload-->
+            <div upload>
+                <div class="upload-div">
+                    <div class="circular-plus center">
+                        <input type="file" id="file" style="display:none;" />
+                        <a value="upload" onclick="thisFileUpload();"><i class="icon ion-md-add-circle"></i></a>
+                    </div>
+                    <h3 class="center u-text">Add your files</h3>
+                    <p class="center u-text">(max size: 1gb | .mp4 .mp3 .png .jpg files supported)</p>
+                </div>
+                <div class="send-options">
+                    <button class="upload-btn upload">upload</button>
+                </div>
+            </div>
+
+            <div success>
+                <span><i class="far fa-check-circle"></i></span><br>
+                <button class="btn">Copy link</button>
+                <button class="btn">Email file</button>
             </div>
         </section>
     </main>
+    <footer>
+
+    </footer>
     <script src="index.js"></script>
 </body>
 

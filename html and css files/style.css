@@ -34,14 +34,14 @@ nav a span {
 }
 
 .left {
-  margin: 5em 0 0 3em;
+  margin: 2em 0 0 3em;
 }
 
 .left h2 {
   font-weight: bold;
   font-size: 2em;
   padding: 0 2em 1em 0;
-  color: #A9A9A9;
+  color: #2680EB;
 }
 
 .left .text {
@@ -50,17 +50,11 @@ nav a span {
 
 .left .text p {
   line-height: 1.5em;
-  color: #A9A9A9;  
+  color: #A9A9A9;
 }
 
 .right {
   margin: 3em 0;
-}
-
-.right img {
-  padding-left: 4em;
-  width: fit-content;
-  height: 25em;
 }
 
 .left,
@@ -68,25 +62,74 @@ nav a span {
   padding: 2em;
 }
 
-.upload-btn {
-  padding: 1em;
+/* email field */
+.email-field-content {
+  margin: 0 0 0 5em;
+}
+
+.email-field-content p {
+  color: #2680EB;
+}
+
+input,
+textarea {
+  width: 50%;
+  margin-top: 1.5em;
+  border: 1px solid #A9A9A9;
   border-radius: 5px;
-  /* margin: ; */
+  padding: 15px;
 }
 
-.left .file {
-  background-color: #3b61ff;
+.btn {
+  margin: 1em 0;
+  padding: 10px 30px;
+  background-color: #2680EB;
   color: #ffffff;
-  border: 2px solid #3b61ff;
+  border: 2px solid #ffffff;
   font-weight: bold;
+  border-radius: 5px;
 }
 
-.left .folder {
-  background-color: #ebebeb;
-  color: #3b61ff;
-  border: 2px solid #ebebeb;
-  font-weight: bold;
+.ion-md-add-circle {
+  background: white;
+  color: #2680EB;
+
+  font-size: 60px;
 }
 
+.upload-div {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
 
-/* make your changes from here */
+.center {
+  text-align: center
+}
+
+.u-text {
+  line-height: 1.5em;
+  color: #A9A9A9;
+}
+
+.send-options .upload {
+  display: block;
+  width: 7rem;
+  text-align: center;
+  margin: auto;
+  padding: 10px 30px;
+  background-color: #2680EB;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+[success] {
+  text-align: center;
+}
+
+[success] span i {
+  font-size: 6em;
+  margin-bottom: 0.5em;
+  color: #2680EB;
+}
