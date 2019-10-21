@@ -2,6 +2,9 @@ import {
   UPLOAD_FILE_SUCCESS,
   UPLOAD_FILE_FAIL,
   SEND_EMAIL_SUCCESS,
+  SEND_EMAIL_FAIL,
+  DOWNLOAD_LINK_FAIL,
+  DOWNLOAD_LINK_SUCCESS,
   HIDE_LINK
 } from './types';
 import { setAlert } from './alert';
@@ -15,20 +18,13 @@ export const hidelink = () => async => dispatch => {
     type: HIDE_LINK
   });
 };
-export const upload = (name, to, file, link, isEmail) => async dispatch => {
+export const uploadFile = file => async dispatch => {
   const fd = new FormData();
 
-  fd.append('name', name);
-  fd.append('to', to);
-  fd.append('isEmail', true);
+  // fd.append('name', name);
+  // fd.append('to', to);
+  // fd.append('isEmail', true);
   fd.append('file', file);
-  // const body = {
-  //   name,
-  //   to,
-  //   file,
-  //   isEmail: true
-  // };
-  // console.log(fd.get('file'));
 
   const config = {
     headers: {
@@ -42,17 +38,13 @@ export const upload = (name, to, file, link, isEmail) => async dispatch => {
       fd,
       config
     );
-    // console.log(response);
+    console.log(response);
     if (response.data.success) {
       dispatch({
         type: UPLOAD_FILE_SUCCESS,
         payload: response.data
       });
       dispatch(setAlert(response.data.message, 'success'));
-      dispatch(setAlert(`The file was sent to ${to} successfully`, 'success'));
-      dispatch({
-        type: SEND_EMAIL_SUCCESS
-      });
     } else {
       dispatch(setAlert(response.data.message, 'danger'));
       dispatch({
@@ -66,6 +58,66 @@ export const upload = (name, to, file, link, isEmail) => async dispatch => {
     dispatch({
       type: UPLOAD_FILE_FAIL,
       payload: error.toString()
+    });
+  }
+};
+export const sendEmail = (name, to, message, link) => async dispatch => {
+  const body = JSON.stringify({
+    name,
+    to,
+    message,
+    link
+  });
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    }
+  };
+  try {
+    const response = await axios.post(
+      base_url + '/api/auth/sendEmail',
+      body,
+      config
+    );
+    console.log(response);
+    if (response.data.success) {
+      dispatch({
+        type: SEND_EMAIL_SUCCESS
+      });
+      dispatch(setAlert(`The file was sent to ${to} successfully`, 'success'));
+    } else {
+      dispatch(setAlert('Error sending Email', 'danger'));
+      dispatch({
+        type: SEND_EMAIL_FAIL
+      });
+    }
+  } catch (error) {
+    dispatch(setAlert('Error sending Email', 'danger'));
+    dispatch({
+      type: SEND_EMAIL_FAIL
+    });
+  }
+};
+export const downloadLink = shortCode => async dispatch => {
+  try {
+    const response = await axios.post(base_url + `/${shortCode}`);
+    console.log(response);
+    if (response.data.success) {
+      dispatch({
+        type: DOWNLOAD_LINK_SUCCESS
+      });
+      dispatch(setAlert(`File downloaded successfully`, 'success'));
+    } else {
+      dispatch(setAlert('Error downloading file', 'danger'));
+      dispatch({
+        type: DOWNLOAD_LINK_FAIL
+      });
+    }
+  } catch (error) {
+    dispatch(setAlert('Error downloading file', 'danger'));
+    dispatch({
+      type: DOWNLOAD_LINK_FAIL
     });
   }
 };
