@@ -15,7 +15,7 @@
             <a href="index.html">XSHARE</a>
             <ul class="sub-link">
                 <!-- <li>About</li> -->
-                <!-- <li><a href="login.html">Log in</a></li> -->
+                <li><a href="privacy.html">Privacy</a></li>
             </ul>
         </nav>
     </header>
@@ -27,8 +27,8 @@
                 <!-- <button class="upload-btn folder">Upload a folder</button> -->
             </div>
             <div class="right">
-                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1571178848/yg8ch6bhftwzooxugbuo.png"
-                    alt="cloud image">
+                <img style='margin:0 auto;width: 700px;height: auto;'
+                    src="https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg" alt="cloudimage">
             </div>
             <!-- file upload field -->
             <div upload-file>
@@ -51,31 +51,36 @@
                 <!-- </div> -->
                 </div>
                 <div class="send-options">
-                    <button class="upload-btn email-btn">send email</button>
-                    <!-- <button class="upload-btn link-btn">generate link</button> -->
+                    <button class="upload-btn link-btn">generate link</button>
                 </div>
             </div>
             <!-- send by email -->
             <div send-email>
                 <span class="back for-email" title="back">&lessdot;</span>
                 <div class="email-field-content">
-                        <input type="email" placeholder="Your email address" /><br>
-                        <input type="email" placeholder="Receiver's email address" /><br>
-                        <input type="email" placeholder="Subject" /><br>
-                        <textarea name="" id="" cols="30" rows="9" placeholder="Message"></textarea><br>
-                        <div class="send-options">
-                            <a href="index.html" class="cancel">cancel</a>
-                            <button class="upload-btn send">send</button>
-                        </div>
+                    <input type="text" placeholder="Name" /><br>
+                    <input type="email" placeholder="Receiver's email address" /><br>
+                    <input type="text" placeholder="Subject" /><br>
+                    <textarea name="" id="" cols="30" rows="9" placeholder="Message"></textarea><br>
+                    <div class="send-options">
+                        <a href="index.html" class="cancel">cancel</a>
+                        <button class="upload-btn send">send</button>
+                    </div>
                 </div>
             </div>
             <!-- send by link -->
             <div generate-link>
-                <span class="back for-link" title="back">&lessdot;</span>
+                <span class="back for-link" title="back">&lessdot;</span>                
                 <div class="gen-link-content">
                     <h2>Link generated successfully!</h2>
                     <p class="generated-link">https://github.com/shonubijerry/Andela-BootCamp-44-Slack-Resources</p>
-                    <button class="upload-btn copy">copy link</button>
+                    <div copy>
+                        <!-- <span class="copy-feedback">copied !</span> -->
+                    <button class="upload-btn copy sends">copy link</button>
+                    <button class="upload-btn sends">download</button>
+                    <button class="upload-btn email-btn sends">send email</button>
+                    </div>
+                    
                 </div>
             </div>
         </section>

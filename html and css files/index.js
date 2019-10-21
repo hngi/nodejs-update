@@ -12,7 +12,7 @@ const sendEmailBtn = document.querySelector('.email-btn');
 const sendEmailField = document.querySelector('[send-email]');
 
 // //
-// const sendLinkBtn = document.querySelector('.link-btn');
+const sendLinkBtn = document.querySelector('.link-btn');
 // email field
 const sendLinkField = document.querySelector('[generate-link]');
 // 
@@ -32,18 +32,19 @@ const backForLink = document.querySelector('.for-link');
 uploadBtn.addEventListener('click', () => {
      rightDisplay.style.display = 'none';
      fileUploadField.style.display = 'block';
+     sendLinkField.style.display = 'none';
 });
 
 // email send
 sendEmailBtn.addEventListener('click', () => {
     sendEmailField.style.display = 'block';
-    fileUploadField.style.display = 'none'
+    sendLinkField.style.display = 'none'
 });
 
 // link send
-send.addEventListener('click', () => {
+sendLinkBtn.addEventListener('click', () => {
     sendLinkField.style.display = 'block';
-    sendEmailField.style.display = 'none'
+    fileUploadField.style.display = 'none'
 });
 
 // all back links dir
@@ -55,7 +56,7 @@ backForUpload.addEventListener('click', () => {
 
 // back to upload from email
 backForEmail.addEventListener('click', () => {
-    fileUploadField.style.display = 'block';
+    sendLinkField.style.display = 'block';
     sendEmailField.style.display = 'none';
 });
 
@@ -75,3 +76,11 @@ const fileName =  document.querySelector('h4');
 function add() {
     fileName.textContent = addFiles.value
 }
+
+// copy feed back
+// const copy =  document.querySelector('.copy');
+// const feedback =  document.querySelector('.copy-feedback');
+
+// copy.addEventListener('click', () => {
+//     feedback.style.display = 'block';
+// })

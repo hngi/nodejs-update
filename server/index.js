@@ -4,23 +4,25 @@ const cors = require('cors');
 const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 require('./database/db');
-const router = require('./routes/index');
-const uploadRoute = require('./routes/upload');
+const router = require('./routes');
 
 // cloudinary import
-import { urlencoded, json } from 'body-parser';
-import { resolve } from  'path';
-import { uploader, cloudinaryConfig } from './config/cloudinary'
-import { multerUploads } from './middlewares/multer';
+const { urlencoded, json } = require('body-parser');
+const { resolve } = require('path');
+const { uploader, cloudinaryConfig } = require('./config/cloudinary');
+const { multerUploads } = require('./middleware/multer');
 app.use('*', cloudinaryConfig);
-
+app.get('/', (req, res) => {
+  res.send('Connected');
+});
 app.use(cors());
 app.use(expressValidator());
-app.use(express.json({ extended: false }));
-app.use('/uploads', express.static('uploads'));
-
-app.use('/api/auth', router);
-app.use('/api/upload', multerUploads, uploadRoute);
+app.use(
+  express.json({
+    extended: false
+  })
+);
+app.use(router);
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);

@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lora|Roboto+Mono&display=swap');
+
+body{
+    background-color: rgb(217, 221, 235);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    font-family: 'Lora', serif;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-evenly;
+    /* padding: 1em 2em; */
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3b61ff;
+    font-size: 1.5em;
+}
+
+.text {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    color: #3b61ff;
+    text-align: center;
+    font-weight: 600;
+    padding: 20px;
+}
+
+.login {
+    padding-left: 5px;
+
+}
+
+.buttons {
+    text-align: center;
+    padding-top: 20px;
+}
+
+ li{
+    list-style: none;
+    font-weight: bold;
+    color: #3B61FF;
+    font-size: 1em;
+}
+
+[container] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2em;
+} 
+
+.left {
+    margin: 3em 0;
+}
+
+.left h2 {
+    font-weight: bold; 
+    font-size: 4em;
+    padding: 0 2em 1em 0;
+    color: #3B61FF;
+}
+
+.right {
+    margin: 3em 0;
+}
+
+.right img {
+    padding-left: 4em; 
+    width: fit-content;
+    height: 25em;
+}
+
+.left , .right {
+    padding: 2em;
+}
+
+.upload-btn {
+    padding: 1em;
+    border-radius: 10px;
+    margin: 0 1em;
+}
+
+.left .file {
+    background-color: #3B61FF;
+    color: #FFFFFF;
+    border: 2px solid #3B61FF;
+    font-weight: bold;
+}
+
+.left .folder {
+    background-color: #EBEBEB;
+    color: #3B61FF;
+    border: 2px solid #EBEBEB;
+    font-weight: bold;  
+}
+
+/*  */
+@media only screen and (max-width: 720px) {
+    body {
+        height: 100vh;
+    }
+
+    [container] {
+        display: flex;
+        flex-direction: column;
+    } 
+
+    .left {
+        margin: 2em 0;
+    }
+
+    .right img {
+        display: none
+    }
+}
+.form1{
+    padding: 20px 30px;
+}
+
+@media screen and ( max-width: 1024px ) {
+    img.responsive { 
+        display: block;
+        width: 70%; 
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+    
+@media screen and ( min-width:1025px ) and ( max-width: 1280px )  {
+    img.responsive { 
+        display: block;
+        width: 80%; 
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and ( min-width: 1081px ) {
+    img.responsive { 
+        display: block;
+        width: 80%; 
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+     }
+}
+
+img.responsive { height: auto; }
