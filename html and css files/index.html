@@ -19,17 +19,18 @@
             <a href="index.html"><img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1571673681/oew99jmi9illraj70pfo.png" alt="logo"></a>
             <ul class="sub-link">
                 <!-- <li>About</li> -->
-                <!-- <li><a href="privacy.html">Privacy</a></li> -->
+
+                <li><a href="team sheet.html">Meet the team</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section container>
             <div class="left">
-                <h2>The most seamless file transfer experence ever.</h2>
+                <h2>The most seamless file transfer experience </h2>
                 <div class="text">
-                    <p>Fast safe and secure</p>
-                    <p>Enter Your And Receiver's email and upload file(s)</p>
+                    <p>Fast, safe and secure</p>
+                    <p>Upload a file and share it with your friends via email or a generated link </p>
                     <img style='margin:0 auto;width: 400px;height: auto;'
                         src="https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg" alt="cloudimage">
                 </div>
@@ -69,18 +70,44 @@
                         <input type="email" placeholder="Receiver's email address" /><br>
                         <textarea name="" id="" cols="30" rows="9" placeholder="Message"></textarea><br>
                         <div class="send-options">
-                            <button class="btn send ">send</button>
-                        </div>
+
+
+                            <button class="upload-btn send">Send</button>
+]                        </div>
                     </div>
                 </div>
             </div>
 
-           
-            
+
+            <!--Upload-->
+            <div upload>
+                <div class="upload-div">
+                    <div class="circular-plus center">
+                        <input type="file" id="file" style="display:none;" />
+                        <a value="upload" onclick="thisFileUpload();"><i class="icon ion-md-add-circle"></i></a>
+                    </div>
+                    <h3 class="center u-text">Add your file</h3>
+                    <p class="center u-text">(max size: 20mb | .mp4 .mp3 .png .jpg .jpeg .png .docx .pdf .gif files supported)</p>
+                </div>
+                <div class="send-options">
+                    <button class="upload-btn upload">Upload</button>
+                </div>
+            </div>
+
+            <div success>
+                <span><i class="far fa-check-circle"></i></span><br>
+                <button class="btn">Copy link</button>
+                <button class="btn">Email file</button>
+            </div>
         </section>
     </main>
     <footer>
-
+        <p id="year">
+            <script>
+                document.getElementById('year').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>
+            Built by HNG 6.0 Interns | <a href="privacy.html">Privacy Policy</a>
+        </p>
     </footer>
     <script src="index.js"></script>
 </body>
