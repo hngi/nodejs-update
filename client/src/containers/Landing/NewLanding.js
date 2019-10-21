@@ -1,131 +1,181 @@
-// import React from 'react';
-// import { connect } from 'react-redux';
+import React, { useState } from 'react';
 
-// import { upload, hidelink } from '../../actions/upload';
-// import { CopyToClipboard } from 'react-copy-to-clipboard';
+import './Landing.css';
+import { connect } from 'react-redux';
 
-// import './NewLanding.css';
+import { uploadFile,sendEmail } from '../../actions/upload';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import {setAlert} from '../../actions/alert'
+const NewLanding = ({ uploadFile, sendEmail, uploadstate,setAlert }) => {
+        const [formData, setFormData] = useState({
+          name: '',
+          to: '',
+          message: '',
+          file: '',
+          copied: false,
+          isLoading: false
+        });
 
-// const NewLanding = ({ upload }) => {
-//   const uploadBtn = document.querySelector('.file');
-//   // image
-//   const rightDisplay = document.querySelector('.right');
-//   // upload field
-//   const fileUploadField = document.querySelector('[upload-file]');
+        const clearState = () => {
+          setFormData({
+            name: '',
+            message: '',
+            to: '',
+            file: '',
+            value: '',
+            copied: false,
+            isLoading: false
+          });
+        };
 
-//   const sendEmailField = document.querySelector('[send-email]');
-//   const sendLinkField = document.querySelector('[generate-link]');
-//   //
-//   const send = document.querySelector('.send');
+        const { name, message, to, file, copied, isLoading } = formData;
+        const onChange = e => {
+          setFormData({
+            ...formData,
+            [e.target.name]:
+              e.target.name !== 'file'
+                ? e.target.value
+                : e.target.files[0]
+          });
+        };
+        // const thisFileUpload=() =>{
+        //   document.getElementById('file').click();
+        // }
+        
+        const shortUrl = uploadstate.shortUrl;
+        return (
+          <main>
+            <section container>
+              <div className='left'>
+                <h2>The most seamless file transfer experience </h2>
+                <div className='text'>
+                  <p>Fast, safe and secure</p>
+                  <p>
+                    Upload a file and share it with your friends via
+                    email or a generated link{' '}
+                  </p>
+                  <img
+                    style={{
+                      margin: '0 auto',
+                      width: '400px',
+                      height: 'auto'
+                    }}
+                    src='https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg'
+                    alt='cloudimage'
+                  />
+                </div>
+              </div>
 
-//   // all back links
-//   // back to home
-//   const backForUpload = document.querySelector('.for-upload');
+              <div upload-file>
+                <div className='upload-div'>
+                  <div className='circular-plus center'>
+                    <input
+                      name='file'
+                      type='file'
+                      id='file'
+                      file='file'
+                      onChange={e => onChange(e)}
+                      style={{ display: 'none' }}
+                    />
+                    <a
+                      value='upload'
+                      // onclick={thisFileUpload}
+                    >
+                      <i className='icon ion-md-add-circle' />
+                    </a>
+                  </div>
+                  <h3 className='center u-text'>Add your files</h3>
+                  <p className='center u-text'>
+                    (max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .png
+                    .docx .pdf .gif files supported)
+                  </p>
+                </div>
+                <div className='send-options'>
+                  <button className='upload-btn upload '>Upload</button>
+                </div>
+              </div>
 
-//   const backForLink = document.querySelector('.for-link');
+              <div success>
+                <span>
+                  <i className='far fa-check-circle' />
+                </span>
+                <br />
+                <p>{shortUrl ? shortUrl : null}</p>
+                <br />
+                <CopyToClipboard
+                  text={shortUrl}
+                  onCopy={() => setFormData({ copied: true })}>
+                  <button
+                    // id='btn-link'
+                    className='btn'>
+                    Copy link
+                  </button>
+                </CopyToClipboard>
+                {setAlert('Link Copied')}
+                <button className='btn for-email'>Email file</button>
+              </div>
+              <div className='right'>
+                {/* send by email */}
+                <div send-email>
+                  <div className='email-field-content'>
+                    <p>Email File</p>
+                    <input
+                      required
+                      // className='form-control'
+                      type='name'
+                      placeholder='Your Name'
+                      id='name'
+                      name='name'
+                      value={name}
+                      onChange={e => onChange(e)}
+                    />
+                    <br />
+                    <input
+                      required
+                      // className='form-control'
+                      type='email'
+                      placeholder="Receiver's Email"
+                      id='Remail'
+                      name='to'
+                      value={to}
+                      onChange={e => onChange(e)}
+                    />
+                    <br/>
+                    <textarea
+                      name='message'
+                      id='message'
+                      value={message}
+                      cols={30}
+                      rows={9}
+                      required
+                      placeholder='Message'
+                      defaultValue={''}
+                    />
+                    <br />
+                    <div className='send-options'>
+                      <button className='upload-btn send'>Send</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div success>
+                <span>
+                  <i className='far fa-check-circle' />
+                </span>
+                <br />
+                <button className='btn'>Copy link</button>
+                <button className='btn'>Email file</button>
+              </div>
+            </section>
+          </main>
+        );
+      };;
 
-//   // upload
-//   uploadBtn.addEventListener('click', () => {
-//     rightDisplay.style.display = 'none';
-//     fileUploadField.style.display = 'block';
-//     sendLinkField.style.display = 'none';
-//   });
-
-//   // link send
-//   send.addEventListener('click', () => {
-//     sendLinkField.style.display = 'block';
-//     fileUploadField.style.display = 'none';
-//   });
-
-//   // all back links dir
-//   // back to screen
-//   backForUpload.addEventListener('click', () => {
-//     rightDisplay.style.display = 'block';
-//     fileUploadField.style.display = 'none';
-//   });
-
-//   // back to upload from link
-//   backForLink.addEventListener('click', () => {
-//     fileUploadField.style.display = 'block';
-//     sendLinkField.style.display = 'none';
-//   });
-
-//   // add files
-//   const addFiles = document.querySelector('#add-files');
-//   //
-
-//   const fileName = document.querySelector('h4');
-
-//   function add() {
-//     fileName.textContent = addFiles.value;
-//   }
-
-//   return (
-//     <div>
-//       <section container>
-//         <div className='left'>
-//           <h2>The most seamless file transfer experence ever.</h2>
-//           <button className='upload-btn file'>Upload a file</button>
- 
-//         </div>
-//         <div className='right'>
-//           <img
-//             style={{ margin: '0 auto', width: '700px', height: 'auto' }}
-//             src='https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg'
-//             alt='cloudimage'
-//           />
-//         </div>
-//         {/* file upload field */}
-//         <div upload-file>
-//           <span className='back for-upload' title='back'>
-//             ⋖
-//           </span>
-//           <div className='form-header'>
-//             <h2>Upload a file and send it by email</h2>
-//             <br />
-//           </div>
-//           <div className='email-field-content'>
-//             <div className>
-//               <input type='file' name='add' id='add-files' onchange='add()' />
-//             </div>
-//             <input type='text' placeholder='Name' />
-//             <br />
-//             <input type='email' placeholder="Receiver's email address" />
-//             <br />
-//             <input type='text' placeholder='Subject' />
-//             <br />
-//             <div className='send-options'>
-//               <a href='index.html' className='cancel'>
-//                 cancel
-//               </a>
-//               <button className='upload-btn send'>send</button>
-//             </div>
-//           </div>
-//         </div>
-//         <div generate-link>
-//           <span className='back for-link' title='back'>
-//             ⋖
-//           </span>
-//           <div className='gen-link-content'>
-//             <h2>Link generated successfully!</h2>
-//             <p className='generated-link'>
-//               https://github.com/shonubijerry/Andela-BootCamp-44-Slack-Resources
-//             </p>
-//             <div copy>
-//               <button className='upload-btn copy'>copy link</button>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// };
-
-// const mapStateToProps = state => ({
-//   uploadstate: state.upload
-// });
-// export default connect(
-//   mapStateToProps,
-//   { upload, hidelink }
-// )(NewLanding);
-
+const mapStateToProps = state => ({
+  // isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
+  uploadstate: state.upload
+});
+export default connect(
+  mapStateToProps,
+  { uploadFile,sendEmail,setAlert }
+)(NewLanding);
