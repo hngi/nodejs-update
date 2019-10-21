@@ -13,14 +13,14 @@ const ShortenLink = {
         cloudinaryUrl,
         shortUrlParam,
         shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
+        // shortUrl: `http://localhost:4000/${shortUrlParam}`
       });
       createShortUrl.save();
-      if (req.body.isEmail) {
-        sendEmail(req, createShortUrl.shortUrl, res);
-      }
+      
       res.json({
         success: true,
         message: 'Link shortened successfully',
+        shortCode:shortUrlParam,
         shortUrl: createShortUrl.shortUrl,
         longUrl: cloudinaryUrl
       });
@@ -31,8 +31,18 @@ const ShortenLink = {
       });
     }
   },
-
   async redirectShortenUrl(req, res) {
+    try {
+      const { cloudinaryUrl } = res.locals;
+      res.redirect(cloudinaryUrl);
+    } catch (error) {
+      res.json({
+        success: true,
+        message: error.message
+      });
+    }
+  },
+  async downloadShortenUrl(req, res) {
     // console.log(3,'chjhjj');
     try {
       const { cloudinaryUrl } = res.locals;
