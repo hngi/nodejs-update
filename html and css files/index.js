@@ -6,10 +6,13 @@ const successField = document.querySelector('[success]');
 
 // email button
 const sendByEmailBtn = document.querySelector('.for-email');
-// const uploadBtn = document.querySelector('.file');
-// // image
-// const rightDisplay = document.querySelector('.right');
-// // upload field
+
+// 
+const fileUploadField = document.querySelector('[upload-file]');
+
+// 
+const fileUploadBtn = document.querySelector('.upload-btn');
+
 
 
 // //  //
@@ -33,11 +36,10 @@ const sendByEmailBtn = document.querySelector('.for-email');
 
 
 // // upload
-// uploadBtn.addEventListener('click', () => {
-//      rightDisplay.style.display = 'none';
-//      fileUploadField.style.display = 'block';
-//      sendLinkField.style.display = 'none';
-// });
+fileUploadBtn.addEventListener('click', () => {
+     fileUploadField.style.display = 'none';
+     successField.style.display = 'block';
+});
 
 // // email send
 sendByEmailBtn.addEventListener('click', () => {
@@ -71,20 +73,9 @@ sendByEmailBtn.addEventListener('click', () => {
 // });
 
 
-// // add files 
-// const addFiles = document.querySelector('#add-files');
-// // 
 
-// const fileName =  document.querySelector('h4');
 
-// function add() {
-//     fileName.textContent = addFiles.value
-// }
 
-// // copy feed back
-// // const copy =  document.querySelector('.copy');
-// // const feedback =  document.querySelector('.copy-feedback');
-
-// // copy.addEventListener('click', () => {
-// //     feedback.style.display = 'block';
-// // })
+function thisFileUpload() {
+  document.getElementById("file").click();
+};

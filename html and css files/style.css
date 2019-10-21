@@ -41,7 +41,7 @@ nav a span {
   font-weight: bold;
   font-size: 2em;
   padding: 0 2em 1em 0;
-  color:  #2680EB;
+  color: #2680EB;
 }
 
 .left .text {
@@ -50,7 +50,7 @@ nav a span {
 
 .left .text p {
   line-height: 1.5em;
-  color: #A9A9A9;  
+  color: #A9A9A9;
 }
 
 .right {
@@ -72,10 +72,11 @@ nav a span {
 }
 
 .email-field-content p {
-  color:  #2680EB;
+  color: #2680EB;
 }
 
-input, textarea {
+input,
+textarea {
   width: 50%;
   margin-top: 1.5em;
   border: 1px solid #A9A9A9;
@@ -93,8 +94,45 @@ input, textarea {
   border-radius: 5px;
 }
 
+[upload-file], [success] {
+  margin: 7em 0 0 3em;
+}
+
+.ion-md-add-circle {
+  background: white;
+  color: #2680EB;
+  font-size: 60px;
+}
+
+.upload-div {
+  /* padding-top: 2rem; */
+  padding-bottom: 5rem;
+}
+
+.center {
+  text-align: center
+}
+
+.u-text {
+  line-height: 1.5em;
+  color: #A9A9A9;
+}
+
+.send-options .upload {
+  display: block;
+  width: 7rem;
+  text-align: center;
+  margin: auto;
+  padding: 10px 30px;
+  background-color: #2680EB;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
 [success] {
-  /* display: none; */
+  display: none;
   text-align: center;
 }
 
@@ -106,7 +144,8 @@ input, textarea {
 
 [success] p {
   margin-bottom: 20px;
-  padding: 2px;
+  display: inline-block;
+  padding: 5px;
   background-color: rgba(38, 128, 235, 0.05);
   color: #2680EB;
 }
