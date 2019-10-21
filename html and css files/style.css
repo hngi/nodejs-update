@@ -34,14 +34,14 @@ nav a span {
 }
 
 .left {
-  margin: 5em 0 0 3em;
+  margin: 2em 0 0 3em;
 }
 
 .left h2 {
   font-weight: bold;
   font-size: 2em;
   padding: 0 2em 1em 0;
-  color: #A9A9A9;
+  color:  #2680EB;
 }
 
 .left .text {
@@ -68,25 +68,30 @@ nav a span {
   padding: 2em;
 }
 
-.upload-btn {
-  padding: 1em;
+/* email field */
+.email-field-content {
+  /* text-align: center; */
+  margin: 0 0 0 5em;
+}
+
+.email-field-content p {
+  color:  #2680EB;
+}
+
+input, textarea {
+  width: 50%;
+  margin-top: 1.5em;
+  border: 1px solid #A9A9A9;
   border-radius: 5px;
-  /* margin: ; */
+  padding: 15px;
 }
 
-.left .file {
-  background-color: #3b61ff;
+.send-options .send {
+  margin: 1em 0;
+  padding: 10px 30px;
+  background-color: #2680EB;
   color: #ffffff;
-  border: 2px solid #3b61ff;
+  border: 2px solid #ffffff;
   font-weight: bold;
+  border-radius: 5px;
 }
-
-.left .folder {
-  background-color: #ebebeb;
-  color: #3b61ff;
-  border: 2px solid #ebebeb;
-  font-weight: bold;
-}
-
-
-/* make your changes from here */
