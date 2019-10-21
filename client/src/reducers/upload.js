@@ -7,6 +7,7 @@ import {
 const initialState = {
   cloudinaryUrl: null,
   shortUrl: null,
+  shortCode:null,
   emailSent: false
 };
 export default function(state = initialState, action) {
@@ -16,13 +17,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         cloudinaryUrl: payload.cloudinaryUrl,
-        shortUrl: payload.shortUrl
+        shortUrl: payload.shortUrl,
+        shortCode:payload.shortCode
       };
 
     case UPLOAD_FILE_FAIL:
       return {
         ...state,
-        cloudinaryUrl: null
+        cloudinaryUrl: null,
+        shortUrl: null,
+        shortCode: null
       };
     case SEND_EMAIL_SUCCESS:
       return {

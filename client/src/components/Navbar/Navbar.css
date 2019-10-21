@@ -17,10 +17,10 @@ body{
     font-weight: bolder;
 }
 
-nav {
+nav ul{
     display: flex;
-    justify-content: space-between;
-    padding: 1em 2em;
+    justify-content: space-evenly;
+    /* padding: 1em 2em; */
 }
 
 nav a {

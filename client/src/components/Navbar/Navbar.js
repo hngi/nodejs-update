@@ -11,11 +11,18 @@ const Navbar = () => {
           </Link>
           <ul>
             <li>
+              <Link to='/team'>
+                Team
+              </Link>
+            </li>
+            </ul>
+            {/* <ul>
+            <li>
               <Link to='/privacy'>
                 Privacy
               </Link>
             </li>
-          </ul>
+          </ul> */}
           {/* <ul className='sub-link'>
             {isSignedInWithGoogle ? (
               <li>
