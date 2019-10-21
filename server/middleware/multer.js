@@ -1,10 +1,38 @@
-const multer = require('multer');
-const Datauri = require('datauri');
-const path = require('path');
+const multer = require("multer");
+const Datauri = require("datauri");
+const path = require("path");
 
 const storage = multer.memoryStorage();
 
-const multerUploads =  multer({ storage }).single('file');
+const fileFilter = (req, file, cb) => {
+  let extname = file.originalname
+    .toLowerCase()
+    .match(/.(jpeg|jpg|png|gif|mp4|fig)$/);
+  let mimetype = file.mimetype.match(/(jpeg|jpg|png|gif|mp4|fig)$/);
+  if (mimetype && extname) {
+    cb(null, true);
+  } else {
+    cb(new Error("Unsupported file format"), false);
+  }
+};
+
+// Multer doesn't allow error handling for file size limits
+// const fileSize = (req, file, cb) => {
+//   let maxsize = 1 * 1024 * 1024;
+//   if (file.size === maxsize) {
+//     cb(null, true);
+//   } else {
+//     cb(new Error("File is large"), false);
+//   }
+// };
+
+const multerUploads = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 20
+  },
+  fileFilter: fileFilter
+}).single("file");
 
 const dUri = new Datauri();
 
@@ -14,7 +42,10 @@ const dUri = new Datauri();
  * @returns {String} The data url from the string buffer
  */
 const dataUri = req => {
-  return dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
+  return dUri.format(
+    path.extname(req.file.originalname).toString(),
+    req.file.buffer
+  );
 };
 
 module.exports = { multerUploads, dataUri };
