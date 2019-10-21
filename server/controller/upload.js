@@ -1,11 +1,13 @@
 const multerHelper = require("../middleware/multer");
 const dataUri = multerHelper.dataUri;
-const { uploader, cloudinaryConfig } = require("../config/cloudinary");
+const { v2, cloudinaryConfig } = require("../config/cloudinary");
 const upload = (req, res, next) => {
   if (req.file) {
     const file = dataUri(req).content;
-    return uploader
-      .upload(file)
+    return v2.uploader
+      .upload(file, {
+        resource_type: "raw"
+      })
       .then(result => {
         const fileUploadedUrl = result.url;
         res.locals["cloudinaryUrl"] = fileUploadedUrl;
