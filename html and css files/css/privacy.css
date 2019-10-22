@@ -1,98 +1,24 @@
-@font-face {
-  font-family: Rockwell;
-  src: url(../assets/font/rockwen.ttf);
-}
-
-.mt-5 {
-  margin-top: 8rem !important;
-}
-
-.wrapper {
-  padding: 0px 10%;
-}
-
-main.wrapper {
-  padding-top: 100px;
-  padding-bottom: 50px;
-}
-
-.nav {
-  height: 100px;
-  box-shadow: 0px 2px 9px #f3ebeb;
-  position: fixed;
-  width: 100%;
-  top: 0px;
-  background-color: white;
-  z-index: 100;
-  transition: all 0.4s ease-in-out;
-}
-
-.nav__nav-logo {
-  font-family: Rockwell, 'Courier New', Courier, monospace;
-  font-size: 40px;
-  line-height: 47px;
-  color: #2680eb;
-  letter-spacing: 4px;
-}
-
 .privacy-title {
-  font-family: Segoe UI;
   font-size: 50px;
   line-height: 67px;
-  color: #2680eb;
+  color: var(--color-blue);
   font-weight: bold;
 }
 
 .privacy-content-title {
-  font-family: Segoe UI;
   font-size: 36px;
   line-height: 48px;
-  color: #2680eb;
+  color: var(--color-blue);
 }
 
 .privacy-content-body {
-  font-family: Segoe UI;
   font-size: 21px;
   line-height: 28px;
   text-align: justify;
   color: #888888;
 }
 
-.left-section-image {
-  width: 90%;
-  padding-right: 80px;
-}
-
-.right-section-upload {
-  border: 1px dotted rgba(169, 169, 169, 0.65);
-  border-radius: 15px;
-  height: 500px;
-  width: 500px;
-}
-
-.right-section-title {
-  font-family: Segoe UI;
-  font-size: 18px;
-  line-height: 24px;
-  color: #6b6b6b;
-}
-
-.right-section-content {
-  font-family: Segoe UI;
-  font-size: 12px;
-  line-height: 16px;
-  color: #6b6b6b;
-}
-
 @media (max-width: 600px) {
-  .wrapper {
-    padding: 0px 5%;
-  }
-  .nav {
-    justify-content: center;
-    padding: 0px;
-  }
-
   .privacy {
     flex-direction: column;
   }
