@@ -90,15 +90,16 @@ export const sendEmail = (name, to, message, link) => async dispatch => {
       dispatch({
         type: SEND_EMAIL_SUCCESS
       });
-      dispatch(setAlert(`The file was sent to ${to} successfully`, 'success'));
+      // dispatch(setAlert(`The file was sent to ${to} successfully`, 'success'));
     } else {
-      dispatch(setAlert('Error sending Email', 'danger'));
+      // console.log(response)
+      // dispatch(setAlert('Error sending Email', 'danger'));
       dispatch({
         type: SEND_EMAIL_FAIL
       });
     }
   } catch (error) {
-    dispatch(setAlert('Error sending Email', 'danger'));
+    // dispatch(setAlert('Error sending Email', 'danger'));
     dispatch({
       type: SEND_EMAIL_FAIL
     });
