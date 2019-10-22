@@ -1,0 +1,65 @@
+@font-face {
+  font-family: Rockwell;
+  src: url(../../assets/font/rockwen.ttf);
+}
+
+:root {
+  --color-blue: #2680eb;
+}
+
+html,
+body {
+  font-family: Segoe UI;
+  height: 100%;
+}
+
+.mt-5 {
+  margin-top: 8rem !important;
+}
+
+.wrapper {
+  padding-left: 10% !important;
+  padding-right: 10% !important;
+}
+
+main.wrapper {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.nav {
+  box-shadow: 0px 2px 9px #f3ebeb;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  background-color: white !important;
+  z-index: 100;
+  transition: all 0.4s ease-in-out;
+  margin-top: 0px !important;
+}
+
+.nav__nav-logo {
+  font-family: Rockwell, 'Courier New', Courier, monospace;
+  font-size: 40px;
+  line-height: 47px;
+  color: var(--color-blue) !important;
+  letter-spacing: 4px;
+}
+
+.nav-link {
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--color-blue) !important;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+
+  main.wrapper {
+    padding-top: 65px;
+  }
+}
