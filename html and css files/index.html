@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XSHARE</title>
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html"><img
+                    src="https://res.cloudinary.com/dvbwpicno/image/upload/v1571673681/oew99jmi9illraj70pfo.png"
+                    alt="logo"></a>
+            <ul class="sub-link">
+                <!-- <li>About</li> -->
+
+                <li><a href="team.html">Meet the team</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section container>
+            <div class="left">
+                <h2>The most seamless file transfer experience </h2>
+                <div class="text">
+                    <p>Fast, safe and secure</p>
+                    <p>Upload a file and share it with your friends via email or a generated link </p>
+                    <img style='margin:0 auto;width: 400px;height: auto;'
+                        src="https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg" alt="cloudimage">
+                </div>
+            </div>
+            <!--Upload-->
+            <!-- <div class="right"> -->
+            <div upload-file>
+                <div class="upload-div">
+                    <div class="circular-plus center">
+                        <input type="file" id="file" style="display:none;" />
+                        <a value="upload" onclick="thisFileUpload();"><i class="icon ion-md-add-circle"></i></a>
+                    </div>
+                    <h3 class="center u-text">Add your files</h3>
+                    <p class="center u-text">(max size: 20mb | .mp4 .mp3 .png .jpg .jpeg .png .docx .pdf .gif files
+                        supported)</p>
+
+                </div>
+                <div class="send-options">
+                    <button class="upload-btn upload ">upload</button>
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- seccess -->
+            <div success>
+                <span><i class="far fa-check-circle"></i></span><br>
+                <p>https://openclassrooms.com/en/dashboard</p><br>
+                <button class="btn">Copy link</button>
+                <button class="btn for-email">Email file</button>
+            </div>
+
+            <div class="right">
+                <!-- send by email -->
+                <div send-email>
+                    <div class="email-field-content">
+                        <p>Email File</p>
+
+                        <input type="text" placeholder="Name" /><br>
+                        <input type="email" placeholder="Receiver's email address" /><br>
+                        <textarea name="" id="" cols="30" rows="9" placeholder="Message"></textarea><br>
+                        <div class="send-options">
+
+
+                            <button class="upload-btn send">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div success>
+                <span><i class="far fa-check-circle"></i></span><br>
+                <button class="btn">Copy link</button>
+                <button class="btn">Email file</button>
+            </div> -->
+        </section>
+    </main>
+    <footer>
+        <p id="year">
+            <script>
+                document.getElementById('year').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>
+            Built by HNG 6.0 Interns | <a href="privacy.html">Privacy Policy</a>
+        </p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+
+</html>

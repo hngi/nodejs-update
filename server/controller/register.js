@@ -16,7 +16,7 @@ const register = async (req, res) => {
         error
     } = validate(req.body);
     if (error)
-        return res.json({
+        return res.status(400).json({
             success: false,
             message: error.details[0].message
         });
@@ -25,7 +25,7 @@ const register = async (req, res) => {
         email: req.body.email
     });
     if (userhere)
-        return res.json({
+        return res.status(400).json({
             success: false,
             message: 'User already exists'
         });

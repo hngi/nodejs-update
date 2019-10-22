@@ -1,17 +1,15 @@
 import React from 'react';
-import { MDBContainer, MDBFooter } from 'mdbreact';
+import { Link } from 'react-router-dom';
+import './Footer.css';
 
-const Footer = () => {
+export default function index() {
+  const date = new Date().getFullYear();
   return (
-    <MDBFooter color='blue' className='font-small pt-4 mt-4'>
-      <div className='footer-copyright text-center py-3'>
-        <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright:{' '}
-          <a href='https://www.hng.tech'> Built by HNG 6.0 Interns </a>
-        </MDBContainer>
-      </div>
-    </MDBFooter>
+    <footer className="d-flex justify-content-center align-items-center">
+      <span id="year">
+        {date} Built by HNG 6.0 Interns |{'  '}
+        <Link to="/privacy">Privacy Policy</Link>
+      </span>
+    </footer>
   );
-};
-
-export default Footer;
+}

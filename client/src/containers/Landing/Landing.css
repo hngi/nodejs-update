@@ -1,163 +1,108 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lora|Roboto+Mono&display=swap');
+.left-section-title {
+  font-size: 50px;
+  line-height: 67px;
 
-body{
-    background-color: rgb(217, 221, 235);
+  color: #2680eb;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+.left-section-content {
+  font-size: 21px;
+  line-height: 28px;
+  color: #a9a9a9;
 }
 
-.header {
-    font-family: 'Lora', serif;
-    text-decoration: none;
-    font-weight: bolder;
+.left-section-image {
+  width: 90%;
+  padding-right: 80px;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1em 2em;
+.right-section-upload {
+  border: 1px dashed rgba(169, 169, 169, 0.65);
+  border-radius: 15px;
+  height: 500px;
+  width: 500px;
 }
 
-nav a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #3b61ff;
-    font-size: 1.5em;
+.right-section-title {
+  font-size: 18px;
+  line-height: 24px;
+  color: #6b6b6b;
 }
 
-.text {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.5em;
-    color: #3b61ff;
-    text-align: center;
-    font-weight: 600;
-    padding: 20px;
+.right-section-content {
+  font-size: 12px;
+  line-height: 16px;
+  color: #6b6b6b;
 }
 
-.login {
-    padding-left: 5px;
-
-}
-
-.buttons {
-    text-align: center;
-    padding-top: 20px;
-}
-
-.sub-link li{
-    list-style: none;
-    font-weight: bold;
-    color: #3B61FF;
-    font-size: 1em;
-}
-
-[container] {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2em;
-} 
-
-.left {
-    margin: 3em 0;
-}
-
-.left h2 {
-    font-weight: bold; 
-    font-size: 4em;
-    padding: 0 2em 1em 0;
-    color: #3B61FF;
-}
-
-.right {
-    margin: 3em 0;
-}
-
-.right img {
-    padding-left: 4em; 
-    width: fit-content;
-    height: 25em;
-}
-
-.left , .right {
-    padding: 2em;
+.input-file {
+  display: none;
 }
 
 .upload-btn {
-    padding: 1em;
-    border-radius: 10px;
-    margin: 0 1em;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  background-color: var(--color-blue);
+  box-shadow: 0px 0px 5px #b1b0b0;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 10px 30px;
+  width: 170px;
 }
 
-.left .file {
-    background-color: #3B61FF;
-    color: #FFFFFF;
-    border: 2px solid #3B61FF;
-    font-weight: bold;
+.upload-link {
+  background: rgba(38, 128, 235, 0.05);
+  border-radius: 1px;
+  color: var(--color-blue);
+  padding: 10px 15px;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.left .folder {
-    background-color: #EBEBEB;
-    color: #3B61FF;
-    border: 2px solid #EBEBEB;
-    font-weight: bold;  
+.upload-success {
+  font-size: 35px;
+  line-height: 47px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--color-blue);
 }
 
-/*  */
-@media only screen and (max-width: 720px) {
-    body {
-        height: 100vh;
-    }
-
-    [container] {
-        display: flex;
-        flex-direction: column;
-    } 
-
-    .left {
-        margin: 2em 0;
-    }
-
-    .right img {
-        display: none
-    }
-}
-.form1{
-    padding: 20px 30px;
+@media (max-width: 1280px) {
+  .right-section-upload {
+    height: 300px;
+    width: 300px;
+  }
 }
 
-@media screen and ( max-width: 1024px ) {
-    img.responsive { 
-        display: block;
-        width: 70%; 
-        margin-top: 50px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-    
-@media screen and ( min-width:1025px ) and ( max-width: 1280px )  {
-    img.responsive { 
-        display: block;
-        width: 80%; 
-        margin-top: 50px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+@media (max-width: 991px) {
+  .left-section-title {
+    font-size: 35px;
+    line-height: 50px;
+  }
+
+  .left-section-content {
+    font-size: 16px;
+    line-height: 28px;
+  }
 }
 
-@media screen and ( min-width: 1081px ) {
-    img.responsive { 
-        display: block;
-        width: 80%; 
-        margin-top: 50px;
-        margin-left: auto;
-        margin-right: auto;
-     }
+@media (max-width: 900px) {
+  .home-section {
+    flex-direction: column;
+  }
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .left-section-image {
+    width: 100%;
+    padding-right: 0px;
+  }
 }
-
-img.responsive { height: auto; }

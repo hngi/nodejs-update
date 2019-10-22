@@ -1,0 +1,31 @@
+.email-title {
+  font-size: 27px;
+  line-height: 36px;
+  color: var(--color-blue);
+}
+
+.form-input {
+  padding: 12px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #a9a9a9;
+  margin-bottom: 20px;
+}
+
+.form-textarea {
+  resize: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #a9a9a9;
+}
+
+.right-section-success {
+  width: 400px;
+}
+
+@media (max-width: 900px) {
+  .right-section-success {
+    width: 100%;
+  }
+}

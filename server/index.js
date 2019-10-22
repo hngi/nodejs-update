@@ -5,7 +5,6 @@ const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 require('./database/db');
 const router = require('./routes');
-
 // cloudinary import
 const { urlencoded, json } = require('body-parser');
 const { resolve } = require('path');
@@ -15,6 +14,8 @@ app.use('*', cloudinaryConfig);
 app.get('/', (req, res) => {
   res.send('Connected');
 });
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public')); // using custom css and js files
 app.use(cors());
 app.use(expressValidator());
 app.use(
