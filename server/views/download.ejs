@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XSHARE</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header style="padding-top: 30px;">
+                <nav>
+                    <a href="<%=https://x-share.herokuapp.com/ %>">
+                        <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1571673681/oew99jmi9illraj70pfo.png"
+                        alt="logo">
+                    </a>
+                    <ul class="sub-link">
+                        <!-- <li>About</li> -->
+
+                        <li><a href="team sheet.html">Meet the team</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                <section container>
+
+                    <div class="header">
+                        <h2>The most seamless file transfer experience</h2>
+                        <p>Fast safe and secure</p>
+                        <p>Upload a file and share it with your friends via email or a generated
+                                                link </p>
+
+                    </div>
+                    
+                    <section success>
+
+                        <div class="our_image"></div>
+                        <!-- <img style='margin:0 auto;width: 400px;height: auto;'
+                        src="https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg" alt="cloudimage"> -->
+
+                        <div class="download_div">
+                            <div class="header2">
+                                <H2>Your file is ready for download</H2>
+                            </div>
+                            <!-- <div class="file-image"></div> -->
+                            <form id="myForm" action="/<%=shortenId %>" method="POST">
+                                <button class=" download  btn">
+                                </button>
+                            </form>
+
+                        </div>
+                    </section>
+
+                </section>
+            </main>
+        </div>
+        <footer id="footer">
+            <div class="footer">
+                <p id="year">
+                    <script>
+                        document.getElementById('year').appendChild(document.createTextNode(new Date().getFullYear()))
+                    </script>
+                    Built by HNG 6.0 Interns | <a href="privacy.html">Privacy Policy</a>
+                </p>
+        </footer>
+    </div>
+    <script>
+        var dl = document.querySelector('.download')
+        dl.addEventListener('click', (event) => {
+            var r = confirm('Do You wish to download this file')
+            if (r == true){
+                document.getElementById("myForm").submit();
+            }
+            event.preventDefault()                
+        })
+    </script>
+</body>
+
+</html>
