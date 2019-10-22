@@ -9,7 +9,7 @@ const fileFilter = (req, file, cb) => {
     .toLowerCase()
     .match(/.(jpeg|jpg|png|gif|mp3|mp4|fig|docx|pdf|zip|xlsx)$/);
   let mimetype = file.mimetype.match(
-    /(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx)$/
+    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx)$/
   );
   if (mimetype && extname) {
     cb(null, true);

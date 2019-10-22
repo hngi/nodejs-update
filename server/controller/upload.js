@@ -6,7 +6,7 @@ const upload = (req, res, next) => {
     const file = dataUri(req).content;
     return v2.uploader
       .upload(file, {
-        resource_type: "raw"
+        resource_type: "auto"
       })
       .then(result => {
         const fileUploadedUrl = result.url;
