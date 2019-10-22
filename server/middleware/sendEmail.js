@@ -2,10 +2,8 @@ require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
 
 const Email = process.env.EMAIL;
-// const EmailPass = process.env.EMAIL_PASS;
-// const nodemailer = require('nodemailer');
+
 module.exports = sendEmail = async (req, link, res) => {
-  // console.log(link)
   try {
     const { name, to, message, link } = req.body;
     if (name == '' || undefined || to == '' || undefined) {
@@ -41,7 +39,6 @@ module.exports = sendEmail = async (req, link, res) => {
       }
     });
   } catch (error) {
-    console.log(error);
     res.json({ message: error, success: false });
   }
 };

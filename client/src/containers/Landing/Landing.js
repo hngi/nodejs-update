@@ -6,7 +6,7 @@ import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import { setAlert } from '../../actions/alert';
 import { iconImage, add } from '../../assets/img';
 
-const NewLanding = ({ uploadFile, uploadstate, setAlert }) => {
+const NewLanding = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
     file: '',
     show: false,
@@ -15,14 +15,23 @@ const NewLanding = ({ uploadFile, uploadstate, setAlert }) => {
   const { file, show, isLoading } = formData;
 
   const upload = () => {
-    console.log(file)
-    if(file===''||file===undefined){
-      setAlert('Please upload a file', 'danger');
+    if (file === '' || file === undefined || file === null) {
+      setAlert('Please select a file to upload', 'danger');
       setFormData({ show: false });
-    }else{
-
-      setFormData({ isLoading: false, show: true });
+    } else if (file.size >= 20000000) {
+      setFormData({ show: false });
+      setAlert('Only files less than 20MB supported', 'danger');
+    } else if (
+      file.name.match(/.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx)$/)
+    ) {
+      setFormData({ show: true });
       uploadFile(file);
+    } else {
+      setFormData({ show: false });
+      setAlert(
+        'Only .mp4 .mp3 .png .jpg .jpeg .docx .pdf .gif files are supported',
+        'danger'
+      );
     }
   };
   const onChange = e => {
@@ -55,9 +64,13 @@ const NewLanding = ({ uploadFile, uploadstate, setAlert }) => {
               className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
               <img src={add} alt='' />
               <p className='right-section-title mt-2'>Add a file</p>
+              <h6 className='right-section-content'>
+                {file ? file.name : null}
+              </h6>
+              <br />
               <p className='right-section-content'>
-                (max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .png .docx .pdf .gif
-                files supported)
+                {''} ( max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .docx .pdf
+                .gif files are supported)
               </p>
             </label>
             <input
