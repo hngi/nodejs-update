@@ -11,22 +11,22 @@ let token = null;
 describe('POST authentication', () => {
     // register
     // register a user
-  describe('POST register', () => {
-      it('should register a new user', (done) => {
-          chai.request(app)
-          .post('/api/auth/register')
-          .send({
-            username : 'newuser',
-            email: 'newuser@gmail.com',
-            password: '123456'
-          })
-          .end((err, res) => {
-            res.should.have.status(200)  
-            token = res.body.token
-          })
-          done() 
-      })
-  })
+  // describe('POST register', () => {
+  //     it('should register a new user', (done) => {
+  //         chai.request(app)
+  //         .post('/api/auth/register')
+  //         .send({
+  //           username : 'newuser',
+  //           email: 'newuser@gmail.com',
+  //           password: '123456'
+  //         })
+  //         .end((err, res) => {
+  //           res.should.have.status(200)  
+  //           token = res.body.token
+  //         })
+  //         done() 
+  //     })
+  // })
 
 //   register validation
   describe('POST register', () => {

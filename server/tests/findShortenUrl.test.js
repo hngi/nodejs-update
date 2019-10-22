@@ -6,15 +6,13 @@ const app = require ('../index');
 chai.use(chaiHttp);
 chai.should()
 
-
-describe.skip('POST upload', () => {
-    const file = 'file.jpeg'
-    it('upload a file successfully', (done) => {
+describe('POST  url', () => {
+    const _id = 'id'
+    it('should give an error if link is not found', (done) => {
         chai.request(app)
-        .post('/api/auth/upload')
-        .send(file)
+        .get(`/:${_id}`)
         .end((err, res) => {
-            res.should.have.status(400)
+           res.should.have.status(404)
         })
         done()
     })
