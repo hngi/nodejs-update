@@ -1,0 +1,25 @@
+.nav {
+  box-shadow: 0px 2px 9px #f3ebeb;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  background-color: white !important;
+  z-index: 100;
+  transition: all 0.4s ease-in-out;
+  margin-top: 0px !important;
+}
+
+.nav__nav-logo {
+  font-family: Rockwell, 'Courier New', Courier, monospace;
+  font-size: 40px;
+  line-height: 47px;
+  color: var(--color-blue) !important;
+  letter-spacing: 4px;
+}
+
+.nav-link {
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--color-blue) !important;
+  font-weight: bold;
+}

@@ -1,0 +1,39 @@
+@font-face {
+  font-family: Rockwell;
+  src: url(./assets/font/rockwen.ttf);
+}
+
+:root {
+  --color-blue: #2680eb;
+}
+
+html,
+body {
+  font-family: Segoe UI;
+  height: 100%;
+}
+
+.mt-5 {
+  margin-top: 8rem !important;
+}
+
+.wrapper {
+  padding-left: 10% !important;
+  padding-right: 10% !important;
+}
+
+main.wrapper {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+
+  main.wrapper {
+    padding-top: 65px;
+  }
+}
