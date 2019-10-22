@@ -1,4 +1,4 @@
  
 package-lock.json
-example.env
+.env
 node_modules
