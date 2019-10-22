@@ -16,11 +16,11 @@ const ShortenLink = {
         // shortUrl: `http://localhost:4000/${shortUrlParam}`
       });
       createShortUrl.save();
-      
+
       res.json({
         success: true,
         message: 'Link shortened successfully',
-        shortCode:shortUrlParam,
+        shortCode: shortUrlParam,
         shortUrl: createShortUrl.shortUrl,
         longUrl: cloudinaryUrl
       });
@@ -34,6 +34,7 @@ const ShortenLink = {
   async redirectShortenUrl(req, res) {
     try {
       const { cloudinaryUrl } = res.locals;
+      
       res.redirect(cloudinaryUrl);
     } catch (error) {
       res.json({
@@ -43,13 +44,8 @@ const ShortenLink = {
     }
   },
   async downloadShortenUrl(req, res) {
-    // console.log(3,'chjhjj');
     try {
       const { cloudinaryUrl } = res.locals;
-      // res.redirect(cloudinaryUrl);
-      var parsed = url.parse(cloudinaryUrl);
-      var fileName = path.posix.basename;
-      // console.log(4,fileName);
       res.setHeader('Content-Disposition', `attachment; filename=file.png`);
       request(cloudinaryUrl)
         .once('data', data => {

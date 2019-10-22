@@ -15,7 +15,7 @@ router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
 router.post('/api/auth/login', loginUser);
 router.post('/api/auth/register', registerUser);
 router.post('/api/auth/sendEmail', sendEmail);
-router.post('/:shortenId',findShortenUrl,downloadShortenUrl)
+// router.post('/:shortenId',findShortenUrl,downloadShortenUrl)
 router.post(
   '/api/auth/upload',
   multer.multerUploads,
