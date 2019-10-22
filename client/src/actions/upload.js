@@ -5,7 +5,7 @@ import {
   SEND_EMAIL_FAIL,
   DOWNLOAD_LINK_FAIL,
   DOWNLOAD_LINK_SUCCESS,
-  HIDE_LINK
+  HIDE_LINK,LOADING
 } from './types';
 import { setAlert } from './alert';
 
@@ -20,12 +20,15 @@ export const hidelink = () => async => dispatch => {
 };
 export const uploadFile = file => async dispatch => {
   const fd = new FormData();
-
+  
   // fd.append('name', name);
   // fd.append('to', to);
   // fd.append('isEmail', true);
   fd.append('file', file);
-
+  
+  dispatch({
+    type: LOADING
+  });
   const config = {
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -45,20 +48,22 @@ export const uploadFile = file => async dispatch => {
         payload: response.data
       });
       dispatch(setAlert(response.data.message, 'success'));
-    } else {
-      dispatch(setAlert(response.data.message, 'danger'));
+    } 
+    else {
+      dispatch(setAlert('Error uploading file', 'danger'));
       dispatch({
         type: UPLOAD_FILE_FAIL,
         payload: response.data.message
       });
     }
   } catch (error) {
-    dispatch(setAlert(error.toString(), 'danger'));
+    // console.log(error)
+  dispatch(setAlert('Please enter only a supported file type and a maximum of 20MB file size', 'danger'));
 
-    dispatch({
-      type: UPLOAD_FILE_FAIL,
-      payload: error.toString()
-    });
+  //   dispatch({
+  //     type: UPLOAD_FILE_FAIL,
+  //     payload: error.toString()
+  //   });
   }
 };
 export const sendEmail = (name, to, message, link) => async dispatch => {
