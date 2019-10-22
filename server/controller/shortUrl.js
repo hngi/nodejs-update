@@ -34,7 +34,7 @@ const ShortenLink = {
   async redirectShortenUrl(req, res) {
     try {
       const { cloudinaryUrl } = res.locals;
-      
+
       res.redirect(cloudinaryUrl);
     } catch (error) {
       res.json({
