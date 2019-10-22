@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import landingControl from './index';
+import landingControl from '../Landing/index';
 import './Landing.css';
 import { connect } from 'react-redux';
 
@@ -95,6 +95,8 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
                     : setFormData({ isLoading: true });
                   uploadFile(file);
                 }
+              document.querySelector('.upload-file').style.display = 'none';
+              document.querySelector('.success').style.display = 'block';
               }}
               className='btn upload-btn upload'>
               {isLoading ? (
@@ -106,12 +108,17 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
         </div>
 
         <div className='success'>
-          <i className="fas fa-chevron-circle-left back"></i>
+          <i 
+          onClick={() => {
+            document.querySelector('.upload-file').style.display = 'block';
+            document.querySelector('.success').style.display = 'none';
+          }}
+          className="fas fa-chevron-circle-left back"></i>
           <span>
             <i
-              style={{
-                display: 'none'
-              }}
+              // style={{
+              //   display: 'none'
+              // }}
               className='far fa-check-circle'
             />
           </span>
@@ -141,7 +148,10 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
           </CopyToClipboard>
 
           <button
-            onClick={landingControl.sendByEmailBtnOnClick}
+            onClick={() => {
+              document.querySelector('.success').style.display = 'none';
+              document.querySelector('.send-email').style.display = 'block';
+            }}
             className='btn for-email'
             // style={{
             //   display: 'none'
@@ -153,7 +163,12 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
         <div className='right'>
           {/* send by email */}
           <div className='send-email'>
-          <i className="fas fa-chevron-circle-left back"></i>
+          <i 
+          onClick={() => {
+            document.querySelector('.success').style.display = 'block';
+            document.querySelector('.send-email').style.display = 'none';
+          }}
+          className="fas fa-chevron-circle-left back"></i>
             <form
               // style={{
               //   display: 'none'

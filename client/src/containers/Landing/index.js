@@ -1,15 +1,15 @@
 const landingControl = {
   sendEmailField() {
-    document.querySelector('[send-email]');
+    document.querySelector('.send-email');
   },
   successField() {
-    document.querySelector('[success]');
+    document.querySelector('.success');
   },
   sendByEmailBtn() {
     document.querySelector('.for-email');
   },
   fileUploadField() {
-    document.querySelector('[upload-file]');
+    document.querySelector('.upload-file');
   },
   fileUploadBtn() {
     document.querySelector('.upload-btn');
