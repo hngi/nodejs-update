@@ -1,178 +1,108 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.left-section-title {
+  font-size: 50px;
+  line-height: 67px;
+
+  color: #2680eb;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 1em 2em;
-  margin-top: 2em;
+.left-section-content {
+  font-size: 21px;
+  line-height: 28px;
+  color: #a9a9a9;
 }
 
-nav a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #3b61ff;
+.left-section-image {
+  width: 90%;
+  padding-right: 80px;
 }
 
-nav a span {
-  font-size: 1.5em;
+.right-section-upload {
+  border: 1px dashed rgba(169, 169, 169, 0.65);
+  border-radius: 15px;
+  height: 500px;
+  width: 500px;
 }
 
-.sub-link li {
-  list-style: none;
-  font-weight: bold;
-  color: #3b61ff;
-  font-size: 1em;
+.right-section-title {
+  font-size: 18px;
+  line-height: 24px;
+  color: #6b6b6b;
 }
 
-[container] {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2em;
+.right-section-content {
+  font-size: 12px;
+  line-height: 16px;
+  color: #6b6b6b;
 }
 
-.left {
-  margin: 2em 0 0 3em;
-}
-
-.left h2 {
-  font-weight: bold;
-  font-size: 2em;
-  padding: 0 2em 1em 0;
-  color: #2680EB;
-}
-
-.left .text {
-  margin: 2em 0;
-}
-
-.left .text p {
-  line-height: 1.5em;
-  color: #A9A9A9;
-}
-
-.right {
-  margin: 3em 0;
-}
-
-.left,
-.right {
-  padding: 2em;
-}
-
-/* email field */
-[send-email] {
+.input-file {
   display: none;
 }
 
-.email-field-content {
-  margin: 0 0 0 5em;
-}
-
-.email-field-content p {
-  color: #2680EB;
-}
-
-input,
-textarea {
-  width: 50%;
-  margin-top: 1.5em;
-  border: 1px solid #A9A9A9;
-  border-radius: 5px;
-  padding: 15px;
-}
-
-.btn {
-  margin: 1em 0;
-  padding: 10px 30px;
-  background-color: #2680EB;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  font-weight: bold;
-  border-radius: 5px;
-}
-
-[upload-file], [success] {
-  margin: 7em 0 0 3em;
-}
-
-.ion-md-add-circle {
-  background: white;
-  color: #2680EB;
-  font-size: 60px;
-}
-
-.upload-div {
-  /* padding-top: 2rem; */
-  padding-bottom: 5rem;
-}
-
-.center {
-  text-align: center
-}
-
-.u-text {
-  line-height: 1.5em;
-  color: #A9A9A9;
-}
-
-.send-options .send {
-  margin: 1em 0;
-  padding: 10px 30px;
-  background-color: #2680EB;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  font-weight: bold;
-  border-radius: 5px;
-}
-
-.send-options .upload {
-  display: block;
-  width: 7rem;
+.upload-btn {
+  font-size: 18px;
+  line-height: 24px;
   text-align: center;
-  margin: auto;
-  padding: 10px 30px;
-  background-color: #2680EB;
   color: #ffffff;
-  border: 2px solid #ffffff;
-  font-weight: bold;
-  border-radius: 5px;
+  background-color: var(--color-blue);
+  box-shadow: 0px 0px 5px #b1b0b0;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 10px 30px;
+  width: 170px;
 }
 
-[success] {
-  display: none;
+.upload-link {
+  background: rgba(38, 128, 235, 0.05);
+  border-radius: 1px;
+  color: var(--color-blue);
+  padding: 10px 15px;
+  font-size: 18px;
+  line-height: 24px;
   text-align: center;
-}
-
-[success] span i {
-  font-size: 6em;
-  margin-bottom: 0.5em;
-  color: #2680EB;
-}
-
-[success] p {
   margin-bottom: 20px;
-  display: inline-block;
-  padding: 5px;
-  background-color: rgba(38, 128, 235, 0.05);
-  color: #2680EB;
-}
-footer {
-  background: rgb(37, 104, 187);
 }
 
-footer p,
-footer a {
-  padding: 1rem;
-  text-align: center;
-  color: white;
-  font-size: 1.23rem;
+.upload-success {
+  font-size: 35px;
+  line-height: 47px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--color-blue);
 }
 
-footer a {
-  text-decoration: none;
-  padding-left: 0.3rem;
+@media (max-width: 1280px) {
+  .right-section-upload {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 991px) {
+  .left-section-title {
+    font-size: 35px;
+    line-height: 50px;
+  }
+
+  .left-section-content {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-section {
+    flex-direction: column;
+  }
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .left-section-image {
+    width: 100%;
+    padding-right: 0px;
+  }
 }

@@ -13,10 +13,17 @@ const multer = require('../middleware/multer');
 const shortenLink = require('../controller/shortUrl');
 const shortUrl = require('../controller/crud.js');
 router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
+
+router.get('/:shortenId', findShortenUrl,(req, res) => {
+  const fullLink = req.protocol + '://' + req.get('host');
+  const shortenId = req.params.shortenId;
+  res.render('download', { shortenId: shortenId, fullLink: fullLink})
+})
+//router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
 router.post('/api/auth/login', loginUser);
 router.post('/api/auth/register', registerUser);
 router.post('/api/auth/sendEmail', sendEmail);
-// router.post('/:shortenId',findShortenUrl,downloadShortenUrl)
+router.post('/:shortenId',findShortenUrl,downloadShortenUrl)
 router.post(
   '/api/auth/upload',
   multer.multerUploads,

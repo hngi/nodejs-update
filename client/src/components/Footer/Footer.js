@@ -1,16 +1,15 @@
 import React from 'react';
-import './Footer.css';
 import { Link } from 'react-router-dom';
-const Footer = () => {
+import './Footer.css';
+
+export default function index() {
+  const date = new Date().getFullYear();
   return (
-    <footer>
-      <p id='year'>
-        {new Date().getFullYear()} {''}
-        Built by HNG 6.0 Interns |{' '}
-        <Link href='privacy.html'>Privacy Policy</Link>
-      </p>
+    <footer className="d-flex justify-content-center align-items-center">
+      <span id="year">
+        {date} Built by HNG 6.0 Interns |{'  '}
+        <Link to="/privacy">Privacy Policy</Link>
+      </span>
     </footer>
   );
-};
-
-export default Footer;
+}
