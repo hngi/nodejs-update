@@ -12,18 +12,16 @@ const uploadFile = require('../controller/upload');
 const multer = require('../middleware/multer');
 const shortenLink = require('../controller/shortUrl');
 
-router.get('/:shortenId',(req, res) => {
-  //const baseUrl = req.protocol + '://' + req.get('host');
-  const baseUrl = req.get('host');
+router.get('/:shortenId', findShortenUrl,(req, res) => {
+  const fullLink = req.protocol + '://' + req.get('host');
   const shortenId = req.params.shortenId;
-  //console.log(baseUrl);
-  res.render('download', { baseUrl: baseUrl,shortenId: shortenId})
+  res.render('download', { shortenId: shortenId, fullLink: fullLink})
 })
-router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
+//router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
 router.post('/api/auth/login', loginUser);
 router.post('/api/auth/register', registerUser);
 router.post('/api/auth/sendEmail', sendEmail);
-// router.post('/:shortenId',findShortenUrl,downloadShortenUrl)
+router.post('/:shortenId',findShortenUrl,downloadShortenUrl)
 router.post(
   '/api/auth/upload',
   multer.multerUploads,
