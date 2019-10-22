@@ -1,5 +1,5 @@
 
-var shortUrls = require('../DataAccessObject/DAO');
+ shortUrls = require('../DataAccessObject/DAO');
 
 exports.getshorturls = function(req, res, next) {
     shortUrls.get({}, function(err, shortUrls) {
@@ -26,5 +26,3 @@ exports.removeshortUrl = function(req, res, next) {
         });
     });
 };
-
-module.exports = crud;

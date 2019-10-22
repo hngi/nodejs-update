@@ -5,7 +5,7 @@ const {
 } = require('../controller/shortUrl');
 const { findShortenUrl } = require('../middleware/findShortenUrl');
 const router = express.Router();
-const sendEmail=require('../middleware/sendEmail')
+const sendEmail=require('../middleware/sendEmail');
 const loginUser = require('../controller/login');
 const registerUser = require('../controller/register');
 const uploadFile = require('../controller/upload');
@@ -21,7 +21,7 @@ router.post(
   '/api/auth/upload',
   multer.multerUploads,
   uploadFile,
-  shortenLink.shortenUrl,
+  shortenLink.shortenUrl
 );
 router.get('/get', shortUrl.getshorturls);
 router.delete('/remove/:id',shortUrl.removeshortUrl);
