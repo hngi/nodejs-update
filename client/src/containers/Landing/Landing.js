@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-
+import landingControl from './index'
 import './Landing.css';
 import { connect } from 'react-redux';
 
-import { uploadFile, hidelink } from '../../actions/upload';
+import { uploadFile, sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-
-const Landing = ({
-  uploadFile,
-  uploadstate,
-  hidelink
-}) => {
+import { setAlert } from '../../actions/alert';
+const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
     to: '',
+    message: '',
     file: '',
     copied: false,
     isLoading: false
@@ -22,7 +19,7 @@ const Landing = ({
   const clearState = () => {
     setFormData({
       name: '',
-      from: '',
+      message: '',
       to: '',
       file: '',
       value: '',
@@ -31,7 +28,8 @@ const Landing = ({
     });
   };
 
-  const { name, to, file, copied, isLoading } = formData;
+  const { name, message, to, file, copied, isLoading } = formData;
+  console.log(formData);
   const onChange = e => {
     setFormData({
       ...formData,
@@ -39,185 +37,173 @@ const Landing = ({
         e.target.name !== 'file' ? e.target.value : e.target.files[0]
     });
   };
+
   const shortUrl = uploadstate.shortUrl;
   return (
-    <div>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-lg-6'>
-            <p className='text'>
-              The most seamless file transfer experience ever.
+    <main>
+      <section container>
+        <div className='left'>
+          <h2>The most seamless file transfer experience </h2>
+          <div className='text'>
+            <p>Fast, safe and secure</p>
+            <p>
+              Upload a file and share it with your friends via email or a
+              generated link{' '}
             </p>
-            <div className='buttons'>
-              <button
-                id='btn-email'
-                className='btn btn-light'
-                onClick={() => {
-                  var form1 = document.getElementsByClassName('form1')[0];
-                  // () =>
-                  form1.classList.contains('d-none')
-                    ? form1.classList.remove('d-none')
-                    : form1.classList.add('d-none');
-                }}
-                // onClick={() => {
-                //   document
-                //     .getElementsByClassName('form2')[0]
-                //     .classList.add('d-none');
-                //   var form1 = document.getElementsByClassName('form1')[0];
-                //   form1.classList.contains('d-none')
-                //     ? form1.classList.remove('d-none')
-                //     : form1.classList.add('d-none');
-                // }}
-              >
-                Send file via email
-              </button>
-              <CopyToClipboard
-                text={shortUrl}
-                onCopy={() => setFormData({ copied: true })
-                }>
-                <button
-                  id='btn-link'
-                  className={
-                    uploadstate.emailSent
-                      ? 'btn btn-light ml-5'
-                      : 'btn btn-light ml-5 d-none'
-                  }>
-                  Copy link
-                </button>
-              </CopyToClipboard>
-              {copied ? (
-                <span style={{ color: 'red' }}> Link Copied!</span>
-              ) : null}
-            </div>
-            {''}
-            <div
-              className={
-                uploadstate.emailSent === false ? 'form1' : 'form1 d-none'
-              }>
-              <form
-                onSubmit={e => {
-                  e.preventDefault();
-                  uploadFile(name, to, file, true);
-                  setFormData({ isLoading: true });
-                  setTimeout(clearState, 5000);
-                }}>
-                <div className='form-group'>
-                  <input
-                    required
-                    className='form-control'
-                    type='name'
-                    placeholder='Your Name'
-                    id='name'
-                    name='name'
-                    value={name}
-                    onChange={e => onChange(e)}
-                  />
-                  <br />
-                  {/* <label htmlFor="Remail">Receiver's Email</label> */}
-                  <input
-                    required
-                    className='form-control'
-                    type='email'
-                    placeholder="Receiver's Email"
-                    id='Remail'
-                    name='to'
-                    value={to}
-                    onChange={e => onChange(e)}
-                  />
-                  {/* {/* <label htmlFor='email'>Optional message</label> */}
-                  {/* <br /> */}
-                  {/* <textarea
-                    className='form-control'
-                    name
-                    id
-                    cols={10}
-                    rows={3}
-                    defaultValue={'Message'}
-                  /> */}
-
-                  <br />
-                  <label htmlFor>Upload file</label>
-                  <input
-                    required
-                    name='file'
-                    //value={file}
-                    onChange={e => onChange(e)}
-                    className='form-control-file'
-                    type='file'
-                    file='file'
-                  />
-                  <br />
-                  {isLoading ? (
-                    <div class='spinner-border text-primary' role='status'>
-                      <span class='sr-only'>Loading...</span>
-                    </div>
-                  ) : (
-                    <button
-                      type='submit'
-                      className='btn btn-light float-left'
-                      defaultValue='Transfer'>
-                      Share
-                    </button>
-                  )}
-
-                  {/* <button id='back' className='btn float-left'>
-                    Cancel
-                  </button> */}
-                </div>
-              </form>
-            </div>
-            {/* <div className='form2 d-none'> */}
-            {/* <form
-                onSubmit={e => {
-                  e.preventDefault();
-                  upload(link, file, false);
-                }}> */}
-            {/* <div className='form-group'> */}
-            {/* <label htmlFor='email'>Message</label>*/}
-            {/* <textarea
-                    className='form-control'
-                    name
-                    id
-                    cols={10}
-                    rows={3}
-                    defaultValue={''}
-                  /> */}
-            {/* <br />
-                  <label htmlFor>Upload file</label>
-                  <input className='form-control-file' type='file' />
-                  <br />
-                  <input
-                    name='file' */}
-            {/* //value={file}
-                    onChange={e => onChange(e)}
-                    type='submit'
-                    className='btn float-right'
-                    defaultValue='Generate Link'
-                  />
-                  <button id='back' className='btn float-left'>
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div> */}
-          </div>
-          <div className='col-lg-6'>
             <img
-              src='https://res.cloudinary.com/dvbwpicno/image/upload/v1571178848/yg8ch6bhftwzooxugbuo.png'
+              style={{
+                margin: '0 auto',
+                width: '400px',
+                height: 'auto'
+              }}
+              src='https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg'
               alt='cloudimage'
-              className='responsive'
             />
           </div>
         </div>
-      </div>
-    </div>
+
+        <div upload-file>
+          <div className='upload-div'>
+            <div
+              onClick={landingControl.thisFileUpload}
+              className='circular-plus center'>
+              <input
+                name='file'
+                type='file'
+                id='file'
+                file='file'
+                onChange={e => onChange(e)}
+                style={{ display: 'none' }}
+              />
+              <a value='upload'>
+                <i className='icon ion-md-add-circle' />
+              </a>
+            </div>
+            <h3 className='center u-text'>Add a file</h3>
+            <p className='center u-text'>
+              (max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .png .docx .pdf .gif
+              files supported)
+            </p>
+          </div>
+          <div className='send-options'>
+            <button
+              onClick={landingControl.fileUploadBtnOnClick(landingControl.fileUploadField())}
+              className='btn upload-btn upload'>
+              Upload
+            </button>
+          </div>
+        </div>
+
+        <div success>
+          <span>
+            <i
+              style={{
+                display: 'none'
+              }}
+              className='far fa-check-circle'
+            />
+          </span>
+          <br />
+          <p
+            style={{
+              display: 'none'
+            }}>
+            {shortUrl ? shortUrl : null}
+          </p>
+          <br />
+          <CopyToClipboard
+            text={shortUrl}
+            onCopy={() => {
+              setFormData({ copied: true });
+              setAlert('Link Copied', 'success');
+            }}>
+            <button
+              className='btn'
+              style={{
+                display: 'none'
+              }}>
+              Copy link
+            </button>
+          </CopyToClipboard>
+
+          <button
+            className='btn for-email'
+            style={{
+              display: 'none'
+            }}>
+            Email file
+          </button>
+        </div>
+        <div className='right'>
+          {/* send by email */}
+          <div send-email>
+            <form
+              style={{
+                display: 'none'
+              }}
+              onSubmit={e => {
+                e.preventDefault();
+              }}>
+              <div className='email-field-content'>
+                <p>Email File</p>
+                <input
+                  required
+                  // className='form-control'
+                  type='name'
+                  placeholder='Your Name'
+                  id='name'
+                  name='name'
+                  value={name}
+                  onChange={e => onChange(e)}
+                />
+                <br />
+                <input
+                  required
+                  // className='form-control'
+                  type='email'
+                  placeholder="Receiver's Email"
+                  id='Remail'
+                  name='to'
+                  value={to}
+                  onChange={e => onChange(e)}
+                />
+                <br />
+                <textarea
+                  onChange={e => onChange(e)}
+                  name='message'
+                  id='message'
+                  value={message}
+                  cols={30}
+                  rows={9}
+                  required
+                  placeholder='Message'
+                />
+                <br />
+                <div className='send-options'>
+                  <button className='btn upload-btn send'>Send</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        {/* <div success>
+          <span>
+            <i className='far fa-check-circle' />
+          </span>
+          <br />
+          <button className='btn'>Copy link</button>
+          <button className='btn'>Email file</button>
+        </div> */}
+      </section>
+    </main>
   );
 };
+
 const mapStateToProps = state => ({
   // isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
   uploadstate: state.upload
 });
 export default connect(
   mapStateToProps,
-  { uploadFile, hidelink }
-)(Landing);
+  { uploadFile, sendEmail, setAlert }
+)(NewLanding);
