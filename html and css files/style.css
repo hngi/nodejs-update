@@ -118,6 +118,16 @@ textarea {
   color: #A9A9A9;
 }
 
+.send-options .send {
+  margin: 1em 0;
+  padding: 10px 30px;
+  background-color: #2680EB;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
 .send-options .upload {
   display: block;
   width: 7rem;
@@ -148,4 +158,19 @@ textarea {
   padding: 5px;
   background-color: rgba(38, 128, 235, 0.05);
   color: #2680EB;
+footer {
+  background: rgb(37, 104, 187);
+}
+
+footer p,
+footer a {
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-size: 1.23rem;
+}
+
+footer a {
+  text-decoration: none;
+  padding-left: 0.3rem;
 }
