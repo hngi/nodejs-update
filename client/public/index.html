@@ -32,47 +32,27 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
     <link rel="apple-touch-icon" href="logo192.png" />
-
+    
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
- 
-  <title>XSHARE</title>
+
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150684402-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-150684402-1');
+  </script>
+
+
+<title>XSHARE</title>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  <script>
-    // // email field
-const sendEmailField = document.querySelector('[send-email]');
-
-// success field
-const successField = document.querySelector('[success]');
-
-// email button
-const sendByEmailBtn = document.querySelector('.for-email');
-
-// 
-const fileUploadField = document.querySelector('[upload-file]');
-
-// 
-const fileUploadBtn = document.querySelector('.upload-btn');
-
-fileUploadBtn.addEventListener('click', () => {
-     fileUploadField.style.display = 'none';
-     successField.style.display = 'block';
-});
-
-// // email send
-sendByEmailBtn.addEventListener('click', () => {
-    sendEmailField.style.display = 'block';
-    successField.style.display = 'none'
-});
-
-function thisFileUpload() {
-  document.getElementById("file").click();
-};
-  </script>
 </body>
-
 
 </html>

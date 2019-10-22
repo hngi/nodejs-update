@@ -8,7 +8,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 1em 2em;
-  margin-top: 2em;
+  /* margin-top: 2em; */
 }
 
 nav a {
@@ -42,7 +42,7 @@ nav a span {
   font-weight: bold;
   font-size: 2em;
   padding: 0 2em 1em 0;
-  color: #2680EB;
+  color: #2680eb;
 }
 
 .left .text {
@@ -51,7 +51,7 @@ nav a span {
 
 .left .text p {
   line-height: 1.5em;
-  color: #A9A9A9;
+  color: #a9a9a9;
 }
 
 .right {
@@ -73,14 +73,14 @@ nav a span {
 }
 
 .email-field-content p {
-  color: #2680EB;
+  color: #2680eb;
 }
 
 input,
 textarea {
   width: 50%;
   margin-top: 1.5em;
-  border: 1px solid #A9A9A9;
+  border: 1px solid #a9a9a9;
   border-radius: 5px;
   padding: 15px;
 }
@@ -88,20 +88,21 @@ textarea {
 .btn {
   margin: 1em 0;
   padding: 10px 30px;
-  background-color: #2680EB;
+  background-color: #2680eb;
   color: #ffffff;
   border: 2px solid #ffffff;
   font-weight: bold;
   border-radius: 5px;
 }
 
-[upload-file], [success] {
+[upload-file],
+[success] {
   margin: 7em 0 0 3em;
 }
 
 .ion-md-add-circle {
   background: white;
-  color: #2680EB;
+  color: #2680eb;
   font-size: 60px;
 }
 
@@ -111,18 +112,18 @@ textarea {
 }
 
 .center {
-  text-align: center
+  text-align: center;
 }
 
 .u-text {
   line-height: 1.5em;
-  color: #A9A9A9;
+  color: #a9a9a9;
 }
 
 .send-options .send {
   margin: 1em 0;
   padding: 10px 30px;
-  background-color: #2680EB;
+  background-color: #2680eb;
   color: #ffffff;
   border: 2px solid #ffffff;
   font-weight: bold;
@@ -135,7 +136,7 @@ textarea {
   text-align: center;
   margin: auto;
   padding: 10px 30px;
-  background-color: #2680EB;
+  background-color: #2680eb;
   color: #ffffff;
   border: 2px solid #ffffff;
   font-weight: bold;
@@ -147,10 +148,10 @@ textarea {
   text-align: center;
 }
 
-[success] span i {
+i.far.fa-check-circle {
   font-size: 6em;
   margin-bottom: 0.5em;
-  color: #2680EB;
+  color: #2680eb;
 }
 
 [success] p {
@@ -158,7 +159,7 @@ textarea {
   display: inline-block;
   padding: 5px;
   background-color: rgba(38, 128, 235, 0.05);
-  color: #2680EB;
+  color: #2680eb;
 }
 footer {
   background: rgb(37, 104, 187);
