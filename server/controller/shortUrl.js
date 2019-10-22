@@ -16,11 +16,11 @@ const ShortenLink = {
         // shortUrl: `http://localhost:4000/${shortUrlParam}`
       });
       createShortUrl.save();
-      
+
       res.json({
         success: true,
         message: 'Link shortened successfully',
-        shortCode:shortUrlParam,
+        shortCode: shortUrlParam,
         shortUrl: createShortUrl.shortUrl,
         longUrl: cloudinaryUrl
       });
@@ -33,11 +33,10 @@ const ShortenLink = {
   },
   async redirectShortenUrl(req, res) {
     try {
-      // const { cloudinaryUrl } = res.locals;
+      const { cloudinaryUrl } = res.locals;
+      
       res.redirect(cloudinaryUrl);
-      console.log('success')
     } catch (error) {
-      console.log(error)
       res.json({
         success: true,
         message: error.message
