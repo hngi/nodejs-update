@@ -26,3 +26,5 @@ exports.removeshortUrl = function(req, res, next) {
         });
     });
 };
+
+module.exports = crud;
