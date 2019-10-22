@@ -16,16 +16,18 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <Navbar />
-        <Alert />
-        <Switch>
-          {/* <Route exact path='/' component={Landing} /> */}
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/privacy" component={Privacy} />
-          <Route exact path="/team" component={Team} />
-          <Route component={NotFound} />
-        </Switch>
-        <Footer />
+        <div className="d-flex flex-column">
+          <Navbar />
+          <Alert />
+          <Switch>
+            {/* <Route exact path='/' component={Landing} /> */}
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/privacy" component={Privacy} />
+            <Route exact path="/team" component={Team} />
+            <Route component={NotFound} />
+          </Switch>
+          <Footer />
+        </div>
       </Router>
     </Provider>
   );
