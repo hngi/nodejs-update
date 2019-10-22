@@ -23,6 +23,7 @@ router.post(
   uploadFile,
   shortenLink.shortenUrl,
 );
+router.get('/get', shortUrl.getshorturls);
 router.delete('/remove/:id',shortUrl.removeshortUrl);
 
 module.exports = router;
