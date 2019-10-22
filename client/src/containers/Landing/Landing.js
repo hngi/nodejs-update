@@ -87,7 +87,7 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
           </div>
           <div className='send-options'>
             <button
-              onClick={landingControl.fileUploadBtnOnClick(landingControl.fileUploadField())}
+              // onClick={landingControl.fileUploadBtnOnClick(landingControl.fileUploadField())}
               className='btn upload-btn upload'>
               Upload
             </button>
