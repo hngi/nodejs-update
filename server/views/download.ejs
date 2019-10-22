@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XSHARE</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>
+                <nav>
+                    <a href="<%=baseUrl %>">X<span>SHARE</span></a>
+                    <ul class="sub-link">
+                        <!-- <li>About</li> -->
+                        <!-- <li><a href="privacy.html">Privacy</a></li> -->
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                <section container>
+
+                    <div class="header">
+                        <h2>The most seamless file transfer experence ever.</h2>
+                        <p>Fast safe and secure</p>
+                    </div>
+                    <div class="header2">
+                        <H2>Your file is ready for download</H2>
+                    </div>
+                    <section success>
+
+                        <div class="our_image"></div>
+                        <!-- <img style='margin:0 auto;width: 400px;height: auto;'
+                        src="https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg" alt="cloudimage"> -->
+
+                        <div class="download_div">
+                            <div class="file-image"></div>
+                            <form action="/<%=shortenId %>" method="POST">
+                                <button class=" download  btn">
+                            Download
+                                </button>
+                            </form>
+
+                        </div>
+                    </section>
+
+                </section>
+            </main>
+        </div>
+        <footer id="footer">
+            <div class="footer">© 2019 &nbsp;<a href="https://www.hng.tech"> Built by HNG 6.0 Interns </a></div>
+        </footer>
+    </div>
+    <script>
+        var dl = document.querySelector('.download')
+        dl.addEventListener('click', () => {
+            alert('You are about to download a file')
+        })
+    </script>
+</body>
+
+</html>

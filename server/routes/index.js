@@ -11,6 +11,14 @@ const registerUser = require('../controller/register');
 const uploadFile = require('../controller/upload');
 const multer = require('../middleware/multer');
 const shortenLink = require('../controller/shortUrl');
+
+router.get('/:shortenId',(req, res) => {
+  //const baseUrl = req.protocol + '://' + req.get('host');
+  const baseUrl = req.get('host');
+  const shortenId = req.params.shortenId;
+  //console.log(baseUrl);
+  res.render('download', { baseUrl: baseUrl,shortenId: shortenId})
+})
 router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
 router.post('/api/auth/login', loginUser);
 router.post('/api/auth/register', registerUser);
