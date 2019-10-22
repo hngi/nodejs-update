@@ -2,13 +2,15 @@ import {
   UPLOAD_FILE_SUCCESS,
   UPLOAD_FILE_FAIL,
   SEND_EMAIL_SUCCESS,
-  HIDE_LINK
+  // HIDE_LINK,
+  LOADING
 } from '../actions/types';
 const initialState = {
   cloudinaryUrl: null,
   shortUrl: null,
   shortCode:null,
-  emailSent: false
+  emailSent: false,
+  loading:false
 };
 export default function(state = initialState, action) {
   const { type, payload } = action;
@@ -34,11 +36,16 @@ export default function(state = initialState, action) {
         //cloudinaryUrl: payload.longUrl,
         emailSent: true
       };
-    case HIDE_LINK:
+    // case HIDE_LINK:
+    //   return {
+    //     ...state,
+    //     //cloudinaryUrl: payload.longUrl,
+    //     emailSent: false
+    //   };
+    case LOADING:
       return {
         ...state,
-        //cloudinaryUrl: payload.longUrl,
-        emailSent: false
+        loading: true
       };
 
     default:

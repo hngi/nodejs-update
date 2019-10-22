@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import landingControl from './index'
+import landingControl from './index';
 import './Landing.css';
 import { connect } from 'react-redux';
 
@@ -68,6 +68,7 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
               onClick={landingControl.thisFileUpload}
               className='circular-plus center'>
               <input
+                required
                 name='file'
                 type='file'
                 id='file'
@@ -87,8 +88,18 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
           </div>
           <div className='send-options'>
             <button
-              // onClick={landingControl.fileUploadBtnOnClick(landingControl.fileUploadField())}
+              onClick={() => {
+                {
+                  file === ''
+                    ? setAlert('Please upload a file', 'danger')
+                    : setFormData({ isLoading: true });
+                  uploadFile(file);
+                }
+              }}
               className='btn upload-btn upload'>
+              {isLoading ? (
+                <i className='fa fa-circle-o-notch text-white spin-loader' />
+              ) : null}
               Upload
             </button>
           </div>
@@ -104,12 +115,13 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
             />
           </span>
           <br />
-          <p
-            style={{
-              display: 'none'
-            }}>
+          <h6
+          // style={{
+          //   display: 'none'
+          // }}
+          >
             {shortUrl ? shortUrl : null}
-          </p>
+          </h6>
           <br />
           <CopyToClipboard
             text={shortUrl}
@@ -119,18 +131,20 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
             }}>
             <button
               className='btn'
-              style={{
-                display: 'none'
-              }}>
+              // style={{
+              //   display: 'none'
+              // }}
+            >
               Copy link
             </button>
           </CopyToClipboard>
 
           <button
             className='btn for-email'
-            style={{
-              display: 'none'
-            }}>
+            // style={{
+            //   display: 'none'
+            // }}
+          >
             Email file
           </button>
         </div>
@@ -138,11 +152,13 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
           {/* send by email */}
           <div send-email>
             <form
-              style={{
-                display: 'none'
-              }}
+              // style={{
+              //   display: 'none'
+              // }}
               onSubmit={e => {
                 e.preventDefault();
+                sendEmail(name, to, message, shortUrl);
+                setAlert(`The file was sent to ${to} successfully`, 'success');
               }}>
               <div className='email-field-content'>
                 <p>Email File</p>
@@ -200,7 +216,6 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
 };
 
 const mapStateToProps = state => ({
-  // isSignedInWithGoogle: state.auth.isSignedInWithGoogle,
   uploadstate: state.upload
 });
 export default connect(
