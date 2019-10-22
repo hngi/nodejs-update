@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import landingControl from './index';
 import './Landing.css';
 import { connect } from 'react-redux';
-
+import {Link} from 'react-router-dom'
 import { uploadFile, sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
@@ -12,24 +12,24 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
     to: '',
     message: '',
     file: '',
-    copied: false,
+    // copied: false,
     isLoading: false
   });
 
-  const clearState = () => {
-    setFormData({
-      name: '',
-      message: '',
-      to: '',
-      file: '',
-      value: '',
-      copied: false,
-      isLoading: false
-    });
-  };
+  // const clearState = () => {
+  //   setFormData({
+  //     name: '',
+  //     message: '',
+  //     to: '',
+  //     file: '',
+  //     value: '',
+  //     copied: false,
+  //     isLoading: false
+  //   });
+  // };
 
   const { name, message, to, file, copied, isLoading } = formData;
-  console.log(formData);
+  // console.log(formData);
   const onChange = e => {
     setFormData({
       ...formData,
@@ -76,9 +76,9 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
                 onChange={e => onChange(e)}
                 style={{ display: 'none' }}
               />
-              <a value='upload'>
+              <Link to='#' value='upload'>
                 <i className='icon ion-md-add-circle' />
-              </a>
+              </Link>
             </div>
             <h3 className='center u-text'>Add a file</h3>
             <p className='center u-text'>
@@ -108,9 +108,9 @@ const NewLanding = ({ uploadFile, sendEmail, uploadstate, setAlert }) => {
         <div success>
           <span>
             <i
-              style={{
-                display: 'none'
-              }}
+              // style={{
+              //   display: 'none'
+              // }}
               className='far fa-check-circle'
             />
           </span>
