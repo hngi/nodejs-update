@@ -1,0 +1,16 @@
+footer {
+  background: rgb(37, 104, 187);
+}
+
+footer p,
+footer a {
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-size: 1.23rem;
+}
+
+footer a {
+  text-decoration: none;
+  padding-left: 0.3rem;
+}
