@@ -1,6 +1,5 @@
 const shortid = require('shortid');
 const ShortLink = require('../models/ShortenLink');
-const sendEmail = require('../middleware/sendEmail');
 const request = require('request');
 const path = require('path');
 const url = require('url');
@@ -46,7 +45,7 @@ const ShortenLink = {
   async downloadShortenUrl(req, res) {
     try {
       const { cloudinaryUrl } = res.locals;
-      res.setHeader('Content-Disposition', `attachment; filename=file.png`);
+      res.setHeader('Content-Disposition', `attachment; filename=file`);
       request(cloudinaryUrl)
         .once('data', data => {
           console.log(data);
