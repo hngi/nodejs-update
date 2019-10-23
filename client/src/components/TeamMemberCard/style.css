@@ -15,7 +15,7 @@
   border-radius: 50%;
 }
 .team-member-name {
-  font-size: 32px;
+  font-size: 25px;
   line-height: 48px;
   color: var(--color-blue);
   margin: 0px !important;
@@ -24,7 +24,7 @@
 
 .team-member-role,
 .team-member-email {
-  font-size: 21px;
+  font-size: 17px;
   line-height: 28px;
   color: #a9a9a9;
   margin: 0px !important;
