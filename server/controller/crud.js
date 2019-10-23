@@ -1,5 +1,6 @@
  
- shortUrls = require('../helpers/dao');
+ var shortUrls = require('../helpers/dao');
+ 
 
 exports.getshorturls = function(req, res, next) {
     shortUrls.get({}, function(err, shortUrls) {
@@ -26,3 +27,4 @@ exports.removeshortUrl = function(req, res, next) {
         });
     });
 };
+ 

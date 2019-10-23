@@ -12,4 +12,4 @@ urlShortenSchema.statics = {
     }
 };
 
-module.exports = urlShortenSchema;
+module.exports = function urlShortenSchema (){};

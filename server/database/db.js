@@ -2,7 +2,7 @@ let mongoose = require('mongoose');
 require('dotenv').config();
 const {
   DB_URL
-} = process.env
+} = process.env;
 
 class Database {
   constructor() {

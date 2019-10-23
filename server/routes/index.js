@@ -11,7 +11,7 @@ const registerUser = require('../controller/register');
 const uploadFile = require('../controller/upload');
 const multer = require('../middleware/multer');
 const shortenLink = require('../controller/shortUrl');
-const shortUrl = require('../controller/crud.js');
+
 router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
 
 router.get('/:shortenId', findShortenUrl,(req, res) => {
@@ -30,7 +30,4 @@ router.post(
   uploadFile,
   shortenLink.shortenUrl
 );
-router.get('/get', shortUrl.getshorturls);
-router.delete('/remove/:id',shortUrl.removeshortUrl);
-
 module.exports = router;
