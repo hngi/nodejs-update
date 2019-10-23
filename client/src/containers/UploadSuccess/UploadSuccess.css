@@ -23,6 +23,12 @@
 .right-section-success {
   width: 400px;
 }
+.share {
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #a9a9a9;
+}
 
 @media (max-width: 900px) {
   .right-section-success {
