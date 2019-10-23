@@ -23,7 +23,7 @@ body {
 }
 
 main.wrapper {
-  padding-top: 100px;
+  padding-top: 85px;
   padding-bottom: 100px;
 }
 
@@ -60,6 +60,6 @@ main.wrapper {
   }
 
   main.wrapper {
-    padding-top: 65px;
+    padding-top: 100px !important;
   }
 }
