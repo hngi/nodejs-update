@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Landing.css';
 import { connect } from 'react-redux';
 import { uploadFile } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
-import { iconImage, add } from '../../assets/img';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
 
 const NewLanding = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
     file: '',
     show: false,
-    isLoading: false,
     loader: true
   });
-  const { file, show, isLoading } = formData;
+  const { file, show } = formData;
 
   const upload = () => {
     if (file === '' || file === undefined || file === null) {
@@ -44,45 +42,51 @@ const NewLanding = ({ uploadFile, setAlert }) => {
   };
 
   return (
-    <main className="wrapper home-section d-flex justify-content-between align-items-center">
-      <div className="left-section">
-        <h1 className="left-section-title">
+    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
+      <div className='left-section'>
+        <h1 className='left-section-title'>
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className="left-section-content">
+        <h4 className='left-section-content'>
           Fast, Safe and Secure.... <br />
           Simply upload a file and share it via email or a generated link{' '}
         </h4>
-        <img className="left-section-image" src={iconImage} alt="" />
+        <img
+          className='left-section-image'
+          src='https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png'
+          alt=''
+        />
       </div>
-      <div className="right-section d-flex justify-content-center align-items-center">
+      <div className='right-section d-flex justify-content-center align-items-center'>
         {!show ? (
-          <div className="d-flex flex-column align-items-center">
+          <div className='d-flex flex-column align-items-center'>
             <label
-              htmlFor="upload"
-              className="right-section-upload d-flex flex-column justify-content-center align-items-center"
-            >
-              <img src={add} alt="" />
-              <p className="right-section-title mt-2">Add a file</p>
-              <h6 className="right-section-content">
+              htmlFor='upload'
+              className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
+              <img
+                src='https://res.cloudinary.com/busola/image/upload/v1571806132/add.png'
+                alt=''
+              />
+              <p className='right-section-title mt-2'>Add a file</p>
+              <h6 className='right-section-content'>
                 {file ? file.name : null}
               </h6>
               <br />
-              <p className="right-section-content pl-4 pr-4">
+              <p className='right-section-content pl-4 pr-4'>
                 {''} ( max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .docx .pdf
                 .gif files are supported)
               </p>
             </label>
             <input
-              type="file"
-              name="file"
+              type='file'
+              name='file'
               onChange={e => onChange(e)}
-              className="input-file"
-              id="upload"
+              className='input-file'
+              id='upload'
             />
-            <button className="upload-btn mt-4" onClick={upload}>
+            <button className='upload-btn mt-4' onClick={upload}>
               Upload
             </button>
           </div>
