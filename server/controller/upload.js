@@ -14,7 +14,7 @@ const upload = (req, res, next) => {
         next();
       })
       .catch(err => {
-        res.json({
+        res.status(400).json({
           message: "Something went wrong while processing your request",
           success: false,
           data: {

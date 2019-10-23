@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start-dev": "nodemon index.js"
+    "start-dev": "nodemon index.js",
+    "test": "nyc mocha tests",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,12 @@
   },
   "homepage": "https://github.com/hngi/nodejs-update#readme",
   "devDependencies": {
-    "nodemon": "^1.19.3"
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.7",
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.3",
+    "nyc": "^14.1.1"
   },
   "dependencies": {
     "@hapi/joi": "^16.1.7",
