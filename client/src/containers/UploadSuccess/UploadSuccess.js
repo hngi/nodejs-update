@@ -63,7 +63,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                   onCopy={() => {
                     setFormData({ copied: true });
                     shortUrl === null
-                      ? setAlert('Clipboard is empty', 'success')
+                      ? setAlert('Clipboard is empty', 'danger')
                       : setAlert('Link Copied', 'success');
                   }}
                 >
