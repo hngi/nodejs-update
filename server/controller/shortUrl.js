@@ -11,8 +11,8 @@ const ShortenLink = {
       const createShortUrl = await new ShortLink({
         cloudinaryUrl,
         shortUrlParam,
-        // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
-        shortUrl: `http://localhost:4000/${shortUrlParam}`
+        shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
+        // shortUrl: `http://localhost:4000/${shortUrlParam}`
       });
       createShortUrl.save();
 
