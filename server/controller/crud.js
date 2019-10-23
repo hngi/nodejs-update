@@ -1,5 +1,5 @@
-
- shortUrls = require('../DataAccessObject/DAO');
+ 
+ shortUrls = require('../helpers/dao');
 
 exports.getshorturls = function(req, res, next) {
     shortUrls.get({}, function(err, shortUrls) {

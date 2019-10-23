@@ -1,0 +1,15 @@
+let mongoose = require('mongoose');
+const urlShortenSchema = require('../models/ShortenLink');
+
+urlShortenSchema.statics = {
+
+    get: function(query, cb) {
+        this.find(query, cb);
+    },
+
+    delete: function(query, cb) {
+        this.findOneAndDelete(query,cb);
+    }
+};
+
+module.exports = urlShortenSchema;

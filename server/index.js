@@ -11,7 +11,6 @@ const router = require('./routes');
 const bodyParserJSON = bodyParser.json();
 const bodyParserURLEncoded = bodyParser.urlencoded({extended:true});
 
-db();
 
 // cloudinary import
 const { urlencoded, json } = require('body-parser');
