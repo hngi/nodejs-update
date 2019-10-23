@@ -10,10 +10,11 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
     name: '',
     to: '',
     message: '',
+    loading: false,
     show: false
   });
 
-  const { name, message, to, show } = formData;
+  const { name, message, to, show, loading } = formData;
   const email = () => {
     setFormData({ show: true });
   };
@@ -25,8 +26,12 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   };
   const onFormSubmit = e => {
     e.preventDefault();
+    setFormData({ loading: true, show: true, name: '', to: '', message: '' });
     sendEmail(name, to, message, shortUrl);
-    setAlert(`The file was sent to ${to} successfully`, 'success');
+    setTimeout(() => {
+      setAlert(`The file was sent to ${to} successfully`, 'success');
+      setFormData({ loading: false, show: true });
+    }, 3000);
   };
   const shortUrl = uploadstate.shortUrl;
 
@@ -56,7 +61,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                   <button className='upload-btn mt-4 mr-3'>Copy Link</button>
                 </CopyToClipboard>
                 <button className='upload-btn mt-4' onClick={email}>
-                  Email File
+                  Email Link
                 </button>
               </div>
             </>
@@ -66,7 +71,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
         </div>
       ) : (
         <div className='right-section-success d-flex flex-column justify-content-center'>
-          <h3 className='email-title'>Email File</h3>
+          <h3 className='email-title'>Email Link</h3>
           <form onSubmit={onFormSubmit}>
             <input
               type='text'
@@ -98,7 +103,11 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               className='form-textarea'
               placeholder='Message'
             />
-            <button className='upload-btn mt-4'>Send</button>
+            {!loading ? (
+              <button className='upload-btn mt-4'>Send</button>
+            ) : (
+              <Loader />
+            )}
           </form>
         </div>
       )}
