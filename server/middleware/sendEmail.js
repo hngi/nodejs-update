@@ -14,7 +14,10 @@ module.exports = sendEmail = async (req, link, res) => {
     }
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     let msg = {
-      from: 'XSHARE',
+      from: {
+        email: Email,
+        name: 'XSHARE'
+      },
       to: to,
       subject: 'File Share',
       text: message,
