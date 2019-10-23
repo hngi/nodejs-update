@@ -11,7 +11,7 @@ import { setAlert } from './alert';
 
 import axios from 'axios';
 // const base_url = 'http://localhost:4000';
-const base_url = 'http://xshare.ga';
+const base_url = 'http://xshare.gq';
 // const base_url = 'https://x-shareserver.herokuapp.com';
 export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({
