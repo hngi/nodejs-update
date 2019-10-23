@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "start-dev": "nodemon index.js",
-    "test": "nyc mocha tests",
+    "test": "nyc mocha tests --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
