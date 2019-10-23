@@ -1,0 +1,38 @@
+.privacy-title {
+  font-size: 50px;
+  line-height: 67px;
+  color: var(--color-blue);
+  font-weight: bold;
+}
+
+.privacy-content-title {
+  font-size: 36px;
+  line-height: 48px;
+  color: var(--color-blue);
+}
+
+.privacy-content-body {
+  font-size: 21px;
+  line-height: 28px;
+  text-align: justify;
+  color: #888888;
+}
+
+@media (max-width: 600px) {
+  .privacy {
+    flex-direction: column;
+  }
+
+  .privacy-title {
+    font-size: 35px;
+    margin-bottom: 20px !important;
+  }
+
+  .privacy-left {
+    width: 100% !important;
+  }
+  .privacy-right {
+    width: 100% !important;
+    margin-left: 0px !important;
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "nodejs-update",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon server --ignore client",
+    "client": "npm start --prefix ../client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start-dev": "nodemon index.js",
+    "test": "nyc mocha tests",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hngi/nodejs-update.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hngi/nodejs-update/issues"
+  },
+  "homepage": "https://github.com/hngi/nodejs-update#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "concurrently": "^5.0.0",
+    "coveralls": "^3.0.7",
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.3",
+    "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "@sendgrid/mail": "^6.4.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.16.0",
+    "cors": "^2.8.5",
+    "cross-env": "^6.0.3",
+    "datauri": "^2.0.0",
+    "dotenv": "^8.1.0",
+    "ejs": "^2.7.1",
+    "ejs-lint": "^0.3.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6-alpha.5",
+    "express-validator": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.5",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.3.1",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "shortid": "^2.2.15",
+    "url": "^0.11.0",
+    "validator": "^11.1.0"
+  }
+}
