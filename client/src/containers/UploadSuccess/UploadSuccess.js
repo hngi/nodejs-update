@@ -33,9 +33,15 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   return (
     <div className=''>
       {!show ? (
-        <div className='right-section-success d-flex flex-column justify-content-center align-items-center'>
+        <div className='right-section-success d-flex flex-column justify-content-center align-items-center success'>
           {shortUrl ? (
             <>
+            <i 
+          onClick={() => {
+            document.querySelector('.right-section').style.display = 'block';
+            document.querySelector('.success').style.display = 'none';
+          }}
+          className="fas fa-chevron-circle-left back"></i>
               <img
                 src='https://res.cloudinary.com/busola/image/upload/v1571806132/success.png'
                 alt=''
@@ -65,7 +71,13 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
           )}
         </div>
       ) : (
-        <div className='right-section-success d-flex flex-column justify-content-center'>
+        <div className='right-section-success d-flex flex-column justify-content-center email'>
+          <i 
+          onClick={() => {
+            document.querySelector('.success').style.display = 'block';
+            document.querySelector('.email').style.display = 'none';
+          }}
+          className="fas fa-chevron-circle-left back"></i>
           <h3 className='email-title'>Email File</h3>
           <form onSubmit={onFormSubmit}>
             <input
