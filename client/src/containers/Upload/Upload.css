@@ -51,6 +51,7 @@
   border-radius: 3px;
   padding: 10px 30px;
   width: 170px;
+  cursor: pointer;
 }
 
 .upload-link {

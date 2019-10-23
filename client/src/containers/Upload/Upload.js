@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './Landing.css';
+import './Upload.css';
 import { connect } from 'react-redux';
 import { uploadFile } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
 
-const NewLanding = ({ uploadFile, setAlert }) => {
+const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
     file: '',
     show: false,
@@ -60,6 +60,7 @@ const NewLanding = ({ uploadFile, setAlert }) => {
         />
       </div>
       <div className='right-section d-flex justify-content-center align-items-center'>
+        
         {!show ? (
           <div className='d-flex flex-column align-items-center'>
             <label
@@ -104,4 +105,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { uploadFile, setAlert }
-)(NewLanding);
+)(Upload);
