@@ -128,6 +128,53 @@ textarea {
   font-size: 60px;
 }
 
+.ion-md-checkmark-circle {
+  background: white;
+  color: #2680eb;
+  font-size: 50px;
+}
+
+
+.ion-logo-whatsapp {
+  background: white;
+  color: #7AD06D;
+  font-size: 35px;
+}
+
+.ion-logo-twitter {
+  background: white;
+  color: #76A9EA;
+  font-size: 35px;
+}
+
+.ion-logo-facebook {
+  background: white;
+  color: #475993;
+  font-size: 35px;
+}
+
+.u-success {
+  color: var(--color-blue);
+  font-weight: 400;
+  margin-bottom: 1.3rem;
+}
+
+.share-w {
+  line-height: 1.5em;
+  color: #a9a9a9 !important;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+}
+
+.social-links a {
+  text-decoration: none;
+  align-self: center;
+  padding: 0 1rem;
+}
+
 .upload-div {
   /* padding-top: 2rem; */
   padding-bottom: 5rem;
@@ -183,6 +230,7 @@ textarea {
   background-color: rgba(38, 128, 235, 0.05);
   color: #2680eb;
 }
+
 footer {
   background: rgb(37, 104, 187);
 }
