@@ -45,7 +45,8 @@ const ShortenLink = {
   async downloadShortenUrl(req, res) {
     try {
       const { cloudinaryUrl } = res.locals;
-      res.setHeader('Content-Disposition', `attachment; filename=file`);
+      let file = res.locals.cloudinaryUrl.slice(48);
+      res.setHeader('Content-Disposition', `attachment; filename=${file}`);
       request(cloudinaryUrl)
         .once('data', data => {
           console.log(data);
