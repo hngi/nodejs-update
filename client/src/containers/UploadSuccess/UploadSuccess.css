@@ -24,6 +24,28 @@
   width: 400px;
 }
 
+.social-icon {
+  font-size: 2em;
+  margin: 0 2em;
+}
+
+.whatsapp {
+  color: #7AD06D;
+}
+
+.twitter {
+  color: #76A9EA;
+}
+
+.facebook {
+  color: #475993;
+}
+
+.option {
+  padding-top: 1em;
+  color: #a9a9a9;
+}
+
 @media (max-width: 900px) {
   .right-section-success {
     width: 100%;

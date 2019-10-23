@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "server": "nodemon server --ignore client",
+    "client": "npm start --prefix ../client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start-dev": "nodemon index.js",
     "test": "nyc mocha tests --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -23,6 +26,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "concurrently": "^5.0.0",
     "coveralls": "^3.0.7",
     "mocha": "^6.2.2",
     "nodemon": "^1.19.3",

@@ -20,5 +20,6 @@ A file sharing application that shares any kind of file through your email or co
 * Upload file
 *  Send as email
 *  Copy as a link
+*  Share on social platforms
 
 

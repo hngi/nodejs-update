@@ -36,12 +36,12 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
         <div className='right-section-success d-flex flex-column justify-content-center align-items-center success'>
           {shortUrl ? (
             <>
-            <i 
+            {/* <i 
           onClick={() => {
             document.querySelector('.right-section').style.display = 'block';
             document.querySelector('.success').style.display = 'none';
           }}
-          className="fas fa-chevron-circle-left back"></i>
+          className="fas fa-chevron-circle-left back"></i> */}
               <img
                 src='https://res.cloudinary.com/busola/image/upload/v1571806132/success.png'
                 alt=''
@@ -65,6 +65,12 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                   Email File
                 </button>
               </div>
+              <p className='option'>or share with</p>
+                <div className='d-flex justify-content-center align-items-center'>
+                <a href="#" className="social-icon whatsapp"><i class="fab fa-whatsapp fa-lg"></i></a>
+                <a href="#" className="social-icon twitter"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" className="social-icon facebook"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
             </>
           ) : (
             <Loader />
