@@ -104,7 +104,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                 <a
                   target='_blank'
                   rel='noopener noreferrer'
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${shortUrl} ${clipText}&amp;src=sdkpreparse`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${shortUrl}&amp;src=sdkpreparse`}
                   className='socials'>
                   <img
                     className='social-icon'
