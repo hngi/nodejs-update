@@ -52,7 +52,7 @@ app.use(function(req, res, next) {
 // use express router
 app.use('/api',Router);
 
-//call heros routing
+//call dao routing
 daorouter(Router);
 
 mongoose.set('useCreateIndex', true);
