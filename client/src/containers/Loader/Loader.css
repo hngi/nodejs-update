@@ -1,0 +1,9 @@
+.loader {
+  width: 300px;
+}
+
+@media (max-width: 600px) {
+  .loader {
+    width: 100% !important;
+  }
+}

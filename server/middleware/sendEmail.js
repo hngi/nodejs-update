@@ -7,14 +7,17 @@ module.exports = sendEmail = async (req, link, res) => {
   try {
     const { name, to, message, link } = req.body;
     if (name == '' || undefined || to == '' || undefined) {
-      return res.json({
+      return res.status(400).json({
         message: 'Input fields are required',
         success: false
       });
     }
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     let msg = {
-      from: Email,
+      from: {
+        email: Email,
+        name: 'XSHARE'
+      },
       to: to,
       subject: 'File Share',
       text: message,

@@ -1,34 +1,20 @@
 import React, { useState } from 'react';
 import './UploadSuccess.css';
 import { connect } from 'react-redux';
-import { success } from '../../assets/img';
 import { sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
+import Loader from '../Loader/Loader';
 const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
     to: '',
     message: '',
-    show: false,
-    value: '',
-    copied: false,
-    isLoading: false
+    loading: false,
+    show: false
   });
 
-  // const clearState = () => {
-  //   setFormData({
-  //     name: '',
-  //     message: '',
-  //     to: '',
-  //     file: '',
-  //     value: '',
-  //     copied: false,
-  //     isLoading: false
-  //   });
-  // };
-
-  const { name, message, to, copied, show, value, isLoading } = formData;
+  const { name, message, to, show, loading } = formData;
   const email = () => {
     setFormData({ show: true });
   };
@@ -38,10 +24,14 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
       [e.target.name]: e.target.value
     });
   };
-  const onFormSubmit = (e) => {
+  const onFormSubmit = e => {
     e.preventDefault();
+    setFormData({ loading: true, show: true, name: '', to: '', message: '' });
     sendEmail(name, to, message, shortUrl);
-    setAlert(`The file was sent to ${to} successfully`, 'success');
+    setTimeout(() => {
+      setAlert(`The file was sent to ${to} successfully`, 'success');
+      setFormData({ loading: false, show: true });
+    }, 3000);
   };
   const shortUrl = uploadstate.shortUrl;
 
@@ -50,38 +40,38 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
       {!show ? (
         <div className='right-section-success d-flex flex-column justify-content-center align-items-center'>
           {shortUrl ? (
-            <div className=''>
-              {' '}
-              <img src={success} alt='' />
+            <>
+              <img
+                src='https://res.cloudinary.com/busola/image/upload/v1571806132/success.png'
+                alt=''
+              />
               <p className='upload-success'>Upload Success</p>
-            </div>
-          ) : null}
-
-          <div className='mt-2 upload-link' id='upload-link'>
-            {shortUrl ? shortUrl : null}
-          </div>
-
-          {shortUrl ? (
-            <div className='d-flex justify-content-center align-items-center'>
-              <CopyToClipboard
-                text={shortUrl}
-                onCopy={() => {
-                  setFormData({ copied: true });
-                  shortUrl === null
-                    ? setAlert('Clipboard is empty', 'success')
-                    : setAlert('Link Copied', 'success');
-                }}>
-                <button className='upload-btn mt-4 mr-3'>Copy Link</button>
-              </CopyToClipboard>
-              <button className='upload-btn mt-4' onClick={email}>
-                Email File
-              </button>
-            </div>
-          ) : null}
+              <div className='mt-2 upload-link' id='upload-link'>
+                {shortUrl}
+              </div>
+              <div className='d-flex justify-content-center align-items-center'>
+                <CopyToClipboard
+                  text={shortUrl}
+                  onCopy={() => {
+                    setFormData({ copied: true });
+                    shortUrl === null
+                      ? setAlert('Clipboard is empty', 'danger')
+                      : setAlert('Link Copied', 'success');
+                  }}>
+                  <button className='upload-btn mt-4 mr-3'>Copy Link</button>
+                </CopyToClipboard>
+                <button className='upload-btn mt-4' onClick={email}>
+                  Email Link
+                </button>
+              </div>
+            </>
+          ) : (
+            <Loader />
+          )}
         </div>
       ) : (
         <div className='right-section-success d-flex flex-column justify-content-center'>
-          <h3 className='email-title'>Email File</h3>
+          <h3 className='email-title'>Email Link</h3>
           <form onSubmit={onFormSubmit}>
             <input
               type='text'
@@ -113,7 +103,11 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               className='form-textarea'
               placeholder='Message'
             />
-            <button className='upload-btn mt-4'>Send</button>
+            {!loading ? (
+              <button className='upload-btn mt-4'>Send</button>
+            ) : (
+              <Loader />
+            )}
           </form>
         </div>
       )}
