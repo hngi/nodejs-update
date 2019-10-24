@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="">
+	<style>
+		#dropFileForm{
+			margin:16px;
+			text-align:center;
+			border-radius:8px;
+			overflow:hidden;
+			transition:5s;
+		}
+
+		#dropFileForm #FileLabel{
+			background-color: rgba(0,255,0,0.5);
+			display:block;
+			padding: 16px;
+			position:relative;
+			cursor:pointer;
+		}
+
+		#dropFileForm #FileInput{
+			display:none;
+		}
+
+		#dropFileForm #FileLabel:after,
+		#dropFileForm #FileLabel:before{
+			position:absolute;
+			content:"";
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
+			background-color: #97ebdb;
+			z-index:-2;
+			border-radius:8px 8px 0 0;
+		}
+
+		#dropFileForm #FileLabel:before{
+			z-index:-1
+			background:repeating-linear-gradient(45deg,
+				transparent 5%,
+				black 5%,
+				black 10%);
+			opacity: 0;
+			transition:.5s;
+		}
+
+		#dropFileForm.fileHover #FileLabel:before{
+			opacity: .25
+		}
+
+
+		#dropFileForm .uploadButton{
+			border:0;
+			outline:0;
+			width:100%;
+			padding:8px;
+			background-color:royalblue;
+			color:#fff;
+			cursor:pointer;
+		}
+		
+		#dropFileForm.filHover{
+			box-shadow:0 0 16px royalblue;
+		}
+
+	</style>
+</head>
+<body>
+	<form id="dropFileForm" action="" method="post" onsubmit="uploadFiles(event)">
+		<input type="file" name="files[]" id="fileInput" multiple oncharge="addFiles(event)">
+
+		<label for="fileInput" id="FileLabel" 
+		ondragover="overrideDefault(event);fileHover();" 
+		ondragenter="overrideDefault(event);fileHover();"
+		ondragleave="overrideDefault(event);fileHoverEnd();" 
+		ondrop="overrideDefault(event)fileHoverEnd();addFiles(event)"> 			
+			<i class="fa fa-download fa-5x"></i>
+			<br>
+			<span id="FileLabelText">
+				Choose a file or drag it here
+			</span>
+			<br>
+			<span id="uploadStatus"></span>
+		</label>
+
+		<input type="submit" value="Upload" class="uploadButton">
+	</form>	
+
+	<script type="text/javascript">
+		var dropFileForm=document.getElementById("dropFileForm");
+		var fileLabelText=document.getElementById("fileLabelText");
+		var uploadStatus=document.getElementById("uploadStatus");
+		var fileInput=document.getElementById("fileInput");
+		var droppedFiles;
+		function overrideDefault(event) {
+			// body...
+			event.preventDefault();
+			event.stopPropagation();
+		}
+		function fileHover(){
+			dropFileForm.classList.add("fileHover");
+		}
+
+		function fileHoverEnd(){
+			dropFileForm.classList.remove("fileHover");
+		}
+		function addFiles(event){
+			droppedFiles=event.target.files || event.datatransfer.files;
+			showFiles(dropppedFiles);
+		}
+
+		function showFiles(files){
+			if(files.length > 1){
+				fileLabelText.innerText=files.length + :files selected
+			}
+			else{
+				fileLabelText.innerText=files[0].name;
+			}
+		}
+
+		function uploadFiles(event){
+			event.preventDefault();
+			changeStatus("Uploading.....");
+
+			var formData=new FormData();
+
+			for(var i=0,file; file=droppedFiles[i]; i++){
+				formData.append(fileInput.name,file,file.name)
+			}
+			var xhr-new XMLHttpRequest();
+			xhr.onreadystatechange=function(data){
+				//handle server response and change status of 
+				//upload process via changeStatus(text)
+			}
+			xhr.open(dropFileForm.method,dropFileForm.action,true);
+				xhr.send(formData);
+		}
+
+		function changeStatus(text){
+			uploadStatus,innerText=text;
+		}
+	</script>
+
+
+</body>
