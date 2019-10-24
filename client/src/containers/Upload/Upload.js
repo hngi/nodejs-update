@@ -56,8 +56,8 @@ const Upload = ({ uploadFile, setAlert }) => {
         </h1>
         <h4 className="left-section-content">
           Fast, Safe and Secure.... <br />
-          Enter your Name and Receiver's email and upload file(s).{' '}
-        </h4>
+          Simply upload a file and share it via email or a generated link{' '}        
+         </h4>
         <img
           className="left-section-image"
           src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
