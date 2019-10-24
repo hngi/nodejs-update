@@ -5,6 +5,7 @@ import { sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
 import Loader from '../Loader/Loader';
+import EmailLoader from '../Loader/EmailLoader';
 const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -159,7 +160,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
             {!loading ? (
               <button className="upload-btn mt-4">Send</button>
             ) : (
-              <Loader />
+              <EmailLoader />
             )}
           </form>
         </div>
