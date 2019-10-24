@@ -96,5 +96,12 @@
     "name": "Mike Attara",
     "role": "Team Member, DevOps",
     "email": "mpyebattara@gmail.com"
+  },
+  {
+    "id": 15,
+    "image": "https://res.cloudinary.com/dqqrgidob/image/upload/v1566854238/bkzAHsJ2_400x400_1_z8dm6t.jpg",
+    "name": "Akinbode Weezykon",
+    "role": "Team Member, Backend",
+    "email": "weezykon@gmail.com"
   }
 ]

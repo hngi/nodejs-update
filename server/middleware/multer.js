@@ -7,9 +7,9 @@ const storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {
   let extname = file.originalname
     .toLowerCase()
-    .match(/.(jpeg|jpg|png|gif|mp3|mp4|fig|docx|pdf|zip|xlsx)$/);
+    .match(/.(jpeg|jpg|png|gif|mp3|mp4|fig|docx|pdf|zip|xlsx|avi|mkv|apk)$/);
   let mimetype = file.mimetype.match(
-    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx)$/
+    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx|avi|mkv|apk)$/
   );
   if (mimetype && extname) {
     cb(null, true);
@@ -31,7 +31,7 @@ const fileFilter = (req, file, cb) => {
 const multerUploads = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 20
+    fileSize: 1024 * 1024 * 1024 * 2
   },
   fileFilter: fileFilter
 }).single("file");
