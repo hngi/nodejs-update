@@ -3,7 +3,7 @@
     "id": 1,
     "image": "https://res.cloudinary.com/busola/image/upload/v1568640962/bee.jpg",
     "name": "Codedcoder",
-    "role": "Team Lead, Backend",
+    "role": "Team Lead, Full Stack",
     "email": "codedcoderrr@gmail.com"
   },
   {
@@ -52,7 +52,7 @@
     "id": 8,
     "image": "https://res.cloudinary.com/dvbwpicno/image/upload/v1566490977/a2mccwbm3cf0fm9rfdeu.png",
     "name": "Mohammed Ibrahim",
-    "role": "Team Member, Backend",
+    "role": "Team Member, Frontend",
     "email": "ibrahimdamy7@gmail.com"
   },
   {
@@ -85,9 +85,16 @@
   },
   {
     "id": 13,
-    "image": "https://res.cloudinary.com/tmayor/image/upload/v1566639151/myHNGinternship/myP_r4qejl.jpg",
-    "name": "Timothy Mayor",
-    "role": "Team Member, Devops",
-    "email": "timothymayor24@gmail.com"
+    "image": "https://res.cloudinary.com/db8l65lvv/image/upload/v1571589508/udofia.jpg",
+    "name": "Udofia Abasiodiong",
+    "role": "Team Member, Backend",
+    "email": "enalsy22@gmail.com"
+  },
+  {
+    "id": 14,
+    "image": "https://res.cloudinary.com/mikeattara/image/upload/v1567070455/me.jpg",
+    "name": "Mike Attara",
+    "role": "Team Member, DevOps",
+    "email": "mpyebattara@gmail.com"
   }
 ]

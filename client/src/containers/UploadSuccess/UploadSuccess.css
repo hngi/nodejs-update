@@ -29,6 +29,9 @@
   text-align: center;
   color: #a9a9a9;
 }
+.socials:hover {
+  transform: scale(1.15);
+}
 
 @media (max-width: 900px) {
   .right-section-success {
