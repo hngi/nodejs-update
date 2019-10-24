@@ -73,7 +73,18 @@ const Upload = ({ uploadFile, setAlert }) => {
               htmlFor='upload'
               className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
               {isDragActive ? (
-                <p>Drop the file here...</p>
+                <div
+                  style={{ background: 'rgba(38,128,235,0.5)' }}
+                  {...getRootProps()}
+                  className='d-flex flex-column align-items-center'>
+                  <label
+                    htmlFor='upload'
+                    className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
+                    <p style={{ color: 'rgba(0,0,0,0.4)' }}>
+                      Drop the file here...
+                    </p>
+                  </label>
+                </div>
               ) : (
                 <>
                   {' '}
