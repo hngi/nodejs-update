@@ -33,9 +33,9 @@ module.exports = sendEmail = async (req, link, res) => {
       </div>`
     };
 
-    emailCollection.find({username:to},(err,email)=>{
+    emailCollection.find({email:to},(err,email)=>{
       if(!email){
-        emailCollection.create({username:to},(err,email)=>{
+        emailCollection.create({email:to},(err,email)=>{
           if(err){
             console.log('something went wrong')
           }else{
