@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
 import './Upload.css';
 import { connect } from 'react-redux';
 import { uploadFile } from '../../actions/upload';
@@ -41,6 +42,10 @@ const Upload = ({ uploadFile, setAlert }) => {
     });
   };
 
+  const onDrop = useCallback(File => {
+    setFormData({ file: File[0] });
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
     <main className='wrapper home-section d-flex justify-content-between align-items-center'>
       <div className='left-section'>
@@ -60,27 +65,38 @@ const Upload = ({ uploadFile, setAlert }) => {
         />
       </div>
       <div className='right-section d-flex justify-content-center align-items-center'>
-        
         {!show ? (
-          <div className='d-flex flex-column align-items-center'>
+          <div
+            {...getRootProps()}
+            className='d-flex flex-column align-items-center'>
             <label
               htmlFor='upload'
               className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
-              <img
-                src='https://res.cloudinary.com/busola/image/upload/v1571806132/add.png'
-                alt=''
-              />
-              <p className='right-section-title mt-2'>Add a file</p>
-              <h6 className='right-section-content'>
-                {file ? file.name : null}
-              </h6>
-              <br />
-              <p className='right-section-content pl-4 pr-4'>
-                {''} ( max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .docx .pdf
-                .gif files are supported)
-              </p>
+              {isDragActive ? (
+                <p>Drop the file here...</p>
+              ) : (
+                <>
+                  {' '}
+                  <img
+                    src='https://res.cloudinary.com/busola/image/upload/v1571806132/add.png'
+                    alt=''
+                  />
+                  <p className='right-section-title mt-2'>
+                    Drag and drop or click to add a file
+                  </p>
+                  <h6 className='right-section-content'>
+                    {file ? file.name : null}
+                  </h6>
+                  <br />
+                  <p className='right-section-content pl-4 pr-4'>
+                    {''} ( max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .docx .pdf
+                    .gif files are supported)
+                  </p>
+                </>
+              )}
             </label>
             <input
+              {...getInputProps}
               type='file'
               name='file'
               onChange={e => onChange(e)}
