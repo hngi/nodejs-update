@@ -55,6 +55,7 @@ main.wrapper {
   line-height: 24px;
   color: var(--color-blue) !important;
   font-weight: bold;
+  transition: transform 0.4s ease-in-out;
 }
 .nav-link:hover {
   transform: scale(1.1);

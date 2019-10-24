@@ -53,6 +53,7 @@
   padding: 10px 30px;
   width: 170px;
   cursor: pointer;
+  transition: transform 0.4s ease-in-out;
 }
 
 .upload-link {
