@@ -9,8 +9,10 @@ const upload = (req, res, next) => {
         resource_type: "auto"
       })
       .then(result => {
+        let originalFilename = req.file.originalname.split('.').slice(0, -1).join('.');
         const fileUploadedUrl = result.url;
         res.locals["cloudinaryUrl"] = fileUploadedUrl;
+        res.locals["originalName"] = originalFilename;
         next();
       })
       .catch(err => {

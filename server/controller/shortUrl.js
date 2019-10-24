@@ -11,9 +11,9 @@ const ShortenLink = {
       const createShortUrl = await new ShortLink({
         cloudinaryUrl,
         shortUrlParam,
-        shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
+        // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
         // shortUrl: `http://xshare.gq/${shortUrlParam}`
-        // shortUrl: `http://localhost:4000/${shortUrlParam}`
+        shortUrl: `http://localhost:4000/${shortUrlParam}`
       });
       createShortUrl.save();
 
@@ -46,7 +46,7 @@ const ShortenLink = {
   async downloadShortenUrl(req, res) {
     try {
       const { cloudinaryUrl } = res.locals;
-      let file = res.locals.cloudinaryUrl.slice(48);
+      let file = res.locals.originalName;
       res.setHeader('Content-Disposition', `attachment; filename=${file}`);
       request(cloudinaryUrl)
         .once('data', data => {
