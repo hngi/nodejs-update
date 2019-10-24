@@ -2,7 +2,7 @@ const multerHelper = require("../middleware/multer");
 const dataUri = multerHelper.dataUri;
 const { v2, cloudinaryConfig } = require("../config/cloudinary");
 const upload = (req, res, next) => {
-  if (req.file) {
+  if (req.file) {    
     const file = dataUri(req).content;
     return v2.uploader
       .upload(file, {
@@ -11,6 +11,8 @@ const upload = (req, res, next) => {
       .then(result => {
         let originalFilename = req.file.originalname.split('.').slice(0, -1).join('.');
         const fileUploadedUrl = result.url;
+        let originalName = req.file.originalname;
+        res.locals["originalName"] = originalName;
         res.locals["cloudinaryUrl"] = fileUploadedUrl;
         res.locals["originalName"] = originalFilename;
         next();

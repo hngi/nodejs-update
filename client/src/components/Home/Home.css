@@ -1,0 +1,29 @@
+.get-started {
+  padding: 15px 70px;
+  font-size: 28px;
+}
+
+.get-started:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.home-image-right {
+  width: 80%;
+}
+
+@media (max-width: 995px) {
+  .get-started {
+    padding: 12px 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .get-started {
+    padding: 15px 20px;
+    width: 100%;
+  }
+  .home-image-right {
+    width: 100%;
+  }
+}

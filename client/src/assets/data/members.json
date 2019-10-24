@@ -94,21 +94,7 @@
     "id": 14,
     "image": "https://res.cloudinary.com/mikeattara/image/upload/v1567070455/me.jpg",
     "name": "Mike Attara",
-    "role": "Team Member, Backend",
+    "role": "Team Member, DevOps",
     "email": "mpyebattara@gmail.com"
-  },
-  {
-    "id": 15,
-    "image": "https://res.cloudinary.com/tmayor/image/upload/v1566639151/myHNGinternship/myP_r4qejl.jpg",
-    "name": "Timothy Mayor",
-    "role": "Team Member, Devops",
-    "email": "timothymayor24@gmail.com"
-  },
-  {
-    "id": 16,
-    "image": "https://res.cloudinary.com/tmayor/image/upload/v1566639151/myHNGinternship/myP_r4qejl.jpg",
-    "name": "Timothy Mayor",
-    "role": "Team Member, Devops",
-    "email": "timothymayor24@gmail.com"
   }
 ]
