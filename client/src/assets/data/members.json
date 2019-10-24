@@ -89,5 +89,12 @@
     "name": "Timothy Mayor",
     "role": "Team Member, Devops",
     "email": "timothymayor24@gmail.com"
+  },
+  {
+    "id": 14,
+    "image": "https://res.cloudinary.com/mikeattara/image/upload/v1567070455/me.jpg",
+    "name": "Mike Perry Y. Attara",
+    "role": "Team Member, Devops",
+    "email": "mpyebattara@gmail.com"
   }
 ]
