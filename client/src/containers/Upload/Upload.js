@@ -1,36 +1,38 @@
-import React, { useState, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
-import "./Upload.css";
-import { connect } from "react-redux";
-import { uploadFile } from "../../actions/upload";
-import { setAlert } from "../../actions/alert";
-import UploadSuccess from "../UploadSuccess/UploadSuccess";
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import './Upload.css';
+import { connect } from 'react-redux';
+import { uploadFile } from '../../actions/upload';
+import { setAlert } from '../../actions/alert';
+import UploadSuccess from '../UploadSuccess/UploadSuccess';
 
 const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
-    file: "",
+    file: '',
     show: false,
     loader: true
   });
   const { file, show } = formData;
 
   const upload = () => {
-    if (file === "" || file === undefined || file === null) {
-      setAlert("Please select a file to upload", "danger");
+    if (file === '' || file === undefined || file === null) {
+      setAlert('Please select a file to upload', 'danger');
       setFormData({ show: false });
     } else if (file.size >= 2147483648) {
       setFormData({ show: false });
-      setAlert("Only files less than 2GB supported", "danger");
+      setAlert('Only files less than 2GB supported', 'danger');
     } else if (
-      file.name.match(/.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx|avi|mkv)$/)
+      file.name.match(
+        /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx|avi|mkv|apk)$/
+      )
     ) {
       setFormData({ show: true });
       uploadFile(file);
     } else {
       setFormData({ show: false });
       setAlert(
-        "Only .mp4 .mp3 .avi .mkv .png .jpg .jpeg .docx .pdf .gif files are supported",
-        "danger"
+        'Only .mp4 .mp3 .avi .mkv .png .jpg .jpeg .docx .pdf .gif .apk files are supported',
+        'danger'
       );
     }
   };
@@ -38,7 +40,7 @@ const Upload = ({ uploadFile, setAlert }) => {
     setFormData({
       ...formData,
       [e.target.name]:
-        e.target.name !== "file" ? e.target.value : e.target.files[0]
+        e.target.name !== 'file' ? e.target.value : e.target.files[0]
     });
   };
 
@@ -47,78 +49,74 @@ const Upload = ({ uploadFile, setAlert }) => {
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
-    <main className="wrapper home-section d-flex justify-content-between align-items-center">
-      <div className="left-section">
-        <h1 className="left-section-title">
+    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
+      <div className='left-section'>
+        <h1 className='left-section-title'>
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className="left-section-content">
+        <h4 className='left-section-content'>
           Fast, Safe and Secure.... <br />
-          Simply upload a file and share it via email or a generated link{" "}
+          Simply upload a file and share it via email or a generated link{' '}
         </h4>
         <img
-          className="left-section-image"
-          src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
-          alt=""
+          className='left-section-image'
+          src='https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png'
+          alt=''
         />
       </div>
-      <div className="right-section d-flex justify-content-center align-items-center">
+      <div className='right-section d-flex justify-content-center align-items-center'>
         {!show ? (
           <div
             {...getRootProps()}
-            className="d-flex flex-column align-items-center"
-          >
+            className='d-flex flex-column align-items-center'>
             <label
-              htmlFor="upload"
-              className="right-section-upload d-flex flex-column justify-content-center align-items-center"
-            >
+              htmlFor='upload'
+              className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
               {isDragActive ? (
                 <div
-                  style={{ background: "rgba(38,128,235,0.5)" }}
+                  style={{ background: 'rgba(38,128,235,0.5)' }}
                   {...getRootProps()}
-                  className="d-flex flex-column align-items-center"
-                >
+                  className='d-flex flex-column align-items-center'>
                   <label
-                    htmlFor="upload"
-                    className="right-section-upload d-flex flex-column justify-content-center align-items-center"
-                  >
-                    <p style={{ color: "rgba(0,0,0,0.4)" }}>
+                    htmlFor='upload'
+                    className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
+                    <p style={{ color: 'rgba(0,0,0,0.4)' }}>
                       Drop the file here...
                     </p>
                   </label>
                 </div>
               ) : (
                 <>
-                  {" "}
+                  {' '}
                   <img
-                    src="https://res.cloudinary.com/busola/image/upload/v1571806132/add.png"
-                    alt=""
+                    src='https://res.cloudinary.com/busola/image/upload/v1571806132/add.png'
+                    alt=''
                   />
-                  <p className="right-section-title mt-2">
+                  <p className='right-section-title mt-2'>
                     Drag and drop or click to add a file
                   </p>
-                  <h6 className="right-section-content">
+                  <h6 className='right-section-content'>
                     {file ? file.name : null}
                   </h6>
                   <br />
-                  <p className="right-section-content pl-4 pr-4">
-                    {""} ( max size: 2GB | .mp4 .mp3 .avi .mkv .png .jpg .jpeg .docx
-                    .pdf .gif files are supported)
+                  <p className='right-section-content pl-4 pr-4'>
+                    {''} ( max size: 2GB | .mp4 .mp3 .avi .mkv .png .jpg .jpeg
+                    .docx .pdf .gif .apk files are supported)
                   </p>
                 </>
               )}
             </label>
             <input
               {...getInputProps}
-              type="file"
-              name="file"
+              type='file'
+              name='file'
               onChange={e => onChange(e)}
-              className="input-file"
-              id="upload"
+              className='input-file'
+              id='upload'
             />
-            <button className="upload-btn mt-4" onClick={upload}>
+            <button className='upload-btn mt-4' onClick={upload}>
               Upload
             </button>
           </div>
