@@ -56,7 +56,9 @@ main.wrapper {
   color: var(--color-blue) !important;
   font-weight: bold;
 }
-
+.nav-link:hover {
+  transform: scale(1.1);
+}
 @media (max-width: 600px) {
   .wrapper {
     padding-left: 5% !important;
