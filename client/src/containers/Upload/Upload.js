@@ -104,7 +104,7 @@ const Upload = ({ uploadFile, setAlert }) => {
                   </h6>
                   <br />
                   <p className="right-section-content pl-4 pr-4">
-                    {""} ( max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .docx .pdf
+                    {""} ( max size: 2GB | .mp4 .mp3 .png .jpg .jpeg .docx .pdf
                     .gif files are supported)
                   </p>
                 </>
