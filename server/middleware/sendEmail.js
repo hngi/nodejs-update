@@ -7,11 +7,13 @@ const Email = process.env.EMAIL;
 module.exports = sendEmail = async (req, link, res) => {
   try {
     const { name, to, message, link } = req.body;
+    
     if (name == '' || undefined || to == '' || undefined) {
       return res.status(400).json({
         message: 'Input fields are required',
         success: false
       });
+      console.log('required')
     }
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     let msg = {
@@ -33,20 +35,6 @@ module.exports = sendEmail = async (req, link, res) => {
       </div>`
     };
 
-    emailCollection.find({email:to},(err,email)=>{
-      if(!email){
-        emailCollection.create({email:to},(err,email)=>{
-          if(err){
-            console.log('something went wrong')
-          }else{
-            console.log('email saved')
-          }
-        })
-      }else{
-        console.log('User already exist')
-      }
-    })
-
     sgMail.send(msg, (error, body) => {
       if (error) {
         console.log('failed', error);
@@ -56,7 +44,22 @@ module.exports = sendEmail = async (req, link, res) => {
         return 'succesful';
       }
     });
-  } catch (error) {
+    
+    emailCollection.findOne({email:to}, (err, email) => {
+      if (email) {
+       console.log('email exist')
+      } else {
+        emailCollection.create({ email: to }, (err, email) => {
+          if (err) {
+            console.log('something went wrong')
+          } else {
+            console.log(email)
+            console.log('email saved')
+          }
+        })
+      }
+    })
+  }catch (error) {
     res.json({ message: error, success: false });
   }
 };
