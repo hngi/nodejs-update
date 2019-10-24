@@ -1,26 +1,26 @@
-import React, { useState, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import './Upload.css';
-import { connect } from 'react-redux';
-import { uploadFile } from '../../actions/upload';
-import { setAlert } from '../../actions/alert';
-import UploadSuccess from '../UploadSuccess/UploadSuccess';
+import React, { useState, useCallback } from "react";
+import { useDropzone } from "react-dropzone";
+import "./Upload.css";
+import { connect } from "react-redux";
+import { uploadFile } from "../../actions/upload";
+import { setAlert } from "../../actions/alert";
+import UploadSuccess from "../UploadSuccess/UploadSuccess";
 
 const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
-    file: '',
+    file: "",
     show: false,
     loader: true
   });
   const { file, show } = formData;
 
   const upload = () => {
-    if (file === '' || file === undefined || file === null) {
-      setAlert('Please select a file to upload', 'danger');
+    if (file === "" || file === undefined || file === null) {
+      setAlert("Please select a file to upload", "danger");
       setFormData({ show: false });
-    } else if (file.size >= 20000000) {
+    } else if (file.size >= 2147483648) {
       setFormData({ show: false });
-      setAlert('Only files less than 20MB supported', 'danger');
+      setAlert("Only files less than 2GB supported", "danger");
     } else if (
       file.name.match(/.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx)$/)
     ) {
@@ -29,8 +29,8 @@ const Upload = ({ uploadFile, setAlert }) => {
     } else {
       setFormData({ show: false });
       setAlert(
-        'Only .mp4 .mp3 .png .jpg .jpeg .docx .pdf .gif files are supported',
-        'danger'
+        "Only .mp4 .mp3 .png .jpg .jpeg .docx .pdf .gif files are supported",
+        "danger"
       );
     }
   };
@@ -38,7 +38,7 @@ const Upload = ({ uploadFile, setAlert }) => {
     setFormData({
       ...formData,
       [e.target.name]:
-        e.target.name !== 'file' ? e.target.value : e.target.files[0]
+        e.target.name !== "file" ? e.target.value : e.target.files[0]
     });
   };
 
@@ -56,8 +56,8 @@ const Upload = ({ uploadFile, setAlert }) => {
         </h1>
         <h4 className="left-section-content">
           Fast, Safe and Secure.... <br />
-          Simply upload a file and share it via email or a generated link{' '}        
-         </h4>
+          Simply upload a file and share it via email or a generated link{" "}
+        </h4>
         <img
           className="left-section-image"
           src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
@@ -76,7 +76,7 @@ const Upload = ({ uploadFile, setAlert }) => {
             >
               {isDragActive ? (
                 <div
-                  style={{ background: 'rgba(38,128,235,0.5)' }}
+                  style={{ background: "rgba(38,128,235,0.5)" }}
                   {...getRootProps()}
                   className="d-flex flex-column align-items-center"
                 >
@@ -84,14 +84,14 @@ const Upload = ({ uploadFile, setAlert }) => {
                     htmlFor="upload"
                     className="right-section-upload d-flex flex-column justify-content-center align-items-center"
                   >
-                    <p style={{ color: 'rgba(0,0,0,0.4)' }}>
+                    <p style={{ color: "rgba(0,0,0,0.4)" }}>
                       Drop the file here...
                     </p>
                   </label>
                 </div>
               ) : (
                 <>
-                  {' '}
+                  {" "}
                   <img
                     src="https://res.cloudinary.com/busola/image/upload/v1571806132/add.png"
                     alt=""
@@ -104,7 +104,7 @@ const Upload = ({ uploadFile, setAlert }) => {
                   </h6>
                   <br />
                   <p className="right-section-content pl-4 pr-4">
-                    {''} ( max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .docx .pdf
+                    {""} ( max size: 20MB | .mp4 .mp3 .png .jpg .jpeg .docx .pdf
                     .gif files are supported)
                   </p>
                 </>
