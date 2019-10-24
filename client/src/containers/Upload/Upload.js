@@ -22,14 +22,14 @@ const Upload = ({ uploadFile, setAlert }) => {
       setFormData({ show: false });
       setAlert("Only files less than 2GB supported", "danger");
     } else if (
-      file.name.match(/.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx|avi)$/)
+      file.name.match(/.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx|avi|mkv)$/)
     ) {
       setFormData({ show: true });
       uploadFile(file);
     } else {
       setFormData({ show: false });
       setAlert(
-        "Only .mp4 .mp3 .png .jpg .jpeg .docx .pdf .gif files are supported",
+        "Only .mp4 .mp3 .avi .mkv .png .jpg .jpeg .docx .pdf .gif files are supported",
         "danger"
       );
     }
@@ -104,7 +104,7 @@ const Upload = ({ uploadFile, setAlert }) => {
                   </h6>
                   <br />
                   <p className="right-section-content pl-4 pr-4">
-                    {""} ( max size: 2GB | .mp4 .mp3 .avi .png .jpg .jpeg .docx
+                    {""} ( max size: 2GB | .mp4 .mp3 .avi .mkv .png .jpg .jpeg .docx
                     .pdf .gif files are supported)
                   </p>
                 </>
