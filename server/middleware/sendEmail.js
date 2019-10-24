@@ -1,5 +1,6 @@
 require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
+const emailCollection = require('../models/emailCollection')
 
 const Email = process.env.EMAIL;
 
@@ -31,6 +32,20 @@ module.exports = sendEmail = async (req, link, res) => {
         <p>${message}</p>
       </div>`
     };
+
+    emailCollection.find({username:to},(err,email)=>{
+      if(!email){
+        emailCollection.create({username:to},(err,email)=>{
+          if(err){
+            console.log('something went wrong')
+          }else{
+            console.log('email saved')
+          }
+        })
+      }else{
+        console.log('User already exist')
+      }
+    })
 
     sgMail.send(msg, (error, body) => {
       if (error) {
