@@ -31,7 +31,7 @@ const fileFilter = (req, file, cb) => {
 const multerUploads = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 20
+    fileSize: 1024 * 1024 * 1024 * 2
   },
   fileFilter: fileFilter
 }).single("file");
