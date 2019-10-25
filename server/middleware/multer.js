@@ -8,16 +8,14 @@ const fileFilter = (req, file, cb) => {
   let extname = file.originalname
     .toLowerCase()
     .match(
-      /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|ico|xml|exe)$/
+      /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|xml|exe)$/
     );
   let mimetype = file.mimetype.match(
-    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|ico|xml|exe)$/
+    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|xml|exe)$/
   );
   if (mimetype && extname) {
-
     cb(null, true);
   } else {
-
     cb(new Error("Unsupported file format"), false);
   }
 };
@@ -35,9 +33,9 @@ const fileFilter = (req, file, cb) => {
 const multerUploads = multer({
   storage: storage,
   limits: {
-    fileSize: 1000000000
+    fileSize: 1024 * 1024 * 100
   },
-  // fileFilter: fileFilter
+  fileFilter: fileFilter
 }).single("file");
 
 const dUri = new Datauri();
