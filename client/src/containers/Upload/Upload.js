@@ -18,9 +18,9 @@ const Upload = ({ uploadFile, setAlert }) => {
     if (file === "" || file === undefined || file === null) {
       setAlert("Please select a file to upload", "danger");
       setFormData({ show: false });
-    } else if (file.size >= 50000000) {
+    } else if (file.size >= 104857600) {
       setFormData({ show: false });
-      setAlert("Please select a file that is less than 50MB", "danger");
+      setAlert("Please select a file that is less than 100MB", "danger");
     } else if (
       file.name.match(
         /.(jpeg|jpg|png|gif|mp4|mp3|fig|doc|docx|pdf|xlsx|avi|flv|mkv|xml|exe)$/
@@ -107,7 +107,7 @@ const Upload = ({ uploadFile, setAlert }) => {
                   </h6>
                   <br />
                   <p className="right-section-content pl-4 pr-4">
-                    {""} ( max file size: 50MB | .mp4 .mp3 .avi .flv .mkv .png
+                    {""} ( max file size: 100MB | .mp4 .mp3 .avi .flv .mkv .png
                     .jpg .jpeg .doc .docx .pdf .gif .xml .exe files are
                     supported)
                   </p>
