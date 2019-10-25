@@ -5,8 +5,10 @@ import { connect } from "react-redux";
 import { uploadFile } from "../../actions/upload";
 import { setAlert } from "../../actions/alert";
 import UploadSuccess from "../UploadSuccess/UploadSuccess";
+import LoadingBar from "react-redux-loading-bar";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-const Upload = ({ uploadFile, setAlert }) => {
+const Upload = ({ uploadFile, setAlert, showBar }) => {
   const [formData, setFormData] = useState({
     file: "",
     show: false,
@@ -122,7 +124,13 @@ const Upload = ({ uploadFile, setAlert }) => {
               className="input-file"
               id="upload"
             />
-            <button className="upload-btn mt-4" onClick={upload}>
+            <button
+              onClick={() => {
+                showBar();
+                upload();
+              }}
+              className="upload-btn mt-4"
+            >
               Upload
             </button>
           </div>
@@ -137,7 +145,14 @@ const Upload = ({ uploadFile, setAlert }) => {
 const mapStateToProps = state => ({
   uploadstate: state.upload
 });
+const mapDispatchToProps = dispatch => ({
+  showBar: () => dispatch(showLoading("sectionBar")),
+  hideBar: () => dispatch(hideLoading()),
+  uploadFile: () => dispatch(uploadFile()),
+  setAlert: () => dispatch(setAlert())
+});
+
 export default connect(
   mapStateToProps,
-  { uploadFile, setAlert }
+  mapDispatchToProps
 )(Upload);
