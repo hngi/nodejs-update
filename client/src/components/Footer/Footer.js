@@ -8,7 +8,7 @@ export default function index() {
     <footer className="d-flex justify-content-center align-items-center">
       <span id="year">
         {date} Built by HNG 6.0 Interns |{'  '}
-        <Link to="/privacy">Privacy Policy</Link>
+        <Link to="/privacy"><a>Privacy Policy</a></Link>
       </span>
     </footer>
   );
