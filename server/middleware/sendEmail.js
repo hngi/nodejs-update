@@ -8,7 +8,7 @@ module.exports = sendEmail = async (req, link, res) => {
   try {
     const { name, to, message, link } = req.body;
     
-    if (name == '' || undefined || to == '' || undefined) {
+    if (name == '' ||name== undefined ||name==null|| to == '' || to==undefined||to==null||message==''||message==undefined||message==null) {
       return res.status(400).json({
         message: 'Input fields are required',
         success: false
@@ -37,8 +37,10 @@ module.exports = sendEmail = async (req, link, res) => {
 
     sgMail.send(msg, (error, body) => {
       if (error) {
+        console.log(error);
         return 'failed';
       } else {
+        console.log('success');
         return 'succesful';
       }
     });

@@ -7,13 +7,17 @@ const storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {
   let extname = file.originalname
     .toLowerCase()
-    .match(/.(jpeg|jpg|png|gif|mp3|mp4|fig|docx|pdf|zip|xlsx|avi|mkv|apk)$/);
+    .match(
+      /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|ico|xml|exe)$/
+    );
   let mimetype = file.mimetype.match(
-    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|zip|xlsx|avi|mkv|apk)$/
+    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|ico|xml|exe)$/
   );
   if (mimetype && extname) {
+
     cb(null, true);
   } else {
+
     cb(new Error("Unsupported file format"), false);
   }
 };
@@ -31,9 +35,9 @@ const fileFilter = (req, file, cb) => {
 const multerUploads = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 1024 * 2
+    fileSize: 1000000000
   },
-  fileFilter: fileFilter
+  // fileFilter: fileFilter
 }).single("file");
 
 const dUri = new Datauri();
