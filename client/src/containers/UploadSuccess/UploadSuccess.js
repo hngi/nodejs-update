@@ -5,7 +5,7 @@ import { sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
 import Loader from '../Loader/Loader';
-import { whatsapp, twitter, facebook } from '../../assets/img';
+import EmailLoader from '../Loader/EmailLoader';
 const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -27,22 +27,31 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const onFormSubmit = e => {
     e.preventDefault();
     sendEmail(name, to, message, shortUrl);
-    setAlert(`The file was sent to ${to} successfully`, 'success');
+    setTimeout(() => {
+      setAlert(`The file was sent to ${to} successfully`, 'success');
+      setFormData({ loading: false, show: true });
+      window.location.reload();
+    }, 3000);
   };
   const shortUrl = uploadstate.shortUrl;
-
+  const clipText =
+    ' Please visit http://xshare.ga to share your files with ease';
   return (
-    <div className="">
+    <>
       {!show ? (
         <div className="right-section-success d-flex flex-column justify-content-center align-items-center">
           {shortUrl ? (
             <>
-            {/* <i 
-          onClick={() => {
-            document.querySelector('.right-section').style.display = 'block';
-            document.querySelector('.success').style.display = 'none';
-          }}
-          className="fas fa-chevron-circle-left back"></i> */}
+              {/* <div className=''>
+                {' '}
+                <i
+                  onClick={() => {
+                    setFormData({ show: false });
+                  }}
+                  className='fas fa-chevron-left back'
+                />{' '}
+              </div>
+              {''} */}
               <img
                 src="https://res.cloudinary.com/busola/image/upload/v1571806132/success.png"
                 alt=""
@@ -67,12 +76,46 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                   Email File
                 </button>
               </div>
-              <p className='option'>or share with</p>
-                <div className='d-flex justify-content-center align-items-center'>
-                <a href="#" className="social-icon whatsapp"><i class="fab fa-whatsapp fa-lg"></i></a>
-                <a href="#" className="social-icon twitter"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="#" className="social-icon facebook"><i class="fab fa-twitter fa-lg"></i></a>
-                </div>
+              <p className="share mt-4">or share with</p>
+              <div className="social-icons d-flex justify-content-center align-items-center pl-3 pr-3 mt-2">
+                <a
+                  className="socials"
+                  href={`https://api.whatsapp.com/send?&text=${shortUrl} ${clipText}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="social-icon mr-4"
+                    src="https://res.cloudinary.com/busola/image/upload/v1571852212/whatsapp.png"
+                    alt=""
+                  />
+                </a>
+                <a
+                  className="socials"
+                  href={`https://twitter.com/intent/tweet?text=${shortUrl} ${clipText}`}
+                  data-size="large"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="social-icon mr-4"
+                    src="https://res.cloudinary.com/busola/image/upload/v1571852204/twitter.png"
+                    alt=""
+                  />
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${shortUrl}&amp;src=sdkpreparse`}
+                  className="socials"
+                >
+                  <img
+                    className="social-icon"
+                    src="https://res.cloudinary.com/busola/image/upload/v1571852202/facebook.png"
+                    alt=""
+                  />
+                </a>
+              </div>
             </>
           ) : (
             <Loader />
@@ -118,11 +161,15 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               className="form-textarea"
               placeholder="Message"
             />
-            <button className='upload-btn mt-4'>Send</button>
+            {!loading ? (
+              <button className="upload-btn mt-4">Send</button>
+            ) : (
+              <EmailLoader />
+            )}
           </form>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

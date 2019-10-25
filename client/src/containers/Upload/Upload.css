@@ -9,6 +9,7 @@
   font-size: 21px;
   line-height: 28px;
   color: #a9a9a9;
+  margin-top: 20px;
 }
 
 .left-section-image {
@@ -51,6 +52,8 @@
   border-radius: 3px;
   padding: 10px 30px;
   width: 170px;
+  cursor: pointer;
+  transition: transform 0.4s ease-in-out;
 }
 
 .upload-link {
