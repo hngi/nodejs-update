@@ -6,9 +6,8 @@ import { uploadFile } from "../../actions/upload";
 import { setAlert } from "../../actions/alert";
 import UploadSuccess from "../UploadSuccess/UploadSuccess";
 import LoadingBar from "react-redux-loading-bar";
-import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-const Upload = ({ uploadFile, setAlert, showBar }) => {
+const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
     file: "",
     show: false,
@@ -25,7 +24,7 @@ const Upload = ({ uploadFile, setAlert, showBar }) => {
       setAlert("Please select a file that is less than 100MB", "danger");
     } else if (
       file.name.match(
-        /.(jpeg|jpg|png|gif|mp4|mp3|fig|doc|docx|pdf|xlsx|avi|flv|mkv|xml|exe)$/
+        /.(jpeg|jpg|png|gif|mp4|mp3|fig|doc|docx|pdf|xlsx|avi|mkv|xml|exe)$/
       )
     ) {
       setFormData({ show: true });
@@ -33,7 +32,7 @@ const Upload = ({ uploadFile, setAlert, showBar }) => {
     } else {
       setFormData({ show: false });
       setAlert(
-        "Only .mp4 .mp3 .avi .flv .mkv .png .jpg .jpeg .doc .docx .pdf .gif .xml .exe files are supported",
+        "Only .mp4 .mp3 .avi .mkv .png .jpg .jpeg .doc .docx .pdf .gif .xml .exe files are supported",
         "danger"
       );
     }
@@ -109,7 +108,7 @@ const Upload = ({ uploadFile, setAlert, showBar }) => {
                   </h6>
                   <br />
                   <p className="right-section-content pl-4 pr-4">
-                    {""} ( max file size: 100MB | .mp4 .mp3 .avi .flv .mkv .png
+                    {""} ( max file size: 100MB | .mp4 .mp3 .avi .mkv .png
                     .jpg .jpeg .doc .docx .pdf .gif .xml .exe files are
                     supported)
                   </p>
@@ -126,8 +125,8 @@ const Upload = ({ uploadFile, setAlert, showBar }) => {
             />
             <button
               onClick={() => {
-                showBar();
                 upload();
+                
               }}
               className="upload-btn mt-4"
             >
@@ -145,14 +144,7 @@ const Upload = ({ uploadFile, setAlert, showBar }) => {
 const mapStateToProps = state => ({
   uploadstate: state.upload
 });
-const mapDispatchToProps = dispatch => ({
-  showBar: () => dispatch(showLoading("sectionBar")),
-  hideBar: () => dispatch(hideLoading()),
-  uploadFile: () => dispatch(uploadFile()),
-  setAlert: () => dispatch(setAlert())
-});
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps,{uploadFile,setAlert}
 )(Upload);

@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import Alert from "./components/Alert/Alert";
-import LoadingBar from "react-redux-loading-bar";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Team from "./components/Team/Team";
@@ -17,14 +16,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <div className="d-flex flex-column parent">
-          <LoadingBar
-            scope="sectionBar"
-            style={{
-              backgroundColor: "blue",
-              height: "100px",
-              position: "absolute"
-            }}
-          />
+          
           <Navbar />
           <Alert />
           <Switch>
