@@ -10,7 +10,7 @@ import Team from "./components/Team/Team";
 import Privacy from "./components/Privacy/Privacy";
 import NotFound from "./components/NotFound/NotFound";
 import Upload from "./containers/Upload/Upload";
-import Home from "./components/Home/Home";
+// import Home from "./components/Home/Home";
 const App = () => {
   return (
     <Provider store={store}>
@@ -20,8 +20,8 @@ const App = () => {
           <Navbar />
           <Alert />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/upload" component={Upload} />
+            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/" component={Upload} />
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/team" component={Team} />
             {/* <Route exact path="/upload" component={Upload} /> */}

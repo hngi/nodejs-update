@@ -1,13 +1,15 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import './UploadSuccess.css';
 import { connect } from 'react-redux';
 import { sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
-import Loader from '../Loader/Loader';
 import EmailLoader from '../Loader/EmailLoader';
-const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import ChangingProgressProvider from './ChangingProgressProvider';
 
+const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
     to: '',
@@ -15,7 +17,11 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
     loading: false,
     show: false
   });
-
+  const arr = [];
+  for (var i = 1; i <= 100; i++) {
+    arr.push(i);
+  }
+  console.log(arr);
   const { name, message, to, show, loading } = formData;
   const email = () => {
     setFormData({ show: true });
@@ -117,7 +123,29 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               </div>
             </>
           ) : (
-        <Loader/>
+            <div className='d-flex justify-centent-center align-items-center flex-column loader'>
+              <div style={{ width: '150px' }}>
+                <ChangingProgressProvider values={arr}>
+                  {percentage => (
+                    <CircularProgressbar
+                      styles={buildStyles({
+                        pathTransitionDuration: 0.15
+                      })}
+                      value={percentage}
+                      text={`${percentage}%`}
+                    />
+                  )}
+                </ChangingProgressProvider>
+              </div>
+              <p
+                className='left-section-content mt-3'
+                style={{ textAlign: 'center' }}>
+                <p>Please be patient while your file gets uploaded...</p>
+                <p className='mt-2'>
+                  Kindly note that larger files will take longer to be completed
+                </p>
+              </p>
+            </div>
           )}
         </div>
       ) : (
