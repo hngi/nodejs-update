@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "image": "https://res.cloudinary.com/busola/image/upload/v1568640962/bee.jpg",
+    "name": "Codedcoder",
+    "role": "Team Lead, Full Stack",
+    "email": "codedcoderrr@gmail.com"
+  },
+  {
+    "id": 2,
+    "image": "https://res.cloudinary.com/michelletakuro/image/upload/v1554317430/gbemmy.jpg",
+    "name": "Takuro Gbemisola",
+    "role": "PM, Mobile development",
+    "email": "mitchelletakuro@gmail.com"
+  },
+  {
+    "id": 3,
+    "image": "https://res.cloudinary.com/torimbj/image/upload/v1571695111/brad-neathery-XrSzacdYbtQ-unsplash_pygdb4.jpg",
+    "name": "Torimbj",
+    "role": "Devops and UI/UX Designer",
+    "email": "torimbj@gmail.com"
+  },
+  {
+    "id": 4,
+    "image": "https://res.cloudinary.com/cavdy/image/upload/v1571245491/Photo_on_01-08-2019_at_12.24_PM_y8xfqk.jpg",
+    "name": "Cavdy",
+    "role": "Team Member, Full Stack",
+    "email": "cavdyofficials@gmail.com"
+  },
+  {
+    "id": 5,
+    "image": "https://res.cloudinary.com/fego/image/upload/v1566565664/hng/fegggie_scbhf4.jpg",
+    "name": "Edafe Oghenefego",
+    "role": "Team Member, Backend",
+    "email": "fegoworks@hotmail.com"
+  },
+  {
+    "id": 6,
+    "image": "https://res.cloudinary.com/macgee/image/upload/v1569431526/Gift.dp_nfe4im.png",
+    "name": "Gift Omodu",
+    "role": "Team Member, Backend",
+    "email": "giftomodu20@gmail.com"
+  },
+  {
+    "id": 7,
+    "image": "https://res.cloudinary.com/vectormike/image/upload/v1571242418/me.jpg",
+    "name": "Victor Jonah",
+    "role": "Team Member, Backend",
+    "email": "victorjonah199@gmail.com"
+  },
+  {
+    "id": 8,
+    "image": "https://res.cloudinary.com/dvbwpicno/image/upload/v1566490977/a2mccwbm3cf0fm9rfdeu.png",
+    "name": "Mohammed Ibrahim",
+    "role": "Team Member, Frontend",
+    "email": "ibrahimdamy7@gmail.com"
+  },
+  {
+    "id": 9,
+    "image": "https://res.cloudinary.com/dglaw6h0c/image/upload/v1571561088/photo_2018-08-02_01-59-56_cw5vls.jpg",
+    "name": "Tinuade Adeleke",
+    "role": "Team Member, Backend",
+    "email": "summittinuade@gmail.com"
+  },
+  {
+    "id": 10,
+    "image": "https://res.cloudinary.com/greathassan/image/upload/v1566653246/samples/STARTNG/hassan_onike_fb_fjgou2.jpg",
+    "name": "Hassan Onike",
+    "role": "Team Member, Backend",
+    "email": "timi.onike@gmail.com"
+  },
+  {
+    "id": 11,
+    "image": "https://res.cloudinary.com/dhpzvfror/image/upload/v1571254350/DSC_4574.jpg",
+    "name": "Godfred Asamoah",
+    "role": "Team Member, Backend",
+    "email": "gfredtech@gmail.com"
+  },
+  {
+    "id": 12,
+    "image": "https://res.cloudinary.com/ibefx/image/upload/v1568020189/personal/ibebugwu_chukwuemeka_byblud.png",
+    "name": "Emeka Ibebugwu",
+    "role": "Team Member, Backend",
+    "email": "emex4gman@gmail.com"
+  },
+  {
+    "id": 13,
+    "image": "https://res.cloudinary.com/db8l65lvv/image/upload/v1571589508/udofia.jpg",
+    "name": "Udofia Abasiodiong",
+    "role": "Team Member, Backend",
+    "email": "enalsy22@gmail.com"
+  },
+  {
+    "id": 14,
+    "image": "https://res.cloudinary.com/mikeattara/image/upload/v1567070455/me.jpg",
+    "name": "Mike Attara",
+    "role": "Team Member, DevOps",
+    "email": "mpyebattara@gmail.com"
+  },
+  {
+    "id": 15,
+    "image": "https://res.cloudinary.com/dqqrgidob/image/upload/v1566854238/bkzAHsJ2_400x400_1_z8dm6t.jpg",
+    "name": "Akinbode Weezykon",
+    "role": "Team Member, Backend",
+    "email": "weezykon@gmail.com"
+  }
+]

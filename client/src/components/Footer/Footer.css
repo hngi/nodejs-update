@@ -1,16 +1,26 @@
 footer {
   background: rgb(37, 104, 187);
+  height: 60px;
+  margin-bottom: 0px;
 }
 
-footer p,
+footer span,
 footer a {
-  padding: 1rem;
-  text-align: center;
   color: white;
   font-size: 1.23rem;
 }
 
 footer a {
   text-decoration: none;
-  padding-left: 0.3rem;
+}
+
+footer a:hover  {
+  color: white;
+}
+
+@media (max-width: 600px) {
+  footer span,
+  footer a {
+    font-size: 0.8rem;
+  }
 }

@@ -1,22 +1,26 @@
 require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
+const emailCollection = require('../models/emailCollection')
 
 const Email = process.env.EMAIL;
-// const EmailPass = process.env.EMAIL_PASS;
-// const nodemailer = require('nodemailer');
+
 module.exports = sendEmail = async (req, link, res) => {
-  // console.log(link)
   try {
     const { name, to, message, link } = req.body;
-    if (name == '' || undefined || to == '' || undefined) {
-      return res.json({
+    
+    if (name == '' ||name== undefined ||name==null|| to == '' || to==undefined||to==null||message==''||message==undefined||message==null) {
+      return res.status(400).json({
         message: 'Input fields are required',
         success: false
       });
+      console.log('required')
     }
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     let msg = {
-      from: Email,
+      from: {
+        email: Email,
+        name: 'XSHARE'
+      },
       to: to,
       subject: 'File Share',
       text: message,
@@ -33,15 +37,29 @@ module.exports = sendEmail = async (req, link, res) => {
 
     sgMail.send(msg, (error, body) => {
       if (error) {
-        console.log('failed', error);
+        console.log(error);
         return 'failed';
       } else {
         console.log('success');
         return 'succesful';
       }
     });
-  } catch (error) {
-    console.log(error);
+    
+    emailCollection.findOne({email:to}, (err, email) => {
+      if (email) {
+       console.log('email exist')
+      } else {
+        emailCollection.create({ email: to }, (err, email) => {
+          if (err) {
+            console.log('something went wrong')
+          } else {
+            console.log(email)
+            console.log('email saved')
+          }
+        })
+      }
+    })
+  }catch (error) {
     res.json({ message: error, success: false });
   }
 };

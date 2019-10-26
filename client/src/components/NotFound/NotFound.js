@@ -1,33 +1,20 @@
-import React, { Fragment } from 'react';
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './NotFound.css';
 const NotFound = () => {
   return (
-    <Fragment>
-      <div style={{ margin: '50px auto' }}className="mt-5"><h1
-        
-        className=' mt-5 ml-5 x-large text-primary'>
-        <i className='fas fa-exclamation-triangle' /> Page not found
-      </h1>
-      <p className='mt-5 ml-5 large'>Sorry, this page does not exist</p></div>
-      
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-    </Fragment>
+    <main className="wrapper" id="s2-error">
+      <img
+        style={{ height: 'auto' }}
+        src="https://res.cloudinary.com/busola/image/upload/v1571518592/17828.jpg"
+        alt="cloudimage"
+      />
+      {/* <h1>Error(400)</h1> */}
+      <p className="e-text">Sorry,we can't find the page you are looking for</p>
+      <Link className="home" to="/">
+        Go Home
+      </Link>
+    </main>
   );
 };
 
