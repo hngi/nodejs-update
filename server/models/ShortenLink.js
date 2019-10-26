@@ -6,6 +6,7 @@ const urlShortenSchema = new Schema({
   cloudinaryUrl: String,
   shortUrlParam: String,
   shortUrl: String,
+  fileName:String,
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
