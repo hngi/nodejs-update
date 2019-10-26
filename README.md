@@ -1,6 +1,6 @@
 ## XSHARE
 
-A file sharing application that shares any kind of file through your email or converts it to a link.
+A file sharing application that converts an extensive list of files into a sharable link. This link can then be shared with anyone you choose via email,whatsapp,twitter,facebook...or simply by copying and sending it manually
 
 <img src="https://res.cloudinary.com/vectormike/image/upload/v1571924782/Screenshot_from_2019-10-24_14-41-08.png">
 
@@ -31,15 +31,16 @@ Clone this repo and install all dependencies.
 ### Technology/Stack
 
 * React
+* Redux
 * Node/Express
-* Mongodb
+* MongoDB
 
 <hr>
 
 ### Features
-* Upload file
-*  Send as email
-*  Copy as a link
-*  Share on social platforms
+*  Upload file
+*  Send link via email
+*  Copy link
+*  Share link on social platforms
 
 
