@@ -9,7 +9,6 @@ import {
   LOADING
 } from './types';
 import { setAlert } from './alert';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import axios from 'axios';
 // const base_url = 'http://localhost:4000';
 const base_url = 'http://xshare.gq';
@@ -37,7 +36,6 @@ export const uploadFile = file => async dispatch => {
     }
   };
   try {
-    dispatch(showLoading('sectionBar'))
     const response = await axios.post(
       base_url + '/api/auth/upload',
       fd,
@@ -48,7 +46,6 @@ export const uploadFile = file => async dispatch => {
         type: UPLOAD_FILE_SUCCESS,
         payload: response.data
       });
-    dispatch(hideLoading());
 
     } else {
       dispatch(setAlert('Error uploading file', 'danger'));
@@ -56,7 +53,6 @@ export const uploadFile = file => async dispatch => {
         type: UPLOAD_FILE_FAIL,
         payload: response.data.message
       });
-    dispatch(hideLoading());
 
     }
   } catch (error) {

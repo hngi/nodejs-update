@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { uploadFile } from "../../actions/upload";
 import { setAlert } from "../../actions/alert";
 import UploadSuccess from "../UploadSuccess/UploadSuccess";
-import LoadingBar from "react-redux-loading-bar";
 
 const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({

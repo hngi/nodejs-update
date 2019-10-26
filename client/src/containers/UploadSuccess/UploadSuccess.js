@@ -5,7 +5,6 @@ import { sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
 import Loader from '../Loader/Loader';
-import LoadingBar from 'react-redux-loading-bar'
 import EmailLoader from '../Loader/EmailLoader';
 const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
 
@@ -62,7 +61,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               />
               <p className='upload-success'>Upload Success</p>
               <div className='mt-2 upload-link' id='upload-link'>
-                {shortUrl}
+                <h5>{shortUrl}</h5>
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <CopyToClipboard
@@ -118,33 +117,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               </div>
             </>
           ) : (
-            <div className='right-section-success d-flex justify-content-center align-items-center flex-column loader'>
-              <LoadingBar
-                showFastActions
-                updateTime={400}
-                maxProgress={100}
-                progressIncrease={5}
-                scope='sectionBar'
-                style={{
-                  transition:
-                    'width 400ms ease-out, height 400ms linear, opacity 400ms ease-out',
-                  opacity: 0.8,
-                  backgroundColor: '#2680eb',
-                  height: '10px',
-                  position: 'absolute',
-                  width: '100px'
-                }}
-              />
-              <br />
-              <p
-                className='left-section-content mt-3'
-                style={{ textAlign: 'center' }}>
-                <p>Please be patient while your file gets uploaded...</p>
-                <p className='mt-2'>
-                  Kindly note that larger files will take longer to be completed
-                </p>
-              </p>
-            </div>
+        <Loader/>
           )}
         </div>
       ) : (
