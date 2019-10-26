@@ -123,7 +123,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                 showFastActions
                 updateTime={400}
                 maxProgress={100}
-                progressIncrease={20}
+                progressIncrease={5}
                 scope='sectionBar'
                 style={{
                   transition:
