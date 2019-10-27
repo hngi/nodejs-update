@@ -1,25 +1,30 @@
-const multerHelper = require("../middleware/multer");
-const dataUri = multerHelper.dataUri;
-const { v2, cloudinaryConfig } = require("../config/cloudinary");
+// const multerHelper = require("../middleware/uploads");
+// const fileUpload = multerHelper.fileUpload;
+const fs = require("fs");
+const { v2 } = require("../config/cloudinary");
 const upload = (req, res, next) => {
-  if (req.file) {    
-    console.log(req.file);
-    const file = dataUri(req).content;
+  let uploadedFile = {
+    fileName: req.files[0].path
+  };
+  console.log(req.files[0].path);
+
+  if (req.files) {
     return v2.uploader
-      .upload(file, {
+      .upload(uploadedFile.fileName, {
         resource_type: "auto"
       })
       .then(result => {
-            console.log('upload.js ',result);
+        console.log("upload.js ", result);
 
         const fileUploadedUrl = result.url;
-        let originalName = req.file.originalname;
+        let originalName = req.files.originalname;
         res.locals["originalName"] = originalName;
         res.locals["cloudinaryUrl"] = fileUploadedUrl;
+        fs.unlinkSync(uploadedFile.fileName);
         next();
       })
       .catch(err => {
-            console.log('upload.js fail',err);
+        console.log("upload.js fail", err);
 
         res.status(400).json({
           message: "Something went wrong while processing your request",
@@ -33,4 +38,4 @@ const upload = (req, res, next) => {
     console.log(false);
   }
 };
-module.exports = upload;
+module.exports = { upload };
