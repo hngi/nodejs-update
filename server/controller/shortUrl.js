@@ -6,7 +6,10 @@ const url = require('url');
 const ShortenLink = {
   async shortenUrl(req, res, next) {
     try {
-      const { cloudinaryUrl, originalName } = res.locals;
+      const {
+        cloudinaryUrl,
+        originalName
+      } = res.locals;
       const fileName = originalName;
       const shortUrlParam = shortid.generate();
       const createShortUrl = await new ShortLink({
@@ -35,7 +38,9 @@ const ShortenLink = {
   },
   async redirectShortenUrl(req, res) {
     try {
-      const { cloudinaryUrl } = res.locals;
+      const {
+        cloudinaryUrl
+      } = res.locals;
 
       res.redirect(cloudinaryUrl);
     } catch (error) {
@@ -47,7 +52,10 @@ const ShortenLink = {
   },
   async downloadShortenUrl(req, res) {
     try {
-      const { cloudinaryUrl, fileName } = res.locals;
+      const {
+        cloudinaryUrl,
+        fileName
+      } = res.locals;
       let file = fileName;
       res.setHeader('Content-Disposition', `attachment; filename=${file}`);
       request(cloudinaryUrl)
