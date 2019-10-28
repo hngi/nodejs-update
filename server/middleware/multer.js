@@ -1,8 +1,9 @@
 const multer = require("multer");
-const Datauri = require("datauri");
+const multerS3 = require("multer-s3");
+const { s3Config } = require("../config/aws3");
+const dotenv = require("dotenv");
+dotenv.config();
 const path = require("path");
-
-const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
   let extname = file.originalname
@@ -20,36 +21,24 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// Multer doesn't allow error handling for file size limits
-// const fileSize = (req, file, cb) => {
-//   let maxsize = 1 * 1024 * 1024;
-//   if (file.size === maxsize) {
-//     cb(null, true);
-//   } else {
-//     cb(new Error("File is large"), false);
-//   }
-// };
-
 const multerUploads = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 100
-  },
-  fileFilter: fileFilter
-}).single("file");
+  storage: multerS3({
+    s3: s3Config,
+    acl: "public-read",
+    bucket: "hngi-nodejs-update",
+    metadata: (req, file, cb) => {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: (req, file, cb) => {
+      cb(
+        null,
+        path.basename(file.originalname, path.extname(file.originalname)) +
+          "-" +
+          Date.now() +
+          path.extname(file.originalname)
+      );
+    }
+  })
+}).array("file", 4);
 
-const dUri = new Datauri();
-
-/**
- * @description This function converts the buffer to data url
- * @param {Object} req containing the field object
- * @returns {String} The data url from the string buffer
- */
-const dataUri = req => {
-  return dUri.format(
-    path.extname(req.file.originalname).toString(),
-    req.file.buffer
-  );
-};
-
-module.exports = { multerUploads, dataUri };
+module.exports = multerUploads;
