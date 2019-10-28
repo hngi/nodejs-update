@@ -8,10 +8,10 @@ const fileFilter = (req, file, cb) => {
   let extname = file.originalname
     .toLowerCase()
     .match(
-      /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|xml|exe)$/
+      /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|xml|exe|zip)$/
     );
   let mimetype = file.mimetype.match(
-    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|xml|exe)$/
+    /.(jpeg|jpg|png|gif|mp4|mp3|fig|docx|pdf|xlsx|avi|flv|mkv|xml|exe|zip)$/
   );
   if (mimetype && extname) {
     cb(null, true);
