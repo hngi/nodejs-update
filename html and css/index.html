@@ -75,7 +75,20 @@
         justify-content: center;
         max-height: 15em;
         overflow-y: auto;
-        scroll-behavior:smooth;
+        scroll-behavior: smooth;
+      }
+
+      .uploaded-files-container::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .uploaded-files-container::-webkit-scrollbar-thumb {
+        background: #2680EB;
+        border-radius: 10px;
+      }
+
+      .uploaded-files-container::-webkit-scrollbar-track {
+        background-color: rgba(169, 169, 169, 0.5);
       }
 
       .uploaded-files {
@@ -90,6 +103,50 @@
 
       .uploaded-files p {
         color: #6b6b6b;
+      }
+
+      .success-page {
+        margin: 1em auto;
+        width: 30em;
+      }
+
+      .img-success {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1em;
+      }
+
+      .img-success h2 {
+       color: #2680EB;
+       margin: 1.5em 0 0 1em;
+      }
+
+      .file-link-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .file-link-container p:nth-child(1) {
+        color: #2680EB;
+        background-color:  rgba(38, 128, 235, 0.05);
+        font-size: 18px;
+        padding: 10px;
+      }
+
+      .file-link-container img {
+        color: #2680EB;
+        font-size: 6px;
+        padding: 10px;
+      }
+
+      .file-link-container p {
+        display: inline-block;
+        color: #6B6A6A;
+        font-size: 16px;
+      }
+
+      .share {
+        display: inline-block;
       }
     </style>
   </head>
@@ -109,7 +166,11 @@
         <div class="uploaded-files-container">
           <div class="uploaded-files">
             <p>file.mp4</p>
-           <span class="cancel"> <i class="fas fa-times"></i></span>
+            <span class="cancel"> <i class="fas fa-times"></i></span>
+          </div>
+          <div class="uploaded-files">
+            <p>file.mp4</p>
+            <span class="cancel"> <i class="fas fa-times"></i></span>
           </div>
           <div class="uploaded-files">
             <p>file.mp4</p>
@@ -119,33 +180,39 @@
             <p>file.mp4</p>
             <span class="cancel"> <i class="fas fa-times"></i></span>
           </div>
-          <div class="uploaded-files">
-                <p>file.mp4</p>
-                <span class="cancel"> <i class="fas fa-times"></i></span>
-              </div>
         </div>
       </div>
       <button class="upload-btn">Upload</button>
     </div>
 
-    <script>
-          //   cancel button
-      const cancelBtn = document.querySelectorAll('.cancel');
+    <!-- success page -->
+    <div class="success-page">
+    <div class="img-success">
+      <img src="https://res.cloudinary.com/busola/image/upload/v1571806132/success.png" alt="success">
+      <h2>Upload Success!</h2>
+    </div>
+    <div class="file-link-container">
+      <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+      <div class="share">
+        <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt=""><p>copy</p>
+        <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt=""><p>Share</p><p>jjjj</p>
+      </div>
+    </div>
+    </div>
 
-cancelBtn.forEach(cancel => {
-    cancel.addEventListener('click', (e) => {
-        e.target.parentElement.parentElement.remove()
-})
-})
-   
+    <script>
+      //   cancel button
+      const cancelBtn = document.querySelectorAll(".cancel");
+
+      cancelBtn.forEach(cancel => {
+        cancel.addEventListener("click", e => {
+          e.target.parentElement.parentElement.remove();
+        });
+      });
 
       function thisFileUpload() {
         document.getElementById("file").click();
       }
-
-  
-
-   
     </script>
   </body>
 </html>
