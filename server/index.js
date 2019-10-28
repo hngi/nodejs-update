@@ -29,7 +29,7 @@ app.use(router);
 
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);
-const port = 3500;
+const port = process.env.PORT || 3500;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
