@@ -35,7 +35,7 @@
 // };
 
 const upload = (req, res, next) => {
-  console.log("Files", req.files);
+  // console.log("Files", req.files);
   if (req.files) {
     let temp = []
     const files = [...req.files];
@@ -47,14 +47,14 @@ const upload = (req, res, next) => {
       temp.push(file_upload)
     })
 
-    return res.json({
-      success: true,
-      data: temp
+    res.locals = temp;
+    next()
+    console.log(res.locals);
+  } else {
+    res.json({
+      message: "Null"
     });
   }
-  res.json({
-    message: "Null"
-  });
 };
 
 module.exports = upload;

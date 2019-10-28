@@ -6,29 +6,39 @@ const url = require('url');
 const ShortenLink = {
   async shortenUrl(req, res, next) {
     try {
-      const {
-        cloudinaryUrl,
-        originalName
-      } = res.locals;
-      const fileName = originalName;
-      const shortUrlParam = shortid.generate();
-      const createShortUrl = await new ShortLink({
-        cloudinaryUrl,
-        shortUrlParam,
-        fileName,
-        // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
-        shortUrl: `http://xshare.gq/${shortUrlParam}`
-        //shortUrl: `http://localhost:4000/${shortUrlParam}`
-      });
-      createShortUrl.save();
+      let newUrl = []
+      let response = [...res.locals]
+
+      response.forEach(item => {
+
+        const awsUrl = item.awsUrl;
+        const fileName = item.originalName;
+        const shortUrlParam = shortid.generate();
+        const createShortUrl = new ShortLink({
+          awsUrl,
+          shortUrlParam,
+          fileName,
+          // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
+          shortUrl: `http://xshare.gq/${shortUrlParam}`
+          //shortUrl: `http://localhost:4000/${shortUrlParam}`
+        });
+        createShortUrl.save();
+
+        let url = {
+          message: 'Link shortened successfully',
+          shortCode: shortUrlParam,
+          shortUrl: createShortUrl.shortUrl,
+          longUrl: awsUrl
+        }
+
+        newUrl.push(url)
+      })
 
       res.json({
         success: true,
-        message: 'Link shortened successfully',
-        shortCode: shortUrlParam,
-        shortUrl: createShortUrl.shortUrl,
-        longUrl: cloudinaryUrl
+        data: newUrl
       });
+
     } catch (error) {
       res.json({
         success: true,
