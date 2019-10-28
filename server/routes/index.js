@@ -6,7 +6,7 @@ const {
 const { findShortenUrl } = require("../middleware/findShortenUrl");
 const router = express.Router();
 
-const sendEmail = require("../middleware/sendEmail");
+const sendEmail = require("../middleware/sendEmail").sendEmail;
 const saveEmail = require('../middleware/saveEmail').saveEmail;
 const sendEmailValidator = require('../middleware/validator/emailMsgValidator').validateEmail;
 const loginUser = require("../controller/login");
@@ -22,7 +22,7 @@ router.get("/:shortenId", findShortenUrl, (req, res) => {
 //router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
 router.post("/api/auth/login", loginUser);
 router.post("/api/auth/register", registerUser);
-router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail.sendEmail);
+router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail);
 router.post("/:shortenId", findShortenUrl, downloadShortenUrl);
 router.post("/api/auth/upload", multer, uploadFile);
 module.exports = router;
