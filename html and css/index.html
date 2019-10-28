@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .upload-div {
+        margin: 1em auto;
+        width: 30em;
+        text-align: center;
+      }
+
+      .file-container {
+        background-color: rgba(239, 238, 238, 0.25);
+        margin-bottom: 2em;
+      }
+
+      .ion-md-add-circle {
+        color: #2680eb;
+        font-size: 60px;
+        margin-right: 0.2em;
+      }
+      .upload-btn {
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        color: #ffffff;
+        background-color: #2680eb;
+        box-shadow: 0px 0px 5px #b1b0b0;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        padding: 10px 30px;
+        width: 170px;
+        cursor: pointer;
+        transition: transform 0.4s ease-in-out;
+      }
+
+      .fa-times {
+        color: #2680eb;
+        font-size: 20px;
+        padding-top: 0.7em;
+      }
+
+      .add-files {
+        display: flex;
+        justify-content: center;
+      }
+
+      .text {
+        margin-top: 1em;
+        color: #b1b0b0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif UI;
+        text-align: left;
+      }
+
+      .uploaded-files-container {
+        display: grid;
+        justify-content: center;
+        max-height: 15em;
+        overflow-y: auto;
+        scroll-behavior:smooth;
+      }
+
+      .uploaded-files {
+        display: flex;
+        justify-content: space-between;
+        width: 20em;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.09);
+        padding: 0 1em;
+        margin: 1em 0;
+      }
+
+      .uploaded-files p {
+        color: #6b6b6b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="upload-div">
+      <div class="file-container">
+        <div class="add-files">
+          <input type="file" id="file" style="display:none;" />
+          <a value="upload" onclick="thisFileUpload();"
+            ><i class="icon ion-md-add-circle"></i
+          ></a>
+          <div class="text">
+            <span>Select files to upload</span><br />
+            <span>(max size: 1gb | .mp4 .mp3 .png .jpg files supported )</span>
+          </div>
+        </div>
+        <div class="uploaded-files-container">
+          <div class="uploaded-files">
+            <p>file.mp4</p>
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="uploaded-files">
+            <p>file.mp4</p>
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="uploaded-files">
+            <p>file.mp4</p>
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="uploaded-files">
+                <p>file.mp4</p>
+                <i class="fas fa-times"></i>
+              </div>
+        </div>
+      </div>
+      <button class="upload-btn">Upload</button>
+    </div>
+
+    <script>
+      function thisFileUpload() {
+        document.getElementById("file").click();
+      }
+    </script>
+  </body>
+</html>
