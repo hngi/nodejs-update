@@ -109,19 +109,19 @@
         <div class="uploaded-files-container">
           <div class="uploaded-files">
             <p>file.mp4</p>
-            <i class="fas fa-times"></i>
+           <span class="cancel"> <i class="fas fa-times"></i></span>
           </div>
           <div class="uploaded-files">
             <p>file.mp4</p>
-            <i class="fas fa-times"></i>
+            <span class="cancel"> <i class="fas fa-times"></i></span>
           </div>
           <div class="uploaded-files">
             <p>file.mp4</p>
-            <i class="fas fa-times"></i>
+            <span class="cancel"> <i class="fas fa-times"></i></span>
           </div>
           <div class="uploaded-files">
                 <p>file.mp4</p>
-                <i class="fas fa-times"></i>
+                <span class="cancel"> <i class="fas fa-times"></i></span>
               </div>
         </div>
       </div>
@@ -129,9 +129,23 @@
     </div>
 
     <script>
+          //   cancel button
+      const cancelBtn = document.querySelectorAll('.cancel');
+
+cancelBtn.forEach(cancel => {
+    cancel.addEventListener('click', (e) => {
+        e.target.parentElement.parentElement.remove()
+})
+})
+   
+
       function thisFileUpload() {
         document.getElementById("file").click();
       }
+
+  
+
+   
     </script>
   </body>
 </html>
