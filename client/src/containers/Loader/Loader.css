@@ -1,6 +1,8 @@
 .loader {
   width: 300px;
+  /* margin-left: 80px; */
   margin-left: 300px;
+
 }
 
 @media (max-width: 986px) {

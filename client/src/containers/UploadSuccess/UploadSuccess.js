@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 import { sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
-import Loader from '../Loader/Loader';
+import EmailLoader from '../Loader/EmailLoader';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import ChangingProgressProvider from './ChangingProgressProvider';
+
 const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,7 +17,11 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
     loading: false,
     show: false
   });
-
+  const arr = [];
+  for (var i = 1; i <= 100; i++) {
+    arr.push(i);
+  }
+  console.log(arr);
   const { name, message, to, show, loading } = formData;
   const email = () => {
     setFormData({ show: true });
@@ -38,7 +46,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const clipText =
     ' Please visit http://xshare.ga to share your files with ease';
   return (
-    <div className=''>
+    <>
       {!show ? (
         <div className='right-section-success d-flex flex-column justify-content-center align-items-center'>
           {shortUrl ? (
@@ -59,7 +67,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               />
               <p className='upload-success'>Upload Success</p>
               <div className='mt-2 upload-link' id='upload-link'>
-                {shortUrl}
+                <h5>{shortUrl}</h5>
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <CopyToClipboard
@@ -115,7 +123,29 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               </div>
             </>
           ) : (
-            <Loader />
+            <div className='d-flex justify-centent-center align-items-center flex-column loader'>
+              <div style={{ width: '150px' }}>
+                <ChangingProgressProvider values={arr}>
+                  {percentage => (
+                    <CircularProgressbar
+                      styles={buildStyles({
+                        pathTransitionDuration: 0.15
+                      })}
+                      value={percentage}
+                      text={`${percentage}%`}
+                    />
+                  )}
+                </ChangingProgressProvider>
+              </div>
+              <p
+                className='left-section-content mt-3'
+                style={{ textAlign: 'center' }}>
+                <p>Please be patient while your file gets uploaded...</p>
+                <p className='mt-2'>
+                  Kindly note that larger files will take longer to be completed
+                </p>
+              </p>
+            </div>
           )}
         </div>
       ) : (
@@ -155,12 +185,12 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
             {!loading ? (
               <button className='upload-btn mt-4'>Send</button>
             ) : (
-              <Loader />
+              <EmailLoader />
             )}
           </form>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

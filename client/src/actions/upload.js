@@ -9,11 +9,10 @@ import {
   LOADING
 } from './types';
 import { setAlert } from './alert';
-
 import axios from 'axios';
 // const base_url = 'http://localhost:4000';
-// const base_url = 'http://xshare.gq';
-const base_url = 'https://x-shareserver.herokuapp.com';
+const base_url = 'http://xshare.gq';
+// const base_url = 'https://x-shareserver.herokuapp.com';
 export const hidelink = () => async => dispatch => {
   dispatch({
     type: HIDE_LINK
@@ -47,12 +46,14 @@ export const uploadFile = file => async dispatch => {
         type: UPLOAD_FILE_SUCCESS,
         payload: response.data
       });
+
     } else {
       dispatch(setAlert('Error uploading file', 'danger'));
       dispatch({
         type: UPLOAD_FILE_FAIL,
         payload: response.data.message
       });
+
     }
   } catch (error) {
     dispatch(setAlert('Error uploading file', 'danger'));
