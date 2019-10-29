@@ -7,7 +7,7 @@ const ShortenLink = {
   async shortenUrl(req, res, next) {
     try {
       let newUrl = []
-      let response = [...res.locals]
+      const response = [...res.locals]
 
       response.forEach(item => {
 
@@ -48,11 +48,12 @@ const ShortenLink = {
   },
   async redirectShortenUrl(req, res) {
     try {
-      const {
-        cloudinaryUrl
-      } = res.locals;
 
-      res.redirect(cloudinaryUrl);
+      const response = [...res.locals]
+      response.forEach(link => {
+        res.redirect(link.awsUrl)
+      })
+
     } catch (error) {
       res.json({
         success: true,
@@ -62,20 +63,23 @@ const ShortenLink = {
   },
   async downloadShortenUrl(req, res) {
     try {
-      const {
-        cloudinaryUrl,
-        fileName
-      } = res.locals;
-      let file = fileName;
-      res.setHeader('Content-Disposition', `attachment; filename=${file}`);
-      request(cloudinaryUrl)
-        .once('data', data => {
-          console.log(data);
-        })
-        .on('error', err => {
-          console.log(err);
-        })
-        .pipe(res);
+
+      const response = [...res.locals]
+      response.forEach(link => {
+        let file = link.originalName;
+        let awsUrl = link.awsUrl;
+        res.setHeader('Content-Disposition', `attachment; filename=${file}`);
+        request(awsUrl)
+          .once('data', data => {
+            console.log(data);
+          })
+          .on('error', err => {
+            console.log(err);
+          })
+          .pipe(res);
+
+      })
+
     } catch (error) {
       res.json({
         success: true,
