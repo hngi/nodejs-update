@@ -72,7 +72,7 @@ const uploadFileToS3 = async (req, res,next) => {
     // Setting up S3 upload parameters
     const params = {
       acl: "public-read",
-      Bucket: 'emex-bucket',
+      Bucket: 'hngi-nodejs-update',
       Key: 'xshaer_' + Date.now() + '.zip', // File name you want to save as in S3
       Body: fileContent
     };
@@ -129,7 +129,7 @@ const multerUploads = multer({
   storage: multerS3({
     s3: s3Config,
     acl: "public-read",
-    bucket: "emex-bucket",
+    bucket: "hngi-nodejs-update",
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
