@@ -8,14 +8,17 @@ const url = require('url');
 
 const ShortenLink = {
   async shortenUrl(req, res, next) {
-    const {
-      userId
-    } = req.cookies
+    const userId = req.cookies.userId;
+
+    console.log(userId);
+
+
     try {
       let newUrl = []
       let response = [...res.locals]
 
       response.forEach(item => {
+
 
         const awsUrl = item.awsUrl;
         const fileName = item.originalName;
@@ -32,10 +35,10 @@ const ShortenLink = {
         if (userId) {
           const createGuest = new Guest(urlData)
           createGuest.save();
+        } else {
+          const createShortUrl = new ShortLink(urlData);
+          createShortUrl.save();
         }
-
-        const createShortUrl = new ShortLink(urlData);
-        createShortUrl.save();
 
         let url = {
           message: 'Link shortened successfully',

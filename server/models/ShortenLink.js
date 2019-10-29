@@ -13,6 +13,10 @@ const urlShortenSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  uploadedBy: {
+    type: String,
+    required: true
+  },
   updatedAt: {
     type: Date,
     default: Date.now

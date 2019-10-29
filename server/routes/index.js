@@ -16,6 +16,8 @@ const registerUser = require("../controller/register");
 const uploadFile = require("../controller/upload");
 const multer = require("../middleware/multer");
 const shortenLink = require("../controller/shortUrl");
+const validateCookie = require('../middleware/validator/validateCookie')
+const guestPage = require('../middleware/guestPage')
 
 router.get("/:shortenId", findShortenUrl, (req, res) => {
   const fullLink = req.protocol + "://" + req.get("host");
@@ -26,6 +28,7 @@ router.get("/:shortenId", findShortenUrl, (req, res) => {
   });
 });
 //router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
+router.get("/api/auth/guest", validateCookie, guestPage);
 router.post("/api/auth/login", loginUser);
 router.post("/api/auth/register", registerUser);
 router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail);
