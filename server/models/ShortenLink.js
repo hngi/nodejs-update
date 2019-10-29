@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const urlShortenSchema = new Schema({
-  cloudinaryUrl: String,
+  awsUrl: String,
   shortUrlParam: String,
   shortUrl: String,
   fileName:String,
