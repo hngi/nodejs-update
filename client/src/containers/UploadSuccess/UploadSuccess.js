@@ -23,7 +23,6 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   for (var i = 1; i <= 100; i++) {
     arr.push(i);
   }
-  console.log(arr);
   const { name, message, to, show, loading, share } = formData;
   const email = () => {
     setFormData({ show: true });
@@ -196,7 +195,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                   )}
                 </ChangingProgressProvider>
               </div>
-              <p
+              <div
                 className="left-section-content mt-3"
                 style={{ textAlign: 'center' }}
               >
@@ -204,7 +203,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                 <p className="mt-2">
                   Kindly note that larger files will take longer to be completed
                 </p>
-              </p>
+              </div>
             </div>
           )}
         </div>
