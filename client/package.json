@@ -6,6 +6,7 @@
     "axios": "^0.19.0",
     "d3-ease": "^1.0.5",
     "mdbreact": "^4.21.1",
+    "rave-javascript-sdk": "^1.0.4",
     "react": "^16.10.2",
     "react-circular-progressbar": "^2.0.2",
     "react-copy-to-clipboard": "^5.0.1",
