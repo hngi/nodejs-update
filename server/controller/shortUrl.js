@@ -1,10 +1,16 @@
 const shortid = require('shortid');
 const ShortLink = require('../models/ShortenLink');
+const Guest = require('../models/Guest');
 const request = require('request');
 const path = require('path');
 const url = require('url');
+
+
 const ShortenLink = {
   async shortenUrl(req, res, next) {
+    const {
+      userId
+    } = req.cookies
     try {
       let newUrl = []
       let response = [...res.locals]
@@ -14,14 +20,21 @@ const ShortenLink = {
         const awsUrl = item.awsUrl;
         const fileName = item.originalName;
         const shortUrlParam = shortid.generate();
-        const createShortUrl = new ShortLink({
+        const urlData = {
           awsUrl,
           shortUrlParam,
           fileName,
-          // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
-          shortUrl: `http://xshare.ga/${shortUrlParam}`
-          //shortUrl: `http://localhost:4000/${shortUrlParam}`
-        });
+          shortUrl: `http://xshare.ga/${shortUrlParam}`,
+          uploadedBy: userId
+        }
+
+        // Guests
+        if (userId) {
+          const createGuest = new Guest(urlData)
+          createGuest.save();
+        }
+
+        const createShortUrl = new ShortLink(urlData);
         createShortUrl.save();
 
         let url = {
