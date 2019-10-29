@@ -10,12 +10,11 @@ class Payment extends Component {
     this.state = {
       key: API_KEY, // RavePay PUBLIC KEY
       email: "victorjonah199@gmail.com", // customer email
-      amount: 1 // equals NGN 1000. Minimum amount allowed NGN 1 while on production or live system, it's 10
+      amount: 1000 // equals NGN 1000. Minimum amount allowed NGN 1 while on production or live system, it's 10
     };
   }
 
   callback = response => {
-      
     //console.log(response);
   };
 
