@@ -1,4 +1,4 @@
-const Guest = require('../models/Guest');
+const ShortenLink = require('../models/ShortenLink');
 
 /**
  * This function renders the guest page and gets list of uploaded links
@@ -12,7 +12,7 @@ const guestPage = (req, res) => {
     userId
   } = req.cookies;
 
-  Guest.find({
+  ShortenLink.find({
       uploadedBy: userId
     })
     .sort({

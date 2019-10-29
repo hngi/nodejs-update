@@ -31,14 +31,8 @@ const ShortenLink = {
           uploadedBy: userId
         }
 
-        // Guests
-        if (userId) {
-          const createGuest = new Guest(urlData)
-          createGuest.save();
-        } else {
-          const createShortUrl = new ShortLink(urlData);
-          createShortUrl.save();
-        }
+        const createShortUrl = new ShortLink(urlData);
+        createShortUrl.save();
 
         let url = {
           message: 'Link shortened successfully',
