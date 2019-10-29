@@ -33,5 +33,5 @@ router.post("/api/auth/login", loginUser);
 router.post("/api/auth/register", registerUser);
 router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail);
 router.post("/:shortenId", findShortenUrl, downloadShortenUrl);
-router.post("/api/auth/upload", multer, uploadFile, shortenLink.shortenUrl);
+router.post("/api/auth/upload", multer, uploadFile, validateCookie, shortenLink.shortenUrl);
 module.exports = router;
