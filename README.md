@@ -14,7 +14,7 @@ Clone this repo and install all dependencies.
 
 * ```git clone https://github.com/hngi/nodejs-update.git```
 * ```cd client``` then ```npm install``` to install all dependencies for the client (React)
-* ```npm start``` to start React scripts 
+* ```npm run start``` to start React scripts 
 * ```cd ..``` to go back to root directory
 * ```cd server``` then ```npm install``` to install dependencies for the server
 * ```npm run start-dev``` to start the server  
