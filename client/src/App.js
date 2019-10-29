@@ -10,20 +10,20 @@ import Team from "./components/Team/Team";
 import Privacy from "./components/Privacy/Privacy";
 import NotFound from "./components/NotFound/NotFound";
 import Upload from "./containers/Upload/Upload";
-// import Home from "./components/Home/Home";
+import Payment from "./components/Payment/Payment";
+
 const App = () => {
   return (
     <Provider store={store}>
       <Router>
         <div className="d-flex flex-column parent">
-          
           <Navbar />
           <Alert />
           <Switch>
-            {/* <Route exact path="/" component={Home} /> */}
             <Route exact path="/" component={Upload} />
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/team" component={Team} />
+            <Route exact path="/payment" component={Payment} />
             {/* <Route exact path="/upload" component={Upload} /> */}
             <Route component={NotFound} />
           </Switch>

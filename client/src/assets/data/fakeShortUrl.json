@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "shortUrl": "https://google.com.ng/testing-link-address-is-long"
+  },
+  {
+    "id": 2,
+    "shortUrl": "https://google.com.ng/testing"
+  },
+  {
+    "id": 3,
+    "shortUrl": "https://google.com.ng/testing-link"
+  },
+  {
+    "id": 4,
+    "shortUrl": "https://aws.com/testing"
+  },
+  {
+    "id": 5,
+    "shortUrl": "https://google.com"
+  },
+  {
+    "id": 6,
+    "shortUrl": "https://google.com.ng/testing-link-address-is-long"
+  },
+  {
+    "id": 7,
+    "shortUrl": "https://google.com"
+  },
+  {
+    "id": 8,
+    "shortUrl": "https://google.com"
+  }
+]
