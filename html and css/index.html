@@ -122,32 +122,61 @@
       }
 
       .file-link-container {
+       display: grid;
+       max-height: 15em;
+       overflow-y: auto;
+       scroll-behavior: smooth;
+      }
+
+      
+     .file-link-container::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .file-link-container::-webkit-scrollbar-thumb {
+        background: #2680EB;
+        border-radius: 10px;
+      }
+
+      .file-link-container::-webkit-scrollbar-track {
+        background-color: rgba(169, 169, 169, 0.5);
+      }
+
+      .file-link {
         display: flex;
         justify-content: space-between;
       }
 
-      .file-link-container p:nth-child(1) {
+      .file-link p:nth-child(1) {
         color: #2680EB;
         background-color:  rgba(38, 128, 235, 0.05);
         font-size: 18px;
         padding: 10px;
       }
 
-      .file-link-container img {
+      .file-link img {
         color: #2680EB;
         font-size: 6px;
-        padding: 10px;
       }
 
-      .file-link-container p {
+      .file-link p {
         display: inline-block;
         color: #6B6A6A;
         font-size: 16px;
+        padding: 0 10px ;
+        position: relative;
+        top: -4px;
       }
 
-      .share {
-        display: inline-block;
+      .share-container {
+        padding-top: 15px;
       }
+
+      .social-icons {
+        padding: 0 7px;
+        display: none;
+      }
+
     </style>
   </head>
   <body>
@@ -192,12 +221,75 @@
       <h2>Upload Success!</h2>
     </div>
     <div class="file-link-container">
-      <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
-      <div class="share">
-        <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt=""><p>copy</p>
-        <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt=""><p>Share</p><p>jjjj</p>
-      </div>
-    </div>
+      <div class="file-link">
+          <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+          <div class="share-container">
+            <div class="copy-share">
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt="">
+                <p>Copy</p>
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt="" class="share">
+                <p>Share</p>
+            </div>
+            <div class="social-icons">
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319560/xumt48oi9dhzps3fgbo7.png" alt=""><p>Email</p>
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320186/e8mr02uwijhg2bst4cgp.png" alt="">
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320078/hh1q1ty7hsk49vy3o4kr.png" alt="">
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319985/lfvdvz4vf7fxfjpq6iwo.png" alt="">
+            </div>
+          </div>
+          </div>
+
+          <div class="file-link">
+              <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+              <div class="share-container">
+                <div class="copy-share">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt="">
+                    <p>Copy</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt="" class="share">
+                    <p>Share</p>
+                </div>
+                <div class="social-icons">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319560/xumt48oi9dhzps3fgbo7.png" alt=""><p>Email</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320186/e8mr02uwijhg2bst4cgp.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320078/hh1q1ty7hsk49vy3o4kr.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319985/lfvdvz4vf7fxfjpq6iwo.png" alt="">
+                </div>
+              </div>
+          </div>
+          <div class="file-link">
+              <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+              <div class="share-container">
+                <div class="copy-share">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt="">
+                    <p>Copy</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt="" class="share">
+                    <p>Share</p>
+                </div>
+                <div class="social-icons">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319560/xumt48oi9dhzps3fgbo7.png" alt=""><p>Email</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320186/e8mr02uwijhg2bst4cgp.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320078/hh1q1ty7hsk49vy3o4kr.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319985/lfvdvz4vf7fxfjpq6iwo.png" alt="">
+                </div>
+              </div>
+          </div>
+          <div class="file-link">
+              <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+              <div class="share-container">
+                <div class="copy-share">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt="">
+                    <p>Copy</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt="" class="share">
+                    <p>Share</p>
+                </div>
+                <div class="social-icons">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319560/xumt48oi9dhzps3fgbo7.png" alt=""><p>Email</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320186/e8mr02uwijhg2bst4cgp.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320078/hh1q1ty7hsk49vy3o4kr.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319985/lfvdvz4vf7fxfjpq6iwo.png" alt="">
+                </div>
+              </div>
+          </div>  
     </div>
 
     <script>
@@ -210,6 +302,25 @@
         });
       });
 
+      // sharing
+      const share = document.querySelectorAll('.share');
+      // const social = document.querySelectorAll('.social-icons');
+      // const copyShare = document.querySelectorAll('.copy-share');
+
+      share.forEach(share => {
+        share.addEventListener('click', (e) =>{
+          e.target.parentElement.remove()
+          e.target.parentElement.nextElementSibling.style.display = 'block';
+          // copyShare.forEach(copyShare => {
+          //   copyShare.style.display = 'none';
+          // })
+          // social.forEach(social => {
+          //   social.style.display = 'block';
+          // })
+        })
+      })
+
+      // file upload
       function thisFileUpload() {
         document.getElementById("file").click();
       }
