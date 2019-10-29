@@ -30,7 +30,7 @@ router.post("/api/auth/login", loginUser);
 router.post("/api/auth/register", registerUser);
 router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail);
 router.post("/:shortenId", findShortenUrl, downloadShortenUrl); 
-//router.post("/api/auth/upload", multerUploads, uploadFile, shortenLink.shortenUrl);
+router.post("/api/auth/upload", multerUploads, uploadFile, shortenLink.shortenUrl);
 router.post("/api/auth/upload/folder", upload, zipper, uploadFileToS3, shortenLink.folderUrl);
 router.get('/api/test', (req, res) => {
   res.render('test')
