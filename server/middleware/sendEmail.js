@@ -13,12 +13,11 @@ const transport = nodemailer.createTransport(
 const sendEmail = {
   async sendEmail(req, res) {
     try {
-      console.log(Email);
       const {
         data: { name, to, message, link }
       } = res.locals;
       const sMail = await transport.sendMail({
-        from: `XshareNG ${Email}`,
+        from: `XShareNG ${Email}`,
         to,
         subject: 'File Share',
         html: `
