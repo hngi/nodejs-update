@@ -18,11 +18,15 @@ const { multerUploads, zipper, upload, uploadFileToS3 } = require("../middleware
 const shortenLink = require("../controller/shortUrl");
 
 router.get("/:shortenId", findShortenUrl, (req, res) => {
+  const response = [res.locals]
+  //console.log(response[0].downloadCount)
+  var currentCount = response[0].downloadCount
   const fullLink = req.protocol + "://" + req.get("host");
   const shortenId = req.params.shortenId;
   res.render("download", {
     shortenId: shortenId,
-    fullLink: fullLink
+    fullLink: fullLink,
+    currentCount: currentCount
   });
 });
 //router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
