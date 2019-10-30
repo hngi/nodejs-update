@@ -29,8 +29,8 @@ const ShortenLink = {
           awsUrl,
           shortUrlParam,
           fileName,
-          shortUrl: `http://xshare.gq/${shortUrlParam}`,
-          // shortUrl: `http://localhost:4000/${shortUrlParam}`,
+          // shortUrl: `http://xshare.gq/${shortUrlParam}`,
+          shortUrl: `http://localhost:4000/${shortUrlParam}`,
           uploadedBy: userId
         });
         createShortUrl.save();
@@ -70,8 +70,8 @@ const ShortenLink = {
           awsUrl,
           shortUrlParam,
           fileName,
-          shortUrl: `http://xshare.gq/${shortUrlParam}`,
-          // shortUrl: `http://localhost:4000/${shortUrlParam}`,
+          // shortUrl: `http://xshare.gq/${shortUrlParam}`,
+          shortUrl: `http://localhost:4000/${shortUrlParam}`,
 
           uploadedBy: userId
         });
