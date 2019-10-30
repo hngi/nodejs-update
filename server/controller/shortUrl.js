@@ -27,11 +27,12 @@ const ShortenLink = {
           awsUrl,
           shortUrlParam,
           fileName,
-          shortUrl: `http://xshare.ga/${shortUrlParam}`,
+          shortUrl: `http://xshare.gq/${shortUrlParam}`,
           uploadedBy: userId
         }
 
         const createShortUrl = new ShortLink(urlData);
+
         createShortUrl.save();
 
         let url = {
