@@ -3,7 +3,9 @@ const ShortLink = require('../models/ShortenLink');
 const findShortenUrl = {
   async findShortenUrl(req, res, next) {
     try {
-      const { shortenId } = req.params;
+      const {
+        shortenId
+      } = req.params;
 
       const findUrl = await ShortLink.find({
         shortUrlParam: shortenId
@@ -16,8 +18,11 @@ const findShortenUrl = {
         });
       }
 
-      const { cloudinaryUrl,fileName } = findUrl[0];
-      res.locals.cloudinaryUrl = cloudinaryUrl;
+      const {
+        awsUrl,
+        fileName
+      } = findUrl[0];
+      res.locals.awsUrl = awsUrl;
       res.locals.fileName = fileName;
       next();
     } catch (error) {

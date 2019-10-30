@@ -1,27 +1,38 @@
 const shortid = require('shortid');
 const ShortLink = require('../models/ShortenLink');
+const Guest = require('../models/Guest');
 const request = require('request');
 const path = require('path');
 const url = require('url');
+
+
 const ShortenLink = {
   async shortenUrl(req, res, next) {
+    const userId = req.cookies.userId;
+
+    console.log(userId);
+
+
     try {
       let newUrl = []
-      const response = [...res.locals]
+      let response = [...res.locals]
 
       response.forEach(item => {
+
 
         const awsUrl = item.awsUrl;
         const fileName = item.originalName;
         const shortUrlParam = shortid.generate();
-        const createShortUrl = new ShortLink({
+        const urlData = {
           awsUrl,
           shortUrlParam,
           fileName,
-          // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
-          shortUrl: `http://xshare.gq/${shortUrlParam}`
-          //shortUrl: `http://localhost:4000/${shortUrlParam}`
-        });
+          shortUrl: `http://xshare.gq/${shortUrlParam}`,
+          uploadedBy: userId
+        }
+
+        const createShortUrl = new ShortLink(urlData);
+
         createShortUrl.save();
 
         let url = {
@@ -49,10 +60,10 @@ const ShortenLink = {
   async redirectShortenUrl(req, res) {
     try {
 
-      const response = [...res.locals]
-      response.forEach(link => {
-        res.redirect(link.awsUrl)
-      })
+      const {
+        awsUrl
+      } = res.locals;
+      res.redirect(awsUrl)
 
     } catch (error) {
       res.json({
@@ -63,23 +74,20 @@ const ShortenLink = {
   },
   async downloadShortenUrl(req, res) {
     try {
-
-      const response = [...res.locals]
-      response.forEach(link => {
-        let file = link.originalName;
-        let awsUrl = link.awsUrl;
-        res.setHeader('Content-Disposition', `attachment; filename=${file}`);
-        request(awsUrl)
-          .once('data', data => {
-            console.log(data);
-          })
-          .on('error', err => {
-            console.log(err);
-          })
-          .pipe(res);
-
-      })
-
+      const {
+        awsUrl,
+        fileName
+      } = res.locals;
+      let file = fileName;
+      res.setHeader('Content-Disposition', `attachment; filename=${file}`);
+      request(awsUrl)
+        .once('data', data => {
+          console.log(data);
+        })
+        .on('error', err => {
+          console.log(err);
+        })
+        .pipe(res);
     } catch (error) {
       res.json({
         success: true,
