@@ -4,8 +4,12 @@ const request = require('request');
 const path = require('path');
 const url = require('url');
 const JSZip = require("jszip");
+
 const ShortenLink = {
   async shortenUrl(req, res, next) {
+    const {
+      userId
+    } = req.cookies;
     try {
       let newUrl = []
       const response = [...res.locals]
@@ -19,9 +23,8 @@ const ShortenLink = {
           awsUrl,
           shortUrlParam,
           fileName,
-          // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
-          shortUrl: `http://xshare.gq/${shortUrlParam}`
-          //shortUrl: `http://localhost:4000/${shortUrlParam}`
+          shortUrl: `http://xshare.gq/${shortUrlParam}`,
+          uploadedBy: userId
         });
         createShortUrl.save();
 
@@ -48,6 +51,9 @@ const ShortenLink = {
     }
   },
   async folderUrl(req, res, next) {
+    const {
+      userId
+    } = req.cookies;
     try {
       let newUrl = []
       const response = [...res.locals]
@@ -61,9 +67,8 @@ const ShortenLink = {
           awsUrl,
           shortUrlParam,
           fileName,
-          // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
-          shortUrl: `http://xshare.gq/${shortUrlParam}`
-          //shortUrl: `http://localhost:3500/${shortUrlParam}`
+          shortUrl: `http://xshare.gq/${shortUrlParam}`,
+          uploadedBy: userId
         });
         createShortUrl.save();
 
@@ -101,7 +106,9 @@ const ShortenLink = {
       const data = {
         downloadCount: newCount
       }
-      await ShortLink.findOneAndUpdate({ shortUrlParam }, data, (err) => {
+      await ShortLink.findOneAndUpdate({
+        shortUrlParam
+      }, data, (err) => {
         if (err) {
           console.log(err)
         }
@@ -109,7 +116,7 @@ const ShortenLink = {
       response.forEach(link => {
         res.redirect(link.awsUrl)
       })
-     
+
     } catch (error) {
       res.json({
         success: true,
@@ -121,7 +128,7 @@ const ShortenLink = {
     console.log(res.locals)
     try {
 
-      const response = [... res.locals]
+      const response = [...res.locals]
       response.forEach(link => {
         let file = link.originalName;
         let awsUrl = link.awsUrl;

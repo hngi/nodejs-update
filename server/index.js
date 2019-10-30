@@ -33,8 +33,8 @@ app.use(
 );
 app.use(express.urlencoded({
   extended: true
-}))
-app.use(cookieParser)
+}));
+app.use(cookieParser()); //Parse the cookie data (User ID).
 app.use(router);
 
 mongoose.set("useCreateIndex", true);
