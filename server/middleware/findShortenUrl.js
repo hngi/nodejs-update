@@ -16,8 +16,8 @@ const findShortenUrl = {
         });
       }
 
-      const { cloudinaryUrl,fileName } = findUrl[0];
-      res.locals.cloudinaryUrl = cloudinaryUrl;
+      const { awsUrl,fileName } = findUrl[0];
+      res.locals.awsUrl = awsUrl;
       res.locals.fileName = fileName;
       next();
     } catch (error) {
