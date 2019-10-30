@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag and drop ske</title>
+    <style>
+        #dropzone {
+            text-align: center;
+            width: 300px;
+            height: 100px;
+            margin: 10px;
+            padding: 10px;
+            border: 4px dashed red;
+            border-radius: 10px;
+        }
+
+        #boxtitle {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            color: black;
+            font: bold 2em "Arial", sans-serif;
+            width: 300px;
+            height: 100px;
+        }
+
+        body {
+            font: 14px "Arial", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>Drag files and/or directories to the box below!</p>
+
+    <div id="dropzone">
+
+        <form style="height: 100%;" id="uploadForm" action="/api/auth/upload" method="post"
+            enctype="multipart/form-data">
+            <input id="files" style="height: 100%;" type="file" name='file'  directory multiple>
+            <button>sub</button>
+        </form>
+
+    </div>
+
+
+
+
+    <script>
+        let bdy = document.querySelector('body')
+        let input = document.querySelector("#files")
+      
+        let dropzone = document.getElementById("uploadForm");
+
+        function scanFiles(item) {
+
+            if (item.isDirectory) {
+                insertParam('/folder')
+                //console.log(item.name)
+            }
+            if (item.isFile) {
+                insertParam('/')
+            }
+        }
+
+       
+
+        function handleDragOver(e) {
+        //e.preventDefault();
+        let data =Array.from(e.dataTransfer.items).map(i => [i.kind,i.type].join('|')).join(', ');
+         console.log(data.split('|')[1])
+         let test= data.split('|')[1]
+         if(test !==''){
+             input.removeAttribute("webkitdirectory")
+         }else{
+             input.setAttribute("webkitdirectory",'')
+         }
+        }
+
+        dropzone.addEventListener('dragenter',handleDragOver);
+
+
+        dropzone.addEventListener("drop", function (event) {
+            let items = event.dataTransfer.items;
+            //event.preventDefault();
+            for (let i = 0; i < items.length; i++) {
+                let item = items[i].webkitGetAsEntry();
+                if (item) {
+                    scanFiles(item);
+                }
+            }
+        }, false);
+
+        function insertParam(key) {
+            key = encodeURI(key);
+            dropzone.setAttribute('action', `/api/auth/upload${key}`)
+            //console.log(key)
+        }
+    </script>
+</body>
+
+</html>

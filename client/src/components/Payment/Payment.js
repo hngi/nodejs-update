@@ -7,8 +7,8 @@ class Payment extends Component {
     super();
 
     this.state = {
-      key: process.env.REACT_APP_RAVE_API_KEY, // RavePay PUBLIC KEY
-      email: "victorjonah199@gmail.com", // customer email
+      key: 'FLWPUBK-6b5f592d963f5b9054e633eb59576887-X', // RavePay PUBLIC KEY
+      email: 'codedcoderrr@gmail.com', // customer email
       amount: 1 // equals NGN 1000. Minimum amount allowed NGN 1 while on production or live system, it's 10
     };
   }

@@ -4,12 +4,12 @@
 }
 
 :root {
-  --color-blue: #2680eb;
+  --color-blue: #172b4d;
 }
 
 html,
 body {
-  font-family: Segoe UI;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .parent {

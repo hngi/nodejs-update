@@ -14,7 +14,7 @@ const sendEmailValidator = require('../middleware/validator/emailMsgValidator').
 const loginUser = require("../controller/login");
 const registerUser = require("../controller/register");
 const uploadFile = require("../controller/upload");
-const multer = require("../middleware/multer");
+const { multerUploads, zipper, upload, uploadFileToS3 } = require("../middleware/multer");
 const shortenLink = require("../controller/shortUrl");
 
 router.get("/:shortenId", findShortenUrl, (req, res) => {
@@ -29,6 +29,10 @@ router.get("/:shortenId", findShortenUrl, (req, res) => {
 router.post("/api/auth/login", loginUser);
 router.post("/api/auth/register", registerUser);
 router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail);
-router.post("/:shortenId", findShortenUrl, downloadShortenUrl);
-router.post("/api/auth/upload", multer, uploadFile, shortenLink.shortenUrl);
+router.post("/:shortenId", findShortenUrl, redirectShortenUrl); 
+router.post("/api/auth/upload/", multerUploads, uploadFile, shortenLink.shortenUrl);
+router.post("/api/auth/upload/folder", upload, zipper, uploadFileToS3, shortenLink.folderUrl);
+router.get('/api/auth/upload/', (req, res) => {
+  res.render('test')
+})
 module.exports = router;
