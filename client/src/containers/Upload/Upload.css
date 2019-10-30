@@ -2,7 +2,7 @@
   font-size: 50px;
   line-height: 67px;
 
-  color: #2680eb;
+  color: #172b4d;
 }
 
 .left-section-content {
@@ -56,7 +56,7 @@
   border-radius: 10px;
 }
 .right-section-content::-webkit-scrollbar-thumb {
-  background: #2680eb;
+  background: #172b4d;
   border-radius: 10px;
 }
 .right-section-content::-webkit-scrollbar-thumb:hover {
@@ -109,7 +109,7 @@
   border-radius: 10px;
 }
 .upload-link::-webkit-scrollbar-thumb {
-  background: #2680eb;
+  background: #172b4d;
   border-radius: 10px;
 }
 .upload-link::-webkit-scrollbar-thumb:hover {
