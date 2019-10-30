@@ -1,7 +1,3 @@
-:root {
-  --color-blue: #172b4d;
-}
-
 nav {
   display: flex;
   justify-content: space-between;

@@ -105,6 +105,14 @@
   width: 385px;
 }
 
+.upload-type {
+  font-size: 16px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: var(--color-blue);
+  cursor: pointer;
+}
+
 .upload-link h5 {
   margin-bottom: 0px !important;
 }
