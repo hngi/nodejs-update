@@ -1,4 +1,59 @@
 .payment-page {
     text-align: center;
-    margin-top: 250px;
+    margin-top: 100px;
 }
+      .payment-container{
+        padding-top: 15px;
+        padding-bottom: 20px;
+        width: 100%;
+        text-align: center;
+      }
+
+      #upgrade{
+        padding-bottom: 20px;
+        color: #2680EB;
+        font-family: Lato;
+        align-items: center;
+        text-align: center;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+      }
+
+      .payment {
+         margin: 15px auto;
+         background-color: white;
+         height: 485px;
+         width: 362px;
+         border-radius: 12px;
+         box-shadow:0px 6px 24px rgba(0, 0, 0, 0.3);
+      }
+     .payment h2{
+       padding-top:40px;
+       font-size: 30px;
+       font-style: normal;
+       font-weight: bold;
+       align-items: center;
+       font-family: Lato;
+       color: #2680EB;
+     }
+      .payment h1{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 40px;
+        color: #172B4D;
+        align-items: center;
+        text-align: center;
+      }
+      .payment p{
+        font-size: 18px;
+        color: #212121;
+      }
+      .upgrade_btn {
+        background: #2680EB;
+        border-radius: 30px;
+        width:225px;
+        height:35px;
+        color: white;
+      }
