@@ -71,8 +71,11 @@ const uploadFileToS3 = async (req, res,next) => {
 
     // Setting up S3 upload parameters
     const params = {
-      acl: "public-read",
       Bucket: 'hngi-nodejs-update',
+      ACL: 'public-read',
+      metadata: (req, file, cb) => {
+        cb(null, { fieldName: file.fieldname });
+      },
       Key: 'xshaer_' + Date.now() + '.zip', // File name you want to save as in S3
       Body: fileContent
     };

@@ -6,7 +6,7 @@ const urlShortenSchema = new Schema({
   awsUrl: String,
   shortUrlParam: String,
   shortUrl: String,
-  downloadCount: Number,
+  downloadCount: { type:Number, default:0},
   fileName:String,
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }

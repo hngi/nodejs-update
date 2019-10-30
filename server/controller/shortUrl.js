@@ -92,7 +92,7 @@ const ShortenLink = {
   async redirectShortenUrl(req, res) {
     try {
 
-      const response = [...res.locals]
+      const response = [res.locals]
       response.forEach(link => {
         res.redirect(link.awsUrl)
       })
@@ -105,9 +105,10 @@ const ShortenLink = {
     }
   },
   async downloadShortenUrl(req, res) {
+    console.log(res.locals)
     try {
 
-      const response = [...res.locals]
+      const response = [... res.locals]
       response.forEach(link => {
         let file = link.originalName;
         let awsUrl = link.awsUrl;
