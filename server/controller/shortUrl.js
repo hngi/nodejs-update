@@ -30,7 +30,7 @@ const ShortenLink = {
           fileName,
           // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
           shortUrl: `http://xshare.gq/${shortUrlParam}`
-          //shortUrl: `http://localhost:4000/${shortUrlParam}`
+          // shortUrl: `http://localhost:4000/${shortUrlParam}`
         });
         createShortUrl.save();
 
@@ -72,7 +72,7 @@ const ShortenLink = {
           fileName,
           // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
           shortUrl: `http://xshare.gq/${shortUrlParam}`
-          //shortUrl: `http://localhost:3500/${shortUrlParam}`
+          // shortUrl: `http://localhost:4000/${shortUrlParam}`
         });
         createShortUrl.save();
 
@@ -133,6 +133,7 @@ const ShortenLink = {
       const response = [... res.locals]
       response.forEach(link => {
         let file = link.originalName;
+        console.log(file);
         let awsUrl = link.awsUrl;
         res.setHeader('Content-Disposition', `attachment; filename=${file}`);
         request(awsUrl)

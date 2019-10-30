@@ -139,9 +139,7 @@ const multerUploads = multer({
     key: (req, file, cb) => {
       cb(
         null,
-        path.basename(file.originalname, path.extname(file.originalname)) +
-        "-" +
-        Date.now() +
+        path.basename(file.originalname, path.extname(file.originalname))+
         path.extname(file.originalname)
       );
     }
