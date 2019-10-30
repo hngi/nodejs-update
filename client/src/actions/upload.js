@@ -10,8 +10,8 @@ import {
 } from './types';
 import { setAlert } from './alert';
 import axios from 'axios';
-// const base_url = 'http://localhost:4000';
-const base_url = 'http://xshare.gq';
+const base_url = 'http://localhost:4000';
+// const base_url = 'http://xshare.gq';
 // const base_url = 'https://x-shareserver.herokuapp.com';
 export const hidelink = () => async => dispatch => {
   dispatch({
@@ -24,7 +24,9 @@ export const uploadFile = file => async dispatch => {
   // fd.append('name', name);
   // fd.append('to', to);
   // fd.append('isEmail', true);
-  fd.append('file', file);
+  file.map(i => {
+    fd.append('file', i);
+  });
 
   dispatch({
     type: LOADING
@@ -35,9 +37,10 @@ export const uploadFile = file => async dispatch => {
       'Content-Type': 'multipart/form-data'
     }
   };
+
   try {
     const response = await axios.post(
-      base_url + '/api/auth/upload',
+      base_url + '/api/auth/upload/',
       fd,
       config
     );
@@ -46,14 +49,13 @@ export const uploadFile = file => async dispatch => {
         type: UPLOAD_FILE_SUCCESS,
         payload: response.data
       });
-
     } else {
+      console.log('RESPONSE ERROR', response);
       dispatch(setAlert('Error uploading file', 'danger'));
       dispatch({
         type: UPLOAD_FILE_FAIL,
         payload: response.data.message
       });
-
     }
   } catch (error) {
     dispatch(setAlert('Error uploading file', 'danger'));

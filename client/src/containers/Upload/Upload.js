@@ -25,10 +25,7 @@ const Upload = ({ uploadFile, setAlert }) => {
     // Convert Uploaded Files to Array
     const uploadedFile = Object.values(file);
     uploadedFile.map(i => {
-      if (i.size >= 104857600) {
-        setFormData({ show: false });
-        setAlert('Please select a file that is less than 100MB', 'danger');
-      } else if (
+      if (
         i.name.match(
           /.(jpeg|jpg|png|gif|mp4|mp3|fig|doc|docx|pdf|xlsx|avi|mkv|xml|exe)$/
         )
@@ -58,6 +55,8 @@ const Upload = ({ uploadFile, setAlert }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const removeFile = event => {
+    console.log('PARENT PARENT', event.target);
+    console.log('PARENT', event.target.parentElement);
     event.target.parentElement.remove();
   };
 
@@ -93,7 +92,7 @@ const Upload = ({ uploadFile, setAlert }) => {
             className="d-flex flex-column align-items-center"
             style={{ outline: 'none' }}
           >
-            <div className="right-section-upload d-flex flex-column justify-content-center align-items-center ">
+            <div className="right-section-upload d-flex flex-column justify-content-center align-items-center p-3">
               <label htmlFor="upload" className="upload-form-label">
                 {isDragActive ? (
                   <div
@@ -128,13 +127,16 @@ const Upload = ({ uploadFile, setAlert }) => {
                 )}
               </label>
               <>
-                <h6 className="right-section-content mt-4">
+                <h6 className="right-section-content mt-2">
                   {file ? (
                     <>
                       {fileUploaded.map(i => {
                         return (
                           <span className="uploading-file mt-3" key={uuid()}>
-                            <span>{i.name}</span>{' '}
+                            <span className="upload-file-title">{`${i.name.substring(
+                              0,
+                              28
+                            )}`}</span>{' '}
                             <img
                               src="https://res.cloudinary.com/cavdy/image/upload/v1572357426/Group_1_gnjyx3.png"
                               alt=""
@@ -158,6 +160,7 @@ const Upload = ({ uploadFile, setAlert }) => {
               id="upload"
               multiple
             />
+
             <button
               onClick={() => {
                 upload();
