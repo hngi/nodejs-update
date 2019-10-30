@@ -63,7 +63,7 @@ const ShortenLink = {
           fileName,
           // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
           shortUrl: `http://xshare.ga/${shortUrlParam}`
-          //shortUrl: `http://localhost:4000/${shortUrlParam}`
+          //shortUrl: `http://localhost:3500/${shortUrlParam}`
         });
         createShortUrl.save();
 
@@ -93,10 +93,23 @@ const ShortenLink = {
     try {
 
       const response = [res.locals]
+      //console.log(response[0].downloadCount)
+      var currentCount = response[0].downloadCount
+      var shortUrlParam = response[0].shortUrlParam
+      const newCount = currentCount + 1
+      //console.log(newCount)
+      const data = {
+        downloadCount: newCount
+      }
+      await ShortLink.findOneAndUpdate({ shortUrlParam }, data, (err) => {
+        if (err) {
+          console.log(err)
+        }
+      })
       response.forEach(link => {
         res.redirect(link.awsUrl)
       })
-
+     
     } catch (error) {
       res.json({
         success: true,

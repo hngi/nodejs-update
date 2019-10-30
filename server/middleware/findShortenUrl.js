@@ -16,9 +16,11 @@ const findShortenUrl = {
         });
       }
 
-      const { awsUrl,fileName } = findUrl[0];
+      const { awsUrl, fileName, downloadCount, shortUrlParam} = findUrl[0];
       res.locals.awsUrl = awsUrl;
       res.locals.fileName = fileName;
+      res.locals.downloadCount = downloadCount;
+      res.locals.shortUrlParam = shortUrlParam;
       next();
     } catch (error) {
       return res.status(500).json({
