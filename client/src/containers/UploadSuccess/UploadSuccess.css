@@ -20,6 +20,12 @@
   border: 1px solid #a9a9a9;
 }
 
+.short-link-url {
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+}
+
 .share {
   font-size: 18px;
   line-height: 24px;
@@ -61,7 +67,7 @@
 .short-links {
   overflow: auto;
   white-space: nowrap;
-  height: 540px;
+  height: auto;
   padding-right: 20px;
 }
 
@@ -73,7 +79,7 @@
   border-radius: 10px;
 }
 .short-links::-webkit-scrollbar-thumb {
-  background: #172b4d;
+  background: var(--color-blue);
   border-radius: 10px;
 }
 .short-links::-webkit-scrollbar-thumb:hover {
@@ -118,5 +124,11 @@
   .upload-success-img {
     width: 50px;
     height: 50px;
+  }
+}
+
+@media (max-width: 450px) {
+  .short-links {
+    max-height: 540px;
   }
 }
