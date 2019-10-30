@@ -1,0 +1,242 @@
+body {
+  background: rgba(250, 250, 250, 0.9);
+  font-family: Segoe UI;
+  margin: 0;
+  padding: 0;
+}
+
+.color-white {
+  color: white;
+}
+
+.green {
+  background: #2DCE98;
+}
+
+.blue {
+  background: #11CDEF;
+}
+
+.red {
+  background: #F53C56;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-areas:
+    "a a b b b b b b b b b"
+    "a a b b b b b b b b b"
+  ;
+}
+
+#s1-left {
+  grid-area: a;
+  background: white;
+  padding: 1.5rem 1rem;
+}
+
+.l-one-flex {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1.2rem;
+}
+
+.l-two-grid {
+  margin-top: 1.5rem;
+}
+
+.l-two-grid .l-two {
+  display: flex;
+  padding: 1rem 1.2rem;
+}
+
+.l-two span {
+  margin-left: 1rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+
+  color: #7764E4;
+}
+
+.l-two:hover {
+  background: #F6F9FC;
+  border-radius: 0.4rem;
+}
+
+#s2-right {
+  grid-area: b;
+}
+
+#s3-top {
+  background: #172B4D;
+  padding: 0 2rem;
+  height: 25rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.15rem 0;
+}
+
+input[type=search] {
+  width: 15rem;
+  height: 3rem;
+  border-radius: 2rem;
+  background: #F7FAFC;
+  text-align: center;
+  border: none;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-right img {
+  margin: 1rem;
+}
+
+.img-circle {
+  display: block;
+  border-radius: 50%;
+}
+
+#home {
+  display: flex;
+  margin: 2rem 0.35rem;
+  justify-content: flex-start;
+}
+
+#home>img {
+  margin-right: 3rem;
+}
+
+#nav-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 30px;
+}
+
+.card-one {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  height: 5.5rem;
+}
+
+.card-one p,
+.card-one h2 {
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+  font-size: 0.95rem;
+}
+
+.circle-div {
+  width: 3.2rem;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+}
+
+.card-sub-flex p {
+  margin-bottom: 0.55rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 15px;
+  /* identical to box height */
+  color: #8898AA;
+}
+
+.card-sub-flex h2 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+
+  color: #4D4F5C;
+}
+
+#s4-bottom {
+  background: #F1F3F9;
+}
+
+.offset-grid {
+  display: grid;
+  position: relative;
+  bottom: 3rem;
+  grid-template-areas:
+    "c c c c d d d";
+
+}
+
+#dl-cards {
+  grid-area: c;
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-row-gap: 25px;
+  padding: 0 2rem;
+  border-right: 2px solid #C2C2C2;
+}
+
+#right-img {
+  grid-area: d;
+}
+
+.card-two {
+  display: flex;
+  background: white;
+  border-radius: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: 7rem;
+}
+
+.card-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icons img {
+  margin: 1rem;
+}
+
+.two-sub-flex a,
+.two-sub-flex p {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: #8898AA;
+  margin: 0.5rem 0;
+}
+
+.two-sub-flex h3 {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 21px;
+  line-height: 25px;
+  color: #172B4D;
+  margin: 0.5rem 0;
+}
+
+.img-square {
+  display: block;
+  margin: 0 auto;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
