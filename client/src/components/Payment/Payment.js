@@ -14,11 +14,9 @@ class Payment extends Component {
   }
 
   callback = response => {
-    //console.log(response);
   };
 
   close = () => {
-    console.log("Payment closed");
   };
 
   getReference = () => {
