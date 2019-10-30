@@ -14,11 +14,9 @@ class Payment extends Component {
   }
 
   callback = response => {
-    //console.log(response);
   };
 
   close = () => {
-    console.log("Payment closed");
   };
 
   getReference = () => {
@@ -34,12 +32,41 @@ class Payment extends Component {
 
   render() {
     return (
-      <div className="payment-page">
-        <p className="App-intro">
+      <div className='payment-page'>
+        <div className='payment-container' id='payment'>
+          <h2 id='upgrade'>Upgrade Plan</h2>
+          <div className='payment'>
+            <h2 className='partner'>PRO</h2>
+            <h1 className='price'>N3,999 monthly</h1>
+            {/* <p>N45,000 yearly</p> */}
+            <br/>
+            <p>Unlimited storage</p>
+            <p>Unlimited Email transfers</p>
+            <p>Unlimited Link transfers</p>
+            <p>Delete transfers</p>
+            {/* <button className='upgrade_btn' type='submit'> */}
+              {/* Upgrade */}
+              <RavePaymentModal
+                text='Make Payment'
+                className='upgrade_btn'
+                metadata={[{ metaname: 'Device', metavalue: 'IPhone X' }]}
+                reference={this.getReference()}
+                email={this.state.email}
+                amount={this.state.amount}
+                ravePubKey={this.state.key}
+                callback={this.callback}
+                close={this.close}
+                isProduction={true}
+                tag='button'
+              />
+            {/* </button> */}
+          </div>
+        </div>
+        {/* <p className='App-intro'>
           <RavePaymentModal
-            text="Make Payment"
-            class="payButton"
-            metadata={[{ metaname: "Device", metavalue: "IPhone X" }]}
+            text='Make Payment'
+            class='payButton'
+            metadata={[{ metaname: 'Device', metavalue: 'IPhone X' }]}
             reference={this.getReference()}
             email={this.state.email}
             amount={this.state.amount}
@@ -47,9 +74,9 @@ class Payment extends Component {
             callback={this.callback}
             close={this.close}
             isProduction={true}
-            tag="button"
+            tag='button'
           />
-        </p>
+        </p> */}
       </div>
     );
   }

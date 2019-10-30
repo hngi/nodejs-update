@@ -3,28 +3,38 @@ const ShortLink = require('../models/ShortenLink');
 const request = require('request');
 const path = require('path');
 const url = require('url');
-const JSZip = require("jszip");
+const JSZip = require('jszip');
 
 const ShortenLink = {
-  async findAll(req, res, next) {
-    ShortLink.find({}, function (err, allShortLink) {
+  async findUserShortLinks(req, res, next) {
+    const { userId } = req.cookies
+    const search = {
+      uploadedBy: userId
+    }
+      ShortLink.find(search, function (err, allUserShortLink) {
       if (err) {
-        console.log(err);
+        return err;
+      } else {
+        res.send(allUserShortLink);
+      }
+    })  
+},
+  async findAll(req, res, next) {
+    ShortLink.find({}, function(err, allShortLink) {
+      if (err) {
+        return err;
       } else {
         res.send(allShortLink);
       }
     });
   },
   async shortenUrl(req, res, next) {
-    const {
-      userId
-    } = req.cookies;
+    const { userId } = req.cookies;
     try {
-      let newUrl = []
-      const response = [...res.locals]
+      let newUrl = [];
+      const response = [...res.locals];
 
       response.forEach(item => {
-
         const awsUrl = item.awsUrl;
         const fileName = item.originalName;
         const shortUrlParam = shortid.generate();
@@ -33,6 +43,7 @@ const ShortenLink = {
           shortUrlParam,
           fileName,
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
+          // shortUrl: `http://localhost:4000/${shortUrlParam}`,
           uploadedBy: userId
         });
         createShortUrl.save();
@@ -42,16 +53,15 @@ const ShortenLink = {
           shortCode: shortUrlParam,
           shortUrl: createShortUrl.shortUrl,
           longUrl: awsUrl
-        }
+        };
 
-        newUrl.push(url)
-      })
+        newUrl.push(url);
+      });
 
       res.json({
         success: true,
         data: newUrl
       });
-
     } catch (error) {
       res.json({
         success: true,
@@ -60,15 +70,12 @@ const ShortenLink = {
     }
   },
   async folderUrl(req, res, next) {
-    const {
-      userId
-    } = req.cookies;
+    const { userId } = req.cookies;
     try {
-      let newUrl = []
-      const response = [...res.locals]
+      let newUrl = [];
+      const response = [...res.locals];
 
       response.forEach(item => {
-
         const awsUrl = item.awsUrl;
         const fileName = item.originalName;
         const shortUrlParam = shortid.generate();
@@ -77,6 +84,8 @@ const ShortenLink = {
           shortUrlParam,
           fileName,
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
+          // shortUrl: `http://localhost:4000/${shortUrlParam}`,
+
           uploadedBy: userId
         });
         createShortUrl.save();
@@ -86,16 +95,15 @@ const ShortenLink = {
           shortCode: shortUrlParam,
           shortUrl: createShortUrl.shortUrl,
           longUrl: awsUrl
-        }
+        };
 
-        newUrl.push(url)
-      })
+        newUrl.push(url);
+      });
 
       res.json({
         success: true,
         data: newUrl
       });
-
     } catch (error) {
       res.json({
         success: true,
@@ -105,27 +113,27 @@ const ShortenLink = {
   },
   async redirectShortenUrl(req, res) {
     try {
-
-      const response = [res.locals]
-      //console.log(response[0].downloadCount)
-      var currentCount = response[0].downloadCount
-      var shortUrlParam = response[0].shortUrlParam
-      const newCount = currentCount + 1
-      //console.log(newCount)
+      const response = [res.locals];
+      var currentCount = response[0].downloadCount;
+      var shortUrlParam = response[0].shortUrlParam;
+      const newCount = currentCount + 1;
       const data = {
         downloadCount: newCount
-      }
-      await ShortLink.findOneAndUpdate({
-        shortUrlParam
-      }, data, (err) => {
-        if (err) {
-          console.log(err)
+      };
+      await ShortLink.findOneAndUpdate(
+        {
+          shortUrlParam
+        },
+        data,
+        err => {
+          if (err) {
+            throw err;
+          }
         }
-      })
+      );
       response.forEach(link => {
-        res.redirect(link.awsUrl)
-      })
-
+        res.redirect(link.awsUrl);
+      });
     } catch (error) {
       res.json({
         success: true,
@@ -134,10 +142,8 @@ const ShortenLink = {
     }
   },
   async downloadShortenUrl(req, res) {
-    console.log(res.locals)
     try {
-
-      const response = [...res.locals]
+      const response = [...res.locals];
       response.forEach(link => {
         let file = link.originalName;
         let awsUrl = link.awsUrl;
@@ -150,9 +156,7 @@ const ShortenLink = {
             console.log(err);
           })
           .pipe(res);
-
-      })
-
+      });
     } catch (error) {
       res.json({
         success: true,

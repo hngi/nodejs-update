@@ -8,19 +8,19 @@ import {
 const initialState = {
   cloudinaryUrl: null,
   shortUrl: null,
-  shortCode:null,
+  shortCode: null,
   emailSent: false,
-  loading:false
+  loading: false,
+  uploadstate: {
+    success: false
+  }
 };
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case UPLOAD_FILE_SUCCESS:
       return {
-        ...state,
-        cloudinaryUrl: payload.cloudinaryUrl,
-        shortUrl: payload.shortUrl,
-        shortCode:payload.shortCode
+        uploadstate: payload
       };
 
     case UPLOAD_FILE_FAIL:

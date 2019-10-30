@@ -59,11 +59,10 @@
         function scanFiles(item) {
 
             if (item.isDirectory) {
-                insertParam('/folder')
-                //console.log(item.name)
+                insertParam('/folder',item.name.replace(/\s/g,''))
             }
             if (item.isFile) {
-                insertParam('/')
+                insertParam('','')
             }
         }
 
@@ -72,7 +71,6 @@
         function handleDragOver(e) {
         //e.preventDefault();
         let data =Array.from(e.dataTransfer.items).map(i => [i.kind,i.type].join('|')).join(', ');
-         console.log(data.split('|')[1])
          let test= data.split('|')[1]
          if(test !==''){
              input.removeAttribute("webkitdirectory")
@@ -87,18 +85,22 @@
         dropzone.addEventListener("drop", function (event) {
             let items = event.dataTransfer.items;
             //event.preventDefault();
+            let mann = event.dataTransfer.files[0].name
+
+            //console.log(mann.replace(/\s/g,''))
             for (let i = 0; i < items.length; i++) {
                 let item = items[i].webkitGetAsEntry();
+                //console.log(item.name)
                 if (item) {
                     scanFiles(item);
                 }
             }
         }, false);
 
-        function insertParam(key) {
+        function insertParam(key, query) {
             key = encodeURI(key);
-            dropzone.setAttribute('action', `/api/auth/upload${key}`)
-            //console.log(key)
+            query = encodeURI(query) ||'';
+            dropzone.setAttribute('action', `/api/auth/upload${key}/${query}`)
         }
     </script>
 </body>
