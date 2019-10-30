@@ -6,6 +6,15 @@ const url = require('url');
 const JSZip = require("jszip");
 
 const ShortenLink = {
+  async findAll(req, res, next) {
+    ShortLink.find({}, function (err, allShortLink) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(allShortLink);
+      }
+    });
+  },
   async shortenUrl(req, res, next) {
     const {
       userId
