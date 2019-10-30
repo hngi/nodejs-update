@@ -41,10 +41,10 @@ const zipper = (req, res, next) => {
 const uploadFileToS3 = async (req, res, next) => {
   try {
     var name = req.files[0].originalname.split('.')[0];
-
+    var paramsName =req.params.file
     // Read content from the file
     const fileContent = await fs.readFileSync(`../download/${name}.zip`);
-
+    //console.log(paramsName)
     // Setting up S3 upload parameters
     const params = {
       Bucket: 'hngi-nodejs-update',
@@ -52,7 +52,7 @@ const uploadFileToS3 = async (req, res, next) => {
       metadata: (req, file, cb) => {
         cb(null, { fieldName: file.fieldname });
       },
-      Key: `${name}.zip`, // File name you want to save as in S3
+      Key: `${paramsName}.zip`, // File name you want to save as in S3
       Body: fileContent
     };
     let temp = [];
