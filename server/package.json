@@ -61,6 +61,7 @@
     "request": "^2.88.0",
     "shortid": "^2.2.15",
     "url": "^0.11.0",
+    "uuid": "^3.3.3",
     "validator": "^11.1.0",
     "zip-a-folder": "0.0.9"
   }
