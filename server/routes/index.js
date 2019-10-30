@@ -41,10 +41,10 @@ router.get("/api/auth/uploads/:id", shortenLink.findUserShortLinks);
 router.get("/api/auth/uploads", shortenLink.findAll);
 router.post("/api/auth/register", registerUser);
 router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail);
-router.delete("/api/auth/delete/:id", multer,uploadFile.del);
+router.delete("/api/auth/delete/:id", uploadFile.del);
 router.post("/:shortenId", findShortenUrl, redirectShortenUrl);
 router.post("/api/auth/upload/", validateCookie, multerUploads, uploadFile.upload, shortenLink.shortenUrl);
-router.post("/api/auth/upload/folder/:file", upload, zipper, uploadFileToS3, shortenLink.folderUrl);
+router.post("/api/auth/upload/folder/:file", validateCookie, upload, zipper, uploadFileToS3, shortenLink.folderUrl);
 router.get('/api/auth/test/', (req, res) => {
   res.render('test')
 })
