@@ -30,7 +30,6 @@ export const login = (email, password) => async dispatch => {
       body,
       config
     );
-    // console.log(response)
     if (response.data.success) {
       dispatch({
         type: LOGIN_SUCCESS,
@@ -76,7 +75,6 @@ export const signInWithGoogle = (
       body,
       config
     );
-    // console.log(response)
     if (response.data.success) {
       dispatch({
         type: REGISTER_SUCCESS,

@@ -60,7 +60,6 @@
 
             if (item.isDirectory) {
                 insertParam('/folder')
-                //console.log(item.name)
             }
             if (item.isFile) {
                 insertParam('/')
@@ -72,7 +71,6 @@
         function handleDragOver(e) {
         //e.preventDefault();
         let data =Array.from(e.dataTransfer.items).map(i => [i.kind,i.type].join('|')).join(', ');
-         console.log(data.split('|')[1])
          let test= data.split('|')[1]
          if(test !==''){
              input.removeAttribute("webkitdirectory")
@@ -98,7 +96,6 @@
         function insertParam(key) {
             key = encodeURI(key);
             dropzone.setAttribute('action', `/api/auth/upload${key}`)
-            //console.log(key)
         }
     </script>
 </body>
