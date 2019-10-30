@@ -27,6 +27,7 @@ router.get("/:shortenId", findShortenUrl, (req, res) => {
 });
 //router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
 router.post("/api/auth/login", loginUser);
+router.get("/api/auth/all", shortenLink.findAll);
 router.post("/api/auth/register", registerUser);
 router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail);
 router.post("/:shortenId", findShortenUrl, redirectShortenUrl); 
