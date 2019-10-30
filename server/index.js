@@ -6,8 +6,14 @@ const mongoose = require("mongoose");
 require("./database/db");
 const router = require("./routes");
 // cloudinary import
-const { urlencoded, json } = require("body-parser");
-const { resolve } = require("path");
+const {
+  urlencoded,
+  json
+} = require("body-parser");
+const cookieParser = require('cookie-parser')
+const {
+  resolve
+} = require("path");
 //const { uploader, s3Config } = require("./config/aws3");
 //const { multerUploads } = require("./middleware/multer");
 //app.use("*", s3Config);
@@ -25,6 +31,10 @@ app.use(
     extended: false
   })
 );
+app.use(express.urlencoded({
+  extended: true
+}))
+app.use(cookieParser)
 app.use(router);
 
 mongoose.set("useCreateIndex", true);
