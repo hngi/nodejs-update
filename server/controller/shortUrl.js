@@ -19,7 +19,7 @@ const ShortenLink = {
           shortUrlParam,
           fileName,
           // shortUrl: `https://x-shareserver.herokuapp.com/${shortUrlParam}`
-          shortUrl: `http://xshare.ga/${shortUrlParam}`
+          shortUrl: `http://xshare.gq/${shortUrlParam}`
           //shortUrl: `http://localhost:4000/${shortUrlParam}`
         });
         createShortUrl.save();
