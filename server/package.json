@@ -49,6 +49,7 @@
     "express-fileupload": "^1.1.6-alpha.5",
     "express-validator": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
+    "jszip": "^3.2.2",
     "mongoose": "^5.7.5",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
@@ -59,6 +60,7 @@
     "shortid": "^2.2.15",
     "url": "^0.11.0",
     "uuid": "^3.3.3",
-    "validator": "^11.1.0"
+    "validator": "^11.1.0",
+    "zip-a-folder": "0.0.9"
   }
 }
