@@ -38,9 +38,9 @@ export default function fileUpload({
                   alt=""
                 />
                 <p className="right-section-title mb-0 mt-2 ml-3">
-                  Select files to upload
+                  Select a file to upload
                   <span className="right-section-sub-title">
-                    (max size: 1gb | .mp4 .mp3 .png .jpg files supported)
+                    Drag and drop to upload multiple
                   </span>
                 </p>
               </div>

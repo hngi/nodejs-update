@@ -52,6 +52,9 @@
 .upload-success-copy:hover {
   cursor: pointer;
 }
+.upload-success-share:hover {
+  cursor: pointer;
+}
 
 .upload-success-share {
   font-size: 16px;
