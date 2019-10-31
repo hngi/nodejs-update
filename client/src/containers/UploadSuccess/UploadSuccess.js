@@ -6,27 +6,23 @@ import { sendEmail } from '../../actions/upload';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
 import EmailLoader from '../Loader/EmailLoader';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import ChangingProgressProvider from './ChangingProgressProvider';
 
-const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
+const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
     to: '',
     message: '',
     loading: false,
     show: false,
-    share: false
+    share: false,
+    shortenUrl: ''
   });
 
-  const arr = [];
-  for (var i = 1; i <= 100; i++) {
-    arr.push(i);
-  }
-  const { name, message, to, show, loading, share } = formData;
-  const email = () => {
-    setFormData({ show: true });
+  const { name, message, to, show, loading, share, shortenUrl } = formData;
+  const email = shortUrl => {
+    setFormData({ show: true, shortenUrl: shortUrl });
   };
   const onChange = e => {
     setFormData({
@@ -34,7 +30,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
       [e.target.name]: e.target.value
     });
   };
-  const onFormSubmit = e => {
+  const onFormSubmit = (e, shortUrl) => {
     e.preventDefault();
     setFormData({ loading: true, show: true, name: '', to: '', message: '' });
     sendEmail(name, to, message, shortUrl);
@@ -117,7 +113,9 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                           <>
                             <div
                               className="mr-3 d-flex align-items-center upload-success-copy"
-                              onClick={email}
+                              onClick={() => {
+                                email(short.shortUrl);
+                              }}
                             >
                               <img
                                 src="https://res.cloudinary.com/cavdy/image/upload/v1572343978/mail_outline_24px_1_tq5nxb.png"
@@ -174,19 +172,12 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               </div>
             </>
           ) : (
-            <div className="d-flex justify-centent-center align-items-center flex-column loader">
+            <div className="d-flex justify-centent-center align-items-center flex-column ml-2 mr-2">
               <div style={{ width: '150px' }}>
-                <ChangingProgressProvider values={arr}>
-                  {percentage => (
-                    <CircularProgressbar
-                      styles={buildStyles({
-                        pathTransitionDuration: 0.15
-                      })}
-                      value={percentage}
-                      text={`${percentage}%`}
-                    />
-                  )}
-                </ChangingProgressProvider>
+                <CircularProgressbar
+                  value={progressBar.progress || 0}
+                  text={`${progressBar.progress || 0}%`}
+                />
               </div>
               <div
                 className="left-section-content mt-3"
@@ -194,7 +185,8 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
               >
                 <p>Please be patient while your file gets uploaded...</p>
                 <p className="mt-2">
-                  Kindly note that larger files will take longer to be completed
+                  Kindly note that larger files <br />
+                  will take longer to be completed
                 </p>
               </div>
             </div>
@@ -203,7 +195,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
       ) : (
         <div className="right-section-success d-flex flex-column justify-content-center">
           <h3 className="email-title">Email Link</h3>
-          <form onSubmit={onFormSubmit}>
+          <form onSubmit={e => onFormSubmit(e, shortenUrl)}>
             <input
               type="text"
               className="form-input"
@@ -247,7 +239,8 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
 };
 
 const mapStateToProps = state => ({
-  uploadstate: state.upload
+  uploadstate: state.upload,
+  progressBar: state.progress
 });
 export default connect(
   mapStateToProps,

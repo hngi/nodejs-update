@@ -27,11 +27,11 @@ const Upload = ({ uploadFile, setAlert }) => {
 
     // Convert Uploaded Files to Array
     const uploadedFile = Object.values(file);
-    if (Array.isArray(fileType)) {
-      setFormData({ show: true });
-      uploadFolder(uploadedFile);
-      return null;
-    }
+    // if (Array.isArray(fileType)) {
+    //   setFormData({ show: true });
+    //   uploadFolder(uploadedFile);
+    //   return null;
+    // }
 
     setFormData({ show: true });
     uploadFile(uploadedFile);
