@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './Upload.css';
 import { connect } from 'react-redux';
-import { uploadFile } from '../../actions/upload';
+import { uploadFile, uploadFolder } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import UploadType from './uploadType';
@@ -11,11 +11,14 @@ const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
     file: '',
     show: false,
-    loader: true
+    loader: true,
+    fileType: ''
   });
-  const { file, show } = formData;
+  const { file, show, fileType } = formData;
 
   const upload = () => {
+    console.log(fileType);
+    console.log();
     if (file === '' || file === undefined || file === null) {
       setAlert('Please select a file to upload', 'danger');
       setFormData({ show: false });
@@ -24,19 +27,43 @@ const Upload = ({ uploadFile, setAlert }) => {
 
     // Convert Uploaded Files to Array
     const uploadedFile = Object.values(file);
+    if (Array.isArray(fileType)) {
+      setFormData({ show: true });
+      uploadFolder(uploadedFile);
+      return null;
+    }
+
     setFormData({ show: true });
     uploadFile(uploadedFile);
   };
   const onChange = e => {
+    let files = e.target.files;
+
+    // checking if the files is an array
+    if (!Array.isArray(e.target.files)) {
+      files = Object.values(e.target.files);
+    }
+    const newData = [...file];
+    newData.push(...files);
     setFormData({
-      ...formData,
-      [e.target.name]:
-        e.target.name !== 'file' ? e.target.value : e.target.files
+      file: newData,
+      fileType: e.target.files
+    });
+  };
+
+  // Remove File
+  const removeFile = (event, id, fileName) => {
+    const newFiles = file.filter(f => f.name !== fileName);
+    setFormData({
+      file: newFiles
     });
   };
 
   const onDrop = useCallback(File => {
-    setFormData({ file: File });
+    setFormData({
+      file: File,
+      fileType: File
+    });
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -67,6 +94,7 @@ const Upload = ({ uploadFile, setAlert }) => {
             getInputProps={getInputProps}
             isDragActive={isDragActive}
             getRootProps={getRootProps}
+            removeFile={removeFile}
           />
         ) : (
           <UploadSuccess />

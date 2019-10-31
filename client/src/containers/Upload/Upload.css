@@ -222,7 +222,6 @@
 
 @media (max-width: 450px) {
   .right-section-upload {
-    max-height: 300px;
     min-height: 300px;
     height: auto;
   }
