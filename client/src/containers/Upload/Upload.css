@@ -1,12 +1,11 @@
 .left-section-title {
-  font-size: 50px;
+  font-size: 40px;
   line-height: 67px;
-
   color: var(--color-blue);
 }
 
 .left-section-content {
-  font-size: 21px;
+  font-size: 18px;
   line-height: 28px;
   color: #a9a9a9;
   margin-top: 20px;
@@ -18,7 +17,8 @@
 }
 
 .right-section-upload {
-  height: 200px;
+  height: 300px;
+  max-height: 500px;
   width: 500px;
   background: rgba(239, 238, 238, 0.25);
   border-radius: 9px;

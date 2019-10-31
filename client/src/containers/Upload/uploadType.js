@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FileUpload from './fileUpload';
 import FolderUpload from './folderUpload';
 
@@ -10,23 +10,38 @@ export default function UploadType({
   getInputProps,
   isDragActive
 }) {
-  const [uploadType, setUploadType] = useState(false);
-  const removeFile = event => {
-    console.log('PARENT PARENT', event.target);
-    console.log('PARENT', event.target.parentElement);
-    event.target.parentElement.remove();
+  const [uploadData, setUploadData] = useState({
+    uploadType: false,
+    fileUploaded: ''
+  });
+
+  const { uploadType, fileUploaded } = uploadData;
+
+  const validate = file !== '' && file !== undefined && file !== null;
+
+  useEffect(() => {
+    setUploadData({
+      fileUploaded: Object.values(file)
+    });
+  }, [validate]);
+
+  const removeFile = (event, id, fileName) => {
+    fileUploaded.map((i, index) => {
+      if (i.name === fileName) {
+        const newFiles = fileUploaded.splice(index, 1);
+        setUploadData({
+          fileUploaded: newFiles
+        });
+      }
+    });
   };
 
   const toggleUploadType = () => {
-    setUploadType(!uploadType);
+    setUploadData({
+      uploadType: !uploadType
+    });
   };
 
-  // Convert Uploaded Files to Array
-  let fileUploaded;
-
-  if (file) {
-    fileUploaded = Object.values(file);
-  }
   return (
     <div
       {...getRootProps()}
