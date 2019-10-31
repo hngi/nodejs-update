@@ -47,7 +47,7 @@ router.post(
   '/api/auth/upload/',
   validateCookie,
   multerUploads,
-  uploadFile,
+  uploadFile.upload,
   shortenLink.shortenUrl
 );
 router.post(
