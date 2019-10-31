@@ -28,7 +28,7 @@ const UserDashboard = () => {
                   src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/home_m43xbx.png'
                   alt=''
                 />
-              <span>Home</span>
+                <span>Home</span>
               </Link>
             </div>
             <div className='l-two'>
@@ -37,7 +37,7 @@ const UserDashboard = () => {
                   src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/payment_uhwtwy.png'
                   alt=''
                 />
-              <span>Payment</span>
+                <span>Payment</span>
               </Link>
             </div>
             {/* <div className='l-two'>
@@ -133,13 +133,53 @@ const UserDashboard = () => {
           </section>
           {/*Right / Bottom Section */}
           <section id='s4-bottom'>
-            <div className='offset-grid'>
-              <article id='dl-cards'>
-                <div className='right-section-content card-two'>
+            <div className='right-section-content offset-grid'>
+              <article
+                className='right-section-content'
+                id='dl-cards'>
+                <div className='card-two'>
                   <div className='two-sub-flex'>
-                  {/* <h4>All uploads</h4> */}
-                  <br/>
-                  <br/>
+                    {/* <h4>All uploads</h4> */}
+                    <br />
+                    <br />
+                    <br />
+                    <h3>swcgcjjbvcrdxxkgggggvgvgjn.mp4</h3>
+                    <a href>http://xshare.gq/gcfkgfcfghjkjhgfd</a>
+                    <p>10 Downloads</p>
+                    <p>22/10/2019</p>
+                  </div>
+                  <div className='card-icons'>
+                    <a href>
+                      <img
+                        src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/copy_yhensf.png'
+                        alt=''
+                      />
+                    </a>
+                    <a href>
+                      <img
+                        src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/share_ntm46n.png'
+                        alt=''
+                      />
+                    </a>
+                    <a href>
+                      <img
+                        src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/trash_iycq23.png'
+                        alt=''
+                      />
+                    </a>
+                    <a href>
+                      <img
+                        src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/chart-2_bkyz9m.png'
+                        alt=''
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div className=' card-two'>
+                  <div className='two-sub-flex'>
+                    {/* <h4>All uploads</h4> */}
+                    <br />
+                    <br />
                     <br />
                     <h3>swcgcjjbvcrdxxkgggggvgvgjn.mp4</h3>
                     <a href>http://xshare.gq/gcfkgfcfghjkjhgfd</a>
