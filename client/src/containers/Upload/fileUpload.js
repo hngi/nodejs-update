@@ -40,7 +40,7 @@ export default function fileUpload({
                 <p className="right-section-title mb-0 mt-2 ml-3">
                   Select a file to upload
                   <span className="right-section-sub-title">
-                    Drag and drop to upload multiple
+                    Drag and drop to upload folder
                   </span>
                 </p>
               </div>

@@ -50,7 +50,52 @@ export const uploadFile = file => async dispatch => {
         payload: response.data
       });
     } else {
+      dispatch(setAlert('Error uploading', 'danger'));
+      dispatch({
+        type: UPLOAD_FILE_FAIL,
+        payload: response.data.message
+      });
+    }
+  } catch (error) {
+    dispatch(setAlert('Error uploading', 'danger'));
+  }
+};
 
+export const uploadFolder = file => async dispatch => {
+  const fd = new FormData();
+
+  // fd.append('name', name);
+  // fd.append('to', to);
+  // fd.append('isEmail', true);
+  // file.map(i => {
+  //   return
+  // });
+
+  fd.append('file', file);
+
+  dispatch({
+    type: LOADING
+  });
+  const config = {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'multipart/form-data'
+    }
+  };
+
+  try {
+    const response = await axios.post(
+      base_url + '/api/auth/upload/folder',
+      fd,
+      config
+    );
+    console.log(response);
+    if (response.data.success) {
+      dispatch({
+        type: UPLOAD_FILE_SUCCESS,
+        payload: response.data
+      });
+    } else {
       dispatch(setAlert('Error uploading', 'danger'));
       dispatch({
         type: UPLOAD_FILE_FAIL,
