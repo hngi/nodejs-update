@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage: storage }).array('file', 10);
+const upload = multer({ storage: storage }).array('file');
 
 const zipper = (req, res, next) => {
   var name = req.files[0].originalname.split('.')[0];
@@ -113,6 +113,6 @@ const multerUploads = multer({
       );
     }
   })
-}).array('file', 4);
+}).array('file');
 
 module.exports = { multerUploads, zipper, upload, uploadFileToS3 };

@@ -56,7 +56,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   return (
     <>
       {!show ? (
-        <div className="right-section-success d-flex flex-column justify-content-center align-items-center">
+        <div className="right-section-content d-flex flex-column justify-content-center align-items-center">
           {uploadData.success ? (
             <>
               <div className="d-flex justify-content-between align-items-center mb-4">
