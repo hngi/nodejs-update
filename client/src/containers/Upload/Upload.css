@@ -18,7 +18,7 @@
 }
 
 .right-section-upload {
-  height: 500px;
+  height: 200px;
   width: 500px;
   background: rgba(239, 238, 238, 0.25);
   border-radius: 9px;
@@ -41,7 +41,7 @@
   font-size: 12px;
   line-height: 16px;
   color: #6b6b6b;
-  max-height: 300px;
+  max-height: 200px;
   overflow-x: auto;
   white-space: nowrap;
   padding-right: 20px;
@@ -222,7 +222,7 @@
 
 @media (max-width: 450px) {
   .right-section-upload {
-    max-height: 420px;
+    max-height: 300px;
     min-height: 300px;
     height: auto;
   }
