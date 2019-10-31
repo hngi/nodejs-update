@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import uuid from 'uuid/v4';
 import './UploadSuccess.css';
 import { connect } from 'react-redux';
 import { sendEmail } from '../../actions/upload';
@@ -8,7 +9,6 @@ import EmailLoader from '../Loader/EmailLoader';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import ChangingProgressProvider from './ChangingProgressProvider';
-import fakeShortUrl from '../../assets/data/fakeShortUrl.json';
 
 const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const [formData, setFormData] = useState({
@@ -19,6 +19,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
     show: false,
     share: false
   });
+
   const arr = [];
   for (var i = 1; i <= 100; i++) {
     arr.push(i);
@@ -47,25 +48,17 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
   const shareUrl = event => {
     setFormData({ share: true });
   };
-  const shortUrl = uploadstate.shortUrl;
+
+  const { uploadstate: uploadData } = uploadstate;
+  const shortUrl = uploadstate.success;
   const clipText =
     ' Please visit http://xshare.ga to share your files with ease';
   return (
     <>
       {!show ? (
-        <div className="right-section-success d-flex flex-column justify-content-center align-items-center">
-          {shortUrl ? (
+        <div className="right-section-content d-flex flex-column justify-content-center align-items-center">
+          {uploadData.success ? (
             <>
-              {/* <div className=''>
-                {' '}
-                <i
-                  onClick={() => {
-                    setFormData({ show: false });
-                  }}
-                  className='fas fa-chevron-left back'
-                />{' '}
-              </div>
-              {''} */}
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <img
                   src="https://res.cloudinary.com/busola/image/upload/v1571806132/success.png"
@@ -75,17 +68,17 @@ const UploadSuccess = ({ sendEmail, uploadstate, setAlert }) => {
                 <p className="upload-success">Upload Success</p>
               </div>
               <div className="short-links">
-                {fakeShortUrl.map(short => {
+                {uploadData.data.map(short => {
                   return (
                     <div
                       className="d-flex align-items-center short-link"
-                      key={short.id}
+                      key={uuid()}
                     >
                       <div
                         className="mt-2 d-flex align-items-center upload-link mr-3"
                         id="upload-link"
                       >
-                        <h5>{short.shortUrl}</h5>
+                        <h5 className="short-link-url">{short.shortUrl}</h5>
                       </div>
                       <div className="d-flex align-items-center">
                         {!share ? (

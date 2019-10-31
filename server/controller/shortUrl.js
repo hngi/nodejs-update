@@ -6,6 +6,19 @@ const url = require('url');
 const JSZip = require('jszip');
 
 const ShortenLink = {
+  async findUserShortLinks(req, res, next) {
+    const { userId } = req.cookies;
+    const search = {
+      uploadedBy: userId
+    };
+    ShortLink.find(search, function(err, allUserShortLink) {
+      if (err) {
+        return err;
+      } else {
+        res.send(allUserShortLink);
+      }
+    });
+  },
   async findAll(req, res, next) {
     ShortLink.find({}, function(err, allShortLink) {
       if (err) {
@@ -19,7 +32,7 @@ const ShortenLink = {
     const { userId } = req.cookies;
     try {
       let newUrl = [];
-      const response = [...res.locals];
+      const { temp: response } = res.locals;
 
       response.forEach(item => {
         const awsUrl = item.awsUrl;

@@ -24,7 +24,9 @@ export const uploadFile = file => async dispatch => {
   // fd.append('name', name);
   // fd.append('to', to);
   // fd.append('isEmail', true);
-  fd.append('file', file);
+  file.map(i => {
+    return fd.append('file', i);
+  });
 
   dispatch({
     type: LOADING
@@ -35,6 +37,7 @@ export const uploadFile = file => async dispatch => {
       'Content-Type': 'multipart/form-data'
     }
   };
+
   try {
     const response = await axios.post(
       base_url + '/api/auth/upload',
@@ -46,17 +49,16 @@ export const uploadFile = file => async dispatch => {
         type: UPLOAD_FILE_SUCCESS,
         payload: response.data
       });
-
     } else {
-      dispatch(setAlert('Error uploading file', 'danger'));
+
+      dispatch(setAlert('Error uploading', 'danger'));
       dispatch({
         type: UPLOAD_FILE_FAIL,
         payload: response.data.message
       });
-
     }
   } catch (error) {
-    dispatch(setAlert('Error uploading file', 'danger'));
+    dispatch(setAlert('Error uploading', 'danger'));
   }
 };
 export const sendEmail = (name, to, message, link) => async dispatch => {

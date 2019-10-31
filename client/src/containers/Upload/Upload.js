@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import uuid from 'uuid/v4';
 import './Upload.css';
 import { connect } from 'react-redux';
 import { uploadFile } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
+import UploadType from './uploadType';
 
 const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
@@ -24,25 +24,8 @@ const Upload = ({ uploadFile, setAlert }) => {
 
     // Convert Uploaded Files to Array
     const uploadedFile = Object.values(file);
-    uploadedFile.map(i => {
-      if (i.size >= 104857600) {
-        setFormData({ show: false });
-        setAlert('Please select a file that is less than 100MB', 'danger');
-      } else if (
-        i.name.match(
-          /.(jpeg|jpg|png|gif|mp4|mp3|fig|doc|docx|pdf|xlsx|avi|mkv|xml|exe)$/
-        )
-      ) {
-        setFormData({ show: true });
-        uploadFile(uploadedFile);
-      } else {
-        setFormData({ show: false });
-        setAlert(
-          'Only .mp4 .mp3 .avi .mkv .png .jpg .jpeg .doc .docx .pdf .gif .xml .exe files are supported',
-          'danger'
-        );
-      }
-    });
+    setFormData({ show: true });
+    uploadFile(uploadedFile);
   };
   const onChange = e => {
     setFormData({
@@ -56,17 +39,6 @@ const Upload = ({ uploadFile, setAlert }) => {
     setFormData({ file: File });
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-
-  const removeFile = event => {
-    event.target.parentElement.remove();
-  };
-
-  // Convert Uploaded Files to Array
-  let fileUploaded;
-
-  if (file) {
-    fileUploaded = Object.values(file);
-  }
 
   return (
     <main className="wrapper home-section d-flex justify-content-between align-items-center">
@@ -88,85 +60,14 @@ const Upload = ({ uploadFile, setAlert }) => {
       </div>
       <div className="right-section d-flex justify-content-center align-items-center">
         {!show ? (
-          <div
-            {...getRootProps()}
-            className="d-flex flex-column align-items-center"
-            style={{ outline: 'none' }}
-          >
-            <div className="right-section-upload d-flex flex-column justify-content-center align-items-center ">
-              <label htmlFor="upload" className="upload-form-label">
-                {isDragActive ? (
-                  <div
-                    style={{ background: 'rgba(38,128,235,0.5)' }}
-                    {...getRootProps()}
-                    className="d-flex flex-column align-items-center"
-                  >
-                    <label
-                      htmlFor="upload"
-                      className="right-section-upload d-flex flex-column justify-content-center align-items-center"
-                    >
-                      <p style={{ color: 'rgba(0,0,0,0.4)' }}>
-                        Drop the file here...
-                      </p>
-                    </label>
-                  </div>
-                ) : (
-                  <>
-                    <div className="d-flex align-items-center mb-3">
-                      <img
-                        src="https://res.cloudinary.com/busola/image/upload/v1571806132/add.png"
-                        alt=""
-                      />
-                      <p className="right-section-title mb-0 mt-2 ml-3">
-                        Select files to upload
-                        <span className="right-section-sub-title">
-                          (max size: 1gb | .mp4 .mp3 .png .jpg files supported)
-                        </span>
-                      </p>
-                    </div>
-                  </>
-                )}
-              </label>
-              <>
-                <h6 className="right-section-content mt-4">
-                  {file ? (
-                    <>
-                      {fileUploaded.map(i => {
-                        return (
-                          <span className="uploading-file mt-3" key={uuid()}>
-                            <span>{i.name}</span>{' '}
-                            <img
-                              src="https://res.cloudinary.com/cavdy/image/upload/v1572357426/Group_1_gnjyx3.png"
-                              alt=""
-                              className="cancel-upload"
-                              onClick={removeFile}
-                            />
-                          </span>
-                        );
-                      })}
-                    </>
-                  ) : null}
-                </h6>
-              </>
-            </div>
-            <input
-              {...getInputProps}
-              type="file"
-              name="file"
-              onChange={e => onChange(e)}
-              className="input-file"
-              id="upload"
-              multiple
-            />
-            <button
-              onClick={() => {
-                upload();
-              }}
-              className="upload-btn mt-4"
-            >
-              Upload
-            </button>
-          </div>
+          <UploadType
+            upload={upload}
+            onChange={onChange}
+            file={file}
+            getInputProps={getInputProps}
+            isDragActive={isDragActive}
+            getRootProps={getRootProps}
+          />
         ) : (
           <UploadSuccess />
         )}

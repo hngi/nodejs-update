@@ -2,110 +2,99 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>XSHARE</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="style.css">
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>XSHARE</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body class="d-flex flex-column">
-    <nav class="navbar nav navbar-expand-lg navbar-light bg-light wrapper pt-3 pb-3">
-      <a class="nav__nav-logo" href="http://xshare.ga">
-        xShare
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar nav navbar-expand-lg navbar-light bg-light wrapper pt-3 pb-3">
+    <a class="nav__nav-logo" href="http://xshare.ga">
+      xShare
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="http://xshare.ga/team">
-              Meet the Team
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <main class="wrapper home-section d-flex justify-content-between align-items-center mt-5">
-      <div class="left-section">
-        <h1 class="left-section-title">
-          The most seamless
-          <br />
-          file transfer experience
-        </h1>
-        <h4 class="left-section-content">
-          Fast, Safe and Secure.... <br />
-          Upload a file and share it with your friends via email or a generated link
-        </h4>
-        <img class="left-section-image" src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png" alt="" />
-      </div>
-      <div class="right-section flex-grow-1 d-flex justify-content-center align-items-center">
-          <div class="download_div">
-                <div class="header2">
-                    <H2>Your file is ready for download</H2>
-                </div>
-                <!-- <div class="file-image"></div> -->
-                <form id="myForm" action="/<%=shortenId %>" method="POST">
-                    <button class=" download  btn">
-                    </button>
-                </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="http://xshare.ga/team">
+            Meet the Team
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main class="wrapper home-section d-flex justify-content-between align-items-center mt-5">
+    <div class="left-section">
+      <h1 class="left-section-title">
+        The most seamless
+        <br />
+        file transfer experience
+      </h1>
+      <h4 class="left-section-content">
+        Fast, Safe and Secure.... <br />
+        Upload a file and share it with your friends via email or a generated link
+      </h4>
+      <img class="left-section-image"
+        src="https://res.cloudinary.com/ibefx/image/upload/v1572451091/sharing_1_btfhst.png" alt="" />
+    </div>
+    <div class="right-section flex-grow-1 d-flex justify-content-center align-items-center">
+      <div class="download_div">
+        <div class="header2">
+          <H2>Your file is ready for download</H2>
+        </div>
+        <!-- <div class="file-image"></div> -->
+        <!-- <p>this file has been downloaded <%=currentCount %> times</p> -->
+        <form id="myForm" action="/<%=shortenId %>" method="POST">
+          <button class=" download  btn">
+          </button>
+          <button class="download_sec"> Download</button>
+        </form>
 
-            </div>
       </div>
-    </main>
-    <footer id="footer">
-            <div class="footer">
-                <p id="year">
-                    <script>
-                        document.getElementById('year').appendChild(document.createTextNode(new Date().getFullYear()))
-                    </script>
-                    Built by HNG 6.0 Interns | <a href="http://xshare.ga/privacy">Privacy Policy</a>
-                </p>
-        </footer>
+    </div>
+  </main>
+  <footer id="footer">
+    <div class="footer">
+      <p id="year">
+        <script>
+          document.getElementById('year').appendChild(document.createTextNode(new Date().getFullYear()))
+        </script>
+        Built by HNG 6.0 Interns | <a href="http://xshare.ga/privacy">Privacy Policy</a>
+      </p>
+  </footer>
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-        var dl = document.querySelector('.download')
-        dl.addEventListener('click', (event) => {
-            var r = confirm('Are you sure you want to download this file?')
-            if (r == true){
-                document.getElementById("myForm").submit();
-            }
-            event.preventDefault()                
-        })
-    </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script>
+    var dl = document.querySelectorAll('button')
+    for (var i = 0; i < dl.length; i++) {
+      dl[i].addEventListener('click', (event) => {
+        var r = confirm('Are you sure you want to download this file?')
+        if (r == true) {
+          document.getElementById("myForm").submit();
+        }
+        event.preventDefault()
+      })
+    }
+  </script>
 </body>
 
 </html>
