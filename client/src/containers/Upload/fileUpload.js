@@ -40,7 +40,7 @@ export default function fileUpload({
                 <p className="right-section-title mb-0 mt-2 ml-3">
                   Select a file(s) to upload
                   <span className="right-section-sub-title">
-                    Up to 2GB for free unregistered users
+                    Up to 2GB for unregistered users
                   </span>
                 </p>
               </div>
