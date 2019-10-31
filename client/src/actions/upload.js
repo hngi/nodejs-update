@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 import {
   UPLOAD_FILE_SUCCESS,
   UPLOAD_FILE_FAIL,
@@ -6,7 +8,8 @@ import {
   DOWNLOAD_LINK_FAIL,
   DOWNLOAD_LINK_SUCCESS,
   HIDE_LINK,
-  LOADING
+  LOADING,
+  PROGRESS_BAR
 } from './types';
 import { setAlert } from './alert';
 import axios from 'axios';
@@ -35,6 +38,15 @@ export const uploadFile = file => async dispatch => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'multipart/form-data'
+    },
+    onUploadProgress: function(progressEvent) {
+      const percentCompleted = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total
+      );
+      dispatch({
+        type: PROGRESS_BAR,
+        payload: percentCompleted
+      });
     }
   };
 
@@ -85,7 +97,7 @@ export const uploadFolder = file => async dispatch => {
 
   try {
     const response = await axios.post(
-      base_url + '/api/auth/upload/folder',
+      base_url + `/api/auth/upload/folder/${fd}`,
       fd,
       config
     );
