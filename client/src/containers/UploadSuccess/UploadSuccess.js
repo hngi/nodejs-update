@@ -46,7 +46,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
   };
 
   const { uploadstate: uploadData } = uploadstate;
-  const shortUrl = uploadstate.success;
+  // const shortUrl = uploadstate.success;
   const clipText =
     ' Please visit http://xshare.ga to share your files with ease';
   return (

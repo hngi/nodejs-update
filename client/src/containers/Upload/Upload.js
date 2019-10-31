@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './Upload.css';
 import { connect } from 'react-redux';
-import { uploadFile, uploadFolder } from '../../actions/upload';
+import { uploadFile } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import UploadType from './uploadType';
@@ -14,27 +14,31 @@ const Upload = ({ uploadFile, setAlert }) => {
     loader: true,
     fileType: ''
   });
-  const { file, show, fileType } = formData;
+  const { file, show } = formData;
 
   const upload = () => {
-    console.log(fileType);
-    console.log();
     if (file === '' || file === undefined || file === null) {
       setAlert('Please select a file to upload', 'danger');
       setFormData({ show: false });
       return null;
     }
-
     // Convert Uploaded Files to Array
     const uploadedFile = Object.values(file);
-    // if (Array.isArray(fileType)) {
-    //   setFormData({ show: true });
-    //   uploadFolder(uploadedFile);
-    //   return null;
-    // }
 
     setFormData({ show: true });
     uploadFile(uploadedFile);
+    const sizes = uploadedFile.map(file => {
+      return file.size;
+    });
+    const totalSize = sizes.reduce((a, b) => a + b);
+    if (totalSize > 2147483648) {
+      setAlert(
+        'You have to be registered to send files larger than 2GB',
+        'danger'
+      );
+      return window.location.replace('http://xshare.ga/register')
+      // return <Redirect to='/register' />;
+    }
   };
   const onChange = e => {
     let files = e.target.files;
@@ -68,24 +72,24 @@ const Upload = ({ uploadFile, setAlert }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <main className="wrapper home-section d-flex justify-content-between align-items-center">
-      <div className="left-section">
-        <h1 className="left-section-title">
+    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
+      <div className='left-section'>
+        <h1 className='left-section-title'>
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className="left-section-content">
+        <h4 className='left-section-content'>
           Fast, Safe and Secure.... <br />
           Simply upload a file and share it via email or a generated link{' '}
         </h4>
         <img
-          className="left-section-image"
-          src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
-          alt=""
+          className='left-section-image'
+          src='https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png'
+          alt=''
         />
       </div>
-      <div className="right-section d-flex justify-content-center align-items-center">
+      <div className='right-section d-flex justify-content-center align-items-center'>
         {!show ? (
           <UploadType
             upload={upload}

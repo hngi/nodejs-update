@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-
 import {
   UPLOAD_FILE_SUCCESS,
   UPLOAD_FILE_FAIL,
