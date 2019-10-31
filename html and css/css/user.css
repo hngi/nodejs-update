@@ -240,3 +240,45 @@ input[type=search] {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
+
+
+/* admin page style */
+.fa-question-circle {
+  font-size: 1.5em;
+}
+
+.admin-bottom-grid {
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  grid-gap: 2em;
+}
+
+.left-bottom {
+  background-color: white;
+  border-radius: 5px;
+
+}
+
+.right-bottom {
+
+}
+
+.left-bottom h5 {
+  padding: 0 2em;
+}
+
+table thead tr th {
+  border-top: darkblue;
+  border-bottom: darkgoldenrod;
+}
+
+.type-head {
+  font-size: 1em;
+  font: outline;
+  color: #9EA0A5;
+}
+
+tbody tr td {
+  padding-left: 2em;
+}
