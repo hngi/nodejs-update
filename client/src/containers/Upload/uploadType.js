@@ -8,7 +8,8 @@ export default function UploadType({
   file,
   getRootProps,
   getInputProps,
-  isDragActive
+  isDragActive,
+  removeFile
 }) {
   const [uploadData, setUploadData] = useState({
     uploadType: false,
@@ -25,16 +26,12 @@ export default function UploadType({
     });
   }, [validate]);
 
-  const removeFile = (event, id, fileName) => {
-    fileUploaded.map((i, index) => {
-      if (i.name === fileName) {
-        const newFiles = fileUploaded.splice(index, 1);
-        setUploadData({
-          fileUploaded: newFiles
-        });
-      }
+  // Check if file array has any changes
+  useEffect(() => {
+    setUploadData({
+      fileUploaded: Object.values(file)
     });
-  };
+  }, [file]);
 
   const toggleUploadType = () => {
     setUploadData({
@@ -59,18 +56,7 @@ export default function UploadType({
           removeFile={removeFile}
           toggleUploadType={toggleUploadType}
         />
-      ) : (
-        <FolderUpload
-          file={file}
-          fileUploaded={fileUploaded}
-          onChange={onChange}
-          isDragActive={isDragActive}
-          getInputProps={getInputProps}
-          getRootProps={getRootProps}
-          removeFile={removeFile}
-          toggleUploadType={toggleUploadType}
-        />
-      )}
+      ) : null}
       <button
         onClick={() => {
           upload();
