@@ -52,8 +52,9 @@ export default function fileUpload({
             {file ? (
               <>
                 {fileUploaded.map(i => {
+                  const id = uuid();
                   return (
-                    <span className="uploading-file mt-3" key={uuid()}>
+                    <span className="uploading-file mt-3" key={id}>
                       <span className="upload-file-title">{`${i.name.substring(
                         0,
                         28
@@ -62,7 +63,7 @@ export default function fileUpload({
                         src="https://res.cloudinary.com/cavdy/image/upload/v1572357426/Group_1_gnjyx3.png"
                         alt=""
                         className="cancel-upload"
-                        onClick={removeFile}
+                        onClick={e => removeFile(e, id, i.name)}
                       />
                     </span>
                   );
