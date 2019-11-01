@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
 
 const urlShortenSchema = new Schema({
@@ -12,8 +11,8 @@ const urlShortenSchema = new Schema({
   },
   fileName: String,
   uploadedBy: {
-    type: String,
-    required: false
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   },
   createdAt: {
     type: Date,
