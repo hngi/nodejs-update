@@ -51,7 +51,7 @@ router.post(
   shortenLink.shortenUrl
 );
 router.post(
-  '/api/auth/upload/folder',
+  '/api/auth/upload/folder/:file',
   upload,
   zipper,
   uploadFileToS3,
