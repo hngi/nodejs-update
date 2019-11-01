@@ -38,9 +38,9 @@ export default function fileUpload({
                   alt=""
                 />
                 <p className="right-section-title mb-0 mt-2 ml-3">
-                  Select a file to upload
+                  Select a file(s) to upload
                   <span className="right-section-sub-title">
-                    Drag and drop to upload folder
+                    Up to 2GB for unregistered users
                   </span>
                 </p>
               </div>
@@ -73,9 +73,9 @@ export default function fileUpload({
           </h6>
         </>
       </div>
-      <h3 className="upload-type" onClick={toggleUploadType}>
+      {/* <h3 className="upload-type" onClick={toggleUploadType}>
         Want to upload a folder?
-      </h3>
+      </h3> */}
       <input
         {...getInputProps}
         type="file"

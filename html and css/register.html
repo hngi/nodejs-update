@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
+	
+	<style>
+	
+	 body {
+		display: grid;
+		justify-items: center;
+		}
+		
+	.register-container h1{
+	
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 30px;color: #2680EB;
+		margin-bottom:50px;
+		text-align:center;
+	}
+	
+	 .input-group{
+		width:350px;
+		height:48px;
+		border: 1px solid #2680EB;
+		box-sizing: border-box;
+		border-radius: 3px;
+		display:block;
+		margin-bottom:20px;
+		padding:8px;
+	}
+	 .input-group input{
+	   border-style: none;
+	   margin-left:10px;
+	   padding:10px;
+	}
+	 .fa_custom {
+	 color: grey;
+	 margin:5px;
+
+	}
+
+	
+	.login {
+	
+	font-family:Lato;
+	font-size: 18px;
+	color: #2D252F;
+	}
+	
+	.register-btn{
+	width:350px;
+	height:48px;
+	background: #2680EB;
+	border-radius: 3px;
+	color: #FFFFFF;
+	font-size: 18px;
+	text-align:center;
+	letter-spacing: 0.03em;
+	font-family: Segoe UI;
+	margin-bottom:15px;
+	}
+	.r-container{
+	 font-family: Lato;
+	 font-size: 14px;
+	 color: rgba(45, 37, 47, 0.6);
+	 display: flex;
+	 justify-content: space-between;
+	 margin-bottom: 25px;
+	}
+
+
+	
+	 
+
+	
+	</style>
+
+
+    </head>
+
+    <body>
+	
+	<div class="register-container">
+  <form action="/" method="get">
+  <div>
+    <h1>Create account</h1>
+  </div>
+		<div class ="input-group">
+		<span class="input-group-addon"><i class="fa fa-user fa_custom"></i></span>
+        <input type="text" id="name" name="name" placeholder="Name" required>
+      </div>
+      <div class ="input-group">
+		<span class="input-group-addon"><i class="fa fa-envelope fa_custom "></i></span>
+        <input type="text" id="email" name="email" placeholder="Email" required>
+      </div>
+      <div class ="input-group">
+	   <span class="input-group-addon"><i class="fa fa-lock fa_custom "></i></span>
+        <input type="password" id="password" name="password"  placeholder="Password" required>
+		 </div>
+		
+		 
+		<div class="r-container">
+		<label class="container">Remember me
+		<input type="checkbox" checked="checked"> 
+		<span class="checkmark"></span></label>
+        <p><a href="#">Forgot Password?</a></p>
+		</div>
+    
+    <div>
+      <button  class="register-btn" type="submit">Create account</button>
+   </div>
+  </form>
+</div>
+
+<div class="login"><p>Already have an account?<a href="#">Login</a> </p></div>
+  
+     
+    </body>
+    </html>
