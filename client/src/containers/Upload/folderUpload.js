@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import uuid from 'uuid/v4';
 
 export default function FolderUpload({
