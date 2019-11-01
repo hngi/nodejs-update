@@ -1,16 +1,20 @@
 import React from 'react';
 import uuid from 'uuid/v4';
 
-export default function folderUpload({
+export default function FolderUpload({
   file,
-  fileUploaded,
   isDragActive,
   getInputProps,
   getRootProps,
   onChange,
   removeFile,
-  toggleUploadType
+  toggleUploadType,
+  upload
 }) {
+  if (file === undefined) {
+    file = '';
+  }
+
   return (
     <>
       <div className="right-section-upload d-flex flex-column justify-content-center align-items-center p-3">
@@ -39,9 +43,9 @@ export default function folderUpload({
                 />
                 <p className="right-section-title mb-0 mt-2 ml-3">
                   Select folder to upload
-                  {/* <span className="right-section-sub-title">
+                  <span className="right-section-sub-title">
                     (max size: 1gb | .mp4 .mp3 .png .jpg files supported)
-                  </span> */}
+                  </span>
                 </p>
               </div>
             </>
@@ -49,9 +53,9 @@ export default function folderUpload({
         </label>
         <>
           <h6 className="right-section-content mt-2">
-            {file ? (
+            {file !== '' ? (
               <>
-                {fileUploaded.map(i => {
+                {file.map(i => {
                   return (
                     <span className="uploading-file mt-3" key={uuid()}>
                       <span className="upload-file-title">{`${i.name.substring(
@@ -85,6 +89,14 @@ export default function folderUpload({
         directory=""
         webkitdirectory=""
       />
+      <button
+        onClick={() => {
+          upload('folder');
+        }}
+        className="upload-btn mt-4"
+      >
+        Upload
+      </button>
     </>
   );
 }
