@@ -19,7 +19,7 @@ const Upload = ({ uploadFile, setAlert }) => {
 
   const upload = fileType => {
     if (file === '' || file === undefined || file === null) {
-      setAlert('Please select a file to upload', 'danger');
+      setAlert('Please select a file/folder to upload', 'danger');
       setFormData({ show: false });
       return null;
     }
@@ -64,7 +64,9 @@ const Upload = ({ uploadFile, setAlert }) => {
         uploadedFile.map(i => {
           img.file(i.name, i, { base64: true });
         });
+        
         zip.generateAsync({ type: 'blob' }).then(content => {
+          
           uploadFile([content]);
         });
         setFormData({ show: true });
