@@ -14,6 +14,7 @@ export default function FolderUpload({
   if (file === undefined) {
     file = '';
   }
+
   return (
     <>
       <div className="right-section-upload d-flex flex-column justify-content-center align-items-center p-3">
