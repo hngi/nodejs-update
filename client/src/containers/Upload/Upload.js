@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './Upload.css';
 import { connect } from 'react-redux';
-import { uploadFile, uploadFolder } from '../../actions/upload';
+import { uploadFile } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import UploadType from './uploadType';
@@ -18,7 +18,7 @@ const Upload = ({ uploadFile, setAlert }) => {
   const { file, show } = formData;
 
   const upload = fileType => {
-    if (file == '' || file === undefined || file === null) {
+    if (file === '' || file === undefined || file === null) {
       setAlert('Please select a file to upload', 'danger');
       setFormData({ show: false });
       return null;
