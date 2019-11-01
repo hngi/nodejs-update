@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FileUpload from './fileUpload';
-import FolderUpload from './folderUpload';
+// import FolderUpload from './folderUpload';
 
 export default function UploadType({
   upload,
@@ -24,7 +24,7 @@ export default function UploadType({
     setUploadData({
       fileUploaded: Object.values(file)
     });
-  }, [validate]);
+  }, [validate,file]);
 
   // Check if file array has any changes
   useEffect(() => {
