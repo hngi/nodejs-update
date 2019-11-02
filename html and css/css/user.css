@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   background: rgba(250, 250, 250, 0.9);
   font-family: Segoe UI;
@@ -131,7 +132,7 @@ input[type=search] {
   background: white;
   border-radius: 0.5rem;
   padding: 1rem;
-  height: 5.5rem;
+  height: 7.5rem;
 }
 
 .card-one p,
@@ -264,7 +265,7 @@ input[type=search] {
   padding: 0 2em;
 }
 
-table thead tr th{
+table thead tr th {
   border: 2px solid #EAEDF3;
   border-right: none;
   border-left: none;
@@ -286,10 +287,74 @@ tbody tr td {
 }
 
 .dl-card {
-    grid-area: c;
+  grid-area: c;
   display: grid;
   grid-template-rows: repeat(1, 1fr);
   grid-row-gap: 25px;
   padding: 0 2rem;
   border-right: 2px solid #C2C2C2;
+}
+
+@media (max-width: 768px) {
+  .main-grid {
+    display: grid;
+    grid-template-areas:
+      "a a"
+      "b b"
+    ;
+  }
+
+  nav,
+  #home,
+  #right-img {
+    display: none;
+  }
+
+  #nav-cards {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  #s3-top {
+    background: #172B4D;
+    padding: 0 2rem;
+    height: 27rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .card-one {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    height: 9rem;
+    width: 13rem;
+  }
+
+  .offset-grid {
+    grid-template-areas:
+      "c"
+      "d";
+  }
+
+  #dl-cards {
+    border-right: none;
+  }
+
+  .card-two {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 0.5rem;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 1.5rem;
+    height: 12rem;
+  }
 }
