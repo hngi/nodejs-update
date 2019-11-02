@@ -1,0 +1,55 @@
+.register-container h1 {
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  color: #2680eb;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.input-group {
+  width: 350px;
+  height: 48px;
+  border: 1px solid #2680eb;
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 20px;
+  padding: 8px;
+}
+.input-group input {
+  border-style: none;
+  margin-left: 10px;
+  padding: 10px;
+}
+.fa_custom {
+  color: grey;
+  margin: 5px;
+}
+
+.login {
+  font-family: Lato;
+  font-size: 18px;
+  color: #2d252f;
+}
+
+.register-btn {
+  width: 350px;
+  height: 48px;
+  background: #2680eb;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  font-family: Segoe UI;
+  margin-bottom: 15px;
+}
+.r-container {
+  font-family: Lato;
+  font-size: 14px;
+  color: rgba(45, 37, 47, 0.6);
+  display: flex;
+  flex-wrap: wrap;
+}

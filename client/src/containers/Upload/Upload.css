@@ -1,12 +1,11 @@
 .left-section-title {
-  font-size: 50px;
+  font-size: 40px;
   line-height: 67px;
-
   color: var(--color-blue);
 }
 
 .left-section-content {
-  font-size: 21px;
+  font-size: 18px;
   line-height: 28px;
   color: #a9a9a9;
   margin-top: 20px;
@@ -18,7 +17,8 @@
 }
 
 .right-section-upload {
-  height: 500px;
+  height: 300px;
+  max-height: 500px;
   width: 500px;
   background: rgba(239, 238, 238, 0.25);
   border-radius: 9px;
@@ -41,7 +41,7 @@
   font-size: 12px;
   line-height: 16px;
   color: #6b6b6b;
-  max-height: 300px;
+  max-height: 200px;
   overflow-x: auto;
   white-space: nowrap;
   padding-right: 20px;
@@ -222,7 +222,6 @@
 
 @media (max-width: 450px) {
   .right-section-upload {
-    max-height: 420px;
     min-height: 300px;
     height: auto;
   }

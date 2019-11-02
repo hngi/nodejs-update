@@ -6,37 +6,103 @@ import { uploadFile } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import UploadType from './uploadType';
+import JSZip from 'jszip';
 
 const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
     file: '',
     show: false,
-    loader: true
+    loader: true,
+    fileType: ''
   });
   const { file, show } = formData;
 
-  const upload = () => {
+  const upload = fileType => {
     if (file === '' || file === undefined || file === null) {
-      setAlert('Please select a file to upload', 'danger');
+      setAlert('Please select a file/folder to upload', 'danger');
       setFormData({ show: false });
       return null;
     }
 
     // Convert Uploaded Files to Array
     const uploadedFile = Object.values(file);
-    setFormData({ show: true });
-    uploadFile(uploadedFile);
+
+    // upload file
+    if (fileType === 'file') {
+      setFormData({ show: true });
+      uploadFile(uploadedFile);
+      const sizes = uploadedFile.map(file => {
+        return file.size;
+      });
+      const totalSize = sizes.reduce((a, b) => a + b);
+      if (totalSize > 2147483648) {
+        setAlert(
+          'You have to be registered to send files larger than 2GB',
+          'danger'
+        );
+        return window.location.replace('http://xshare.ga/register');
+        // return <Redirect to='/register' />;
+      }
+
+      return null;
+    }
+
+    // Upload Folder
+    if (fileType === 'folder') {
+      const zip = new JSZip();
+      let img;
+      if (Object.keys(uploadedFile).length !== 0) {
+        // Check if input field
+        if (uploadedFile[0].webkitRelativePath !== '') {
+          const folderName = uploadedFile[0].webkitRelativePath.split('/');
+          img = zip.folder(folderName[0]);
+        } else {
+          // checks if drag and drop
+          const folderName = uploadedFile[0].path.split('/');
+          img = zip.folder(folderName[1]);
+        }
+        uploadedFile.map(i => {
+          img.file(i.name, i, { base64: true });
+        });
+        
+        zip.generateAsync({ type: 'blob' }).then(content => {
+          
+          uploadFile([content]);
+        });
+        setFormData({ show: true });
+      }
+
+      return null;
+    }
   };
   const onChange = e => {
+    let files = e.target.files;
+
+    // checking if the files is an array
+    if (!Array.isArray(e.target.files)) {
+      files = Object.values(e.target.files);
+    }
+    const newData = [...file];
+    newData.push(...files);
     setFormData({
-      ...formData,
-      [e.target.name]:
-        e.target.name !== 'file' ? e.target.value : e.target.files
+      file: newData,
+      fileType: e.target.files
+    });
+  };
+
+  // Remove File
+  const removeFile = (event, id, fileName) => {
+    const newFiles = file.filter(f => f.name !== fileName);
+    setFormData({
+      file: newFiles
     });
   };
 
   const onDrop = useCallback(File => {
-    setFormData({ file: File });
+    setFormData({
+      file: File,
+      fileType: File
+    });
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -67,6 +133,7 @@ const Upload = ({ uploadFile, setAlert }) => {
             getInputProps={getInputProps}
             isDragActive={isDragActive}
             getRootProps={getRootProps}
+            removeFile={removeFile}
           />
         ) : (
           <UploadSuccess />

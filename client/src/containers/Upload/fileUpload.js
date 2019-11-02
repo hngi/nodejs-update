@@ -3,13 +3,13 @@ import uuid from 'uuid/v4';
 
 export default function fileUpload({
   file,
-  fileUploaded,
   isDragActive,
   getInputProps,
   getRootProps,
   onChange,
   removeFile,
-  toggleUploadType
+  toggleUploadType,
+  upload
 }) {
   return (
     <>
@@ -38,9 +38,9 @@ export default function fileUpload({
                   alt=""
                 />
                 <p className="right-section-title mb-0 mt-2 ml-3">
-                  Select a file to upload
+                  Select a file(s) to upload
                   <span className="right-section-sub-title">
-                    Drag and drop to upload multiple
+                    Up to 2GB for unregistered users
                   </span>
                 </p>
               </div>
@@ -51,9 +51,10 @@ export default function fileUpload({
           <h6 className="right-section-content mt-2">
             {file ? (
               <>
-                {fileUploaded.map(i => {
+                {file.map(i => {
+                  const id = uuid();
                   return (
-                    <span className="uploading-file mt-3" key={uuid()}>
+                    <span className="uploading-file mt-3" key={id}>
                       <span className="upload-file-title">{`${i.name.substring(
                         0,
                         28
@@ -62,7 +63,7 @@ export default function fileUpload({
                         src="https://res.cloudinary.com/cavdy/image/upload/v1572357426/Group_1_gnjyx3.png"
                         alt=""
                         className="cancel-upload"
-                        onClick={removeFile}
+                        onClick={e => removeFile(e, id, i.name)}
                       />
                     </span>
                   );
@@ -84,6 +85,14 @@ export default function fileUpload({
         id="upload"
         multiple
       />
+      <button
+        onClick={() => {
+          upload('file');
+        }}
+        className="upload-btn mt-4"
+      >
+        Upload
+      </button>
     </>
   );
 }

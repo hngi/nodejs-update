@@ -6,7 +6,8 @@ import {
   DOWNLOAD_LINK_FAIL,
   DOWNLOAD_LINK_SUCCESS,
   HIDE_LINK,
-  LOADING
+  LOADING,
+  PROGRESS_BAR
 } from './types';
 import { setAlert } from './alert';
 import axios from 'axios';
@@ -35,6 +36,15 @@ export const uploadFile = file => async dispatch => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'multipart/form-data'
+    },
+    onUploadProgress: function(progressEvent) {
+      const percentCompleted = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total
+      );
+      dispatch({
+        type: PROGRESS_BAR,
+        payload: percentCompleted
+      });
     }
   };
 
@@ -50,7 +60,6 @@ export const uploadFile = file => async dispatch => {
         payload: response.data
       });
     } else {
-
       dispatch(setAlert('Error uploading', 'danger'));
       dispatch({
         type: UPLOAD_FILE_FAIL,
@@ -58,6 +67,63 @@ export const uploadFile = file => async dispatch => {
       });
     }
   } catch (error) {
+    dispatch(setAlert('Error uploading', 'danger'));
+  }
+};
+
+export const uploadFolder = file => async dispatch => {
+  console.log('HEREEEE OOOO', file);
+  const fd = new FormData();
+
+  // fd.append('name', name);
+  // fd.append('to', to);
+  // fd.append('isEmail', true);
+  // file.map(i => {
+  //   return
+  // });
+  fd.append('file', file);
+
+  dispatch({
+    type: LOADING
+  });
+  const config = {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'multipart/form-data'
+    },
+    onUploadProgress: function(progressEvent) {
+      const percentCompleted = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total
+      );
+      dispatch({
+        type: PROGRESS_BAR,
+        payload: percentCompleted
+      });
+    }
+  };
+
+  try {
+    // encodeURI(file);
+    const response = await axios.post(
+      base_url + `/api/auth/upload`,
+      fd,
+      config
+    );
+    console.log('RESPONSE', response);
+    if (response.data.success) {
+      dispatch({
+        type: UPLOAD_FILE_SUCCESS,
+        payload: response.data
+      });
+    } else {
+      dispatch(setAlert('Error uploading', 'danger'));
+      dispatch({
+        type: UPLOAD_FILE_FAIL,
+        payload: response.data.message
+      });
+    }
+  } catch (error) {
+    console.log('ERROR', error.message);
     dispatch(setAlert('Error uploading', 'danger'));
   }
 };
