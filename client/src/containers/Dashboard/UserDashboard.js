@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import {setAlert} from '../../actions/alert'
 import './UserDashboard.css';
-const UserDashboard = ({ isAuthenticated,setAlert }) => {
+const UserDashboard = ({ isAuthenticated,setAlert,user }) => {
+   var email,username;
+  if (user != null) {
+    var { email,username } = user;
+    email = email;
+    username=username;
+  }
   return (
     <div>
       {!isAuthenticated ? (
@@ -84,7 +90,7 @@ const UserDashboard = ({ isAuthenticated,setAlert }) => {
                       alt=''
                     />
                   </a>
-                  <span className='color-white'>Arya Stark</span>
+                  <span className='color-white'>{username}</span>
                 </div>
               </nav>
               <article id='home'>
@@ -236,7 +242,8 @@ const UserDashboard = ({ isAuthenticated,setAlert }) => {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
 });
 export default connect(
   mapStateToProps,
