@@ -12,6 +12,7 @@ const urlShortenSchema = new Schema({
   },
   fileName: String,
   uploadedBy: {
+    email: String,
     type: String,
     required: false
   },
