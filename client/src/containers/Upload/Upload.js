@@ -6,6 +6,7 @@ import { uploadFile } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import UploadType from './uploadType';
+import JSZip from 'jszip';
 
 const Upload = ({ uploadFile, setAlert }) => {
   const [formData, setFormData] = useState({
@@ -16,28 +17,62 @@ const Upload = ({ uploadFile, setAlert }) => {
   });
   const { file, show } = formData;
 
-  const upload = () => {
+  const upload = fileType => {
     if (file === '' || file === undefined || file === null) {
-      setAlert('Please select a file to upload', 'danger');
+      setAlert('Please select a file/folder to upload', 'danger');
       setFormData({ show: false });
       return null;
     }
+
     // Convert Uploaded Files to Array
     const uploadedFile = Object.values(file);
 
-    setFormData({ show: true });
-    uploadFile(uploadedFile);
-    const sizes = uploadedFile.map(file => {
-      return file.size;
-    });
-    const totalSize = sizes.reduce((a, b) => a + b);
-    if (totalSize > 2147483648) {
-      setAlert(
-        'You have to be registered to send files larger than 2GB',
-        'danger'
-      );
-      return window.location.replace('http://xshare.ga/register')
-      // return <Redirect to='/register' />;
+    // upload file
+    if (fileType === 'file') {
+      setFormData({ show: true });
+      uploadFile(uploadedFile);
+      const sizes = uploadedFile.map(file => {
+        return file.size;
+      });
+      const totalSize = sizes.reduce((a, b) => a + b);
+      if (totalSize > 2147483648) {
+        setAlert(
+          'You have to be registered to send files larger than 2GB',
+          'danger'
+        );
+        return window.location.replace('http://xshare.ga/register');
+        // return <Redirect to='/register' />;
+      }
+
+      return null;
+    }
+
+    // Upload Folder
+    if (fileType === 'folder') {
+      const zip = new JSZip();
+      let img;
+      if (Object.keys(uploadedFile).length !== 0) {
+        // Check if input field
+        if (uploadedFile[0].webkitRelativePath !== '') {
+          const folderName = uploadedFile[0].webkitRelativePath.split('/');
+          img = zip.folder(folderName[0]);
+        } else {
+          // checks if drag and drop
+          const folderName = uploadedFile[0].path.split('/');
+          img = zip.folder(folderName[1]);
+        }
+        uploadedFile.map(i => {
+          img.file(i.name, i, { base64: true });
+        });
+        
+        zip.generateAsync({ type: 'blob' }).then(content => {
+          
+          uploadFile([content]);
+        });
+        setFormData({ show: true });
+      }
+
+      return null;
     }
   };
   const onChange = e => {
@@ -72,24 +107,24 @@ const Upload = ({ uploadFile, setAlert }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
-      <div className='left-section'>
-        <h1 className='left-section-title'>
+    <main className="wrapper home-section d-flex justify-content-between align-items-center">
+      <div className="left-section">
+        <h1 className="left-section-title">
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className='left-section-content'>
+        <h4 className="left-section-content">
           Fast, Safe and Secure.... <br />
           Simply upload a file and share it via email or a generated link{' '}
         </h4>
         <img
-          className='left-section-image'
-          src='https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png'
-          alt=''
+          className="left-section-image"
+          src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
+          alt=""
         />
       </div>
-      <div className='right-section d-flex justify-content-center align-items-center'>
+      <div className="right-section d-flex justify-content-center align-items-center">
         {!show ? (
           <UploadType
             upload={upload}

@@ -72,6 +72,7 @@ export const uploadFile = file => async dispatch => {
 };
 
 export const uploadFolder = file => async dispatch => {
+  console.log('HEREEEE OOOO', file);
   const fd = new FormData();
 
   // fd.append('name', name);
@@ -80,7 +81,6 @@ export const uploadFolder = file => async dispatch => {
   // file.map(i => {
   //   return
   // });
-
   fd.append('file', file);
 
   dispatch({
@@ -90,16 +90,26 @@ export const uploadFolder = file => async dispatch => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'multipart/form-data'
+    },
+    onUploadProgress: function(progressEvent) {
+      const percentCompleted = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total
+      );
+      dispatch({
+        type: PROGRESS_BAR,
+        payload: percentCompleted
+      });
     }
   };
 
   try {
+    // encodeURI(file);
     const response = await axios.post(
-      base_url + `/api/auth/upload/folder/${fd}`,
+      base_url + `/api/auth/upload`,
       fd,
       config
     );
-    console.log(response);
+    console.log('RESPONSE', response);
     if (response.data.success) {
       dispatch({
         type: UPLOAD_FILE_SUCCESS,
@@ -113,6 +123,7 @@ export const uploadFolder = file => async dispatch => {
       });
     }
   } catch (error) {
+    console.log('ERROR', error.message);
     dispatch(setAlert('Error uploading', 'danger'));
   }
 };

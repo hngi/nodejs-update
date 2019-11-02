@@ -36,17 +36,17 @@
   },
   {
     "id": 6,
-    "image": "https://res.cloudinary.com/macgee/image/upload/v1569431526/Gift.dp_nfe4im.png",
-    "name": "Gift Omodu",
-    "role": "Team Member, Backend",
-    "email": "giftomodu20@gmail.com"
-  },
-  {
-    "id": 7,
     "image": "https://res.cloudinary.com/vectormike/image/upload/v1571242418/me.jpg",
     "name": "Victor Jonah",
     "role": "Team Member, Backend",
     "email": "victorjonah199@gmail.com"
+  },
+  {
+    "id": 7,
+    "image": "https://res.cloudinary.com/ibefx/image/upload/v1568020189/personal/ibebugwu_chukwuemeka_byblud.png",
+    "name": "Emeka Ibebugwu",
+    "role": "Team Member, Backend",
+    "email": "emex4gman@gmail.com"
   },
   {
     "id": 8,
@@ -54,54 +54,5 @@
     "name": "Mohammed Ibrahim",
     "role": "Team Member, Frontend",
     "email": "ibrahimdamy7@gmail.com"
-  },
-  {
-    "id": 9,
-    "image": "https://res.cloudinary.com/dglaw6h0c/image/upload/v1571561088/photo_2018-08-02_01-59-56_cw5vls.jpg",
-    "name": "Tinuade Adeleke",
-    "role": "Team Member, Backend",
-    "email": "summittinuade@gmail.com"
-  },
-  {
-    "id": 10,
-    "image": "https://res.cloudinary.com/greathassan/image/upload/v1566653246/samples/STARTNG/hassan_onike_fb_fjgou2.jpg",
-    "name": "Hassan Onike",
-    "role": "Team Member, Backend",
-    "email": "timi.onike@gmail.com"
-  },
-  {
-    "id": 11,
-    "image": "https://res.cloudinary.com/dhpzvfror/image/upload/v1571254350/DSC_4574.jpg",
-    "name": "Godfred Asamoah",
-    "role": "Team Member, Backend",
-    "email": "gfredtech@gmail.com"
-  },
-  {
-    "id": 12,
-    "image": "https://res.cloudinary.com/ibefx/image/upload/v1568020189/personal/ibebugwu_chukwuemeka_byblud.png",
-    "name": "Emeka Ibebugwu",
-    "role": "Team Member, Backend",
-    "email": "emex4gman@gmail.com"
-  },
-  {
-    "id": 13,
-    "image": "https://res.cloudinary.com/db8l65lvv/image/upload/v1571589508/udofia.jpg",
-    "name": "Udofia Abasiodiong",
-    "role": "Team Member, Backend",
-    "email": "enalsy22@gmail.com"
-  },
-  {
-    "id": 14,
-    "image": "https://res.cloudinary.com/mikeattara/image/upload/v1567070455/me.jpg",
-    "name": "Mike Attara",
-    "role": "Team Member, DevOps",
-    "email": "mpyebattara@gmail.com"
-  },
-  {
-    "id": 15,
-    "image": "https://res.cloudinary.com/dqqrgidob/image/upload/v1566854238/bkzAHsJ2_400x400_1_z8dm6t.jpg",
-    "name": "Akinbode Weezykon",
-    "role": "Team Member, Backend",
-    "email": "weezykon@gmail.com"
   }
 ]
