@@ -7,15 +7,13 @@ const JSZip = require('jszip');
 
 const ShortenLink = {
   async findUserShortLinks(req, res, next) {
-    const { userId } = req.cookies;
-    const search = {
-      uploadedBy: userId
-    };
-    ShortLink.find(search, function(err, allUserShortLink) {
+    const email = req.params.email
+    
+    ShortLink.find({uploadedBy: email}, function(err, allUserShortLink) {
       if (err) {
         return err;
       } else {
-        res.send(allUserShortLink);
+        res.json({success:true,uploads:allUserShortLink});
       }
     });
   },
@@ -24,12 +22,15 @@ const ShortenLink = {
       if (err) {
         return err;
       } else {
-        res.send(allShortLink);
+        res.json({ success: true, uploads: allShortLink });
       }
     });
   },
   async shortenUrl(req, res, next) {
-    const { userId } = req.cookies;
+    var uploadedBy;
+      const { email } = req.body;
+      uploadedBy= email
+    
     try {
       let newUrl = [];
       const { temp: response } = res.locals;
@@ -44,8 +45,8 @@ const ShortenLink = {
           fileName,
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
           // shortUrl: `http://localhost:4000/${shortUrlParam}`,
-          uploadedBy: userId
-        });
+          uploadedBy: uploadedBy
+        }); 
         createShortUrl.save();
 
         let url = {
@@ -70,7 +71,10 @@ const ShortenLink = {
     }
   },
   async folderUrl(req, res, next) {
-    const { userId } = req.cookies;
+    var uploadedBy;
+      const { email } = req.body;
+           uploadedBy= email
+
     try {
       let newUrl = [];
       const response = [...res.locals];
@@ -86,7 +90,7 @@ const ShortenLink = {
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
           // shortUrl: `http://localhost:4000/${shortUrlParam}`,
 
-          uploadedBy: userId
+          uploadedBy: uploadedBy
         });
         createShortUrl.save();
 

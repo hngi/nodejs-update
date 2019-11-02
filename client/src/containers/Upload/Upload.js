@@ -8,7 +8,7 @@ import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import UploadType from './uploadType';
 import JSZip from 'jszip';
 
-const Upload = ({ uploadFile, setAlert }) => {
+const Upload = ({ uploadFile, setAlert, user }) => {
   const [formData, setFormData] = useState({
     file: '',
     show: false,
@@ -16,7 +16,10 @@ const Upload = ({ uploadFile, setAlert }) => {
     fileType: ''
   });
   const { file, show } = formData;
-
+  if (!user) {
+    user = '';
+  }
+  let { email } = user;
   const upload = fileType => {
     if (file === '' || file === undefined || file === null) {
       setAlert('Please select a file/folder to upload', 'danger');
@@ -30,7 +33,7 @@ const Upload = ({ uploadFile, setAlert }) => {
     // upload file
     if (fileType === 'file') {
       setFormData({ show: true });
-      uploadFile(uploadedFile);
+      uploadFile(uploadedFile, email);
       const sizes = uploadedFile.map(file => {
         return file.size;
       });
@@ -55,6 +58,7 @@ const Upload = ({ uploadFile, setAlert }) => {
         // Check if input field
         if (uploadedFile[0].webkitRelativePath !== '') {
           const folderName = uploadedFile[0].webkitRelativePath.split('/');
+          console.log(folderName);
           img = zip.folder(folderName[0]);
         } else {
           // checks if drag and drop
@@ -64,10 +68,9 @@ const Upload = ({ uploadFile, setAlert }) => {
         uploadedFile.map(i => {
           img.file(i.name, i, { base64: true });
         });
-        
+
         zip.generateAsync({ type: 'blob' }).then(content => {
-          
-          uploadFile([content]);
+          uploadFile([content], email);
         });
         setFormData({ show: true });
       }
@@ -107,24 +110,24 @@ const Upload = ({ uploadFile, setAlert }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <main className="wrapper home-section d-flex justify-content-between align-items-center">
-      <div className="left-section">
-        <h1 className="left-section-title">
+    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
+      <div className='left-section'>
+        <h1 className='left-section-title'>
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className="left-section-content">
+        <h4 className='left-section-content'>
           Fast, Safe and Secure.... <br />
           Simply upload a file and share it via email or a generated link{' '}
         </h4>
         <img
-          className="left-section-image"
-          src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
-          alt=""
+          className='left-section-image'
+          src='https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png'
+          alt=''
         />
       </div>
-      <div className="right-section d-flex justify-content-center align-items-center">
+      <div className='right-section d-flex justify-content-center align-items-center'>
         {!show ? (
           <UploadType
             upload={upload}
@@ -144,7 +147,8 @@ const Upload = ({ uploadFile, setAlert }) => {
 };
 
 const mapStateToProps = state => ({
-  uploadstate: state.upload
+  uploadstate: state.upload,
+  user: state.auth.user
 });
 
 export default connect(

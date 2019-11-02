@@ -38,7 +38,7 @@ router.get('/:shortenId', findShortenUrl, (req, res) => {
 });
 //router.get('/:shortenId', findShortenUrl, redirectShortenUrl);
 router.post('/api/auth/login', loginUser);
-router.get('/api/auth/uploads/:id', shortenLink.findUserShortLinks);
+router.get('/api/auth/uploads/:email', shortenLink.findUserShortLinks);
 router.get('/api/auth/uploads', shortenLink.findAll);
 router.post('/api/auth/register', registerUser);
 router.post('/api/auth/sendEmail', sendEmailValidator, saveEmail, sendEmail);
@@ -46,7 +46,7 @@ router.post('/:shortenId', findShortenUrl, redirectShortenUrl);
 router.post(
   '/api/auth/upload/',
   validateCookie,
-  multerUploads,
+  multerUploads, 
   uploadFile.upload,
   shortenLink.shortenUrl
 );

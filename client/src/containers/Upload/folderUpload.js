@@ -28,7 +28,7 @@ export default function FolderUpload({
                 htmlFor='upload'
                 className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
                 <p style={{ color: 'rgba(0,0,0,0.4)' }}>
-                  Drop the file here...
+                  Drop the folder here...
                 </p>
               </label>
             </div>
