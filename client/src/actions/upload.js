@@ -5,26 +5,26 @@ import {
   SEND_EMAIL_FAIL,
   DOWNLOAD_LINK_FAIL,
   DOWNLOAD_LINK_SUCCESS,
+  GET_USER_UPLOADS_SUCCESS,
+  GET_USER_UPLOADS_FAIL,
   HIDE_LINK,
   LOADING,
   PROGRESS_BAR
 } from './types';
 import { setAlert } from './alert';
 import axios from 'axios';
-// const base_url = 'http://localhost:4000';
-const base_url = 'http://xshare.gq';
+const base_url = 'http://localhost:4000';
+// const base_url = 'http://xshare.gq';
 // const base_url = 'https://x-shareserver.herokuapp.com';
 export const hidelink = () => async => dispatch => {
   dispatch({
     type: HIDE_LINK
   });
 };
-export const uploadFile = file => async dispatch => {
+export const uploadFile = (file,email) => async dispatch => {
   const fd = new FormData();
 
-  // fd.append('name', name);
-  // fd.append('to', to);
-  // fd.append('isEmail', true);
+  fd.append('email', email);
   file.map(i => {
     return fd.append('file', i);
   });
@@ -71,16 +71,10 @@ export const uploadFile = file => async dispatch => {
   }
 };
 
-export const uploadFolder = file => async dispatch => {
-  console.log('HEREEEE OOOO', file);
+export const uploadFolder = (file,email) => async dispatch => {
   const fd = new FormData();
 
-  // fd.append('name', name);
-  // fd.append('to', to);
-  // fd.append('isEmail', true);
-  // file.map(i => {
-  //   return
-  // });
+  fd.append('email', email);
   fd.append('file', file);
 
   dispatch({
@@ -103,13 +97,11 @@ export const uploadFolder = file => async dispatch => {
   };
 
   try {
-    // encodeURI(file);
     const response = await axios.post(
       base_url + `/api/auth/upload`,
       fd,
       config
     );
-    console.log('RESPONSE', response);
     if (response.data.success) {
       dispatch({
         type: UPLOAD_FILE_SUCCESS,
@@ -123,7 +115,6 @@ export const uploadFolder = file => async dispatch => {
       });
     }
   } catch (error) {
-    console.log('ERROR', error.message);
     dispatch(setAlert('Error uploading', 'danger'));
   }
 };
@@ -180,6 +171,26 @@ export const downloadLink = shortCode => async dispatch => {
     dispatch(setAlert('Error downloading file', 'danger'));
     dispatch({
       type: DOWNLOAD_LINK_FAIL
+    });
+  }
+};
+export const getUserUploads = email => async dispatch => {
+  try {
+    const response = await axios.get(base_url + `/api/auth/uploads/${email}`);
+    if (response.data.success) {
+      dispatch({
+        type: GET_USER_UPLOADS_SUCCESS,
+        payload:response.data
+      });
+
+    } else {
+      dispatch({
+        type: GET_USER_UPLOADS_FAIL
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: GET_USER_UPLOADS_FAIL
     });
   }
 };

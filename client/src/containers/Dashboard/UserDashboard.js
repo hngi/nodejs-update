@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import {setAlert} from '../../actions/alert'
+import uuid from 'uuid/v4';
+
+import { setAlert } from '../../actions/alert';
+import { getUserUploads } from '../../actions/upload';
 import './UserDashboard.css';
-const UserDashboard = ({ isAuthenticated,setAlert,user }) => {
-   var email,username;
-  if (user != null) {
-    var { email,username } = user;
+const UserDashboard = ({
+  isAuthenticated,
+  setAlert,
+  user,
+  getUserUploads,
+  uploads
+}) => {
+  var email, username, downloadCount=0, shortUrl, fileName, createdAt;
+
+  if (user != null || uploads != null) {
+    var { email, username } = user;
+    var { downloadCount, shortUrl, fileName, createdAt } = uploads;
     email = email;
-    username=username;
+    username = username;
+    downloadCount = 0;
+    shortUrl = shortUrl;
+    fileName = fileName;
+    createdAt = createdAt;
   }
+  useEffect(() => {
+    getUserUploads(email);
+  }, [getUserUploads, email]);
   return (
     <div>
       {!isAuthenticated ? (
-        setAlert('You need to be logged in to do that','danger'),
-         <Redirect to='/login' />
+        (setAlert('You need to be logged in to do that', 'danger'),
+        <Redirect to='/login' />)
       ) : (
         <div className='main-grid'>
           {/*Left Section*/}
@@ -147,91 +165,54 @@ const UserDashboard = ({ isAuthenticated,setAlert,user }) => {
             {/*Right / Bottom Section */}
             <section id='s4-bottom'>
               <div className='right-section-content offset-grid'>
-                <article className='right-section-content' id='dl-cards'>
-                  <div className='card-two'>
-                    <div className='two-sub-flex'>
-                      {/* <h4>All uploads</h4> */}
-                      <br />
-                      <br />
-                      <br />
-                      <h3>swcgcjjbvcrdxxkgggggvgvgjn.mp4</h3>
-                      <a href>http://xshare.gq/gcfkgfcfghjkjhgfd</a>
-                      <p>10 Downloads</p>
-                      <p>22/10/2019</p>
-                    </div>
-                    <div className='card-icons'>
-                      <a href>
-                        <img
-                          src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/copy_yhensf.png'
-                          alt=''
-                        />
-                      </a>
-                      <a href>
-                        <img
-                          src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/share_ntm46n.png'
-                          alt=''
-                        />
-                      </a>
-                      <a href>
-                        <img
-                          src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/trash_iycq23.png'
-                          alt=''
-                        />
-                      </a>
-                      <a href>
-                        <img
-                          src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/chart-2_bkyz9m.png'
-                          alt=''
-                        />
-                      </a>
-                    </div>
-                  </div>
-                  <div className=' card-two'>
-                    <div className='two-sub-flex'>
-                      {/* <h4>All uploads</h4> */}
-                      <br />
-                      <br />
-                      <br />
-                      <h3>swcgcjjbvcrdxxkgggggvgvgjn.mp4</h3>
-                      <a href>http://xshare.gq/gcfkgfcfghjkjhgfd</a>
-                      <p>10 Downloads</p>
-                      <p>22/10/2019</p>
-                    </div>
-                    <div className='card-icons'>
-                      <a href>
-                        <img
-                          src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/copy_yhensf.png'
-                          alt=''
-                        />
-                      </a>
-                      <a href>
-                        <img
-                          src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/share_ntm46n.png'
-                          alt=''
-                        />
-                      </a>
-                      <a href>
-                        <img
-                          src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/trash_iycq23.png'
-                          alt=''
-                        />
-                      </a>
-                      <a href>
-                        <img
-                          src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/chart-2_bkyz9m.png'
-                          alt=''
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </article>
-                {/* <article id='right-img'>
-                <img
-                  className='img-square'
-                  src='assets/color-cover.png'
-                  alt=''
-                />
-              </article> */}
+                    <article className='right-section-content' id='dl-cards'>
+                {uploads != null ? (
+                  uploads.map(upload => {
+                      return (
+                        <div key={uuid()} className='card-two'>
+                          <div className='two-sub-flex'>
+                            {/* <h4>All uploads</h4> */}
+                            <br />
+                            <br />
+                            <br />
+                            <h3>{upload.fileName}</h3>
+                            <a href>{upload.shortUrl}</a>
+                            <p>{upload.downloadCount} Downloads</p>
+                            <p>{upload.createdAt}</p>
+                          </div>
+                          <div className='card-icons'>
+                            <a href>
+                              <img
+                                src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/copy_yhensf.png'
+                                alt=''
+                              />
+                            </a>
+                            <a href>
+                              <img
+                                src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/share_ntm46n.png'
+                                alt=''
+                              />
+                            </a>
+                            <a href>
+                              <img
+                                src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/trash_iycq23.png'
+                                alt=''
+                              />
+                            </a>
+                            <a href>
+                              <img
+                                src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/chart-2_bkyz9m.png'
+                                alt=''
+                              />
+                            </a>
+                          </div>
+                        </div>
+                      );
+                  })
+                  ) : (
+                    <h5>No uploads</h5>
+                    )}
+                    </article>
               </div>
             </section>
           </section>
@@ -243,9 +224,10 @@ const UserDashboard = ({ isAuthenticated,setAlert,user }) => {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
-  user: state.auth.user
+  user: state.auth.user,
+  uploads: state.upload.uploads
 });
 export default connect(
   mapStateToProps,
-  {setAlert}
+  { setAlert, getUserUploads }
 )(UserDashboard);

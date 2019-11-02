@@ -8,7 +8,7 @@ import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import UploadType from './uploadType';
 import JSZip from 'jszip';
 
-const Upload = ({ uploadFile, setAlert }) => {
+const Upload = ({ uploadFile, setAlert,user }) => {
   const [formData, setFormData] = useState({
     file: '',
     show: false,
@@ -16,7 +16,12 @@ const Upload = ({ uploadFile, setAlert }) => {
     fileType: ''
   });
   const { file, show } = formData;
-
+  console.log(user);
+if(!user){
+  user=''
+}
+let {email}=user;
+console.log(email);
   const upload = fileType => {
     if (file === '' || file === undefined || file === null) {
       setAlert('Please select a file/folder to upload', 'danger');
@@ -30,7 +35,7 @@ const Upload = ({ uploadFile, setAlert }) => {
     // upload file
     if (fileType === 'file') {
       setFormData({ show: true });
-      uploadFile(uploadedFile);
+      uploadFile(uploadedFile,email);
       const sizes = uploadedFile.map(file => {
         return file.size;
       });
@@ -67,7 +72,7 @@ const Upload = ({ uploadFile, setAlert }) => {
         
         zip.generateAsync({ type: 'blob' }).then(content => {
           
-          uploadFile([content]);
+          uploadFile([content],email);
         });
         setFormData({ show: true });
       }
@@ -144,7 +149,8 @@ const Upload = ({ uploadFile, setAlert }) => {
 };
 
 const mapStateToProps = state => ({
-  uploadstate: state.upload
+  uploadstate: state.upload,
+  user:state.auth.user
 });
 
 export default connect(

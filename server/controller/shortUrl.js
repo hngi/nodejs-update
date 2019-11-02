@@ -7,16 +7,13 @@ const JSZip = require('jszip');
 
 const ShortenLink = {
   async findUserShortLinks(req, res, next) {
-    const { userId } = req.cookies;
     const email = req.params.email
-    const search = {
-      uploadedBy: userId
-    };
-    ShortLink.find({'uploadedBy.email': email}, function(err, allUserShortLink) {
+    
+    ShortLink.find({uploadedBy: email}, function(err, allUserShortLink) {
       if (err) {
         return err;
       } else {
-        res.send(allUserShortLink);
+        res.json({success:true,uploads:allUserShortLink});
       }
     });
   },
@@ -25,23 +22,14 @@ const ShortenLink = {
       if (err) {
         return err;
       } else {
-        res.send(allShortLink);
+        res.json({ success: true, uploads: allShortLink });
       }
     });
   },
   async shortenUrl(req, res, next) {
-    const { userId } = req.cookies;
     var uploadedBy;
-    if (!req.user) {
-      uploadedBy = {
-        email: null
-      }
-    } else {
-      const { email } = req.user;
-      uploadedBy = {
-        email: req.user.email
-      }
-    }
+      const { email } = req.body;
+      uploadedBy= email
     
     try {
       let newUrl = [];
@@ -83,18 +71,10 @@ const ShortenLink = {
     }
   },
   async folderUrl(req, res, next) {
-    const { userId } = req.cookies;
     var uploadedBy;
-    if (!req.user) {
-      uploadedBy = {
-        email: null
-      }
-    } else {
-      const { email } = req.user;
-      uploadedBy = {
-        email: req.user.email
-      }
-    }
+      const { email } = req.body;
+           uploadedBy= email
+
     try {
       let newUrl = [];
       const response = [...res.locals];
