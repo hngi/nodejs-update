@@ -47,7 +47,7 @@ const uploadFileToS3 = async (req, res, next) => {
     //console.log(paramsName)
     // Setting up S3 upload parameters
     const params = {
-      Bucket: 'hngi-nodejs-update',
+      Bucket: 'hng6bucket',
       ACL: 'public-read',
       metadata: (req, file, cb) => {
         cb(null, { fieldName: file.fieldname });
@@ -101,7 +101,7 @@ const multerUploads = multer({
   storage: multerS3({
     s3: s3Config,
     acl: 'public-read',
-    bucket: 'hngi-nodejs-update',
+    bucket: 'hng6bucket',
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
