@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FileUpload from './fileUpload';
-// import FolderUpload from './folderUpload';
+import FolderUpload from './folderUpload';
 
 export default function UploadType({
   upload,
@@ -11,30 +11,10 @@ export default function UploadType({
   isDragActive,
   removeFile
 }) {
-  const [uploadData, setUploadData] = useState({
-    uploadType: false,
-    fileUploaded: ''
-  });
-
-  const { uploadType, fileUploaded } = uploadData;
-
-  const validate = file !== '' && file !== undefined && file !== null;
-
-  useEffect(() => {
-    setUploadData({
-      fileUploaded: Object.values(file)
-    });
-  }, [validate,file]);
-
-  // Check if file array has any changes
-  useEffect(() => {
-    setUploadData({
-      fileUploaded: Object.values(file)
-    });
-  }, [file]);
+  const [uploadType, setUploadType] = useState(false);
 
   const toggleUploadType = () => {
-    setUploadData({
+    setUploadType({
       uploadType: !uploadType
     });
   };
@@ -48,23 +28,26 @@ export default function UploadType({
       {!uploadType ? (
         <FileUpload
           file={file}
-          fileUploaded={fileUploaded}
           onChange={onChange}
           isDragActive={isDragActive}
           getInputProps={getInputProps}
           getRootProps={getRootProps}
           removeFile={removeFile}
           toggleUploadType={toggleUploadType}
+          upload={upload}
         />
-      ) : null}
-      <button
-        onClick={() => {
-          upload();
-        }}
-        className="upload-btn mt-4"
-      >
-        Upload
-      </button>
+      ) : (
+        <FolderUpload
+          file={file}
+          onChange={onChange}
+          isDragActive={isDragActive}
+          getInputProps={getInputProps}
+          getRootProps={getRootProps}
+          removeFile={removeFile}
+          toggleUploadType={toggleUploadType}
+          upload={upload}
+        />
+      )}
     </div>
   );
 }

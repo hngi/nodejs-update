@@ -71,7 +71,8 @@ body {
 #s3-top {
   background: #172B4D;
   padding: 0 2rem;
-  height: 25rem;
+  height: 25rem;;
+  margin-top:80px;
 }
 
 nav {

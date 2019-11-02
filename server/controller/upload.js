@@ -3,7 +3,6 @@ const uuidv1 = require('uuid/v1');
 const data = {
   upload(req, res, next) {
     let temp = [];
-    // console.log("Files", req.files);
     if (req.files) {
       const files = [...req.files];
       files.forEach(file => {
@@ -30,7 +29,7 @@ const data = {
     temp.forEach(temp => {
       if (id !== temp.id) {
         return res.status(400).json({
-          message: `file with id ${id} does not exist`
+          message: `File with id ${id} does not exist`
         });
       }
     });
@@ -40,7 +39,7 @@ const data = {
     temp = newTemp;
     res.status(200).json({
       status: 'success',
-      message: 'deleted successfully'
+      message: 'Deleted successfully'
     });
   }
 };

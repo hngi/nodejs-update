@@ -3,13 +3,13 @@ import uuid from 'uuid/v4';
 
 export default function fileUpload({
   file,
-  fileUploaded,
   isDragActive,
   getInputProps,
   getRootProps,
   onChange,
   removeFile,
-  toggleUploadType
+  toggleUploadType,
+  upload
 }) {
   return (
     <>
@@ -51,7 +51,7 @@ export default function fileUpload({
           <h6 className="right-section-content mt-2">
             {file ? (
               <>
-                {fileUploaded.map(i => {
+                {file.map(i => {
                   const id = uuid();
                   return (
                     <span className="uploading-file mt-3" key={id}>
@@ -73,9 +73,9 @@ export default function fileUpload({
           </h6>
         </>
       </div>
-      {/* <h3 className="upload-type" onClick={toggleUploadType}>
+      <h3 className="upload-type" onClick={toggleUploadType}>
         Want to upload a folder?
-      </h3> */}
+      </h3>
       <input
         {...getInputProps}
         type="file"
@@ -85,6 +85,14 @@ export default function fileUpload({
         id="upload"
         multiple
       />
+      <button
+        onClick={() => {
+          upload('file');
+        }}
+        className="upload-btn mt-4"
+      >
+        Upload
+      </button>
     </>
   );
 }
