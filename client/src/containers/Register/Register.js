@@ -40,7 +40,6 @@ const Register = ({ register, history,loading }) => {
           required
           onChange={e => onChange(e)}
           type="email"
-          name="email"
           placeholder="&#xf0e0;  email"
           style={{fontFamily:"Arial, FontAwesome"}}/>
 

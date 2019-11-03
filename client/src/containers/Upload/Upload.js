@@ -39,11 +39,11 @@ const Upload = ({ uploadFile, setAlert, user }) => {
       });
       const totalSize = sizes.reduce((a, b) => a + b);
       if (totalSize > 2147483648) {
+        window.location.replace('http://xshare.ga/register');
         setAlert(
           'You have to be registered to send files larger than 2GB',
           'danger'
         );
-        return window.location.replace('http://xshare.ga/register');
         // return <Redirect to='/register' />;
       }
 
@@ -54,9 +54,21 @@ const Upload = ({ uploadFile, setAlert, user }) => {
     if (fileType === 'folder') {
       const zip = new JSZip();
       let img;
+
       if (Object.keys(uploadedFile).length !== 0) {
         // Check if input field
-        if (uploadedFile[0].webkitRelativePath !== '') {
+        var sizesss = uploadedFile.map(i => {
+          // img.file(i.name, i, { base64: true });
+          return i.size;
+        });
+        const totalSizes = sizesss.reduce((a, b) => a + b);
+        if (totalSizes > 2147483648) {
+          window.location.replace('http://xshare.ga/register');
+          setAlert(
+            'You have to be registered to send files larger than 2GB',
+            'danger'
+          );
+        } else if (uploadedFile[0].webkitRelativePath !== '') {
           const folderName = uploadedFile[0].webkitRelativePath.split('/');
           console.log(folderName);
           img = zip.folder(folderName[0]);
@@ -67,11 +79,13 @@ const Upload = ({ uploadFile, setAlert, user }) => {
         }
         uploadedFile.map(i => {
           img.file(i.name, i, { base64: true });
+          return i.size;
         });
 
         zip.generateAsync({ type: 'blob' }).then(content => {
           uploadFile([content], email);
         });
+
         setFormData({ show: true });
       }
 
@@ -85,7 +99,7 @@ const Upload = ({ uploadFile, setAlert, user }) => {
     if (!Array.isArray(e.target.files)) {
       files = Object.values(e.target.files);
     }
-    const newData = [...file];
+    const newData = [...files];
     newData.push(...files);
     setFormData({
       file: newData,
