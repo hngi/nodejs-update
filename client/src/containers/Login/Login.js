@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
+import EmailLoader from '../Loader/EmailLoader'
 import './Login.css';
-const Login = ({ login, history }) => {
+const Login = ({ login, history ,loading}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -63,9 +64,11 @@ const Login = ({ login, history }) => {
             </p> */}
           </div>
           <div>
-            <button className='login-btn' type='submit'>
-              Login
-            </button>
+            {!loading ? (
+              <button className='upload-btn mt-4'>Login</button>
+            ) : (
+              <EmailLoader />
+            )}
           </div>
         </form>
       </div>
@@ -77,8 +80,10 @@ const Login = ({ login, history }) => {
     </div>
   );
 };
-
+const mapStateToProps=state=>({
+  loading:state.auth.loading
+})
 export default connect(
-  null,
+  mapStateToProps,
   { login }
 )(Login);

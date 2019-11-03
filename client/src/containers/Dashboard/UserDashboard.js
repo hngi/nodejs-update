@@ -14,18 +14,19 @@ const UserDashboard = ({
   getUserUploads,
   uploads
 }) => {
-  var email, username, downloadCount=0, shortUrl, fileName, createdAt;
+  var email, username, downloadCount, shortUrl, fileName, createdAt;
 
-  if (user != null || uploads != null) {
+  if (user !== null || uploads !== null) {
     var { email, username } = user;
     var { downloadCount, shortUrl, fileName, createdAt } = uploads;
     email = email;
     username = username;
-    downloadCount = 0;
+    downloadCount = downloadCount;
     shortUrl = shortUrl;
     fileName = fileName;
     createdAt = createdAt;
   }
+
   useEffect(() => {
     getUserUploads(email);
   }, [getUserUploads, email]);
@@ -165,9 +166,9 @@ const UserDashboard = ({
             {/*Right / Bottom Section */}
             <section id='s4-bottom'>
               <div className='right-section-content offset-grid'>
-                    <article className='right-section-content' id='dl-cards'>
-                {uploads != null ? (
-                  uploads.map(upload => {
+                <article className='right-section-content' id='dl-cards'>
+                  {uploads != null ? (
+                    uploads.map(upload => {
                       return (
                         <div key={uuid()} className='card-two'>
                           <div className='two-sub-flex'>
@@ -208,11 +209,11 @@ const UserDashboard = ({
                           </div>
                         </div>
                       );
-                  })
+                    })
                   ) : (
                     <h5>No uploads</h5>
-                    )}
-                    </article>
+                  )}
+                </article>
               </div>
             </section>
           </section>

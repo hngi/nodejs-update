@@ -15,7 +15,7 @@ const initialState = {
   uploadstate: {
     success: false
   },
-  uploads:null
+  uploads:[]
 };
 export default function(state = initialState, action) {
   const { type, payload } = action;
@@ -47,7 +47,7 @@ export default function(state = initialState, action) {
     case GET_USER_UPLOADS_FAIL:
       return {
         ...state,
-        uploads: null,
+        uploads: [],
         emailSent: false
       };
     case LOADING:
