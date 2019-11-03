@@ -79,7 +79,6 @@ const Upload = ({ uploadFile, setAlert, user }) => {
         }
         uploadedFile.map(i => {
           img.file(i.name, i, { base64: true });
-          return i.size;
         });
 
         zip.generateAsync({ type: 'blob' }).then(content => {
