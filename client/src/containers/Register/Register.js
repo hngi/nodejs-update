@@ -17,81 +17,54 @@ const Register = ({ register, history,loading }) => {
   };
   return (
     <div>
-      <div className='register-container'>
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            register(username, email, password, history);
-          }}>
-          <div>
-            <h1>Create account</h1>
-          </div>
-          <div className='input-group'>
-            <span className='input-group-addon'>
-              <i className='fa fa-user fa_custom }' />
-            </span>
-            <input
-              onChange={e => onChange(e)}
-              type='text'
-              id='username'
-              name='username'
-              value={username}
-              placeholder='Username'
-              required
-            />
-          </div>
-          <div className='input-group'>
-            <span className='input-group-addon'>
-              <i className='fa fa-envelope fa_custom }' />
-            </span>
-            <input
-              type='email'
-              placeholder='jdoe@gmail.com'
-              name='email'
-              id='email'
-              value={email}
-              required
-              onChange={e => onChange(e)}
-            />
-          </div>
-          <div className='input-group'>
-            <span className='input-group-addon'>
-              <i className='fa fa-lock fa_custom }' />
-            </span>
-            <input
-              type='password'
-              name='password'
-              id='password'
-              value={password}
-              // className='form-control'
-              minLength={3}
-              onChange={e => onChange(e)}
-              placeholder='********'
-              required
-            />
-          </div>
-          <div className='r-container'>
-            {/* <label className='container'>
-              Remember me
-              <input type='checkbox' defaultChecked='checked' />
-              <span className='checkmark' />
-            </label> */}
-            {/* <p>
-              <a href='#'>Forgot Password?</a>
-            </p> */}
-          </div>
-          <div>
-            {!loading ? (
-              <button className='upload-btn mt-4'>Create Account</button>
-            ) : (
-              <EmailLoader />
-            )}
-          </div>
+      <div class="reg-container">
+        <h2>Create account</h2>
+        <form onSubmit={e => {
+          e.preventDefault();
+          register(username, email, password, history);
+        }}>
+          <label for="username"></label>
+          <input onChange={e => onChange(e)}
+          type='text'
+          id='username'
+          name='username'
+          value={username}
+          placeholder="&#xf007;  username"
+          style="font-family:Arial, FontAwesome"
+          required/>
+
+          <label for="email"></label>
+          <input name='email'
+          id='email'
+          value={email}
+          required
+          onChange={e => onChange(e)}
+          type="email"
+          name="email"
+          placeholder="&#xf0e0;  email"
+          style="font-family:Arial, FontAwesome"/>
+
+          <label for="password"></label>
+          <input type='password'
+          name='password'
+          id='password'
+          value={password}
+          minLength={3}
+          onChange={e => onChange(e)}
+          required
+          placeholder="&#xf023;  *******"
+          style="font-family:Arial, FontAwesome"/>
+
+          {!loading ? (
+            <button className='btn'>Create Account</button>
+          ) : (
+            <EmailLoader />
+          )}
+
         </form>
-      </div>
-      <div className='signup'>
+
         <p>
-          Already have an account?<Link to='/login'>Login</Link>{' '}
+        Already have an account? <Link to='/login'>Login</Link>{' '}
         </p>
       </div>
     </div>
