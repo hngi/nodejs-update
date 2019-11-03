@@ -14,18 +14,19 @@ const UserDashboard = ({
   getUserUploads,
   uploads
 }) => {
-  var email, username, downloadCount=0, shortUrl, fileName, createdAt;
+  var email, username, downloadCount, shortUrl, fileName, createdAt;
 
-  if (user != null || uploads != null) {
+  if (user !== null || uploads !== null) {
     var { email, username } = user;
     var { downloadCount, shortUrl, fileName, createdAt } = uploads;
     email = email;
     username = username;
-    downloadCount = 0;
+    downloadCount = downloadCount;
     shortUrl = shortUrl;
     fileName = fileName;
     createdAt = createdAt;
   }
+  
   useEffect(() => {
     getUserUploads(email);
   }, [getUserUploads, email]);

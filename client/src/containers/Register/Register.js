@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { register } from '../../actions/auth';
+import EmailLoader from '../Loader/EmailLoader';
 import { Link } from 'react-router-dom';
 
 import './Register.css';
-const Register = ({ register, history }) => {
+const Register = ({ register, history,loading }) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -80,9 +81,11 @@ const Register = ({ register, history }) => {
             </p> */}
           </div>
           <div>
-            <button className='login-btn' type='submit'>
-              Create account
-            </button>
+            {!loading ? (
+              <button className='upload-btn mt-4'>Create Account</button>
+            ) : (
+              <EmailLoader />
+            )}
           </div>
         </form>
       </div>
@@ -94,8 +97,10 @@ const Register = ({ register, history }) => {
     </div>
   );
 };
-
+const mapStateToProps = state => ({
+  loading: state.auth.loading
+});
 export default connect(
-  null,
+  mapStateToProps,
   { register }
 )(Register);

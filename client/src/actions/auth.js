@@ -4,7 +4,7 @@ import {
   CLEAR_PROFILE,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
-  LOGOUT
+  LOGOUT,LOADING
 } from './types';
 import { setAlert } from './alert';
 
@@ -17,6 +17,9 @@ export const login = (email, password,history) => async dispatch => {
     email,
     password
   });
+   dispatch({
+     type: LOADING
+   });
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -66,6 +69,9 @@ export const register = (
     email,
     password
   });
+   dispatch({
+     type: LOADING
+   });
   const config = {
     headers: { 'Content-Type': 'application/json' }
   };
