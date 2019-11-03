@@ -26,7 +26,7 @@ const UserDashboard = ({
     fileName = fileName;
     createdAt = createdAt;
   }
-  
+
   useEffect(() => {
     getUserUploads(email);
   }, [getUserUploads, email]);
@@ -166,9 +166,9 @@ const UserDashboard = ({
             {/*Right / Bottom Section */}
             <section id='s4-bottom'>
               <div className='right-section-content offset-grid'>
-                    <article className='right-section-content' id='dl-cards'>
-                {uploads != null ? (
-                  uploads.map(upload => {
+                <article className='right-section-content' id='dl-cards'>
+                  {uploads != null ? (
+                    uploads.map(upload => {
                       return (
                         <div key={uuid()} className='card-two'>
                           <div className='two-sub-flex'>
@@ -209,11 +209,11 @@ const UserDashboard = ({
                           </div>
                         </div>
                       );
-                  })
+                    })
                   ) : (
                     <h5>No uploads</h5>
-                    )}
-                    </article>
+                  )}
+                </article>
               </div>
             </section>
           </section>

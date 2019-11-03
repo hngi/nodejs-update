@@ -15,7 +15,7 @@ const initialState = {
   uploadstate: {
     success: false
   },
-  uploads:null
+  uploads:[]
 };
 export default function(state = initialState, action) {
   const { type, payload } = action;
