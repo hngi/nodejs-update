@@ -31,7 +31,7 @@ const Login = ({ login, history ,loading}) => {
           name='email'
           required
           placeholder="&#xf0e0;  email"
-          style="font-family:Arial, FontAwesome"/>
+          style={{fontFamily:"Arial, FontAwesome"}}/>
 
     			<label for="password"></label>
     			<input
@@ -42,7 +42,7 @@ const Login = ({ login, history ,loading}) => {
           name='password'
           required
           placeholder="&#xf023;  *******"
-          style="font-family:Arial, FontAwesome">
+          style={{fontFamily:"Arial, FontAwesome"}}/>
 
           {!loading ? (
             <button className='btn'>Login</button>

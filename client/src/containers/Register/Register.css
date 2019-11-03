@@ -1,31 +1,33 @@
-.reg-container {
+.reg-containerr {
   padding: 3rem 11rem;
   font-family: Segoe UI;
   text-align: center;
+  margin-top: 100px;
+  margin-bottom: 20px;
 }
 
-.reg-container h2 {
+.reg-containerr h2 {
   font-style: normal;
   font-weight: 600;
   font-size: 1.5rem;
   line-height: 40px;
-  color: #2680EB;
+  color: #2680eb;
 }
 
-.reg-container p {
+.reg-containerr p {
   font-family: Lato;
   font-style: normal;
   font-weight: normal;
   font-size: 0.95rem;
   line-height: 22px;
   text-align: center;
-  color: #2D252F;
+  color: #2d252f;
   opacity: 0.9;
 }
 
 p link {
   text-decoration: none;
-  color: #2680EB;
+  color: #2680eb;
 }
 
 form {
@@ -35,16 +37,16 @@ form {
   align-items: center;
 }
 
-input[type=text],
-input[type=email],
-input[type=password] {
+input[type='text'],
+input[type='email'],
+input[type='password'] {
   width: 22rem;
   height: 2.9rem;
   margin: 0.65rem;
-  border: 0.09rem solid #2680EB;
+  border: 0.09rem solid #2680eb;
   box-sizing: border-box;
   border-radius: 0.2rem;
-  color: #2D252F;
+  color: #2d252f;
   opacity: 0.55;
   padding: 0 1rem;
 }
@@ -52,7 +54,7 @@ input[type=password] {
 .btn {
   width: 22rem;
   height: 2.9rem;
-  background: #2680EB;
+  background: #2680eb;
   border-radius: 0.2rem;
   color: white;
   border: none;
@@ -66,16 +68,16 @@ input[type=password] {
 }
 
 @media (max-width: 768px) {
-  .reg-container {
+  .reg-containerr {
     padding: 3rem 1rem;
+    margin-top: 100px;
   }
 }
 
 @media (max-width: 576px) {
-
-  input[type=text],
-  input[type=email],
-  input[type=password],
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
   .btn {
     width: 18rem;
   }

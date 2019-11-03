@@ -17,7 +17,7 @@ const Register = ({ register, history,loading }) => {
   };
   return (
     <div>
-      <div class="reg-container">
+      <div class="reg-containerr">
         <h2>Create account</h2>
         <form onSubmit={e => {
           e.preventDefault();
@@ -30,7 +30,7 @@ const Register = ({ register, history,loading }) => {
           name='username'
           value={username}
           placeholder="&#xf007;  username"
-          style="font-family:Arial, FontAwesome"
+          style={{fontFamily:"Arial, FontAwesome"}}
           required/>
 
           <label for="email"></label>
@@ -42,7 +42,7 @@ const Register = ({ register, history,loading }) => {
           type="email"
           name="email"
           placeholder="&#xf0e0;  email"
-          style="font-family:Arial, FontAwesome"/>
+          style={{fontFamily:"Arial, FontAwesome"}}/>
 
           <label for="password"></label>
           <input type='password'
@@ -53,7 +53,7 @@ const Register = ({ register, history,loading }) => {
           onChange={e => onChange(e)}
           required
           placeholder="&#xf023;  *******"
-          style="font-family:Arial, FontAwesome"/>
+          style={{fontFamily:"Arial, FontAwesome"}}/>
 
           {!loading ? (
             <button className='btn'>Create Account</button>
