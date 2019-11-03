@@ -55,7 +55,7 @@ const Register = ({ register, history,loading }) => {
           style={{fontFamily:"Arial, FontAwesome"}}/>
 
           {!loading ? (
-            <button className='btn'>Create Account</button>
+            <button className='btn'>Register</button>
           ) : (
             <EmailLoader />
           )}
