@@ -4,10 +4,10 @@
   transition: transform 0.4s ease-in-out;
 }
 
-.team-member:hover {
+/* .team-member:hover {
   transform: scale(1.05);
   cursor: pointer;
-}
+} */
 
 .team-member-image {
   width: 116.5px;
@@ -64,4 +64,17 @@
     font-size: 14px;
     font-weight: bold;
   }
+}
+
+.gitHub{
+  background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1568020185/personal/icons8-github-100_acmz7a.png);
+  height: 30px;
+  width: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.4s ease-in-out;
+}
+.gitHub:hover{
+  background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1572858979/personal/github-9-128_o8bmmy.png);
 }

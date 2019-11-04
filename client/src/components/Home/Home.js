@@ -4,7 +4,7 @@ import './Home.css';
 
 export default function Home() {
   return (
-    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
+    <main className='wrapper home-section d-flex justify-content-between align-items-center oga2'>
       <div className='left-section'>
         <h1 className='left-section-title'>
           The most seamless
