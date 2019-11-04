@@ -83,7 +83,6 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
         zip.generateAsync({ type: "blob" }).then(content => {
           const folderArray = uploadedFile[0].webkitRelativePath.split("/");
           let folderName = folderArray[0];
-          console.log(folderName);
           uploadFolder([content], email, folderName);
         });
 
@@ -98,12 +97,9 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
 
     // checking if the files is an array
     if (!Array.isArray(e.target.files)) {
-      console.log(e.target.files);
       files = Object.values(e.target.files);
-      console.log(files);
     }
     const newData = [...files];
-    console.log(newData);
 
     setFormData({
       file: newData,

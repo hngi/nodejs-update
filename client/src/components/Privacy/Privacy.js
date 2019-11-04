@@ -1,7 +1,7 @@
 import React from 'react';
 import './Privacy.css';
 
-export default function index() {
+export default function Privacy() {
   return (
     <main className="wrapper mt-4">
       <h1 className="privacy-title mb-5">Privacy Policy</h1>
