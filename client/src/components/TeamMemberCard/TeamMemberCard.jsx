@@ -16,7 +16,7 @@ export default function index() {
               <p className="team-member-name">{member.name}</p>
               <p className="team-member-role mt-2">{member.role}</p>
               <a href={`${member.github}`} className="team-member-email"><i class="fab fa-github-alt"></i></a>
-              <a href={`${member.email}`} className="team-member-email"><i class="fas fa-at"></i></a>
+              <a href={`mailto: ${member.email}`} className="team-member-email"><i class="fas fa-envelope"></i></a>
             </div>
           </div>
         );
