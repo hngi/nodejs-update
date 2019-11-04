@@ -29,6 +29,12 @@
   color: #a9a9a9;
   margin: 0px !important;
 }
+.team-member-email {
+  font-size: 25px;
+  line-height: 28px;
+  color: #a9a9a9;
+  margin: 0px 5px !important;
+}
 
 @media (max-width: 600px) {
   .team-member-image {
@@ -61,7 +67,7 @@
 
   .team-member-role,
   .team-member-email {
-    font-size: 14px;
+    font-size: 35px;
     font-weight: bold;
   }
 }
@@ -74,7 +80,23 @@
   background-size: cover;
   background-repeat: no-repeat;
   transition: all 0.4s ease-in-out;
+    display: inline-block;
+
 }
 .gitHub:hover{
+  background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1572858979/personal/github-9-128_o8bmmy.png);
+}
+.email {
+  background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1568020185/personal/icons8-github-100_acmz7a.png);
+  height: 30px;
+  width: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.4s ease-in-out;
+  display: inline-block;
+}
+
+.email:hover {
   background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1572858979/personal/github-9-128_o8bmmy.png);
 }
