@@ -114,5 +114,22 @@ const multerUploads = multer({
     }
   })
 }).array('file');
+const multerUploadsFolder = multer({
+  storage: multerS3({
+    s3: s3Config,
+    acl: 'public-read',
+    bucket: 'hng6bucket',
+    metadata: (req, file, cb) => {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: (req, file, cb) => {
+      cb(
+        null,
+        path.basename(req.params.file +".zip")
+      
+      );
+    }
+  })
+}).array('file');
 
-module.exports = { multerUploads, zipper, upload, uploadFileToS3 };
+module.exports = { multerUploads, multerUploadsFolder, zipper, upload, uploadFileToS3 };

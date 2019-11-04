@@ -2,13 +2,13 @@ import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './Upload.css';
 import { connect } from 'react-redux';
-import { uploadFile } from '../../actions/upload';
+import { uploadFile,uploadFolder } from '../../actions/upload';
 import { setAlert } from '../../actions/alert';
 import UploadSuccess from '../UploadSuccess/UploadSuccess';
 import UploadType from './uploadType';
 import JSZip from 'jszip';
 
-const Upload = ({ uploadFile, setAlert, user }) => {
+const Upload = ({ uploadFile, uploadFolder,setAlert, user }) => {
   const [formData, setFormData] = useState({
     file: '',
     show: false,
@@ -70,7 +70,6 @@ const Upload = ({ uploadFile, setAlert, user }) => {
           );
         } else if (uploadedFile[0].webkitRelativePath !== '') {
           const folderName = uploadedFile[0].webkitRelativePath.split('/');
-          console.log(folderName);
           img = zip.folder(folderName[0]);
         } else {
           // checks if drag and drop
@@ -82,7 +81,10 @@ const Upload = ({ uploadFile, setAlert, user }) => {
         });
 
         zip.generateAsync({ type: 'blob' }).then(content => {
-          uploadFile([content], email);
+          const folderArray = uploadedFile[0].webkitRelativePath.split('/');
+          let folderName = folderArray[0]
+          console.log(folderName);
+          uploadFolder([content], email, folderName);
         });
 
         setFormData({ show: true });
@@ -166,5 +168,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { uploadFile, setAlert }
+  { uploadFile, setAlert, uploadFolder }
 )(Upload);
