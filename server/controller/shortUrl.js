@@ -44,7 +44,7 @@ const ShortenLink = {
           shortUrlParam,
           fileName,
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
-          // shortUrl: `http://localhost:4000/${shortUrlParam}`,
+          //shortUrl: `http://localhost:4000/${shortUrlParam}`,
           uploadedBy: uploadedBy
         }); 
         createShortUrl.save();

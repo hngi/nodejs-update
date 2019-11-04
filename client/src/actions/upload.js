@@ -71,11 +71,13 @@ export const uploadFile = (file,email) => async dispatch => {
   }
 };
 
-export const uploadFolder = (file,email) => async dispatch => {
+export const uploadFolder = (file, email, folderName) => async dispatch => {
   const fd = new FormData();
 
   fd.append('email', email);
-  fd.append('file', file);
+  file.map(i => {
+    return fd.append('file', i);
+  });
 
   dispatch({
     type: LOADING
@@ -98,7 +100,7 @@ export const uploadFolder = (file,email) => async dispatch => {
 
   try {
     const response = await axios.post(
-      base_url + `/api/auth/upload`,
+      base_url + `/api/auth/upload/folder/:${folderName}`,
       fd,
       config
     );

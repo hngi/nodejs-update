@@ -17,7 +17,8 @@ const {
   multerUploads,
   zipper,
   upload,
-  uploadFileToS3
+  uploadFileToS3,
+  multerUploadsFolder
 } = require('../middleware/multer');
 const shortenLink = require('../controller/shortUrl');
 const validateCookie = require('../middleware/validator/validateCookie');
@@ -50,12 +51,19 @@ router.post(
   uploadFile.upload,
   shortenLink.shortenUrl
 );
+// router.post(
+//   '/api/auth/upload/folder/:file',
+//   upload,
+//   zipper,
+//   uploadFileToS3,
+//   shortenLink.folderUrl
+// );
 router.post(
   '/api/auth/upload/folder/:file',
-  upload,
-  zipper,
-  uploadFileToS3,
-  shortenLink.folderUrl
+  validateCookie,
+  multerUploadsFolder, 
+  uploadFile.upload,
+  shortenLink.shortenUrl
 );
 router.get('/api/auth/upload/', (req, res) => {
   res.render('test');
