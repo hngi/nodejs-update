@@ -4,55 +4,63 @@
     "image": "https://res.cloudinary.com/busola/image/upload/v1568640962/bee.jpg",
     "name": "Codedcoder",
     "role": "Team Lead, Full Stack",
-    "email": "codedcoderrr@gmail.com"
+    "email": "codedcoderrr@gmail.com",
+    "github": "https://github.com/codedCoderr"
   },
   {
     "id": 2,
     "image": "https://res.cloudinary.com/michelletakuro/image/upload/v1554317430/gbemmy.jpg",
     "name": "Takuro Gbemisola",
     "role": "PM, Mobile development",
-    "email": "mitchelletakuro@gmail.com"
+    "email": "mitchelletakuro@gmail.com",
+    "github": "https://github.com/mitchelletakuro"
   },
   {
     "id": 3,
     "image": "https://res.cloudinary.com/torimbj/image/upload/v1571695111/brad-neathery-XrSzacdYbtQ-unsplash_pygdb4.jpg",
     "name": "Torimbj",
     "role": "Devops and UI/UX Designer",
-    "email": "torimbj@gmail.com"
+    "email": "torimbj@gmail.com",
+    "github": "http://github.com/moobbie"
   },
   {
     "id": 4,
     "image": "https://res.cloudinary.com/cavdy/image/upload/v1571245491/Photo_on_01-08-2019_at_12.24_PM_y8xfqk.jpg",
     "name": "Cavdy",
     "role": "Team Member, Full Stack",
-    "email": "cavdyofficials@gmail.com"
+    "email": "cavdyofficials@gmail.com",
+    "github": "https://github.com/Cavdy"
   },
   {
     "id": 5,
     "image": "https://res.cloudinary.com/fego/image/upload/v1566565664/hng/fegggie_scbhf4.jpg",
     "name": "Edafe Oghenefego",
     "role": "Team Member, Backend",
-    "email": "fegoworks@hotmail.com"
+    "email": "fegoworks@hotmail.com",
+    "github": "https://github.com/fegoworks"
   },
   {
     "id": 6,
     "image": "https://res.cloudinary.com/vectormike/image/upload/v1571242418/me.jpg",
     "name": "Victor Jonah",
     "role": "Team Member, Backend",
-    "email": "victorjonah199@gmail.com"
+    "email": "victorjonah199@gmail.com",
+    "github": "https://github.com/Vectormike"
   },
   {
     "id": 7,
     "image": "https://res.cloudinary.com/ibefx/image/upload/v1568020189/personal/ibebugwu_chukwuemeka_byblud.png",
     "name": "Emeka Ibebugwu",
     "role": "Team Member, Backend",
-    "email": "emex4gman@gmail.com"
+    "email": "emex4gman@gmail.com",
+    "github": "https://github.com/Emex4gman"
   },
   {
     "id": 8,
     "image": "https://res.cloudinary.com/dvbwpicno/image/upload/v1566490977/a2mccwbm3cf0fm9rfdeu.png",
     "name": "Mohammed Ibrahim",
     "role": "Team Member, Frontend",
-    "email": "ibrahimdamy7@gmail.com"
+    "email": "ibrahimdamy7@gmail.com",
+    "github": "http://github.com/Mohamilr"
   }
 ]
