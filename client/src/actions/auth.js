@@ -106,7 +106,7 @@ export const register = (
   }
 };
 
-export const logout = () => dispatch => {
+export const logout = () => async dispatch => {
   dispatch({
     type: CLEAR_PROFILE
   });
@@ -115,7 +115,7 @@ export const logout = () => dispatch => {
   });
   dispatch(setAlert('Logout was successful', 'success'));
 };
-export const notLoading = () => dispatch => {
+export const notLoading = () => async dispatch => {
   dispatch({
     type: NOT_LOADING
   });
