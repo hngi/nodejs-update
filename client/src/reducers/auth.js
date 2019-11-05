@@ -52,7 +52,8 @@ export default function(state = initialState, action) {
         ...state,
         isSignedInWithGoogle: false,
         loading: false,
-        token: null
+        token: null,
+        isAuthenticated:false
       };
 
     case SIGN_IN_GOOGLE:

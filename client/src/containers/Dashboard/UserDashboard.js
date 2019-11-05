@@ -15,16 +15,21 @@ const UserDashboard = ({
   uploads
 }) => {
   var email, username, downloadCount, shortUrl, fileName, createdAt;
+  var totalDownloadCount = 0;
 
-  if (user !== null || uploads !== null) {
+  if (user !== null || uploads !== null || downloadCount !== undefined) {
     var { email, username } = user;
-    var { downloadCount, shortUrl, fileName, createdAt } = uploads;
-    email = email;
+    // var { downloadCount, shortUrl, fileName, createdAt } = uploads;
+    console.log(downloadCount);
     username = username;
-    downloadCount = downloadCount;
-    shortUrl = shortUrl;
-    fileName = fileName;
-    createdAt = createdAt;
+    
+    uploads.forEach(element => {
+      totalDownloadCount += element.downloadCount
+    });
+    // downloadCount = downloadCount;
+    // shortUrl = shortUrl;
+    // fileName = fileName;
+    // createdAt = createdAt;
   }
 
   useEffect(() => {
@@ -89,30 +94,30 @@ const UserDashboard = ({
               {/*Right Nav*/}
               <nav>
                 <div className='search'>
-                  <input
+                  {/* <input
                     type='search'
                     placeholder=' Search'
                     style={{ fontFamily: 'Arial, FontAwesome' }}
-                  />
+                  /> */}
                 </div>
                 <div className='nav-right'>
-                  <a href>
+                  {/* <a href>
                     <img
                       src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/bell_sktplb.png'
                       alt=''
                     />
-                  </a>
-                  <a href>
+                  </a> */}
+                  {/* <a href>
                     <img
                       className='img-circle'
                       src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/avatar_zshtk1.png'
                       alt=''
                     />
-                  </a>
-                  <span className='color-white'>{username}</span>
+                  </a> */}
+                  <span className='color-white'>{username.toUpperCase()}</span>
                 </div>
               </nav>
-              <article id='home'>
+              {/* <article id='home'>
                 <img
                   src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/home-t_burkhe.png'
                   alt=''
@@ -121,7 +126,7 @@ const UserDashboard = ({
                   src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/home-2_uc6lmt.png'
                   alt=''
                 />
-              </article>
+              </article> */}
               {/*Cards section/ First Section*/}
               <article id='nav-cards'>
                 <div className='card-one'>
@@ -130,9 +135,9 @@ const UserDashboard = ({
                     <h2>TOTAL</h2>
                     <h2>DOWNLOADS</h2>
                   </div>
-                  <div className='img-circle green circle-div'>100</div>
+                  <div className='img-circle green circle-div'>{totalDownloadCount}</div>
                 </div>
-                <div className='card-one'>
+                {/* <div className='card-one'>
                   <div className='card-sub-flex'>
                     <p>ANALYTICS</p>
                     <h2>GOOGLE</h2>
@@ -144,7 +149,7 @@ const UserDashboard = ({
                       alt=''
                     />
                   </div>
-                </div>
+                </div> */}
                 <div className='card-one'>
                   <div className='card-sub-flex'>
                     <p>STORAGE</p>
