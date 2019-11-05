@@ -227,7 +227,11 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
               placeholder="Message"
             />
             {loading ? (
-              <button className="upload-btn mt-4" type="button" disabled>
+              <button
+                className="upload-btn btn-secondary mt-4"
+                type="button"
+                disabled
+              >
                 <span
                   className="mr-2 spinner-grow spinner-grow-sm"
                   role="status"
