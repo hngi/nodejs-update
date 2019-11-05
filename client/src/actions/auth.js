@@ -5,7 +5,8 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
-  LOADING
+  LOADING,
+  NOT_LOADING
 } from './types';
 import { setAlert } from './alert';
 
@@ -113,4 +114,9 @@ export const logout = () => dispatch => {
     type: LOGOUT
   });
   dispatch(setAlert('Logout was successful', 'success'));
+};
+export const notLoading = () => dispatch => {
+  dispatch({
+    type: NOT_LOADING
+  });
 };

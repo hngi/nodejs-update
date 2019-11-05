@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { connect } from "react-redux";
 import { register } from "../../actions/auth";
-import EmailLoader from "../Loader/EmailLoader";
+import { notLoading } from '../../actions/auth';
 import { Link } from "react-router-dom";
 
 import "./Register.css";
 const Register = ({ register, history, loading }) => {
+  useEffect(() => {
+    return notLoading();
+  }, [notLoading]);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -85,5 +88,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { register }
+  { register,notLoading }
 )(Register);

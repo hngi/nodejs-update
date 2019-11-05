@@ -5,6 +5,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT,
   LOADING,
+  NOT_LOADING,
   SIGN_IN_GOOGLE
 } from '../actions/types';
 
@@ -20,7 +21,8 @@ export default function(state = initialState, action) {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        loading: false
+        loading: false,
+        isAuthenticated: true
       };
     case LOGIN_SUCCESS:
       localStorage.setItem('token', payload.token);
@@ -37,14 +39,18 @@ export default function(state = initialState, action) {
       };
 
     case REGISTER_FAIL:
+    localStorage.removeItem('token');
       return {
         ...state,
-        loading: false
+        loading: false,
+        isAuthenticated: false
       };
     case LOGIN_FAIL:
+    localStorage.removeItem('token');
       return {
         ...state,
-        loading: false
+        loading: false,
+        isAuthenticated: false
       };
     case LOGOUT:
       localStorage.removeItem('token');
@@ -53,7 +59,7 @@ export default function(state = initialState, action) {
         isSignedInWithGoogle: false,
         loading: false,
         token: null,
-        isAuthenticated:false
+        isAuthenticated: false
       };
 
     case SIGN_IN_GOOGLE:
@@ -66,6 +72,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true
+      };
+    case NOT_LOADING:
+      return {
+        ...state,
+        loading: false
       };
     default:
       return state;

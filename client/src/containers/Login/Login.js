@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
-import EmailLoader from "../Loader/EmailLoader";
+import {notLoading} from '../../actions/auth'
 import "./Login.css";
-const Login = ({ login, history, loading }) => {
+const Login = ({ login, history, loading,notLoading }) => {
+  useEffect(() => {
+   return notLoading()
+  }, [notLoading])
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -72,5 +75,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { login }
+  { login,notLoading }
 )(Login);
