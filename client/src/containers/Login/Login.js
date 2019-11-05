@@ -1,18 +1,17 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
-import {notLoading} from '../../actions/auth'
+// import {notLoading} from '../../actions/auth'
 import "./Login.css";
-const Login = ({ login, history, loading,notLoading }) => {
-  useEffect(() => {
-   return notLoading()
-  }, [notLoading])
+const Login = ({ login, history }) => {
+
   const [formData, setFormData] = useState({
-    email: "",
-    password: ""
+    email: '',
+    password: '',
+    loading: false
   });
-  const { email, password } = formData;
+  const { email, password,loading } = formData;
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -23,6 +22,7 @@ const Login = ({ login, history, loading,notLoading }) => {
         <form
           onSubmit={e => {
             e.preventDefault();
+            setFormData({ loading: true });
             login(email, password, history);
           }}
         >
@@ -70,10 +70,8 @@ const Login = ({ login, history, loading,notLoading }) => {
     </div>
   );
 };
-const mapStateToProps = state => ({
-  loading: state.auth.loading
-});
+
 export default connect(
-  mapStateToProps,
-  { login,notLoading }
+  null,
+  { login }
 )(Login);

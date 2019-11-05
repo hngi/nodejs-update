@@ -1,20 +1,18 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { register } from "../../actions/auth";
-import { notLoading } from '../../actions/auth';
 import { Link } from "react-router-dom";
 
 import "./Register.css";
-const Register = ({ register, history, loading }) => {
-  useEffect(() => {
-    return notLoading();
-  }, [notLoading]);
+const Register = ({ register, history }) => {
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    password: ""
+    password: "",
+    loading:false
   });
-  const { username, email, password } = formData;
+  const { username, email, password,loading } = formData;
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -25,6 +23,7 @@ const Register = ({ register, history, loading }) => {
         <form
           onSubmit={e => {
             e.preventDefault();
+            setFormData({ loading: true });
             register(username, email, password, history);
           }}
         >
@@ -35,7 +34,7 @@ const Register = ({ register, history, loading }) => {
             id="username"
             name="username"
             value={username}
-            placeholder="&#xf007;  username"
+            placeholder="username"
             style={{ fontFamily: "Arial, FontAwesome" }}
             required
           />
@@ -83,10 +82,8 @@ const Register = ({ register, history, loading }) => {
     </div>
   );
 };
-const mapStateToProps = state => ({
-  loading: state.auth.loading
-});
+
 export default connect(
-  mapStateToProps,
-  { register,notLoading }
+  null,
+  { register }
 )(Register);
