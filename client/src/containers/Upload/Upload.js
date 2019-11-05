@@ -61,7 +61,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
           // img.file(i.name, i, { base64: true });
           return i.size;
         });
-        const totalSizes = sizesss.reduce((a, b) => a + b);
+        const totalSizes = sizesss.reduce((a, b) => a + b, 0);
         if (totalSizes > 2147483648) {
           window.location.replace("http://xshare.ga/register");
           setAlert(
