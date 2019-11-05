@@ -48,6 +48,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
       } else if (totalSize === 0) {
         setAlert("Upload atleast a file", "danger");
         setFormData({ show: false });
+        window.location.replace("http://xshare.ga/");
       }
 
       return null;
