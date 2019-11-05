@@ -46,11 +46,12 @@ const Login = ({ login, history, loading }) => {
             style={{ fontFamily: 'Arial, FontAwesome' }}
           />
 
-          {loading === false ? (
-            <button className='btn'>Login</button>
-          ) : (
-            <EmailLoader />
-          )}
+          <button className='btn'>
+            {loading ? (
+              <i className='fas fa-circle-notch text-white spin-loader' />
+            ) : null}
+            Login
+          </button>
         </form>
 
         <p>

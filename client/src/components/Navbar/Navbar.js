@@ -5,6 +5,12 @@ import './Navbar.css';
 import { logout } from '../../actions/auth';
 
 const Navbar = ({ logout, isAuthenticated }) => {
+  // const closeNavbar=() =>  {
+  //     var navBar = document.getElementById('navbarSupportedContent');
+
+  //     navBar.classList.remove('collapse')
+
+  // }
   return (
     <nav className='navbar nav navbar-expand-lg navbar-light bg-light wrapper pt-3 pb-3'>
       <Link className='nav__nav-logo' to='/'>
@@ -23,19 +29,32 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
       <div className='collapse navbar-collapse' id='navbarSupportedContent'>
         <ul className='navbar-nav ml-auto'>
-          <li className='nav-item'>
+          <li
+            className='nav-item'
+            data-toggle='collapse'
+            data-target='#navbarSupportedContent'
+            aria-controls='navbarSupportedContent'>
             <Link className='nav-link' to='/team'>
               Meet the Team
             </Link>
           </li>
           {isAuthenticated ? (
             <Fragment>
-              <li className='nav-item'>
+              <li
+                className='nav-item'
+                data-toggle='collapse'
+                data-target='#navbarSupportedContent'
+                aria-controls='navbarSupportedContent'>
                 <Link className='nav-link' to='/dashboard'>
                   <span className='hide-sm'>Dashboard</span>{' '}
                 </Link>{' '}
               </li>
-              <li onClick={logout} className='nav-item'>
+              <li
+                onClick={logout}
+                className='nav-item'
+                data-toggle='collapse'
+                data-target='#navbarSupportedContent'
+                aria-controls='navbarSupportedContent'>
                 <Link className='nav-link' to='/login'>
                   <span className='hide-sm'>Logout</span>{' '}
                   <i className='fas fa-sign-out-alt'> </i>
@@ -44,12 +63,20 @@ const Navbar = ({ logout, isAuthenticated }) => {
             </Fragment>
           ) : (
             <Fragment>
-              <li className='nav-item'>
+              <li
+                className='nav-item'
+                data-toggle='collapse'
+                data-target='#navbarSupportedContent'
+                aria-controls='navbarSupportedContent'>
                 <Link className='nav-link' to='/register'>
                   Register
                 </Link>
               </li>
-              <li className='nav-item'>
+              <li
+                className='nav-item'
+                data-toggle='collapse'
+                data-target='#navbarSupportedContent'
+                aria-controls='navbarSupportedContent'>
                 <Link className='nav-link' to='/login'>
                   Login
                 </Link>

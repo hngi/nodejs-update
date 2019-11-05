@@ -6,6 +6,7 @@ import NotFound from '../NotFound/NotFound';
 import Upload from '../../containers/Upload/Upload';
 import Register from '../../containers/Register/Register'
 import UserDashboard from '../../containers/Dashboard/UserDashboard';
+import Footer from '../Footer/Footer';
 
 import Login from '../../containers/Login/Login'
 import Payment from '../Payment/Payment';
@@ -18,14 +19,15 @@ const Routes = () => {
           <Navbar />
           <Switch>
             <Route exact path='/' component={Upload} />
-            <Route exact path='/privacy' component={Privacy} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/team' component={Team} />
             <Route exact path='/payment' component={Payment} />
+            <Route exact path='/privacy' component={Privacy} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/dashboard' component={UserDashboard} />
             <Route component={NotFound} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     </div>

@@ -37,7 +37,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
       const sizes = uploadedFile.map(file => {
         return file.size;
       });
-      const totalSize = sizes.reduce((a, b) => a + b);
+      const totalSize = sizes.reduce((a, b) => a + b, 0);
       if (totalSize > 2147483648) {
         window.location.replace("http://xshare.ga/register");
         setAlert(
@@ -45,6 +45,9 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
           "danger"
         );
         // return <Redirect to='/register' />;
+      } else if (totalSize === 0) {
+        setAlert("Upload atleast a file", "danger");
+        setFormData({ show: false });
       }
 
       return null;
@@ -61,7 +64,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
           // img.file(i.name, i, { base64: true });
           return i.size;
         });
-        const totalSizes = sizesss.reduce((a, b) => a + b);
+        const totalSizes = sizesss.reduce((a, b) => a + b, 0);
         if (totalSizes > 2147483648) {
           window.location.replace("http://xshare.ga/register");
           setAlert(
