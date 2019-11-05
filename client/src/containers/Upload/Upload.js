@@ -46,8 +46,9 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
         );
         // return <Redirect to='/register' />;
       } else if (totalSize === 0) {
-        setAlert("Upload atleast a file", "danger");
+        setAlert('Please select a file/folder to upload', 'danger');
         setFormData({ show: false });
+        window.location.replace("http://xshare.ga");
       }
 
       return null;
