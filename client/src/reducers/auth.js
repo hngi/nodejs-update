@@ -4,13 +4,14 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
+  LOADING,
   SIGN_IN_GOOGLE
 } from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'),
   loading: false,
-  user: null,
+  user: {},
   isSignedInWithGoogle: false
 };
 export default function(state = initialState, action) {
@@ -51,7 +52,8 @@ export default function(state = initialState, action) {
         ...state,
         isSignedInWithGoogle: false,
         loading: false,
-        token: null
+        token: null,
+        isAuthenticated:false
       };
 
     case SIGN_IN_GOOGLE:
@@ -60,7 +62,11 @@ export default function(state = initialState, action) {
         loading: false,
         isSignedInWithGoogle: true
       };
-
+    case LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     default:
       return state;
   }

@@ -1,11 +1,10 @@
 import {
   REGISTER_FAIL,
   REGISTER_SUCCESS,
-  SIGN_IN_GOOGLE,
   CLEAR_PROFILE,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
-  LOGOUT
+  LOGOUT,LOADING
 } from './types';
 import { setAlert } from './alert';
 
@@ -13,11 +12,14 @@ import axios from 'axios';
 // const base_url = 'http://localhost:4000';
 const base_url = 'http://xshare.gq';
 // const base_url = 'https://x-shareserver.herokuapp.com';
-export const login = (email, password) => async dispatch => {
+export const login = (email, password,history) => async dispatch => {
   const body = JSON.stringify({
     email,
     password
   });
+   dispatch({
+     type: LOADING
+   });
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -30,16 +32,15 @@ export const login = (email, password) => async dispatch => {
       body,
       config
     );
-    // console.log(response)
     if (response.data.success) {
       dispatch({
         type: LOGIN_SUCCESS,
         payload: response.data
       });
-      dispatch({
-        type: SIGN_IN_GOOGLE
-      });
+
       dispatch(setAlert('Login was successful', 'success'));
+            history.push('/dashboard');
+
     } else {
       dispatch(setAlert(response.data.message, 'danger'));
       dispatch({
@@ -57,16 +58,20 @@ export const login = (email, password) => async dispatch => {
   }
 };
 
-export const signInWithGoogle = (
+export const register = (
   username,
   email,
-  password
+  password,
+  history
 ) => async dispatch => {
   const body = JSON.stringify({
     username,
     email,
     password
   });
+   dispatch({
+     type: LOADING
+   });
   const config = {
     headers: { 'Content-Type': 'application/json' }
   };
@@ -76,18 +81,13 @@ export const signInWithGoogle = (
       body,
       config
     );
-    // console.log(response)
     if (response.data.success) {
       dispatch({
         type: REGISTER_SUCCESS,
         payload: response.data
       });
-      dispatch(login(email, password));
-    } else if (response.data.message === 'User already exists') {
-      dispatch(login(email, password));
-      dispatch({
-        type: SIGN_IN_GOOGLE
-      });
+      dispatch(setAlert('Registration was successful', 'success'));
+      history.push('/login');
     } else {
       dispatch(setAlert(response.data.message, 'danger'));
       dispatch({

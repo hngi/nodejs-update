@@ -4,13 +4,13 @@
 }
 
 :root {
-  --color-blue: #2680eb;
+  --color-blue: #2680EB;
 }
 
 html,
 body {
   font-family: Segoe UI;
-  height: 100%;
+  height: 100vh;
 }
 
 .mt-5 {
@@ -49,7 +49,7 @@ main.wrapper {
 .nav-link {
   font-size: 18px;
   line-height: 24px;
-  color: var(--color-blue) !important;
+  color: #2680EB !important;
   font-weight: bold;
 }
 
@@ -65,16 +65,15 @@ main.wrapper {
 }
 
 .left-section-title {
-  font-size: 50px;
-  line-height: 67px;
-
-  color: #2680eb;
+  font-size: 40px;
+  line-height: 53px;
+  color: #2680EB;
 }
 
 .left-section-content {
-  font-size: 21px;
-  line-height: 28px;
-  color: #a9a9a9;
+  font-size: 18px;
+  line-height: 24px;
+  color: #A9A9A9;
 }
 
 .left-section-image {
@@ -122,7 +121,7 @@ main.wrapper {
 .upload-link {
   background: rgba(38, 128, 235, 0.05);
   border-radius: 1px;
-  color: var(--color-blue);
+  color: #2680EB;
   padding: 10px 15px;
   font-size: 18px;
   line-height: 24px;
@@ -178,27 +177,51 @@ main.wrapper {
 
 .download_div {
   align-self: center;
-  width: 50%;
+  /* width: 50%; */
   text-align: center;
 }
 
-.btn {
+.header2>h2{
+  /* font-family: Segoe UI; */
+  font-size: 25px;
+  /* line-height: 40px; */
+  color: #2680EB;
+}
+
+.dl {
   background-color: Transparent;
-  background-image: url(https://cdn3.iconfinder.com/data/icons/useful-blue-icons/154/Most_Useful_icons_Mono_Blue_Background-15-512.png);
+  background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1572451091/XMLID_5_ugzija.png);
   background-repeat: no-repeat;
   /* background-position: 50% 50%; */
   background-position: center;
-  height: 100px;
+  height: 150px;
   background-size: contain;
-  width: 100px;
+  width: 130px;
   border: none;
-  transition: all 0.5s ease;
 }
-.btn:hover {
-  height: 120px;
-  width: 120px;
+/* .btn:hover {
+  height: 180px;
+  width: 150px;
+} */
+.download_sec{
+outline: none;
+background-color: #2680EB;
+width: 159px;
+height: 50px;
+font-size: 18px;
+line-height: 24px;
+color: #FFFFFF;
+border-radius: 3px;
+border: none;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
 }
-
+.download_sec:hover{
+  background-color:#FFFFFF;
+  color: #2680EB;
+  width: 163px;
+  border: 2px dashed #2680EB;
+}
 .download.btn a {
   color: white;
   width: 100%;
@@ -209,7 +232,11 @@ main.wrapper {
   position: relative;
   min-height: 100vh;
 }
-
+#myForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #content-wrap {
   padding-bottom: 2.5rem;
   /* Footer height */
@@ -257,4 +284,16 @@ footer a {
   .download_div {
     width: 100%;
   }
+}
+.modal-open .modal {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 576px) {
+.modal-dialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
+  width: 600px !important;
+}
 }

@@ -9,7 +9,7 @@
 
 html,
 body {
-  font-family: Segoe UI;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .parent {
@@ -29,6 +29,7 @@ body {
 main.wrapper {
   padding-top: 130px;
   padding-bottom: 100px;
+  background-color: #ffffff;
 }
 
 .nav {
@@ -38,7 +39,7 @@ main.wrapper {
   top: 0px;
   background-color: white !important;
   z-index: 100;
-  transition: all 0.4s ease-in-out;
+  /* transition: all 0.4s ease-in-out; */
   margin-top: 0px !important;
 }
 
@@ -55,10 +56,10 @@ main.wrapper {
   line-height: 24px;
   color: var(--color-blue) !important;
   font-weight: bold;
-  transition: transform 0.4s ease-in-out;
+  /* transition: transform 0.4s ease-in-out; */
 }
 .nav-link:hover {
-  transform: scale(1.1);
+  text-decoration: underline;
 }
 @media (max-width: 600px) {
   .wrapper {

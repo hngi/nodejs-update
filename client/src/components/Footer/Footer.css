@@ -1,5 +1,5 @@
 footer {
-  background: rgb(37, 104, 187);
+  background: var(--color-blue);
   height: 60px;
   margin-bottom: 0px;
 }
@@ -14,7 +14,7 @@ footer a {
   text-decoration: none;
 }
 
-footer a:hover  {
+footer a:hover {
   color: white;
 }
 

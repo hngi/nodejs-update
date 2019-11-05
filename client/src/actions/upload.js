@@ -5,8 +5,11 @@ import {
   SEND_EMAIL_FAIL,
   DOWNLOAD_LINK_FAIL,
   DOWNLOAD_LINK_SUCCESS,
+  GET_USER_UPLOADS_SUCCESS,
+  GET_USER_UPLOADS_FAIL,
   HIDE_LINK,
-  LOADING
+  LOADING,
+  PROGRESS_BAR
 } from './types';
 import { setAlert } from './alert';
 import axios from 'axios';
@@ -18,13 +21,13 @@ export const hidelink = () => async => dispatch => {
     type: HIDE_LINK
   });
 };
-export const uploadFile = file => async dispatch => {
+export const uploadFile = (file,email) => async dispatch => {
   const fd = new FormData();
 
-  // fd.append('name', name);
-  // fd.append('to', to);
-  // fd.append('isEmail', true);
-  fd.append('file', file);
+  fd.append('email', email);
+  file.map(i => {
+    return fd.append('file', i);
+  });
 
   dispatch({
     type: LOADING
@@ -33,8 +36,18 @@ export const uploadFile = file => async dispatch => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'multipart/form-data'
+    },
+    onUploadProgress: function(progressEvent) {
+      const percentCompleted = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total
+      );
+      dispatch({
+        type: PROGRESS_BAR,
+        payload: percentCompleted
+      });
     }
   };
+
   try {
     const response = await axios.post(
       base_url + '/api/auth/upload',
@@ -46,17 +59,65 @@ export const uploadFile = file => async dispatch => {
         type: UPLOAD_FILE_SUCCESS,
         payload: response.data
       });
-
     } else {
-      dispatch(setAlert('Error uploading file', 'danger'));
+      dispatch(setAlert('Error uploading', 'danger'));
       dispatch({
         type: UPLOAD_FILE_FAIL,
         payload: response.data.message
       });
-
     }
   } catch (error) {
-    dispatch(setAlert('Error uploading file', 'danger'));
+    dispatch(setAlert('Error uploading', 'danger'));
+  }
+};
+
+export const uploadFolder = (file, email, folderName) => async dispatch => {
+  const fd = new FormData();
+
+  fd.append('email', email);
+  file.map(i => {
+    return fd.append('file', i);
+  });
+
+  dispatch({
+    type: LOADING
+  });
+  const config = {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'multipart/form-data'
+    },
+    onUploadProgress: function(progressEvent) {
+      const percentCompleted = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total
+      );
+      dispatch({
+        type: PROGRESS_BAR,
+        payload: percentCompleted
+      });
+    }
+  };
+
+  try {
+    const response = await axios.post(
+      base_url + `/api/auth/upload/folder/:${folderName}`,
+      fd,
+      config
+    );
+    if (response.data.success) {
+      dispatch({
+        type: UPLOAD_FILE_SUCCESS,
+        payload: response.data
+      });
+    } else {
+      dispatch(setAlert('Error uploading', 'danger'));
+      dispatch({
+        type: UPLOAD_FILE_FAIL,
+        payload: response.data.message
+      });
+    }
+  } catch (error) {
+    dispatch(setAlert('Error uploading', 'danger'));
   }
 };
 export const sendEmail = (name, to, message, link) => async dispatch => {
@@ -112,6 +173,26 @@ export const downloadLink = shortCode => async dispatch => {
     dispatch(setAlert('Error downloading file', 'danger'));
     dispatch({
       type: DOWNLOAD_LINK_FAIL
+    });
+  }
+};
+export const getUserUploads = email => async dispatch => {
+  try {
+    const response = await axios.get(base_url + `/api/auth/uploads/${email}`);
+    if (response.data.success) {
+      dispatch({
+        type: GET_USER_UPLOADS_SUCCESS,
+        payload:response.data
+      });
+
+    } else {
+      dispatch({
+        type: GET_USER_UPLOADS_FAIL
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: GET_USER_UPLOADS_FAIL
     });
   }
 };

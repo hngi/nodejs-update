@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .upload-div {
+        margin: 1em auto;
+        width: 30em;
+        text-align: center;
+      }
+
+      .file-container {
+        background-color: rgba(239, 238, 238, 0.25);
+        margin-bottom: 2em;
+      }
+
+      .ion-md-add-circle {
+        color: #172B4D;
+        font-size: 60px;
+        margin-right: 0.2em;
+      }
+      .upload-btn {
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        color: #ffffff;
+        background-color: #172B4D;
+        box-shadow: 0px 0px 5px #b1b0b0;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        padding: 10px 30px;
+        width: 170px;
+        cursor: pointer;
+        transition: transform 0.4s ease-in-out;
+      }
+
+      .fa-times {
+        color: #172B4D;
+        font-size: 20px;
+        padding-top: 0.7em;
+      }
+
+      .add-files {
+        display: flex;
+        justify-content: center;
+      }
+
+      .text {
+        margin-top: 1em;
+        color: #b1b0b0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif UI;
+        text-align: left;
+      }
+
+      .uploaded-files-container {
+        display: grid;
+        justify-content: center;
+        max-height: 15em;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+
+      .uploaded-files-container::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .uploaded-files-container::-webkit-scrollbar-thumb {
+        background: #172B4D;
+        border-radius: 10px;
+      }
+
+      .uploaded-files-container::-webkit-scrollbar-track {
+        background-color: rgba(169, 169, 169, 0.5);
+      }
+
+      .uploaded-files {
+        display: flex;
+        justify-content: space-between;
+        width: 20em;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.09);
+        padding: 0 1em;
+        margin: 1em 0;
+      }
+
+      .uploaded-files p {
+        color: #6b6b6b;
+      }
+
+      .success-page {
+        margin: 1em auto;
+        width: 30em;
+      }
+
+      .img-success {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1em;
+      }
+
+      .img-success h2 {
+       color: #172B4D;
+       margin: 1.5em 0 0 1em;
+      }
+
+      .file-link-container {
+       display: grid;
+       max-height: 15em;
+       overflow-y: auto;
+       scroll-behavior: smooth;
+      }
+
+      
+     .file-link-container::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .file-link-container::-webkit-scrollbar-thumb {
+        background: #172B4D;
+        border-radius: 10px;
+      }
+
+      .file-link-container::-webkit-scrollbar-track {
+        background-color: rgba(169, 169, 169, 0.5);
+      }
+
+      .file-link {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .file-link p:nth-child(1) {
+        color: #172B4D;
+        background-color:  rgba(38, 128, 235, 0.05);
+        font-size: 18px;
+        padding: 10px;
+      }
+
+      .file-link img {
+        color: #172B4D;
+        font-size: 6px;
+      }
+
+      .file-link p {
+        display: inline-block;
+        color: #6B6A6A;
+        font-size: 16px;
+        padding: 0 10px ;
+        position: relative;
+        top: -4px;
+      }
+
+      .share-container {
+        padding-top: 15px;
+      }
+
+      .social-icons {
+        padding: 0 7px;
+        display: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="upload-div">
+      <div class="file-container">
+        <div class="add-files">
+          <input type="file" id="file" style="display:none;" />
+          <a value="upload" onclick="thisFileUpload();"
+            ><i class="icon ion-md-add-circle"></i
+          ></a>
+          <div class="text">
+            <span>Select files to upload</span><br />
+            <span>(max size: 1gb | .mp4 .mp3 .png .jpg files supported )</span>
+          </div>
+        </div>
+        <div class="uploaded-files-container">
+          <div class="uploaded-files">
+            <p>file.mp4</p>
+            <span class="cancel"> <i class="fas fa-times"></i></span>
+          </div>
+          <div class="uploaded-files">
+            <p>file.mp4</p>
+            <span class="cancel"> <i class="fas fa-times"></i></span>
+          </div>
+          <div class="uploaded-files">
+            <p>file.mp4</p>
+            <span class="cancel"> <i class="fas fa-times"></i></span>
+          </div>
+          <div class="uploaded-files">
+            <p>file.mp4</p>
+            <span class="cancel"> <i class="fas fa-times"></i></span>
+          </div>
+        </div>
+      </div>
+      <button class="upload-btn">Upload</button>
+    </div>
+
+    <!-- success page -->
+    <div class="success-page">
+    <div class="img-success">
+      <img src="https://res.cloudinary.com/busola/image/upload/v1571806132/success.png" alt="success">
+      <h2>Upload Success!</h2>
+    </div>
+    <div class="file-link-container">
+      <div class="file-link">
+          <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+          <div class="share-container">
+            <div class="copy-share">
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt="">
+                <p>Copy</p>
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt="" class="share">
+                <p>Share</p>
+            </div>
+            <div class="social-icons">
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319560/xumt48oi9dhzps3fgbo7.png" alt=""><p>Email</p>
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320186/e8mr02uwijhg2bst4cgp.png" alt="">
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320078/hh1q1ty7hsk49vy3o4kr.png" alt="">
+                <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319985/lfvdvz4vf7fxfjpq6iwo.png" alt="">
+            </div>
+          </div>
+          </div>
+
+          <div class="file-link">
+              <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+              <div class="share-container">
+                <div class="copy-share">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt="">
+                    <p>Copy</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt="" class="share">
+                    <p>Share</p>
+                </div>
+                <div class="social-icons">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319560/xumt48oi9dhzps3fgbo7.png" alt=""><p>Email</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320186/e8mr02uwijhg2bst4cgp.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320078/hh1q1ty7hsk49vy3o4kr.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319985/lfvdvz4vf7fxfjpq6iwo.png" alt="">
+                </div>
+              </div>
+          </div>
+          <div class="file-link">
+              <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+              <div class="share-container">
+                <div class="copy-share">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt="">
+                    <p>Copy</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt="" class="share">
+                    <p>Share</p>
+                </div>
+                <div class="social-icons">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319560/xumt48oi9dhzps3fgbo7.png" alt=""><p>Email</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320186/e8mr02uwijhg2bst4cgp.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320078/hh1q1ty7hsk49vy3o4kr.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319985/lfvdvz4vf7fxfjpq6iwo.png" alt="">
+                </div>
+              </div>
+          </div>
+          <div class="file-link">
+              <p>https://bit.ly/vvscfgcfgfccghccvvvgg</p>
+              <div class="share-container">
+                <div class="copy-share">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290020/otapbbmxl0x3gtyhhqap.png" alt="">
+                    <p>Copy</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572290113/tnpvg1xwd03hwlrjp4p8.png" alt="" class="share">
+                    <p>Share</p>
+                </div>
+                <div class="social-icons">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319560/xumt48oi9dhzps3fgbo7.png" alt=""><p>Email</p>
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320186/e8mr02uwijhg2bst4cgp.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572320078/hh1q1ty7hsk49vy3o4kr.png" alt="">
+                    <img src="https://res.cloudinary.com/dvbwpicno/image/upload/v1572319985/lfvdvz4vf7fxfjpq6iwo.png" alt="">
+                </div>
+              </div>
+          </div>  
+    </div>
+
+    <script>
+      //   cancel button
+      const cancelBtn = document.querySelectorAll(".cancel");
+
+      cancelBtn.forEach(cancel => {
+        cancel.addEventListener("click", e => {
+          e.target.parentElement.parentElement.remove();
+        });
+      });
+
+      // sharing
+      const share = document.querySelectorAll('.share');
+      // const social = document.querySelectorAll('.social-icons');
+      // const copyShare = document.querySelectorAll('.copy-share');
+
+      share.forEach(share => {
+        share.addEventListener('click', (e) =>{
+          e.target.parentElement.remove()
+          e.target.parentElement.nextElementSibling.style.display = 'block';
+          // copyShare.forEach(copyShare => {
+          //   copyShare.style.display = 'none';
+          // })
+          // social.forEach(social => {
+          //   social.style.display = 'block';
+          // })
+        })
+      })
+
+      // file upload
+      function thisFileUpload() {
+        document.getElementById("file").click();
+      }
+    </script>
+  </body>
+</html>
