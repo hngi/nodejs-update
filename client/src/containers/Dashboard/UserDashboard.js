@@ -115,7 +115,7 @@ const UserDashboard = ({
                       alt=''
                     />
                   </a> */}
-                  <span className='color-white'>{username.toUpperCase()}</span>
+                  <span className='color-white username'>{username.toUpperCase()}</span>
                 </div>
               </nav>
               {/* <article id='home'>
@@ -186,7 +186,12 @@ const UserDashboard = ({
                             <br />
                             <h3>{upload.fileName}</h3>
                             <a href>{upload.shortUrl}</a>
-                            <p>{upload.downloadCount} Downloads</p>
+                            <p>
+                              {upload.downloadCount}{' '}
+                              {upload.downloadCount === 1
+                                ? 'Download'
+                                : 'Downloads'}
+                            </p>
                             <p>
                               {moment(upload.createdAt).format('DD-MM-YYYY')}
                             </p>
