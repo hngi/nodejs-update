@@ -186,7 +186,12 @@ const UserDashboard = ({
                             <br />
                             <h3>{upload.fileName}</h3>
                             <a href>{upload.shortUrl}</a>
-                            <p>{upload.downloadCount} Downloads</p>
+                            <p>
+                              {upload.downloadCount}{' '}
+                              {upload.downloadCount === 1
+                                ? 'Download'
+                                : 'Downloads'}
+                            </p>
                             <p>
                               {moment(upload.createdAt).format('DD-MM-YYYY')}
                             </p>
