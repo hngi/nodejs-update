@@ -15,14 +15,16 @@ const initialState = {
   uploadstate: {
     success: false
   },
-  uploads:[]
+  uploads: []
 };
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case UPLOAD_FILE_SUCCESS:
       return {
-        uploadstate: payload
+        ...state,
+        uploadstate: payload,
+        loading: false
       };
 
     case UPLOAD_FILE_FAIL:
@@ -30,25 +32,30 @@ export default function(state = initialState, action) {
         ...state,
         cloudinaryUrl: null,
         shortUrl: null,
-        shortCode: null
+        shortCode: null,
+        loading: false
       };
     case SEND_EMAIL_SUCCESS:
       return {
         ...state,
         //cloudinaryUrl: payload.longUrl,
+        loading: false,
+
         emailSent: true
       };
     case GET_USER_UPLOADS_SUCCESS:
       return {
         ...state,
         uploads: payload.uploads,
-        emailSent: false
+        emailSent: false,
+        loading: false
       };
     case GET_USER_UPLOADS_FAIL:
       return {
         ...state,
         uploads: [],
-        emailSent: false
+        emailSent: false,
+        loading: false
       };
     case LOADING:
       return {
