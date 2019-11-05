@@ -9,7 +9,13 @@ import { setAlert } from "../../actions/alert";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
+const UploadSuccess = ({
+  sendEmail,
+  uploadstate,
+  progressBar,
+  setAlert,
+  isDragActive
+}) => {
   const [formData, setFormData] = useState({
     name: "",
     to: "",
@@ -111,6 +117,14 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                           </>
                         ) : (
                           <>
+                            <div
+                              onClick={() => {
+                                setFormData({ share: false });
+                              }}
+                              className="mr-3 align-items-center"
+                            >
+                              <i className="fas fa-arrow-alt-circle-left"></i>
+                            </div>
                             <div
                               className="mr-3 d-flex align-items-center upload-success-copy"
                               onClick={() => {
