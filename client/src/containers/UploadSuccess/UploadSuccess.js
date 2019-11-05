@@ -186,8 +186,8 @@ const UploadSuccess = ({
               </div>
             </>
           ) : (
-            <div className="d-flex justify-centent-center align-items-center flex-column ml-2 mr-2">
-              <div style={{ width: "150px" }}>
+            <div className="d-flex justify-content-center align-items-center flex-column ml-2 mr-2">
+              <div style={{ width: "120px" }}>
                 <CircularProgressbar
                   value={progressBar.progress || 0}
                   text={`${progressBar.progress || 0}%`}
