@@ -99,8 +99,8 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
     if (!Array.isArray(e.target.files)) {
       files = Object.values(e.target.files);
     }
-    const newData = [...files];
-
+    const newData = [...file];
+    newData.push(...files);
     setFormData({
       file: newData,
       fileType: e.target.files
