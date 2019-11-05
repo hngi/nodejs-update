@@ -15,7 +15,7 @@ const extractErrors = require('../helpers/helper');
 const login = (req, res) => {
   const errors = validateRequest(req);
   if (errors) {
-    return res.status(400).json({
+    return res.json({
       success: false,
       message: extractErrors(errors)
     });
@@ -25,14 +25,14 @@ const login = (req, res) => {
     email: req.body.email
   }).then(user => {
     if (!user) {
-      return res.status(401).json({
+      return res.json({
         success: false,
         message: 'Invalid Credentials'
       });
     }
     bcrypt.compare(req.body.password, user.password).then(valid => {
       if (!valid) {
-        return res.status(400).json({
+        return res.json({
           success: false,
           message: 'Invalid Credentials'
         });

@@ -4,7 +4,8 @@ import {
   CLEAR_PROFILE,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
-  LOGOUT,LOADING
+  LOGOUT,
+  LOADING
 } from './types';
 import { setAlert } from './alert';
 
@@ -12,14 +13,14 @@ import axios from 'axios';
 // const base_url = 'http://localhost:4000';
 const base_url = 'http://xshare.gq';
 // const base_url = 'https://x-shareserver.herokuapp.com';
-export const login = (email, password,history) => async dispatch => {
+export const login = (email, password, history) => async dispatch => {
   const body = JSON.stringify({
     email,
     password
   });
-   dispatch({
-     type: LOADING
-   });
+  dispatch({
+    type: LOADING
+  });
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -39,8 +40,7 @@ export const login = (email, password,history) => async dispatch => {
       });
 
       dispatch(setAlert('Login was successful', 'success'));
-            history.push('/dashboard');
-
+      history.push('/dashboard');
     } else {
       dispatch(setAlert(response.data.message, 'danger'));
       dispatch({
@@ -69,9 +69,9 @@ export const register = (
     email,
     password
   });
-   dispatch({
-     type: LOADING
-   });
+  dispatch({
+    type: LOADING
+  });
   const config = {
     headers: { 'Content-Type': 'application/json' }
   };
