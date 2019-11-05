@@ -76,7 +76,7 @@ const Register = ({ register, history, loading }) => {
           )}
         </form>
 
-        <p>
+        <p className='mt-4'>
           Already have an account? <Link to="/login">Login</Link>{" "}
         </p>
       </div>

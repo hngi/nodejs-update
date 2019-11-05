@@ -163,11 +163,13 @@ const UserDashboard = ({
                 </div>
                 <div className='card-one'>
                   <div className='card-sub-flex'>
-                    <p>PLAN-FREE</p>
+                    <p>PLAN</p>
                     {/* <h2></h2> */}
+                  <Link to='/payment'>
                     <h2>UPGRADE NOW</h2>
+                  </Link>
                   </div>
-                  <div className='img-circle blue circle-div'>PRO</div>
+                  <div className='img-circle blue circle-div'>FREE</div>
                 </div>
               </article>
             </section>
