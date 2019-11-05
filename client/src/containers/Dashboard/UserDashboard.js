@@ -115,7 +115,7 @@ const UserDashboard = ({
                       alt=''
                     />
                   </a> */}
-                  <span className='color-white'>{username.toUpperCase()}</span>
+                  <span className='color-white username'>{username.toUpperCase()}</span>
                 </div>
               </nav>
               {/* <article id='home'>
