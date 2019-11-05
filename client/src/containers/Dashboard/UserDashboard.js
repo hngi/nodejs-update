@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import uuid from 'uuid/v4';
-
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { setAlert } from '../../actions/alert';
 import { getUserUploads } from '../../actions/upload';
+import moment from 'moment';
 import './UserDashboard.css';
 const UserDashboard = ({
   isAuthenticated,
@@ -14,17 +15,17 @@ const UserDashboard = ({
   getUserUploads,
   uploads
 }) => {
-  var email, username, downloadCount, shortUrl, fileName, createdAt;
+  var email, username, downloadCount;
   var totalDownloadCount = 0;
-
+  const clipText =
+    ' Please visit http://xshare.ga to share your files with ease';
   if (user !== null || uploads !== null || downloadCount !== undefined) {
     var { email, username } = user;
-    // var { downloadCount, shortUrl, fileName, createdAt } = uploads;
-    console.log(downloadCount);
+
     username = username;
-    
+    email = email;
     uploads.forEach(element => {
-      totalDownloadCount += element.downloadCount
+      totalDownloadCount += element.downloadCount;
     });
     // downloadCount = downloadCount;
     // shortUrl = shortUrl;
@@ -135,7 +136,9 @@ const UserDashboard = ({
                     <h2>TOTAL</h2>
                     <h2>DOWNLOADS</h2>
                   </div>
-                  <div className='img-circle green circle-div'>{totalDownloadCount}</div>
+                  <div className='img-circle green circle-div'>
+                    {totalDownloadCount}
+                  </div>
                 </div>
                 {/* <div className='card-one'>
                   <div className='card-sub-flex'>
@@ -184,33 +187,92 @@ const UserDashboard = ({
                             <h3>{upload.fileName}</h3>
                             <a href>{upload.shortUrl}</a>
                             <p>{upload.downloadCount} Downloads</p>
-                            <p>{upload.createdAt}</p>
+                            <p>
+                              {moment(upload.createdAt).format('DD-MM-YYYY')}
+                            </p>
                           </div>
                           <div className='card-icons'>
-                            <a href>
+                            <Link>
+                              <CopyToClipboard
+                                text={upload.shortUrl}
+                                onCopy={() => {
+                                  upload.shortUrl === null
+                                    ? setAlert('Clipboard is empty', 'danger')
+                                    : setAlert('Link Copied', 'success');
+                                }}>
+                                <img
+                                  src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/copy_yhensf.png'
+                                  alt=''
+                                />
+                              </CopyToClipboard>
+                            </Link>
+                            {/* <div
+                              className='mr-3 d-flex align-items-center upload-success-copy'
+                              // onClick={() => {
+                              //   email(upload.shortUrl);
+                              // }}
+                              >
                               <img
-                                src='https://res.cloudinary.com/fego/image/upload/v1572496671/xshare/copy_yhensf.png'
+                                src='https://res.cloudinary.com/cavdy/image/upload/v1572343978/mail_outline_24px_1_tq5nxb.png'
                                 alt=''
+                                className='mr-1'
                               />
-                            </a>
-                            <a href>
+                              Email
+                            </div> */}
+                            <div className='social-icons d-flex justify-content-center align-items-center'>
+                              <a
+                                className='socials'
+                                href={`https://api.whatsapp.com/send?&text=${upload.shortUrl} ${clipText}`}
+                                target='_blank'
+                                rel='noopener noreferrer'>
+                                <img
+                                  className='social-icon mr-3'
+                                  src='https://res.cloudinary.com/busola/image/upload/v1571852212/whatsapp.png'
+                                  alt=''
+                                />
+                              </a>
+                              <a
+                                className='socials'
+                                href={`https://twitter.com/intent/tweet?text=${upload.shortUrl} ${clipText}`}
+                                data-size='large'
+                                target='_blank'
+                                rel='noopener noreferrer'>
+                                <img
+                                  className='social-icon mr-3'
+                                  src='https://res.cloudinary.com/busola/image/upload/v1571852204/twitter.png'
+                                  alt=''
+                                />
+                              </a>
+                              <a
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                href={`https://www.facebook.com/sharer/sharer.php?u=${upload.shortUrl}&amp;src=sdkpreparse`}
+                                className='socials'>
+                                <img
+                                  className='social-icon'
+                                  src='https://res.cloudinary.com/busola/image/upload/v1571852202/facebook.png'
+                                  alt=''
+                                />
+                              </a>
+                            </div>
+                            {/* <a href>
                               <img
                                 src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/share_ntm46n.png'
                                 alt=''
                               />
-                            </a>
-                            <a href>
+                            </a> */}
+                            {/* <a href>
                               <img
                                 src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/trash_iycq23.png'
                                 alt=''
                               />
-                            </a>
-                            <a href>
+                            </a> */}
+                            {/* <a href>
                               <img
                                 src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/chart-2_bkyz9m.png'
                                 alt=''
                               />
-                            </a>
+                            </a> */}
                           </div>
                         </div>
                       );
