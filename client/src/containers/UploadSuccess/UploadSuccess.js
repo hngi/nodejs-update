@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { sendEmail } from "../../actions/upload";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { setAlert } from "../../actions/alert";
-import EmailLoader from "../Loader/EmailLoader";
+// import EmailLoader from "../Loader/EmailLoader";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 

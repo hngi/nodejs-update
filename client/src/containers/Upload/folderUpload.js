@@ -75,7 +75,7 @@ export default function FolderUpload({
         </>
       </div>
       <h3 className='upload-type' onClick={toggleUploadType}>
-        Want to upload a file?
+        Click here to upload a file
       </h3>
       <input
         {...getInputProps}
