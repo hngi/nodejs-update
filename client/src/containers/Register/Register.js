@@ -60,12 +60,12 @@ const Register = ({ register, history, loading }) => {
             placeholder='*******'
             style={{ fontFamily: 'Arial, FontAwesome' }}
           />
-
-          {loading === false ? (
-            <button className='btn'>Register</button>
-          ) : (
-            <EmailLoader />
-          )}
+          <button className='btn'>
+            {loading ? (
+              <i className='fas fa-circle-o-notch text-white spin-loader' />
+            ) : null}
+            Register
+          </button>
         </form>
 
         <p>
