@@ -188,7 +188,7 @@ main.wrapper {
   color: #2680EB;
 }
 
-.btn {
+.dl {
   background-color: Transparent;
   background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1572451091/XMLID_5_ugzija.png);
   background-repeat: no-repeat;
@@ -284,4 +284,16 @@ footer a {
   .download_div {
     width: 100%;
   }
+}
+.modal-open .modal {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 576px) {
+.modal-dialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
+  width: 600px !important;
+}
 }
