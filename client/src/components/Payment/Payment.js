@@ -48,7 +48,7 @@ const Payment = ({ setAlert, isAuthenticated, user }) => {
             <p>Unlimited storage</p>
             <p>Unlimited Email transfers</p>
             <p>Unlimited Link transfers</p>
-            <p>Delete transfers</p>
+            <p>Delete uploads</p>
             {/* <button className='upgrade_btn' type='submit'> */}
             {/* Upgrade */}
             <RavePaymentModal
