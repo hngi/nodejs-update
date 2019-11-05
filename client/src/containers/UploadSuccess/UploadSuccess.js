@@ -123,7 +123,7 @@ const UploadSuccess = ({
                               }}
                               className="mr-3 align-items-center"
                             >
-                              <i className="fas fa-arrow-alt-circle-left"></i>
+                              <i className="fas fa-chevron-left"></i>
                             </div>
                             <div
                               className="mr-3 d-flex align-items-center upload-success-copy"
