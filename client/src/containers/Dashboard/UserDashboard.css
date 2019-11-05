@@ -248,7 +248,7 @@ input[type=search] {
   font-size: 12px;
   line-height: 16px;
   color: #6b6b6b;
-  max-height: 300px;
+  max-height: 400px;
   overflow-x: auto;
   white-space: nowrap;
   padding-right: 20px;
