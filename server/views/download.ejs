@@ -56,9 +56,9 @@
         <!-- <div class="file-image"></div> -->
         <!-- <p>this file has been downloaded <%=currentCount %> times</p> -->
         <form id="myForm" action="/<%=shortenId %>" method="POST">
-          <button class=" download  btn">
+          <button id="dl" class=" dl download  btn">
           </button>
-          <button class="download_sec"> Download</button>
+          <button id="dl" class="  download_sec"> Download</button>
         </form>
 
       </div>
@@ -83,15 +83,22 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
+  
   <script>
-    var dl = document.querySelectorAll('button')
+
+    var dl = document.querySelectorAll('#dl')
     for (var i = 0; i < dl.length; i++) {
       dl[i].addEventListener('click', (event) => {
-        var r = confirm('Are you sure you want to download this file?')
-        if (r == true) {
-          document.getElementById("myForm").submit();
+        bootbox.confirm("Are you sure you want to download this file?", function (result) {
+        if(result===true){
+        document.getElementById("myForm").submit();
+        }else{
+           
         }
+        });
         event.preventDefault()
+        
       })
     }
   </script>
