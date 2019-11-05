@@ -1,7 +1,7 @@
 import React from 'react';
 import './Privacy.css';
 
-export default function Privacy() {
+const Privacy=()=> {
   return (
     <main className="wrapper mt-4">
       <h1 className="privacy-title mb-5">Privacy Policy</h1>
@@ -52,3 +52,5 @@ export default function Privacy() {
     </main>
   );
 }
+
+export default Privacy;

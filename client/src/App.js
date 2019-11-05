@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import Alert from "./components/Alert/Alert";
-import Footer from "./components/Footer/Footer";
 import Routes from './components/Routes/Routes';
 import './oga.css'
 const App = () => {
@@ -13,13 +12,11 @@ const App = () => {
         <div className="d-flex flex-column parent">
           <div className="oga">
           <Alert />
-          <Switch>
-            
+          <Switch>        
             <Routes/>
             </Switch>
           </div>
         </div>
-          <Footer />
       </Router>
     </Provider>
   );
