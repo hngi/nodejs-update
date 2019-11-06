@@ -46,7 +46,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
         );
         // return <Redirect to='/register' />;
       } else if (totalSize === 0) {
-        setAlert('Please select a file/folder to upload', 'danger');
+        setAlert("Please select a file/folder to upload", "danger");
         setFormData({ show: false });
         window.location.replace("http://xshare.ga");
       }
@@ -128,24 +128,24 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <main className="wrapper home-section d-flex justify-content-between align-items-center">
-      <div className="left-section">
-        <h1 className="left-section-title">
+    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
+      <div className='left-section'>
+        <h1 className='left-section-title'>
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className="left-section-content">
+        <h4 className='left-section-content'>
           Fast, Safe and Secure.... <br />
-          Simply upload a file and share it via email or a generated link{" "}
+          Simply upload a file and share it via email or a generated link{' '}
         </h4>
         <img
-          className="left-section-image"
-          src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
-          alt=""
+          className='left-section-image'
+          src='https://res.cloudinary.com/busola/image/upload/v1573038811/Webp.net-resizeimage.png'
+          alt=''
         />
       </div>
-      <div className="right-section d-flex justify-content-center align-items-center">
+      <div className='right-section d-flex justify-content-center align-items-center'>
         {!show ? (
           <UploadType
             upload={upload}
@@ -157,7 +157,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
             removeFile={removeFile}
           />
         ) : (
-          <UploadSuccess />
+          <UploadSuccess upload={upload} file={file} />
         )}
       </div>
     </main>
