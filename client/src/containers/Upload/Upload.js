@@ -128,24 +128,25 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
-      <div className='left-section'>
-        <h1 className='left-section-title'>
+    <main className="wrapper home-section d-flex justify-content-between align-items-center">
+      <div className="left-section">
+        <h1 className="left-section-title">
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className='left-section-content'>
+        <h4 className="left-section-content">
           Fast, Safe and Secure.... <br />
-          Simply upload a file and share it via email or a generated link{' '}
+          Simply upload a file and share it via email or a generated link{" "}
         </h4>
         <img
-          className='left-section-image'
-          src='https://res.cloudinary.com/busola/image/upload/v1573038811/Webp.net-resizeimage.png'
-          alt=''
+          className="left-section-image"
+          rel="preconnect"
+          src="https://res.cloudinary.com/cavdy/image/upload/v1573077364/Webp.net-resizeimage_c04t3c.webp"
+          alt=""
         />
       </div>
-      <div className='right-section d-flex justify-content-center align-items-center'>
+      <div className="right-section d-flex justify-content-center align-items-center">
         {!show ? (
           <UploadType
             upload={upload}
