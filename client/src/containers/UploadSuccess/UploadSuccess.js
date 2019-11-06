@@ -226,7 +226,7 @@ const UploadSuccess = ({
               value={to}
               required
               onChange={e => onChange(e)}
-              placeholder="Reciever's email"
+              placeholder="Receiver's email"
             />
             <textarea
               onChange={e => onChange(e)}
