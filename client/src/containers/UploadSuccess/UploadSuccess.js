@@ -72,14 +72,18 @@ const UploadSuccess = ({
                 {uploadData.data.map(short => {
                   return (
                     <div
-                      className="d-flex align-items-center short-link"
+                      className="showhim d-flex align-items-center short-link"
                       key={uuid()}
-                    >
-                      <div
-                        className="mt-2 d-flex align-items-center upload-link mr-3"
-                        id="upload-link"
-                      >
-                        <h5 className="short-link-url">{short.shortUrl}</h5>
+                    >                     
+                        <div
+                          className="mt-2 d-flex align-items-center upload-link mr-3"
+                          id="upload-link"
+                        >
+                          <h5 className="short-link-url">{short.shortUrl}</h5>
+                        </div>
+                      <div className="showme">
+                        <p>{short.fileName.substring(0, 10)}</p>
+                        <p>{short.size}</p>
                       </div>
                       <div className="d-flex align-items-center">
                         {!share ? (

@@ -163,3 +163,28 @@
 .right-section-content::-webkit-scrollbar-thumb:hover {
   background: #164f94;
 }
+
+.showhim{
+position: relative;
+}
+.showme {
+  padding: 10px;
+  display: none;
+  top: 0;
+  position: absolute;
+  background: var(--color-blue);
+  color: white;
+  border-radius: 10px;
+  width: 50%;
+  flex-wrap: wrap;
+}
+
+.showhim:hover .showme {
+  display: block;
+}
+.showme>p{
+margin: 0;
+font-weight: bold;
+font-size: 13px;
+
+}

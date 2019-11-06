@@ -9,7 +9,8 @@ const data = {
         let file_upload = {
           id: uuidv1(),
           originalName: file.originalname,
-          awsUrl: file.location
+          awsUrl: file.location,
+          size: file.size
         };
         temp.push(file_upload);
       });

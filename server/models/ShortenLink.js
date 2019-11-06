@@ -15,6 +15,7 @@ const urlShortenSchema = new Schema({
     type: String,
     required: false
   },
+  size:String,
   createdAt: {
     type: Date,
     default: Date.now

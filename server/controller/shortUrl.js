@@ -34,9 +34,24 @@ const ShortenLink = {
     try {
       let newUrl = [];
       const { temp: response } = res.locals;
+      const getSize = (arr) => {
+        if (arr <= 1000) {
+          return `${arr}byte`
+        }
+        if (arr >= 1000 && arr <= 100000) {
+          return `${(arr / 1000).toFixed(1)}kb`
+        }
+        if (arr >= 1000000 && arr <= 100000000) {
+          return `${(arr / 1000000).toFixed(1)}mb`
+        }
+        if (arr >= 1000000000) {
+          return `${(arr / 1000000000).toFixed(1)}gb`
+        }
+      }
 
       response.forEach(item => {
         const awsUrl = item.awsUrl;
+        const size = getSize(item.size);
         const fileName = item.originalName;
         const shortUrlParam = shortid.generate();
         const createShortUrl = new ShortLink({
@@ -45,7 +60,8 @@ const ShortenLink = {
           fileName,
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
           //shortUrl: `http://localhost:4000/${shortUrlParam}`,
-          uploadedBy: uploadedBy
+          uploadedBy: uploadedBy,
+          size
         }); 
         createShortUrl.save();
 
@@ -53,7 +69,9 @@ const ShortenLink = {
           message: 'Link shortened successfully',
           shortCode: shortUrlParam,
           shortUrl: createShortUrl.shortUrl,
-          longUrl: awsUrl
+          longUrl: awsUrl,
+          fileName: fileName,
+          size: size
         };
 
         newUrl.push(url);
