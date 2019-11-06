@@ -8,13 +8,7 @@ import { setAlert } from "../../actions/alert";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const UploadSuccess = ({
-  sendEmail,
-  uploadstate,
-  progressBar,
-  setAlert,
-  isDragActive
-}) => {
+const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
   const [formData, setFormData] = useState({
     name: "",
     to: "",
@@ -192,6 +186,14 @@ const UploadSuccess = ({
                   text={`${progressBar.progress || 0}%`}
                 />
               </div>
+              {/* <button
+                onClick={() => {
+                  setFormData({ share: true });
+                }}
+                className="upload-btn mt-4"
+              >
+                Cancel
+              </button> */}
               <div
                 className="left-section-content mt-3"
                 style={{ textAlign: "center" }}
