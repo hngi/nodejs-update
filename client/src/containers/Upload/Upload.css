@@ -83,7 +83,10 @@
   cursor: pointer;
   transition: transform 0.4s ease-in-out;
 }
-
+.preview{
+  font-size: 12px;
+  font-weight: 600;
+}
 .upload-file-title {
   width: 190px;
   text-overflow: ellipsis;
