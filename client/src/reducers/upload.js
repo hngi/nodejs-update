@@ -2,7 +2,8 @@ import {
   UPLOAD_FILE_SUCCESS,
   UPLOAD_FILE_FAIL,
   SEND_EMAIL_SUCCESS,
-  // HIDE_LINK,
+  GET_USER_UPLOADS_SUCCESS,
+  GET_USER_UPLOADS_FAIL,
   LOADING
 } from '../actions/types';
 const initialState = {
@@ -13,14 +14,17 @@ const initialState = {
   loading: false,
   uploadstate: {
     success: false
-  }
+  },
+  uploads: []
 };
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case UPLOAD_FILE_SUCCESS:
       return {
-        uploadstate: payload
+        ...state,
+        uploadstate: payload,
+        loading: false
       };
 
     case UPLOAD_FILE_FAIL:
@@ -28,20 +32,31 @@ export default function(state = initialState, action) {
         ...state,
         cloudinaryUrl: null,
         shortUrl: null,
-        shortCode: null
+        shortCode: null,
+        loading: false
       };
     case SEND_EMAIL_SUCCESS:
       return {
         ...state,
         //cloudinaryUrl: payload.longUrl,
+        loading: false,
+
         emailSent: true
       };
-    // case HIDE_LINK:
-    //   return {
-    //     ...state,
-    //     //cloudinaryUrl: payload.longUrl,
-    //     emailSent: false
-    //   };
+    case GET_USER_UPLOADS_SUCCESS:
+      return {
+        ...state,
+        uploads: payload.uploads,
+        emailSent: false,
+        loading: false
+      };
+    case GET_USER_UPLOADS_FAIL:
+      return {
+        ...state,
+        uploads: [],
+        emailSent: false,
+        loading: false
+      };
     case LOADING:
       return {
         ...state,

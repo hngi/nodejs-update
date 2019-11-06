@@ -4,13 +4,15 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
+  LOADING,
+  NOT_LOADING,
   SIGN_IN_GOOGLE
 } from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'),
   loading: false,
-  user: null,
+  user: {},
   isSignedInWithGoogle: false
 };
 export default function(state = initialState, action) {
@@ -19,7 +21,8 @@ export default function(state = initialState, action) {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        loading: false
+        loading: false,
+        isAuthenticated: true
       };
     case LOGIN_SUCCESS:
       localStorage.setItem('token', payload.token);
@@ -36,14 +39,18 @@ export default function(state = initialState, action) {
       };
 
     case REGISTER_FAIL:
+    localStorage.removeItem('token');
       return {
         ...state,
-        loading: false
+        loading: false,
+        isAuthenticated: false
       };
     case LOGIN_FAIL:
+    localStorage.removeItem('token');
       return {
         ...state,
-        loading: false
+        loading: false,
+        isAuthenticated: false
       };
     case LOGOUT:
       localStorage.removeItem('token');
@@ -51,7 +58,8 @@ export default function(state = initialState, action) {
         ...state,
         isSignedInWithGoogle: false,
         loading: false,
-        token: null
+        token: null,
+        isAuthenticated: false
       };
 
     case SIGN_IN_GOOGLE:
@@ -60,7 +68,16 @@ export default function(state = initialState, action) {
         loading: false,
         isSignedInWithGoogle: true
       };
-
+    case LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    case NOT_LOADING:
+      return {
+        ...state,
+        loading: false
+      };
     default:
       return state;
   }

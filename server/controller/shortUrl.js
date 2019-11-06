@@ -7,15 +7,13 @@ const JSZip = require('jszip');
 
 const ShortenLink = {
   async findUserShortLinks(req, res, next) {
-    const { userId } = req.cookies;
-    const search = {
-      uploadedBy: userId
-    };
-    ShortLink.find(search, function(err, allUserShortLink) {
+    const email = req.params.email
+    
+    ShortLink.find({uploadedBy: email}, function(err, allUserShortLink) {
       if (err) {
         return err;
       } else {
-        res.send(allUserShortLink);
+        res.json({success:true,uploads:allUserShortLink});
       }
     });
   },
@@ -24,35 +22,62 @@ const ShortenLink = {
       if (err) {
         return err;
       } else {
-        res.send(allShortLink);
+        res.json({ success: true, uploads: allShortLink });
       }
     });
   },
   async shortenUrl(req, res, next) {
-    const { userId } = req.cookies;
+    var uploadedBy;
+      const { email } = req.body;
+      uploadedBy= email
+    
     try {
       let newUrl = [];
       const { temp: response } = res.locals;
-
+      const getSize = (arr) => {
+        if (arr <= 1000) {
+          return `${arr}byte`
+        }
+        if (arr >= 1000 && arr <= 100000) {
+          return `${(arr / 1000).toFixed(1)}kb`
+        }
+        if (arr >= 1000000 && arr <= 100000000) {
+          return `${(arr / 1000000).toFixed(1)}mb`
+        }
+        if (arr >= 1000000000) {
+          return `${(arr / 1000000000).toFixed(1)}gb`
+        }
+      }
+     
+      var fileName
       response.forEach(item => {
+       
+        if (req.params.file) {
+           fileName = req.params.file + ".zip"
+        } else {
+           fileName = item.originalName;
+        }
         const awsUrl = item.awsUrl;
-        const fileName = item.originalName;
+        const size = getSize(item.size);
         const shortUrlParam = shortid.generate();
         const createShortUrl = new ShortLink({
           awsUrl,
           shortUrlParam,
-          fileName,
+          fileName: fileName,
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
-          // shortUrl: `http://localhost:4000/${shortUrlParam}`,
-          uploadedBy: userId
-        });
+          //shortUrl: `http://localhost:4000/${shortUrlParam}`,
+          uploadedBy: uploadedBy,
+          size
+        }); 
         createShortUrl.save();
 
         let url = {
           message: 'Link shortened successfully',
           shortCode: shortUrlParam,
           shortUrl: createShortUrl.shortUrl,
-          longUrl: awsUrl
+          longUrl: awsUrl,
+          fileName: fileName,
+          size: size
         };
 
         newUrl.push(url);
@@ -70,7 +95,10 @@ const ShortenLink = {
     }
   },
   async folderUrl(req, res, next) {
-    const { userId } = req.cookies;
+    var uploadedBy;
+      const { email } = req.body;
+           uploadedBy= email
+
     try {
       let newUrl = [];
       const response = [...res.locals];
@@ -86,7 +114,7 @@ const ShortenLink = {
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
           // shortUrl: `http://localhost:4000/${shortUrlParam}`,
 
-          uploadedBy: userId
+          uploadedBy: uploadedBy
         });
         createShortUrl.save();
 

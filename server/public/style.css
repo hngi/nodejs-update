@@ -4,13 +4,13 @@
 }
 
 :root {
-  --color-blue: #172b4d;
+  --color-blue: #2680EB;
 }
 
 html,
 body {
   font-family: Segoe UI;
-  height: 100%;
+  height: 100vh;
 }
 
 .mt-5 {
@@ -188,7 +188,7 @@ main.wrapper {
   color: #2680EB;
 }
 
-.btn {
+.dl {
   background-color: Transparent;
   background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1572451091/XMLID_5_ugzija.png);
   background-repeat: no-repeat;
@@ -198,12 +198,11 @@ main.wrapper {
   background-size: contain;
   width: 130px;
   border: none;
-  transition: all 0.5s ease;
 }
-.btn:hover {
+/* .btn:hover {
   height: 180px;
   width: 150px;
-}
+} */
 .download_sec{
 outline: none;
 background-color: #2680EB;
@@ -285,4 +284,16 @@ footer a {
   .download_div {
     width: 100%;
   }
+}
+.modal-open .modal {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 576px) {
+.modal-dialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
+  width: 600px !important;
+}
 }

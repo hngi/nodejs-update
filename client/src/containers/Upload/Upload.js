@@ -1,25 +1,28 @@
-import React, { useState, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import './Upload.css';
-import { connect } from 'react-redux';
-import { uploadFile, uploadFolder } from '../../actions/upload';
-import { setAlert } from '../../actions/alert';
-import UploadSuccess from '../UploadSuccess/UploadSuccess';
-import UploadType from './uploadType';
-import JSZip from 'jszip';
+import React, { useState, useCallback } from "react";
+import { useDropzone } from "react-dropzone";
+import "./Upload.css";
+import { connect } from "react-redux";
+import { uploadFile, uploadFolder } from "../../actions/upload";
+import { setAlert } from "../../actions/alert";
+import UploadSuccess from "../UploadSuccess/UploadSuccess";
+import UploadType from "./uploadType";
+import JSZip from "jszip";
 
-const Upload = ({ uploadFile, setAlert }) => {
+const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
   const [formData, setFormData] = useState({
-    file: '',
+    file: "",
     show: false,
     loader: true,
-    fileType: ''
+    fileType: ""
   });
   const { file, show } = formData;
-
+  if (!user) {
+    user = "";
+  }
+  let { email } = user;
   const upload = fileType => {
-    if (file == '' || file === undefined || file === null) {
-      setAlert('Please select a file to upload', 'danger');
+    if (file === "" || file === undefined || file === null) {
+      setAlert("Please select a file/folder to upload", "danger");
       setFormData({ show: false });
       return null;
     }
@@ -28,45 +31,65 @@ const Upload = ({ uploadFile, setAlert }) => {
     const uploadedFile = Object.values(file);
 
     // upload file
-    if (fileType === 'file') {
+    if (fileType === "file") {
       setFormData({ show: true });
-      uploadFile(uploadedFile);
+      uploadFile(uploadedFile, email);
       const sizes = uploadedFile.map(file => {
         return file.size;
       });
-      const totalSize = sizes.reduce((a, b) => a + b);
+      const totalSize = sizes.reduce((a, b) => a + b, 0);
       if (totalSize > 2147483648) {
+        window.location.replace("http://xshare.ga/register");
         setAlert(
-          'You have to be registered to send files larger than 2GB',
-          'danger'
+          "You have to be registered to send files larger than 2GB",
+          "danger"
         );
-        return window.location.replace('http://xshare.ga/register');
         // return <Redirect to='/register' />;
+      } else if (totalSize === 0) {
+        setAlert("Please select a file/folder to upload", "danger");
+        setFormData({ show: false });
+        window.location.replace("http://xshare.ga");
       }
 
       return null;
     }
 
     // Upload Folder
-    if (fileType === 'folder') {
+    if (fileType === "folder") {
       const zip = new JSZip();
       let img;
+
       if (Object.keys(uploadedFile).length !== 0) {
         // Check if input field
-        if (uploadedFile[0].webkitRelativePath !== '') {
-          const folderName = uploadedFile[0].webkitRelativePath.split('/');
+        var sizesss = uploadedFile.map(i => {
+          // img.file(i.name, i, { base64: true });
+          return i.size;
+        });
+        const totalSizes = sizesss.reduce((a, b) => a + b, 0);
+        if (totalSizes > 2147483648) {
+          window.location.replace("http://xshare.ga/register");
+          setAlert(
+            "You have to be registered to send files larger than 2GB",
+            "danger"
+          );
+        } else if (uploadedFile[0].webkitRelativePath !== "") {
+          const folderName = uploadedFile[0].webkitRelativePath.split("/");
           img = zip.folder(folderName[0]);
         } else {
           // checks if drag and drop
-          const folderName = uploadedFile[0].path.split('/');
+          const folderName = uploadedFile[0].path.split("/");
           img = zip.folder(folderName[1]);
         }
         uploadedFile.map(i => {
           img.file(i.name, i, { base64: true });
         });
-        zip.generateAsync({ type: 'blob' }).then(content => {
-          uploadFile([content]);
+
+        zip.generateAsync({ type: "blob" }).then(content => {
+          const folderArray = uploadedFile[0].webkitRelativePath.split("/");
+          let folderName = folderArray[0];
+          uploadFolder([content], email, folderName);
         });
+
         setFormData({ show: true });
       }
 
@@ -105,24 +128,24 @@ const Upload = ({ uploadFile, setAlert }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <main className="wrapper home-section d-flex justify-content-between align-items-center">
-      <div className="left-section">
-        <h1 className="left-section-title">
+    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
+      <div className='left-section'>
+        <h1 className='left-section-title'>
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className="left-section-content">
+        <h4 className='left-section-content'>
           Fast, Safe and Secure.... <br />
           Simply upload a file and share it via email or a generated link{' '}
         </h4>
         <img
-          className="left-section-image"
-          src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
-          alt=""
+          className='left-section-image'
+          src='https://res.cloudinary.com/busola/image/upload/v1573038811/Webp.net-resizeimage.png'
+          alt=''
         />
       </div>
-      <div className="right-section d-flex justify-content-center align-items-center">
+      <div className='right-section d-flex justify-content-center align-items-center'>
         {!show ? (
           <UploadType
             upload={upload}
@@ -134,7 +157,7 @@ const Upload = ({ uploadFile, setAlert }) => {
             removeFile={removeFile}
           />
         ) : (
-          <UploadSuccess />
+          <UploadSuccess upload={upload} file={file} />
         )}
       </div>
     </main>
@@ -142,10 +165,11 @@ const Upload = ({ uploadFile, setAlert }) => {
 };
 
 const mapStateToProps = state => ({
-  uploadstate: state.upload
+  uploadstate: state.upload,
+  user: state.auth.user
 });
 
 export default connect(
   mapStateToProps,
-  { uploadFile, setAlert }
+  { uploadFile, setAlert, uploadFolder }
 )(Upload);

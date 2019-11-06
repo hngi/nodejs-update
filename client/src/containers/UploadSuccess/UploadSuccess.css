@@ -36,7 +36,9 @@
   transform: scale(1.15);
   transition: transform 0.5s ease-in-out;
 }
-
+.fa-chevron-left {
+  cursor: pointer;
+}
 .upload-success-img {
   width: 70px;
   height: 70px;
@@ -160,4 +162,36 @@
 }
 .right-section-content::-webkit-scrollbar-thumb:hover {
   background: #164f94;
+}
+
+.showhim{
+position: relative;
+}
+.showme {
+  padding: 10px;
+  display: none;
+  top: 0;
+  position: absolute;
+  background: #267febc2;
+  color: white;
+  border-radius: 10px;
+}
+.showme-items{
+width: 50%;
+display: flex;
+flex-grow: 1;
+flex-wrap: wrap;
+}
+.showhim:hover .showme {
+  display: block;
+}
+.showme-items>p {
+margin: 0;
+font-weight: bold;
+font-size: 13px;
+
+}
+
+.short-link-url:hover{
+  cursor: pointer;
 }
