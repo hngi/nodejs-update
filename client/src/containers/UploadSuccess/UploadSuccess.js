@@ -56,7 +56,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
             <>
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <img
-                  src="https://res.cloudinary.com/busola/image/upload/v1571806132/success.png"
+                  src="https://res.cloudinary.com/busola/image/upload/v1573039273/Webp.net-resizeimage_2.png"
                   alt=""
                   className="upload-success-img mr-3"
                 />
@@ -140,7 +140,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                               >
                                 <img
                                   className="social-icon mr-3"
-                                  src="https://res.cloudinary.com/busola/image/upload/v1571852212/whatsapp.png"
+                                  src="https://res.cloudinary.com/busola/image/upload/v1573039450/Webp.net-resizeimage_5.png"
                                   alt=""
                                 />
                               </a>
@@ -153,7 +153,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                               >
                                 <img
                                   className="social-icon mr-3"
-                                  src="https://res.cloudinary.com/busola/image/upload/v1571852204/twitter.png"
+                                  src="https://res.cloudinary.com/busola/image/upload/v1573039442/Webp.net-resizeimage_4.png"
                                   alt=""
                                 />
                               </a>
@@ -165,7 +165,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                               >
                                 <img
                                   className="social-icon"
-                                  src="https://res.cloudinary.com/busola/image/upload/v1571852202/facebook.png"
+                                  src="https://res.cloudinary.com/busola/image/upload/v1573039378/Webp.net-resizeimage_3.png"
                                   alt=""
                                 />
                               </a>
@@ -186,20 +186,17 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                   text={`${progressBar.progress || 0}%`}
                 />
               </div>
+
               <div
-                style={
-                  ({ backgroundColor: "gray" },
-                  { width: "100px" },
-                  { alignContent: "center" },
-                  { marginTop: "15px" })
-                }
-                className="justify-content-center align-items-center"
                 onClick={() => {
                   setFormData({ show: true });
                 }}
+                className="left-section-content mt-3"
+                style={{ textAlign: "center" }}
               >
-                <i className="fas fa-times-circle"></i>
+                Cancel
               </div>
+              {/* </button>  */}
               <div
                 className="left-section-content mt-3"
                 style={{ textAlign: "center" }}
