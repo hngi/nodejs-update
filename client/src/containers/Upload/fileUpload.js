@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import uuid from "uuid/v4";
 
 export default function FileUpload({
@@ -11,7 +11,6 @@ export default function FileUpload({
   toggleUploadType,
   upload
 }) {
-  const [uploaded, setUploaded] = useState({ uploaded: false });
   return (
     <>
       <div className="right-section-upload d-flex flex-column justify-content-center align-items-center p-3">
