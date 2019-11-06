@@ -132,6 +132,16 @@ const UserDashboard = ({
               <article id='nav-cards'>
                 <div className='card-one'>
                   <div className='card-sub-flex'>
+                    <p>UPLOADS</p>
+                    <h2>TOTAL</h2>
+                    <h2>UPLOADS</h2>
+                  </div>
+                  <div className='img-circle green circle-div'>
+                    {uploads!==null?uploads.length:0}
+                  </div>
+                </div>
+                <div className='card-one'>
+                  <div className='card-sub-flex'>
                     <p>DOWNLOADS</p>
                     <h2>TOTAL</h2>
                     <h2>DOWNLOADS</h2>
