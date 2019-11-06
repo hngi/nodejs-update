@@ -21,9 +21,10 @@ export default function FileUpload({
               {...getRootProps()}
               className='d-flex flex-column align-items-center'>
               <label
-                htmlFor='upload'
-                className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
-                <p style={{ color: 'rgba(0,0,0,0.4)' }}>
+                htmlFor="upload"
+                className="right-section-upload d-flex flex-column justify-content-center align-items-center"
+              >
+                <p style={{ color: "rgba(0,0,0,0.4)" }}>
                   Drop the file here...
                 </p>
               </label>
@@ -98,13 +99,16 @@ export default function FileUpload({
         id='upload'
         multiple
       />
-      <button
-        onClick={() => {
-          upload('file');
-        }}
-        className='upload-btn mt-4'>
-        Upload
-      </button>
+      {file ? (
+        <button
+          onClick={() => {
+            upload("file");
+          }}
+          className="upload-btn mt-4"
+        >
+          Upload
+        </button>
+      ) : null}
     </>
   );
 }

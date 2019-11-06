@@ -186,6 +186,13 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                 Cancel
               </button> */}
               <div
+                className="left-section-content mt-3"
+                style={{ textAlign: "center" }}
+              >
+                Cancel
+              </div>
+              {/* </button>  */}
+              <div
                 className='left-section-content mt-3'
                 style={{ textAlign: 'center' }}>
                 <p>Please be patient while your file gets uploaded...</p>
