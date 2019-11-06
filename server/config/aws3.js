@@ -21,7 +21,7 @@ const s3Config = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   Bucket: process.env.AWS_BUCKET,
-  region: "us-west-2	"
+  region: "us-west-2"
 });
 
 module.exports = { s3Config };
