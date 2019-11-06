@@ -172,17 +172,20 @@ position: relative;
   display: none;
   top: 0;
   position: absolute;
-  background: var(--color-blue);
+  background: #267febc2;
   color: white;
   border-radius: 10px;
-  width: 50%;
-  flex-wrap: wrap;
 }
-
+.showme-items{
+width: 50%;
+display: flex;
+flex-grow: 1;
+flex-wrap: wrap;
+}
 .showhim:hover .showme {
   display: block;
 }
-.showme>p{
+.showme-items>p {
 margin: 0;
 font-weight: bold;
 font-size: 13px;

@@ -120,7 +120,7 @@ const multerUploadsFolder = multer({
     acl: 'public-read',
     bucket: 'hng6bucket',
     metadata: (req, file, cb) => {
-      cb(null, { fieldName: file.fieldname });
+      cb(null, { fieldName: req.params.file + ".zip" });
     },
     key: (req, file, cb) => {
       cb(

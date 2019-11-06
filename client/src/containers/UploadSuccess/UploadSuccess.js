@@ -76,8 +76,10 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                           <h5 className="short-link-url">{short.shortUrl}</h5>
                         </div>
                       <div className="showme">
+                        <div className="showme-items">
                         <p>{short.fileName.substring(0, 10)}</p>
-                        <p>{short.size}</p>
+                          <p>{short.size}</p>
+                        </div>
                       </div>
                       <div className='d-flex align-items-center'>
                         {!share ? (

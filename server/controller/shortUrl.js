@@ -48,16 +48,22 @@ const ShortenLink = {
           return `${(arr / 1000000000).toFixed(1)}gb`
         }
       }
-
+     
+      var fileName
       response.forEach(item => {
+       
+        if (req.params.file) {
+           fileName = req.params.file + ".zip"
+        } else {
+           fileName = item.originalName;
+        }
         const awsUrl = item.awsUrl;
         const size = getSize(item.size);
-        const fileName = item.originalName;
         const shortUrlParam = shortid.generate();
         const createShortUrl = new ShortLink({
           awsUrl,
           shortUrlParam,
-          fileName,
+          fileName: fileName,
           shortUrl: `http://xshare.gq/${shortUrlParam}`,
           //shortUrl: `http://localhost:4000/${shortUrlParam}`,
           uploadedBy: uploadedBy,
