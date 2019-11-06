@@ -1,7 +1,7 @@
-import React from 'react';
-import uuid from 'uuid/v4';
+import React, { useState } from "react";
+import uuid from "uuid/v4";
 
-export default function fileUpload({
+export default function FileUpload({
   file,
   isDragActive,
   getInputProps,
@@ -11,13 +11,14 @@ export default function fileUpload({
   toggleUploadType,
   upload
 }) {
+  const [uploaded, setUploaded] = useState({ uploaded: false });
   return (
     <>
       <div className="right-section-upload d-flex flex-column justify-content-center align-items-center p-3">
         <label htmlFor="upload" className="upload-form-label">
           {isDragActive ? (
             <div
-              style={{ background: 'rgba(38,128,235,0.5)' }}
+              style={{ background: "rgba(38,128,235,0.5)" }}
               {...getRootProps()}
               className="d-flex flex-column align-items-center"
             >
@@ -25,7 +26,7 @@ export default function fileUpload({
                 htmlFor="upload"
                 className="right-section-upload d-flex flex-column justify-content-center align-items-center"
               >
-                <p style={{ color: 'rgba(0,0,0,0.4)' }}>
+                <p style={{ color: "rgba(0,0,0,0.4)" }}>
                   Drop the file here...
                 </p>
               </label>
@@ -58,7 +59,7 @@ export default function fileUpload({
                       <span className="upload-file-title">{`${i.name.substring(
                         0,
                         28
-                      )}`}</span>{' '}
+                      )}`}</span>{" "}
                       <img
                         src="https://res.cloudinary.com/cavdy/image/upload/v1572357426/Group_1_gnjyx3.png"
                         alt=""
@@ -85,14 +86,16 @@ export default function fileUpload({
         id="upload"
         multiple
       />
-      <button
-        onClick={() => {
-          upload('file');
-        }}
-        className="upload-btn mt-4"
-      >
-        Upload
-      </button>
+      {file ? (
+        <button
+          onClick={() => {
+            upload("file");
+          }}
+          className="upload-btn mt-4"
+        >
+          Upload
+        </button>
+      ) : null}
     </>
   );
 }
