@@ -186,14 +186,20 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                   text={`${progressBar.progress || 0}%`}
                 />
               </div>
-              {/* <button
+              <div
+                style={
+                  ({ backgroundColor: "gray" },
+                  { width: "100px" },
+                  { alignContent: "center" },
+                  { marginTop: "15px" })
+                }
+                className="justify-content-center align-items-center"
                 onClick={() => {
-                  setFormData({ share: true });
+                  setFormData({ show: true });
                 }}
-                className="upload-btn mt-4"
               >
-                Cancel
-              </button> */}
+                <i className="fas fa-times-circle"></i>
+              </div>
               <div
                 className="left-section-content mt-3"
                 style={{ textAlign: "center" }}
@@ -231,13 +237,14 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
               placeholder="Receiver's email"
             />
             <textarea
+              wrap="off"
               onChange={e => onChange(e)}
               name="message"
               id="message"
               value={message}
               required
-              cols="30"
-              rows="10"
+              cols="5"
+              rows="3"
               className="form-textarea"
               placeholder="Message"
             />
@@ -254,8 +261,16 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                 ></span>
               </button>
             ) : (
-              <button className="upload-btn mt-4">Send</button>
+              <button className="upload-btn d-inline p-2 mt-4">Send</button>
             )}
+            <div
+              onClick={() => {
+                setFormData({ share: false });
+              }}
+              className="d-inline p-2"
+            >
+              <i className="fas fa-chevron-left"></i>
+            </div>
           </form>
         </div>
       )}
