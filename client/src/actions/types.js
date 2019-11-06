@@ -19,6 +19,7 @@ export const SEND_EMAIL_FAIL = 'SEND_EMAIL_FAIL';
 export const GET_USER_UPLOADS_SUCCESS = 'GET_USER_UPLOADS_SUCCESS';
 export const GET_USER_UPLOADS_FAIL = 'GET_USER_UPLOADS_FAIL';
 export const LOADING = 'LOADING';
+export const NOT_LOADING = 'NOT_LOADING';
 
 export const SIGN_IN_GOOGLE = 'SIGN_IN_GOOGLE';
 export const HIDE_LINK = 'HIDE_LINK';

@@ -14,9 +14,11 @@ export default function UploadType({
   const [uploadType, setUploadType] = useState(false);
 
   const toggleUploadType = () => {
-    setUploadType({
-      uploadType: !uploadType
-    });
+    if (uploadType === true) {
+      setUploadType(false)
+    } else {
+      setUploadType(true)
+    }
   };
 
   return (

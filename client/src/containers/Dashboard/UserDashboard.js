@@ -132,6 +132,16 @@ const UserDashboard = ({
               <article id='nav-cards'>
                 <div className='card-one'>
                   <div className='card-sub-flex'>
+                    <p>UPLOADS</p>
+                    <h2>TOTAL</h2>
+                    <h2>UPLOADS</h2>
+                  </div>
+                  <div className='img-circle green circle-div'>
+                    {uploads!==null?uploads.length:0}
+                  </div>
+                </div>
+                <div className='card-one'>
+                  <div className='card-sub-flex'>
                     <p>DOWNLOADS</p>
                     <h2>TOTAL</h2>
                     <h2>DOWNLOADS</h2>
@@ -163,11 +173,13 @@ const UserDashboard = ({
                 </div>
                 <div className='card-one'>
                   <div className='card-sub-flex'>
-                    <p>PLAN-FREE</p>
+                    <p>PLAN</p>
                     {/* <h2></h2> */}
+                  <Link to='/payment'>
                     <h2>UPGRADE NOW</h2>
+                  </Link>
                   </div>
-                  <div className='img-circle blue circle-div'>PRO</div>
+                  <div className='img-circle blue circle-div'>FREE</div>
                 </div>
               </article>
             </section>
@@ -186,7 +198,12 @@ const UserDashboard = ({
                             <br />
                             <h3>{upload.fileName}</h3>
                             <a href>{upload.shortUrl}</a>
-                            <p>{upload.downloadCount} Downloads</p>
+                            <p>
+                              {upload.downloadCount}{' '}
+                              {upload.downloadCount === 1
+                                ? 'Download'
+                                : 'Downloads'}
+                            </p>
                             <p>
                               {moment(upload.createdAt).format('DD-MM-YYYY')}
                             </p>
