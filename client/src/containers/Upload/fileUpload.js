@@ -1,6 +1,5 @@
 import React from 'react';
 import uuid from 'uuid/v4';
-import { get } from 'http';
 
 export default function fileUpload({
   file,
