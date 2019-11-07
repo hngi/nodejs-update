@@ -27,8 +27,7 @@ const Register = ({ register, history, registerAuth }) => {
             e.preventDefault();
             setFormData({ loading: true });
             register(username, email, password, history);
-          }}
-        >
+          }}>
           <label for='username'></label>
           <input
             onChange={e => onChange(e)}
@@ -36,7 +35,8 @@ const Register = ({ register, history, registerAuth }) => {
             id='username'
             name='username'
             value={username}
-            placeholder='username'
+            autoComplete='off'
+            placeholder='Username'
             style={{ fontFamily: 'Arial, FontAwesome' }}
             required
           />
@@ -47,8 +47,9 @@ const Register = ({ register, history, registerAuth }) => {
             value={email}
             required
             onChange={e => onChange(e)}
+            autoComplete='off'
             type='email'
-            placeholder='email'
+            placeholder='Email'
             style={{ fontFamily: 'Arial, FontAwesome' }}
           />
           <label for='password'></label>
@@ -56,11 +57,12 @@ const Register = ({ register, history, registerAuth }) => {
             type='password'
             name='password'
             id='password'
+            autoComplete='off'
             value={password}
             minLength={3}
             onChange={e => onChange(e)}
             required
-            placeholder='*******'
+            placeholder='Password'
             style={{ fontFamily: 'Arial, FontAwesome' }}
           />
 
@@ -69,8 +71,7 @@ const Register = ({ register, history, registerAuth }) => {
               <span
                 className='mr-2 spinner-grow spinner-grow-sm'
                 role='status'
-                aria-hidden='true'
-              ></span>
+                aria-hidden='true'></span>
             </button>
           ) : (
             <button className='btn'>Create Account</button>

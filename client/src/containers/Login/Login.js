@@ -28,8 +28,7 @@ const Login = ({ login, history, loginAuth }) => {
             setFormData({ loading: true });
 
             login(email, password, history);
-          }}
-        >
+          }}>
           <label for='email'></label>
           <input
             id='email'
@@ -37,8 +36,9 @@ const Login = ({ login, history, loginAuth }) => {
             value={email}
             type='email'
             name='email'
+            autoComplete='off'
             required
-            placeholder='email'
+            placeholder='Email'
             style={{ fontFamily: 'Arial, FontAwesome' }}
           />
 
@@ -47,10 +47,11 @@ const Login = ({ login, history, loginAuth }) => {
             id='password'
             onChange={e => onChange(e)}
             value={password}
+            autoComplete='off'
             type='password'
             name='password'
             required
-            placeholder='*******'
+            placeholder='Password'
             style={{ fontFamily: 'Arial, FontAwesome' }}
           />
 
@@ -59,8 +60,7 @@ const Login = ({ login, history, loginAuth }) => {
               <span
                 className='mr-2 spinner-grow spinner-grow-sm'
                 role='status'
-                aria-hidden='true'
-              ></span>
+                aria-hidden='true'></span>
             </button>
           ) : (
             <button className='btn'>Login</button>
