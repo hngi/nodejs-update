@@ -34,8 +34,8 @@
     "uuid": "^3.3.3"
   },
   "scripts": {
-    "start": "serve -s build",
-    "dev": "react-scripts start",
+    "dev": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
