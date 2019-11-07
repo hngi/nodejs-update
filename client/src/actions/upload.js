@@ -208,7 +208,7 @@ export const getUserUploads = email => async dispatch => {
 };
 
 export const cancelUploadRequest = () =>dispatch=> {
-  cancel();
   window.location.reload();
+  cancel();
 
 };

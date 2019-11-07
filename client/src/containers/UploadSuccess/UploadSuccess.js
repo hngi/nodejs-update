@@ -224,6 +224,8 @@ const UploadSuccess = ({
                 className='left-section-content mt-3'
                 style={{ textAlign: 'center',cursor:'pointer' }}
                 onClick={() => {
+                      window.location.reload();
+
                   goBackToUpload();
                   cancelUploadRequest();
                 }}
