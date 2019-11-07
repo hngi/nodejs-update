@@ -6,15 +6,16 @@ const Privacy = () => {
     <main className='wrapper mt-4'>
       <h1 className='privacy-title mb-5'>Privacy Policy</h1>
       <div className='d-flex justify-content-between w-100 privacy'>
+
         <div className='privacy-left'>
           <h3 className='privacy-content-title'>About</h3>
           <p className='privacy-content-body'>
-            xshare, accessible from here, one of our main priorities is the
+            XSHARE, accessible from here, one of our main priorities is the
             privacy of our visitors. This Privacy Policy document contains types
             of information that is collected and recorded by Xshare and how we
             use it. If you have additional questions or require more information
             about our Privacy Policy, do not hesitate to contact us through
-            email at help.xshare@hng.tech
+            email at <a href='mailto:xshareng@gmail.com'>xshareng@gmail.com</a>
           </p>
           <h3 className='privacy-content-title mt-4'>
             Cookies and Web Beacons
@@ -29,6 +30,7 @@ const Privacy = () => {
           </p>
         </div>
         <div className='privacy-right'>
+
           <h3 className='privacy-content-title'>Privacy Policies</h3>
           <p className='privacy-content-body'>
             You may consult this list to find the Privacy Policy for each of the
