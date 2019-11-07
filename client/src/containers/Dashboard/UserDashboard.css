@@ -10,23 +10,22 @@ body {
 }
 
 .green {
-  background: #2DCE98;
+  background: #2dce98;
 }
 
 .blue {
-  background: #11CDEF;
+  background: #11cdef;
 }
 
 .red {
-  background: #F53C56;
+  background: #f53c56;
 }
 
 .main-grid {
   display: grid;
   grid-template-areas:
     "a a b b b b b b b b b"
-    "a a b b b b b b b b b"
-  ;
+    "a a b b b b b b b b b";
 }
 
 #s1-left {
@@ -56,11 +55,11 @@ body {
   font-weight: normal;
   font-size: 13px;
 
-  color: #7764E4;
+  color: #7764e4;
 }
 
 .l-two:hover {
-  background: #F6F9FC;
+  background: #f6f9fc;
   border-radius: 0.4rem;
 }
 
@@ -70,10 +69,9 @@ body {
 }
 
 #s3-top {
-  background: #172B4D;
+  background: #172b4d;
   padding: 0 2rem;
   height: 25rem;
-  ;
   margin-top: 80px;
 }
 
@@ -84,11 +82,11 @@ nav {
   padding: 1.15rem 0;
 }
 
-input[type=search] {
+input[type="search"] {
   width: 15rem;
   height: 3rem;
   border-radius: 2rem;
-  background: #F7FAFC;
+  background: #f7fafc;
   text-align: center;
   border: none;
 }
@@ -114,7 +112,7 @@ input[type=search] {
   justify-content: flex-start;
 }
 
-#home>img {
+#home > img {
   margin-right: 3rem;
 }
 
@@ -158,7 +156,7 @@ input[type=search] {
   font-size: 11px;
   line-height: 15px;
   /* identical to box height */
-  color: #8898AA;
+  color: #8898aa;
 }
 
 .card-sub-flex h2 {
@@ -167,20 +165,18 @@ input[type=search] {
   font-size: 18px;
   line-height: 24px;
 
-  color: #4D4F5C;
+  color: #4d4f5c;
 }
 
 #s4-bottom {
-  background: #F1F3F9;
+  background: #f1f3f9;
 }
 
 .offset-grid {
   display: grid;
   position: relative;
   bottom: 3rem;
-  grid-template-areas:
-    "c c c c d d d";
-
+  grid-template-areas: "c c c c d d d";
 }
 
 #dl-cards {
@@ -203,7 +199,7 @@ input[type=search] {
   justify-content: space-between;
   align-items: center;
   padding: 0 1.5rem;
-  /* height: 7rem; */
+  margin: 2em 0;
 }
 
 .card-icons {
@@ -223,7 +219,7 @@ input[type=search] {
   font-weight: normal;
   font-size: 16px;
   line-height: 21px;
-  color: #8898AA;
+  color: #8898aa;
   margin: 0.5rem 0;
 }
 
@@ -233,7 +229,7 @@ input[type=search] {
   font-weight: normal;
   font-size: 21px;
   line-height: 25px;
-  color: #172B4D;
+  color: #172b4d;
   margin: 0.5rem 0;
 }
 
@@ -283,8 +279,7 @@ input[type=search] {
     display: grid;
     grid-template-areas:
       "a a"
-      "b b"
-    ;
+      "b b";
   }
 
   nav,
@@ -294,14 +289,15 @@ input[type=search] {
   }
 
   #nav-cards {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
   }
 
   #s3-top {
-    background: #172B4D;
-    padding: 0 2rem;
-    height: 50rem;
+    background: #172b4d;
+    padding: 0;
+    height: 40rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -314,7 +310,7 @@ input[type=search] {
     border-radius: 0.5rem;
     padding: 1rem;
     height: 9rem;
-    width: 13rem;
+    width: 10rem;
     margin: 2em 0;
   }
 
@@ -336,5 +332,14 @@ input[type=search] {
     justify-content: space-evenly;
     align-items: center;
     padding: 0 1.5rem;
+    margin: 2em 0;
+  }
+
+  .card-sub-flex p {
+    font-size: 8px;
+  }
+
+  .card-sub-flex h2 {
+    font-size: 12px;
   }
 }

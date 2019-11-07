@@ -46,7 +46,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
         );
         // return <Redirect to='/register' />;
       } else if (totalSize === 0) {
-        setAlert('Please select a file/folder to upload', 'danger');
+        setAlert("Please select a file/folder to upload", "danger");
         setFormData({ show: false });
         window.location.replace("http://xshare.ga");
       }
@@ -141,7 +141,8 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
         </h4>
         <img
           className="left-section-image"
-          src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
+          rel="preconnect"
+          src="https://res.cloudinary.com/cavdy/image/upload/v1573077364/Webp.net-resizeimage_c04t3c.webp"
           alt=""
         />
       </div>
@@ -157,7 +158,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
             removeFile={removeFile}
           />
         ) : (
-          <UploadSuccess />
+          <UploadSuccess upload={upload} file={file} />
         )}
       </div>
     </main>

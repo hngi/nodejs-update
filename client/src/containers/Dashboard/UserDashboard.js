@@ -132,6 +132,16 @@ const UserDashboard = ({
               <article id='nav-cards'>
                 <div className='card-one'>
                   <div className='card-sub-flex'>
+                    <p>UPLOADS</p>
+                    <h2>TOTAL</h2>
+                    <h2>UPLOADS</h2>
+                  </div>
+                  <div className='img-circle green circle-div'>
+                    {uploads!==null?uploads.length:0}
+                  </div>
+                </div>
+                <div className='card-one'>
+                  <div className='card-sub-flex'>
                     <p>DOWNLOADS</p>
                     <h2>TOTAL</h2>
                     <h2>DOWNLOADS</h2>
@@ -234,7 +244,7 @@ const UserDashboard = ({
                                 rel='noopener noreferrer'>
                                 <img
                                   className='social-icon mr-3'
-                                  src='https://res.cloudinary.com/busola/image/upload/v1571852212/whatsapp.png'
+                                  src='https://res.cloudinary.com/busola/image/upload/v1573039450/Webp.net-resizeimage_5.png'
                                   alt=''
                                 />
                               </a>
@@ -246,7 +256,7 @@ const UserDashboard = ({
                                 rel='noopener noreferrer'>
                                 <img
                                   className='social-icon mr-3'
-                                  src='https://res.cloudinary.com/busola/image/upload/v1571852204/twitter.png'
+                                  src='https://res.cloudinary.com/busola/image/upload/v1573039442/Webp.net-resizeimage_4.png'
                                   alt=''
                                 />
                               </a>
@@ -257,7 +267,7 @@ const UserDashboard = ({
                                 className='socials'>
                                 <img
                                   className='social-icon'
-                                  src='https://res.cloudinary.com/busola/image/upload/v1571852202/facebook.png'
+                                  src='https://res.cloudinary.com/busola/image/upload/v1573039378/Webp.net-resizeimage_3.png'
                                   alt=''
                                 />
                               </a>

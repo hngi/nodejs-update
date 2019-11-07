@@ -100,7 +100,7 @@ export const uploadFolder = (file, email, folderName) => async dispatch => {
 
   try {
     const response = await axios.post(
-      base_url + `/api/auth/upload/folder/:${folderName}`,
+      base_url + `/api/auth/upload/folder/${folderName}`,
       fd,
       config
     );
