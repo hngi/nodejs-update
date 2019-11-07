@@ -7,6 +7,7 @@
 .form-input {
   padding: 12px;
   width: 100%;
+  max-width: 22rem;
   border-radius: 3px;
   border: 1px solid #a9a9a9;
   margin-bottom: 20px;
@@ -16,6 +17,7 @@
   resize: none;
   padding: 12px;
   width: 100%;
+  max-width: 22rem;
   border-radius: 3px;
   border: 1px solid #a9a9a9;
 }
@@ -145,6 +147,9 @@
   .short-links {
     max-height: 540px;
   }
+  .form-textarea {
+    width: 18rem !important;
+  }
 }
 .right-section-content {
   font-size: 12px;
@@ -156,6 +161,11 @@
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
+}
+
+.mail-top-content {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .right-section-content::-webkit-scrollbar {
@@ -185,16 +195,23 @@
   position: absolute;
   background: #267febc2;
   color: white;
+
   /* border-radius: 10px; */
 }
 .showme-items {
-  width: 50%;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
-  flex-grow: 1;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 .showhim:hover .showme {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 90%;
 }
 .showme-items > p {
   margin: 0;
