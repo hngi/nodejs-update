@@ -222,7 +222,7 @@ const UploadSuccess = ({
               </button> */}
               <div
                 className='left-section-content mt-3'
-                style={{ textAlign: 'center' }}
+                style={{ textAlign: 'center',cursor:'pointer' }}
                 onClick={() => {
                   goBackToUpload();
                   cancelUploadRequest();
