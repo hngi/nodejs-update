@@ -21,7 +21,12 @@ export const hidelink = () => async => dispatch => {
     type: HIDE_LINK
   });
 };
-export const uploadFile = (file,email) => async dispatch => {
+
+// CANCEL UPLOAD
+let CancelToken = axios.CancelToken;
+let cancel;
+
+export const uploadFile = (file, email) => async dispatch => {
   const fd = new FormData();
 
   fd.append('email', email);
@@ -45,7 +50,10 @@ export const uploadFile = (file,email) => async dispatch => {
         type: PROGRESS_BAR,
         payload: percentCompleted
       });
-    }
+    },
+    cancelToken: new CancelToken(function executor(c) {
+      cancel = c;
+    })
   };
 
   try {
@@ -95,7 +103,10 @@ export const uploadFolder = (file, email, folderName) => async dispatch => {
         type: PROGRESS_BAR,
         payload: percentCompleted
       });
-    }
+    },
+    cancelToken: new CancelToken(function executor(c) {
+      cancel = c;
+    })
   };
 
   try {
@@ -182,9 +193,8 @@ export const getUserUploads = email => async dispatch => {
     if (response.data.success) {
       dispatch({
         type: GET_USER_UPLOADS_SUCCESS,
-        payload:response.data
+        payload: response.data
       });
-
     } else {
       dispatch({
         type: GET_USER_UPLOADS_FAIL
@@ -195,4 +205,8 @@ export const getUserUploads = email => async dispatch => {
       type: GET_USER_UPLOADS_FAIL
     });
   }
+};
+
+export const cancelUploadRequest = () => {
+  cancel();
 };
