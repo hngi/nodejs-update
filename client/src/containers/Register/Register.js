@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { register } from '../../actions/auth';
 import { Link } from 'react-router-dom';
 
 import './Register.css';
-const Register = ({ register, history }) => {
+const Register = ({ register, history, registerAuth }) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -15,6 +15,9 @@ const Register = ({ register, history }) => {
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  useEffect(() => {
+    setFormData({ loading: false });
+  }, [registerAuth.authData]);
   return (
     <div>
       <div class='reg-containerr'>
@@ -82,7 +85,11 @@ const Register = ({ register, history }) => {
   );
 };
 
+const mapStateToProps = state => ({
+  registerAuth: state.auth
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { register }
 )(Register);

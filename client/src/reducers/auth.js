@@ -12,6 +12,7 @@ import {
 const initialState = {
   token: localStorage.getItem('token'),
   loading: false,
+  authData: true,
   user: {},
   isSignedInWithGoogle: false
 };
@@ -39,17 +40,19 @@ export default function(state = initialState, action) {
       };
 
     case REGISTER_FAIL:
-    localStorage.removeItem('token');
+      localStorage.removeItem('token');
       return {
         ...state,
         loading: false,
+        authData: false,
         isAuthenticated: false
       };
     case LOGIN_FAIL:
-    localStorage.removeItem('token');
+      localStorage.removeItem('token');
       return {
         ...state,
         loading: false,
+        authData: false,
         isAuthenticated: false
       };
     case LOGOUT:
