@@ -1,77 +1,85 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { login } from "../../actions/auth";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
 // import {notLoading} from '../../actions/auth'
-import "./Login.css";
-const Login = ({ login, history }) => {
-
+import './Login.css';
+const Login = ({ login, history, loginAuth }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     loading: false
   });
-  const { email, password,loading } = formData;
+  const { email, password, loading } = formData;
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    setFormData({ loading: false });
+  }, [loginAuth.authData]);
   return (
     <div>
-      <div class="reg-container">
+      <div class='reg-container'>
         <h2>Login</h2>
         <form
           onSubmit={e => {
             e.preventDefault();
             setFormData({ loading: true });
+
             login(email, password, history);
           }}
         >
-          <label for="email"></label>
+          <label for='email'></label>
           <input
-            id="email"
+            id='email'
             onChange={e => onChange(e)}
             value={email}
-            type="email"
-            name="email"
+            type='email'
+            name='email'
             required
-            placeholder="email"
-            style={{ fontFamily: "Arial, FontAwesome" }}
+            placeholder='email'
+            style={{ fontFamily: 'Arial, FontAwesome' }}
           />
 
-          <label for="password"></label>
+          <label for='password'></label>
           <input
-            id="password"
+            id='password'
             onChange={e => onChange(e)}
             value={password}
-            type="password"
-            name="password"
+            type='password'
+            name='password'
             required
-            placeholder="*******"
-            style={{ fontFamily: "Arial, FontAwesome" }}
+            placeholder='*******'
+            style={{ fontFamily: 'Arial, FontAwesome' }}
           />
 
           {loading ? (
-            <button className="btn btn-secondary" type="button" disabled>
+            <button className='btn btn-secondary' type='button' disabled>
               <span
-                className="mr-2 spinner-grow spinner-grow-sm"
-                role="status"
-                aria-hidden="true"
+                className='mr-2 spinner-grow spinner-grow-sm'
+                role='status'
+                aria-hidden='true'
               ></span>
             </button>
           ) : (
-            <button className="btn">Login</button>
+            <button className='btn'>Login</button>
           )}
         </form>
 
         <p className='mt-4'>
-          Don't have an account? <Link to="/register">Sign Up</Link>{" "}
+          Don't have an account? <Link to='/register'>Sign Up</Link>{' '}
         </p>
       </div>
     </div>
   );
 };
 
+const mapStateToProps = state => ({
+  loginAuth: state.auth
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { login }
 )(Login);
