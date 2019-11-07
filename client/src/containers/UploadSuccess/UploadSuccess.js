@@ -195,7 +195,11 @@ const UploadSuccess = ({
                   );
                 })}
 
-                <p className='upload-another' onClick={goBackToUpload}>
+                <p className='upload-another' onClick={()=>{
+                  window.location.reload();
+                  return goBackToUpload
+
+                }}>
                   <i className='fas fa-chevron-left'></i> Go Back
                 </p>
               </div>
