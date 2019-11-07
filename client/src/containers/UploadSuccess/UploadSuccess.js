@@ -195,7 +195,11 @@ const UploadSuccess = ({
                   );
                 })}
 
-                <p className='upload-another' onClick={goBackToUpload}>
+                <p className='upload-another' onClick={()=>{
+                  window.location.reload();
+                  return goBackToUpload
+
+                }}>
                   <i className='fas fa-chevron-left'></i> Go Back
                 </p>
               </div>
@@ -218,8 +222,11 @@ const UploadSuccess = ({
               </button> */}
               <div
                 className='left-section-content mt-3'
-                style={{ textAlign: 'center' }}
+                style={{ textAlign: 'center',cursor:'pointer' }}
                 onClick={() => {
+                  window.location.reload();
+                  setAlert('Upload cancelled','danger')
+
                   goBackToUpload();
                   cancelUploadRequest();
                 }}
