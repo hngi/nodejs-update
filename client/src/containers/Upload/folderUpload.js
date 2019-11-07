@@ -38,7 +38,7 @@ export default function FolderUpload({
             <>
               <div className="d-flex align-items-center mb-3">
                 <img
-                  src="https://res.cloudinary.com/busola/image/upload/v1571806132/add.png"
+                  src="https://res.cloudinary.com/cavdy/image/upload/v1573077364/Webp.net-resizeimage_1_ghz7o4.webp"
                   alt=""
                 />
                 <p className="right-section-title mb-0 mt-2 ml-3">
