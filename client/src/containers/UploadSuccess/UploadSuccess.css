@@ -190,9 +190,13 @@
   padding: 0px !important;
   display: none;
   top: 0;
+  height: 40px;
+  width:240px;
   position: absolute;
   background: #267febc2;
   color: white;
+
+  /* border-radius: 10px; */
 }
 .showme-items {
   width: 100%;

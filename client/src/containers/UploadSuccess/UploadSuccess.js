@@ -78,16 +78,14 @@ const UploadSuccess = ({
                   return (
                     <div
                       className=' d-flex align-items-center short-link'
-                      key={uuid()}
-                    >
+                      key={uuid()}>
                       <div
                         className=' showhim mt-2 d-flex align-items-center upload-link mr-3'
-                        id='upload-link'
-                      >
+                        id='upload-link'>
                         <div className='showme'>
                           <div className='showme-items'>
-                            <p>{`${short.fileName.substring(0, 15)}...`}</p>
-                            <p>{short.size}</p>
+
+                            <p>{short.fileName}</p> -  <p> {short.size}</p>
                           </div>
                         </div>
                         <h5 className='short-link-url'>{short.shortUrl}</h5>
@@ -103,8 +101,7 @@ const UploadSuccess = ({
                                 short.shortUrl === null
                                   ? setAlert('Clipboard is empty', 'danger')
                                   : setAlert('Link Copied', 'success');
-                              }}
-                            >
+                              }}>
                               <div className='mr-3 d-flex align-items-center upload-success-copy'>
                                 <img
                                   src='https://res.cloudinary.com/cavdy/image/upload/v1572343978/content_copy_24px_1_wuelex.png'
@@ -116,8 +113,7 @@ const UploadSuccess = ({
                             </CopyToClipboard>
                             <div
                               className='d-flex align-items-center upload-success-share'
-                              onClick={shareUrl}
-                            >
+                              onClick={shareUrl}>
                               <img
                                 src='https://res.cloudinary.com/cavdy/image/upload/v1572343978/XMLID_4_czlhcl.png'
                                 alt=''
@@ -132,16 +128,14 @@ const UploadSuccess = ({
                               onClick={() => {
                                 setFormData({ share: false });
                               }}
-                              className='mr-3 align-items-center'
-                            >
+                              className='mr-3 align-items-center'>
                               <i className='fas fa-chevron-left'></i>
                             </div>
                             <div
                               className='mr-3 d-flex align-items-center upload-success-copy'
                               onClick={() => {
                                 email(short.shortUrl);
-                              }}
-                            >
+                              }}>
                               <img
                                 src='https://res.cloudinary.com/cavdy/image/upload/v1572343978/mail_outline_24px_1_tq5nxb.png'
                                 alt=''
@@ -154,8 +148,7 @@ const UploadSuccess = ({
                                 className='socials'
                                 href={`https://api.whatsapp.com/send?&text=${short.shortUrl} ${clipText}`}
                                 target='_blank'
-                                rel='noopener noreferrer'
-                              >
+                                rel='noopener noreferrer'>
                                 <img
                                   className='social-icon mr-3'
                                   src='https://res.cloudinary.com/busola/image/upload/v1573039450/Webp.net-resizeimage_5.png'
@@ -167,8 +160,7 @@ const UploadSuccess = ({
                                 href={`https://twitter.com/intent/tweet?text=${short.shortUrl} ${clipText}`}
                                 data-size='large'
                                 target='_blank'
-                                rel='noopener noreferrer'
-                              >
+                                rel='noopener noreferrer'>
                                 <img
                                   className='social-icon mr-3'
                                   src='https://res.cloudinary.com/busola/image/upload/v1573039442/Webp.net-resizeimage_4.png'
@@ -179,8 +171,7 @@ const UploadSuccess = ({
                                 target='_blank'
                                 rel='noopener noreferrer'
                                 href={`https://www.facebook.com/sharer/sharer.php?u=${short.shortUrl}&amp;src=sdkpreparse`}
-                                className='socials'
-                              >
+                                className='socials'>
                                 <img
                                   className='social-icon'
                                   src='https://res.cloudinary.com/busola/image/upload/v1573039378/Webp.net-resizeimage_3.png'
@@ -200,8 +191,8 @@ const UploadSuccess = ({
                   onClick={() => {
                     window.location.reload();
                     return goBackToUpload;
-                  }}
-                >
+
+                  }}>
                   <i className='fas fa-chevron-left'></i> Go Back
                 </p>
               </div>
@@ -231,15 +222,13 @@ const UploadSuccess = ({
 
                   goBackToUpload();
                   cancelUploadRequest();
-                }}
-              >
+                }}>
                 Cancel
               </div>
               {/* </button>  */}
               <div
                 className='left-section-content mt-3'
-                style={{ textAlign: 'center' }}
-              >
+                style={{ textAlign: 'center' }}>
                 <p>Please be patient while your file gets uploaded...</p>
                 <p className='mt-2'>
                   Kindly note that larger files <br />
@@ -290,13 +279,11 @@ const UploadSuccess = ({
               <button
                 className='upload-btn btn-secondary mt-4'
                 type='button'
-                disabled
-              >
+                disabled>
                 <span
                   className='mr-2 spinner-grow spinner-grow-sm'
                   role='status'
-                  aria-hidden='true'
-                ></span>
+                  aria-hidden='true'></span>
               </button>
             ) : (
               <button className='upload-btn mt-4'>Send</button>
