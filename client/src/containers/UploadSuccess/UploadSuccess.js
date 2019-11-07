@@ -86,7 +86,7 @@ const UploadSuccess = ({
                       >
                         <div className='showme'>
                           <div className='showme-items'>
-                            <p>{short.fileName}</p>
+                            <p>{`${short.fileName.substring(0, 15)}...`}</p>
                             <p>{short.size}</p>
                           </div>
                         </div>
@@ -195,11 +195,13 @@ const UploadSuccess = ({
                   );
                 })}
 
-                <p className='upload-another' onClick={()=>{
-                  window.location.reload();
-                  return goBackToUpload
-
-                }}>
+                <p
+                  className='upload-another'
+                  onClick={() => {
+                    window.location.reload();
+                    return goBackToUpload;
+                  }}
+                >
                   <i className='fas fa-chevron-left'></i> Go Back
                 </p>
               </div>
@@ -222,10 +224,10 @@ const UploadSuccess = ({
               </button> */}
               <div
                 className='left-section-content mt-3'
-                style={{ textAlign: 'center',cursor:'pointer' }}
+                style={{ textAlign: 'center', cursor: 'pointer' }}
                 onClick={() => {
                   window.location.reload();
-                  setAlert('Upload cancelled','danger')
+                  setAlert('Upload cancelled', 'danger');
 
                   goBackToUpload();
                   cancelUploadRequest();
@@ -249,7 +251,7 @@ const UploadSuccess = ({
         </div>
       ) : (
         <div className='right-section-success d-flex flex-column justify-content-center'>
-          <div className='d-flex align-items-center justify-content-between'>
+          <div className='d-flex align-items-center justify-content-between mail-top-content'>
             <h3 className='email-title'>Email Link</h3>
             <i className='fas fa-chevron-left' onClick={showUploads}></i>
           </div>
