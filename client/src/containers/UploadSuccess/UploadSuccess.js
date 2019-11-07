@@ -85,7 +85,7 @@ const UploadSuccess = ({
                         <div className='showme'>
                           <div className='showme-items'>
 
-                            <p>{short.fileName}</p> -  <p> {short.size}</p>
+                            <p>{short.fileName}</p><p> {short.size}</p>
                           </div>
                         </div>
                         <h5 className='short-link-url'>{short.shortUrl}</h5>
