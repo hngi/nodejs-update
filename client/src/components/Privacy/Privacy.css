@@ -1,21 +1,28 @@
 .privacy-title {
-  font-size: 50px;
+  font-size: 40px;
   line-height: 67px;
   color: var(--color-blue);
   font-weight: bold;
 }
 
 .privacy-content-title {
-  font-size: 36px;
+  font-size: 33px;
   line-height: 48px;
   color: var(--color-blue);
 }
 
 .privacy-content-body {
-  font-size: 21px;
+  font-size: 17px;
   line-height: 28px;
   text-align: justify;
   color: #888888;
+}
+.privacy-left {
+  width: 50% !important;
+}
+.privacy-right {
+  width: 50% !important;
+  margin-left: 3rem;
 }
 
 @media (max-width: 600px) {

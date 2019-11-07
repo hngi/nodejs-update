@@ -6,7 +6,8 @@ const Privacy = () => {
     <main className='wrapper mt-4'>
       <h1 className='privacy-title mb-5'>Privacy Policy</h1>
       <div className='d-flex justify-content-between w-100 privacy'>
-        <div className='privacy-left w-50'>
+
+        <div className='privacy-left'>
           <h3 className='privacy-content-title'>About</h3>
           <p className='privacy-content-body'>
             XSHARE, accessible from here, one of our main priorities is the
@@ -28,7 +29,8 @@ const Privacy = () => {
             information.
           </p>
         </div>
-        <div className='w-50 ml-5 privacy-right'>
+        <div className='privacy-right'>
+
           <h3 className='privacy-content-title'>Privacy Policies</h3>
           <p className='privacy-content-body'>
             You may consult this list to find the Privacy Policy for each of the

@@ -54,9 +54,9 @@ input[type='password'] {
 .btn {
   width: 22rem;
   height: 2.9rem;
-  background: #2680eb;
-  border-radius: 0.2rem;
-  color: white;
+  background: #2680eb !important;
+  border-radius: 3px;
+  color: white !important;
   border: none;
   font-style: normal;
   font-weight: normal;

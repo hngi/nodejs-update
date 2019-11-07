@@ -1,22 +1,29 @@
-import React, { useState } from "react";
-import uuid from "uuid/v4";
-import "./UploadSuccess.css";
-import { connect } from "react-redux";
-import { sendEmail } from "../../actions/upload";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { setAlert } from "../../actions/alert";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
+import React, { useState } from 'react';
+import uuid from 'uuid/v4';
+import './UploadSuccess.css';
+import { connect } from 'react-redux';
+import { sendEmail } from '../../actions/upload';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { setAlert } from '../../actions/alert';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import { cancelUploadRequest } from '../../actions/upload';
+import 'react-circular-progressbar/dist/styles.css';
 
-const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
+const UploadSuccess = ({
+  sendEmail,
+  uploadstate,
+  progressBar,
+  setAlert,
+  goBackToUpload
+}) => {
   const [formData, setFormData] = useState({
-    name: "",
-    to: "",
-    message: "",
+    name: '',
+    to: '',
+    message: '',
     loading: false,
     show: false,
     share: false,
-    shortenUrl: ""
+    shortenUrl: ''
   });
 
   const { name, message, to, show, loading, share, shortenUrl } = formData;
@@ -31,13 +38,17 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
   };
   const onFormSubmit = (e, shortUrl) => {
     e.preventDefault();
-    setFormData({ loading: true, show: true, name: "", to: "", message: "" });
+    setFormData({ loading: true, show: true, name: '', to: '', message: '' });
     sendEmail(name, to, message, shortUrl);
     setTimeout(() => {
-      setAlert(`The file was sent to ${to} successfully`, "success");
+      setAlert(`The file was sent to ${to} successfully`, 'success');
       setFormData({ loading: false, show: true });
       window.location.reload();
     }, 3000);
+  };
+
+  const showUploads = () => {
+    setFormData({ show: false });
   };
 
   const shareUrl = event => {
@@ -47,7 +58,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
   const { uploadstate: uploadData } = uploadstate;
   // const shortUrl = uploadstate.success;
   const clipText =
-    " Please visit http://xshare.ga to share your files with ease";
+    ' Please visit http://xshare.ga to share your files with ease';
   return (
     <>
       {!show ? (
@@ -66,22 +77,22 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                 {uploadData.data.map(short => {
                   return (
                     <div
-                      className=" d-flex align-items-center short-link"
+                      className=' d-flex align-items-center short-link'
                       key={uuid()}
-                    >                     
-                        <div
-                        className=" showhim mt-2 d-flex align-items-center upload-link mr-3"
-                          id="upload-link"
+                    >
+                      <div
+                        className=' showhim mt-2 d-flex align-items-center upload-link mr-3'
+                        id='upload-link'
                       >
-                        <div className="showme">
-                          <div className="showme-items">
+                        <div className='showme'>
+                          <div className='showme-items'>
                             <p>{short.fileName}</p>
                             <p>{short.size}</p>
                           </div>
                         </div>
-                          <h5 className="short-link-url">{short.shortUrl}</h5>
-                        </div>
-                      
+                        <h5 className='short-link-url'>{short.shortUrl}</h5>
+                      </div>
+
                       <div className='d-flex align-items-center'>
                         {!share ? (
                           <>
@@ -92,7 +103,8 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                                 short.shortUrl === null
                                   ? setAlert('Clipboard is empty', 'danger')
                                   : setAlert('Link Copied', 'success');
-                              }}>
+                              }}
+                            >
                               <div className='mr-3 d-flex align-items-center upload-success-copy'>
                                 <img
                                   src='https://res.cloudinary.com/cavdy/image/upload/v1572343978/content_copy_24px_1_wuelex.png'
@@ -104,7 +116,8 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                             </CopyToClipboard>
                             <div
                               className='d-flex align-items-center upload-success-share'
-                              onClick={shareUrl}>
+                              onClick={shareUrl}
+                            >
                               <img
                                 src='https://res.cloudinary.com/cavdy/image/upload/v1572343978/XMLID_4_czlhcl.png'
                                 alt=''
@@ -119,14 +132,16 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                               onClick={() => {
                                 setFormData({ share: false });
                               }}
-                              className='mr-3 align-items-center'>
+                              className='mr-3 align-items-center'
+                            >
                               <i className='fas fa-chevron-left'></i>
                             </div>
                             <div
                               className='mr-3 d-flex align-items-center upload-success-copy'
                               onClick={() => {
                                 email(short.shortUrl);
-                              }}>
+                              }}
+                            >
                               <img
                                 src='https://res.cloudinary.com/cavdy/image/upload/v1572343978/mail_outline_24px_1_tq5nxb.png'
                                 alt=''
@@ -139,7 +154,8 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                                 className='socials'
                                 href={`https://api.whatsapp.com/send?&text=${short.shortUrl} ${clipText}`}
                                 target='_blank'
-                                rel='noopener noreferrer'>
+                                rel='noopener noreferrer'
+                              >
                                 <img
                                   className='social-icon mr-3'
                                   src='https://res.cloudinary.com/busola/image/upload/v1573039450/Webp.net-resizeimage_5.png'
@@ -151,7 +167,8 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                                 href={`https://twitter.com/intent/tweet?text=${short.shortUrl} ${clipText}`}
                                 data-size='large'
                                 target='_blank'
-                                rel='noopener noreferrer'>
+                                rel='noopener noreferrer'
+                              >
                                 <img
                                   className='social-icon mr-3'
                                   src='https://res.cloudinary.com/busola/image/upload/v1573039442/Webp.net-resizeimage_4.png'
@@ -162,7 +179,8 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                                 target='_blank'
                                 rel='noopener noreferrer'
                                 href={`https://www.facebook.com/sharer/sharer.php?u=${short.shortUrl}&amp;src=sdkpreparse`}
-                                className='socials'>
+                                className='socials'
+                              >
                                 <img
                                   className='social-icon'
                                   src='https://res.cloudinary.com/busola/image/upload/v1573039378/Webp.net-resizeimage_3.png'
@@ -176,6 +194,10 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                     </div>
                   );
                 })}
+
+                <p className='upload-another' onClick={goBackToUpload}>
+                  <i className='fas fa-chevron-left'></i> Go Back
+                </p>
               </div>
             </>
           ) : (
@@ -195,15 +217,20 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                 Cancel
               </button> */}
               <div
-                className="left-section-content mt-3"
-                style={{ textAlign: "center" }}
+                className='left-section-content mt-3'
+                style={{ textAlign: 'center' }}
+                onClick={() => {
+                  goBackToUpload();
+                  cancelUploadRequest();
+                }}
               >
                 Cancel
               </div>
               {/* </button>  */}
               <div
                 className='left-section-content mt-3'
-                style={{ textAlign: 'center' }}>
+                style={{ textAlign: 'center' }}
+              >
                 <p>Please be patient while your file gets uploaded...</p>
                 <p className='mt-2'>
                   Kindly note that larger files <br />
@@ -215,7 +242,10 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
         </div>
       ) : (
         <div className='right-section-success d-flex flex-column justify-content-center'>
-          <h3 className='email-title'>Email Link</h3>
+          <div className='d-flex align-items-center justify-content-between'>
+            <h3 className='email-title'>Email Link</h3>
+            <i className='fas fa-chevron-left' onClick={showUploads}></i>
+          </div>
           <form onSubmit={e => onFormSubmit(e, shortenUrl)}>
             <input
               type='text'
@@ -251,11 +281,13 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
               <button
                 className='upload-btn btn-secondary mt-4'
                 type='button'
-                disabled>
+                disabled
+              >
                 <span
                   className='mr-2 spinner-grow spinner-grow-sm'
                   role='status'
-                  aria-hidden='true'></span>
+                  aria-hidden='true'
+                ></span>
               </button>
             ) : (
               <button className='upload-btn mt-4'>Send</button>

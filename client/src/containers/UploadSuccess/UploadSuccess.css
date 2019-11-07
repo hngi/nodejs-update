@@ -65,6 +65,15 @@
   color: #6b6a6a;
 }
 
+.upload-another {
+  font-size: 17px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+  color: #2680eb;
+  cursor: pointer;
+}
+
 .social-icon {
   width: 23px;
 }
@@ -164,8 +173,8 @@
   background: #164f94;
 }
 
-.showhim{
-position: relative;
+.showhim {
+  position: relative;
 }
 .showme {
   padding: 10px;
@@ -176,22 +185,21 @@ position: relative;
   color: white;
   border-radius: 10px;
 }
-.showme-items{
-width: 50%;
-display: flex;
-flex-grow: 1;
-flex-wrap: wrap;
+.showme-items {
+  width: 50%;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
 }
 .showhim:hover .showme {
   display: block;
 }
-.showme-items>p {
-margin: 0;
-font-weight: bold;
-font-size: 13px;
-
+.showme-items > p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 13px;
 }
 
-.short-link-url:hover{
+.short-link-url:hover {
   cursor: pointer;
 }
