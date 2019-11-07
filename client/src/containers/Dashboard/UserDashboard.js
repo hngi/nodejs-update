@@ -45,7 +45,7 @@ const UserDashboard = ({
         <div className='main-grid'>
           {/*Left Section*/}
           <section id='s1-left'>
-            <div className='l-one-flex'>
+            {/* <div className='l-one-flex'>
               <a href>
                 <img
                   src='https://res.cloudinary.com/fego/image/upload/v1572496670/xshare/xShare_y0xymj.png'
@@ -58,7 +58,7 @@ const UserDashboard = ({
                   alt=''
                 />
               </a>
-            </div>
+            </div> */}
             <div className='l-two-grid'>
               <div className='l-two'>
                 <Link to='/'>
@@ -115,7 +115,7 @@ const UserDashboard = ({
                       alt=''
                     />
                   </a> */}
-                  <span className='color-white username'>{username.toUpperCase()}</span>
+                  {/* <span className='color-white username'>{username.toUpperCase()}</span> */}
                 </div>
               </nav>
               {/* <article id='home'>
