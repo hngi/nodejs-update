@@ -15,17 +15,18 @@ export default function UploadType({
 
   const toggleUploadType = () => {
     if (uploadType === true) {
-      setUploadType(false);
+      setUploadType(false)
     } else {
-      setUploadType(true);
+      setUploadType(true)
     }
   };
 
   return (
     <div
       {...getRootProps()}
-      className='d-flex flex-column align-items-center'
-      style={{ outline: 'none' }}>
+      className="d-flex flex-column align-items-center"
+      style={{ outline: 'none' }}
+    >
       {!uploadType ? (
         <FileUpload
           file={file}
