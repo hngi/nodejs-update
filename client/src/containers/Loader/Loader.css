@@ -1,13 +1,1 @@
-.loader {
-  width: 300px;
-  /* margin-left: 80px; */
-  margin-left: 300px;
-
-}
-
-@media (max-width: 986px) {
-  .loader {
-    width: 100% !important;
-    margin-left: 0px !important;
-  }
-}
+.loader{width:300px;margin-left:300px}@media (max-width:986px){.loader{width:100%!important;margin-left:0px!important}}

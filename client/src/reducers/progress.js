@@ -4,10 +4,7 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case PROGRESS_BAR:
-      return {
-        progress: payload
-      };
-
+      return { progress: payload };
     default:
       return state;
   }
