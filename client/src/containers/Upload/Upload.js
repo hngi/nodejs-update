@@ -98,8 +98,6 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
   };
   const onChange = e => {
     let files = e.target.files;
-
-    // checking if the files is an array
     if (!Array.isArray(e.target.files)) {
       files = Object.values(e.target.files);
     }
@@ -110,19 +108,15 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
       fileType: e.target.files
     });
   };
-
-  // Remove File
   const removeFile = (event, id, fileName) => {
     const newFiles = file.filter(f => f.name !== fileName);
     setFormData({
       file: newFiles
     });
   };
-
   const goBackToUpload = () => {
     setFormData({ show: false });
   };
-
   const onDrop = useCallback(File => {
     setFormData({
       file: File,
