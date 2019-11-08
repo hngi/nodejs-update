@@ -2,7 +2,7 @@ import React from 'react';
 import './Privacy.css';
 const Privacy = () => {
   return (
-    <main className='wrapper mt-4'>
+    <main style={{ marginTop: '100px' }} className='wrapper'>
       <h1 className='privacy-title mb-5'>Privacy Policy</h1>
       <div className='d-flex justify-content-between w-100 privacy'>
         <div className='privacy-left'>
