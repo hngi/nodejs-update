@@ -2,7 +2,7 @@
 
 A file sharing application that converts an extensive list of files into a sharable link. This link can then be shared with anyone you choose via email,whatsapp,twitter,facebook...or simply by copying and sending it manually
 
-<img src="https://res.cloudinary.com/vectormike/image/upload/v1571924782/Screenshot_from_2019-10-24_14-41-08.png">
+<img src="https://res.cloudinary.com/busola/image/upload/v1573239032/Untitled.png">
 
 
 ### Prerequisites
