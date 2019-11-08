@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon server --ignore client",
-    "client": "npm run dev --prefix ../client",
+    "client": "npm run start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start-dev": "nodemon index.js",
     "test": "nyc mocha tests",
