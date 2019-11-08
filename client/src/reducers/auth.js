@@ -1,7 +1,5 @@
 import {
-  REGISTER_FAIL,
   REGISTER_SUCCESS,
-  LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
   LOADING,
@@ -11,7 +9,6 @@ import {
 const initialState = {
   token: localStorage.getItem('token'),
   loading: !1,
-  authData: !0,
   user: {},
   isSignedInWithGoogle: !1
 };
@@ -33,12 +30,6 @@ export default function(state = initialState, action) {
           email: payload.user.email
         }
       };
-    case REGISTER_FAIL:
-      localStorage.removeItem('token');
-      return { ...state, loading: !1, authData: !1, isAuthenticated: !1 };
-    case LOGIN_FAIL:
-      localStorage.removeItem('token');
-      return { ...state, loading: !1, authData: !1, isAuthenticated: !1 };
     case LOGOUT:
       localStorage.removeItem('token');
       return {

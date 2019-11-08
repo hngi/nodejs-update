@@ -13,9 +13,11 @@ const Login = ({ login, history, loginAuth }) => {
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   useEffect(() => {
     setFormData({ loading: !1 });
   }, [loginAuth.authData]);
+
   return (
     <div>
       <div class='reg-container'>
@@ -25,7 +27,8 @@ const Login = ({ login, history, loginAuth }) => {
             e.preventDefault();
             setFormData({ loading: !0 });
             login(email, password, history);
-          }}>
+          }}
+        >
           <label for='email'></label>
           <input
             id='email'
@@ -53,7 +56,8 @@ const Login = ({ login, history, loginAuth }) => {
               <span
                 className='mr-2 spinner-grow spinner-grow-sm'
                 role='status'
-                aria-hidden='true'></span>
+                aria-hidden='true'
+              ></span>
             </button>
           ) : (
             <button className='btn'>Login</button>
@@ -66,7 +70,7 @@ const Login = ({ login, history, loginAuth }) => {
     </div>
   );
 };
-const mapStateToProps = state => ({ loginAuth: state.auth });
+const mapStateToProps = state => ({ loginAuth: state.authError });
 export default connect(
   mapStateToProps,
   { login }
