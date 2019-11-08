@@ -5,14 +5,12 @@ onChange={e=>onChange(e)}
 value={email}
 type='email'
 name='email'
-autoComplete='off'
 required
 placeholder='Email'
 style={{fontFamily:'Arial, FontAwesome'}}/><label for='password'></label><input
 id='password'
 onChange={e=>onChange(e)}
 value={password}
-autoComplete='off'
 type='password'
 name='password'
 required

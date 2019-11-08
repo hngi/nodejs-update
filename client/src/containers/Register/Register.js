@@ -5,7 +5,6 @@ type='text'
 id='username'
 name='username'
 value={username}
-autoComplete='off'
 placeholder='Username'
 style={{fontFamily:'Arial, FontAwesome'}}
 required/><label for='email'></label><input
@@ -14,14 +13,12 @@ id='email'
 value={email}
 required
 onChange={e=>onChange(e)}
-autoComplete='off'
 type='email'
 placeholder='Email'
 style={{fontFamily:'Arial, FontAwesome'}}/><label for='password'></label><input
 type='password'
 name='password'
 id='password'
-autoComplete='off'
 value={password}
 minLength={3}
 onChange={e=>onChange(e)}
