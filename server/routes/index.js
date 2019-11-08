@@ -29,12 +29,16 @@ router.get('/:shortenId', findShortenUrl, (req, res) => {
   const response = [res.locals];
   //console.log(response[0].downloadCount)
   var currentCount = response[0].downloadCount;
+  var size = response[0].size;
+  var fileName = response[0].fileName;
   const fullLink = req.protocol + '://' + req.get('host');
   const shortenId = req.params.shortenId;
   res.render('download', {
     shortenId: shortenId,
     fullLink: fullLink,
-    currentCount: currentCount
+    currentCount: currentCount,
+    fileName,
+    size,
   });
 });
 //router.get('/:shortenId', findShortenUrl, redirectShortenUrl);

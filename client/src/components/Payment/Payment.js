@@ -10,28 +10,21 @@ const Payment = ({ setAlert, isAuthenticated, user }) => {
     var { email } = user;
     email = email;
   }
-
   const [deets, setDeets] = useState({
-    key: 'FLWPUBK-6b5f592d963f5b9054e633eb59576887-X', // RavePay PUBLIC KEY
-    email: email, // customer email
-    amount: 1 // equals NGN 1000. Minimum amount allowed NGN 1 while on production or live system, it's 10
+    key: 'FLWPUBK-6b5f592d963f5b9054e633eb59576887-X',
+    email: email,
+    amount: 1
   });
-
   const callback = response => {};
-
   const close = () => {};
-
   const getReference = () => {
     let text = '';
     let possible =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.=';
-
     for (let i = 0; i < 10; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
-
     return text;
   };
-
   return (
     <div className='payment-page'>
       {!isAuthenticated ? (
@@ -43,14 +36,14 @@ const Payment = ({ setAlert, isAuthenticated, user }) => {
           <div className='payment'>
             <h2 className='partner'>PRO</h2>
             <h1 className='price'>N3,999 monthly</h1>
-            {/* <p>N45,000 yearly</p> */}
+            {}
             <br />
             <p>Unlimited storage</p>
             <p>Unlimited Email transfers</p>
             <p>Unlimited Link transfers</p>
             <p>Delete uploads</p>
-            {/* <button className='upgrade_btn' type='submit'> */}
-            {/* Upgrade */}
+            {}
+            {}
             <RavePaymentModal
               text='Make Payment'
               className='upgrade_btn'
@@ -61,10 +54,10 @@ const Payment = ({ setAlert, isAuthenticated, user }) => {
               ravePubKey={deets.key}
               callback={callback}
               close={close}
-              isProduction={true}
+              isProduction={!0}
               tag='button'
             />
-            {/* </button> */}
+            {}
           </div>
         </div>
       )}

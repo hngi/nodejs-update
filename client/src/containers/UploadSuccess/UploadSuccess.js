@@ -1,53 +1,55 @@
-import React, { useState } from "react";
-import uuid from "uuid/v4";
-import "./UploadSuccess.css";
-import { connect } from "react-redux";
-import { sendEmail } from "../../actions/upload";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { setAlert } from "../../actions/alert";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
-
-const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
+import React, { useState } from 'react';
+import uuid from 'uuid/v4';
+import './UploadSuccess.css';
+import { connect } from 'react-redux';
+import { sendEmail } from '../../actions/upload';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { setAlert } from '../../actions/alert';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import { cancelUploadRequest } from '../../actions/upload';
+import 'react-circular-progressbar/dist/styles.css';
+const UploadSuccess = ({
+  sendEmail,
+  uploadstate,
+  progressBar,
+  setAlert,
+  goBackToUpload
+}) => {
   const [formData, setFormData] = useState({
-    name: "",
-    to: "",
-    message: "",
-    loading: false,
-    show: false,
-    share: false,
-    shortenUrl: ""
+    name: '',
+    to: '',
+    message: '',
+    loading: !1,
+    show: !1,
+    share: !1,
+    shortenUrl: ''
   });
-
   const { name, message, to, show, loading, share, shortenUrl } = formData;
   const email = shortUrl => {
-    setFormData({ show: true, shortenUrl: shortUrl });
+    setFormData({ show: !0, shortenUrl: shortUrl });
   };
   const onChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onFormSubmit = (e, shortUrl) => {
     e.preventDefault();
-    setFormData({ loading: true, show: true, name: "", to: "", message: "" });
+    setFormData({ loading: !0, show: !0, name: '', to: '', message: '' });
     sendEmail(name, to, message, shortUrl);
     setTimeout(() => {
-      setAlert(`The file was sent to ${to} successfully`, "success");
-      setFormData({ loading: false, show: true });
+      setAlert(`The file was sent to ${to} successfully`, 'success');
+      setFormData({ loading: !1, show: !0 });
       window.location.reload();
     }, 3000);
   };
-
-  const shareUrl = event => {
-    setFormData({ share: true });
+  const showUploads = () => {
+    setFormData({ show: !1 });
   };
-
+  const shareUrl = event => {
+    setFormData({ share: !0 });
+  };
   const { uploadstate: uploadData } = uploadstate;
-  // const shortUrl = uploadstate.success;
   const clipText =
-    " Please visit http://xshare.ga to share your files with ease";
+    ' Please visit http://xshare.ga to share your files with ease';
   return (
     <>
       {!show ? (
@@ -66,14 +68,18 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                 {uploadData.data.map(short => {
                   return (
                     <div
-                      className="d-flex align-items-center short-link"
-                      key={uuid()}
-                    >
+                      className=' d-flex align-items-center short-link'
+                      key={uuid()}>
                       <div
-                        className="mt-2 d-flex align-items-center upload-link mr-3"
-                        id="upload-link"
-                      >
-                        <h5 className="short-link-url">{short.shortUrl}</h5>
+                        className=' showhim mt-2 d-flex align-items-center upload-link mr-3'
+                        id='upload-link'>
+                        <div className='showme'>
+                          <div className='showme-items'>
+                            <p>{short.fileName}</p>
+                            <p>{short.size}</p>
+                          </div>
+                        </div>
+                        <h5 className='short-link-url'>{short.shortUrl}</h5>
                       </div>
                       <div className="d-flex align-items-center">
                         {!share ? (
@@ -81,7 +87,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                             <CopyToClipboard
                               text={short.shortUrl}
                               onCopy={() => {
-                                setFormData({ copied: true });
+                                setFormData({ copied: !0 });
                                 short.shortUrl === null
                                   ? setAlert("Clipboard is empty", "danger")
                                   : setAlert("Link Copied", "success");
@@ -112,7 +118,7 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                           <>
                             <div
                               onClick={() => {
-                                setFormData({ share: false });
+                                setFormData({ share: !1 });
                               }}
                               className="mr-3 align-items-center"
                             >
@@ -176,6 +182,14 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                     </div>
                   );
                 })}
+                <p
+                  className='upload-another'
+                  onClick={() => {
+                    window.location.reload();
+                    return goBackToUpload;
+                  }}>
+                  <i className='fas fa-chevron-left'></i>Go Back
+                </p>
               </div>
             </>
           ) : (
@@ -186,24 +200,27 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
                   text={`${progressBar.progress || 0}%`}
                 />
               </div>
-
+              {}
               <div
+                className='left-section-content mt-3'
+                style={{ textAlign: 'center', cursor: 'pointer' }}
                 onClick={() => {
-                  setFormData({ show: true });
-                }}
-                className="left-section-content mt-3"
-                style={{ textAlign: "center" }}
-              >
+                  window.location.reload();
+                  setAlert('Upload cancelled', 'danger');
+                  goBackToUpload();
+                  cancelUploadRequest();
+                }}>
                 Cancel
               </div>
-              {/* </button>  */}
+              {}
               <div
                 className="left-section-content mt-3"
                 style={{ textAlign: "center" }}
               >
                 <p>Please be patient while your file gets uploaded...</p>
-                <p className="mt-2">
-                  Kindly note that larger files <br />
+                <p className='mt-2'>
+                  Kindly note that larger files
+                  <br />
                   will take longer to be completed
                 </p>
               </div>
@@ -211,8 +228,11 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
           )}
         </div>
       ) : (
-        <div className="right-section-success d-flex flex-column justify-content-center">
-          <h3 className="email-title">Email Link</h3>
+        <div className='right-section-success d-flex flex-column justify-content-center'>
+          <div className='d-flex align-items-center justify-content-between mail-top-content'>
+            <h3 className='email-title'>Email Link</h3>
+            <i className='fas fa-chevron-left' onClick={showUploads}></i>
+          </div>
           <form onSubmit={e => onFormSubmit(e, shortenUrl)}>
             <input
               type="text"
@@ -274,7 +294,6 @@ const UploadSuccess = ({ sendEmail, uploadstate, progressBar, setAlert }) => {
     </>
   );
 };
-
 const mapStateToProps = state => ({
   uploadstate: state.upload,
   progressBar: state.progress

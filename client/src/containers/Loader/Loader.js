@@ -1,7 +1,6 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import './Loader.css';
-
 export default function loader() {
   return (
     <div className='d-flex justify-centent-center align-items-center flex-column loader'>

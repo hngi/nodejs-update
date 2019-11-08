@@ -14,7 +14,7 @@
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
-<body class="d-flex flex-column">
+<body class="">
   <nav class="navbar nav navbar-expand-lg navbar-light bg-light wrapper pt-3 pb-3">
     <a class="nav__nav-logo" href="http://xshare.ga">
       xShare
@@ -34,8 +34,8 @@
       </ul>
     </div>
   </nav>
-  <main class="wrapper home-section d-flex justify-content-between align-items-center mt-5">
-    <div class="left-section">
+  <main class="home-section ">
+    <div class="left-section" >
       <h1 class="left-section-title">
         The most seamless
         <br />
@@ -45,13 +45,19 @@
         Fast, Safe and Secure.... <br />
         Upload a file and share it with your friends via email or a generated link
       </h4>
-      <img class="left-section-image"
-        src="https://res.cloudinary.com/ibefx/image/upload/v1572451091/sharing_1_btfhst.png" alt="" />
+      <div class="left-section-image-one"></div>
+      <!-- <img class="left-section-image"
+        src="https://res.cloudinary.com/ibefx/image/upload/v1572451091/sharing_1_btfhst.png" alt="" /> -->
     </div>
-    <div class="right-section flex-grow-1 d-flex justify-content-center align-items-center">
+    <div class="right-section " >
       <div class="download_div">
         <div class="header2">
           <H2>Your file is ready for download</H2>
+                  <div>
+                    <p style="margin: 0;"><%=fileName %></p>
+                    <p style="margin: 0;"><%=size %></p>
+                  </div>
+
         </div>
         <!-- <div class="file-image"></div> -->
         <!-- <p>this file has been downloaded <%=currentCount %> times</p> -->
@@ -70,7 +76,9 @@
         <script>
           document.getElementById('year').appendChild(document.createTextNode(new Date().getFullYear()))
         </script>
-        Built by HNG 6.0 Interns | <a href="http://xshare.ga/privacy">Privacy Policy</a>
+        Built by HNG 6.0 Interns | 
+        <a href="http://xshare.ga/privacy"> Privacy </a>| 
+        <a href="http://xshare.ga/terms"> Terms</a>
       </p>
   </footer>
 

@@ -1,19 +1,22 @@
-import React from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./store";
-import Alert from "./components/Alert/Alert";
+import React from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store, persistor } from './store';
+import Alert from './components/Alert/Alert';
 import Routes from './components/Routes/Routes';
-import './oga.css'
+import { PersistGate } from 'redux-persist/integration/react';
+import './oga.css';
 const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className="d-flex flex-column parent">
-          <div className="oga">
-          <Alert />
-          <Switch>        
-            <Routes/>
+        <div className='d-flex flex-column parent'>
+          <div className='oga'>
+            <Alert />
+            <Switch>
+              <PersistGate loading={null} persistor={persistor}>
+                <Routes />
+              </PersistGate>
             </Switch>
           </div>
         </div>
@@ -21,5 +24,4 @@ const App = () => {
     </Provider>
   );
 };
-
 export default App;

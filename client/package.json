@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
     "d3-ease": "^1.0.5",
     "file-saver": "^2.0.2",
+    "jquery": "^3.4.1",
     "jszip": "^3.2.2",
     "mdbreact": "^4.21.1",
     "moment": "^2.24.0",
+    "popper.js": "^1.16.0",
     "rave-javascript-sdk": "^1.0.4",
     "rc-progress": "^2.5.2",
     "react": "^16.10.2",
@@ -26,10 +29,13 @@
     "react-sweet-progress": "^1.1.2",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
+    "serve": "^11.2.0",
     "uuid": "^3.3.3"
   },
   "scripts": {
+    "dev": "serve -s build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

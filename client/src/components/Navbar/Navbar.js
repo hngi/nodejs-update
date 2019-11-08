@@ -3,14 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Navbar.css';
 import { logout } from '../../actions/auth';
-
 const Navbar = ({ logout, isAuthenticated }) => {
-  // const closeNavbar=() =>  {
-  //     var navBar = document.getElementById('navbarSupportedContent');
-
-  //     navBar.classList.remove('collapse')
-
-  // }
   return (
     <nav className='navbar nav navbar-expand-lg navbar-light bg-light wrapper pt-3 pb-3'>
       <Link className='nav__nav-logo' to='/'>
@@ -26,7 +19,6 @@ const Navbar = ({ logout, isAuthenticated }) => {
         aria-label='Toggle navigation'>
         <span className='navbar-toggler-icon'></span>
       </button>
-
       <div className='collapse navbar-collapse' id='navbarSupportedContent'>
         <ul className='navbar-nav ml-auto'>
           <li
@@ -57,7 +49,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
                 aria-controls='navbarSupportedContent'>
                 <Link className='nav-link' to='/login'>
                   <span className='hide-sm'>Logout</span>{' '}
-                  <i className='fas fa-sign-out-alt'> </i>
+                  <i className='fas fa-sign-out-alt'></i>
                 </Link>{' '}
               </li>
             </Fragment>

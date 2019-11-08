@@ -1,48 +1,40 @@
 @font-face {
   font-family: Rockwell;
+  font-display: auto;
   src: url(../../assets/font/rockwen.ttf);
 }
-
 :root {
   --color-blue: #2680eb;
 }
-
 html,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 .parent {
   height: 100%;
   min-height: 100%;
 }
-
 .mt-5 {
   margin-top: 8rem !important;
 }
-
 .wrapper {
   padding-left: 10% !important;
   padding-right: 10% !important;
 }
-
 main.wrapper {
-  padding-top: 130px;
+  padding-top: 40px;
   padding-bottom: 100px;
-  background-color: #ffffff;
+  background-color: #fff;
 }
-
 .nav {
-  box-shadow: 0px 2px 9px #f3ebeb;
+  box-shadow: 0 2px 9px #f3ebeb;
   position: fixed;
   width: 100%;
-  top: 0px;
+  top: 0;
   background-color: white !important;
   z-index: 100;
-  /* transition: all 0.4s ease-in-out; */
   margin-top: 0px !important;
 }
-
 .nav__nav-logo {
   font-family: Rockwell, 'Courier New', Courier, monospace;
   font-size: 40px;
@@ -50,13 +42,11 @@ main.wrapper {
   color: var(--color-blue) !important;
   letter-spacing: 4px;
 }
-
 .nav-link {
   font-size: 18px;
   line-height: 24px;
   color: var(--color-blue) !important;
-  font-weight: bold;
-  /* transition: transform 0.4s ease-in-out; */
+  font-weight: 700;
 }
 .nav-link:hover {
   text-decoration: underline;
@@ -65,9 +55,5 @@ main.wrapper {
   .wrapper {
     padding-left: 5% !important;
     padding-right: 5% !important;
-  }
-
-  main.wrapper {
-    padding-top: 100px !important;
   }
 }

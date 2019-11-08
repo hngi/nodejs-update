@@ -1,28 +1,28 @@
-import React, { useState, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
-import "./Upload.css";
-import { connect } from "react-redux";
-import { uploadFile, uploadFolder } from "../../actions/upload";
-import { setAlert } from "../../actions/alert";
-import UploadSuccess from "../UploadSuccess/UploadSuccess";
-import UploadType from "./uploadType";
-import JSZip from "jszip";
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import './Upload.css';
+import { connect } from 'react-redux';
+import { uploadFile, uploadFolder } from '../../actions/upload';
+import { setAlert } from '../../actions/alert';
+import UploadSuccess from '../UploadSuccess/UploadSuccess';
+import UploadType from './uploadType';
+import JSZip from 'jszip';
 
 const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
   const [formData, setFormData] = useState({
-    file: "",
+    file: '',
     show: false,
     loader: true,
-    fileType: ""
+    fileType: ''
   });
   const { file, show } = formData;
   if (!user) {
-    user = "";
+    user = '';
   }
   let { email } = user;
   const upload = fileType => {
-    if (file === "" || file === undefined || file === null) {
-      setAlert("Please select a file/folder to upload", "danger");
+    if (file === '' || file === undefined || file === null) {
+      setAlert('Please select a file/folder to upload', 'danger');
       setFormData({ show: false });
       return null;
     }
@@ -31,7 +31,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
     const uploadedFile = Object.values(file);
 
     // upload file
-    if (fileType === "file") {
+    if (fileType === 'file') {
       setFormData({ show: true });
       uploadFile(uploadedFile, email);
       const sizes = uploadedFile.map(file => {
@@ -39,23 +39,23 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
       });
       const totalSize = sizes.reduce((a, b) => a + b, 0);
       if (totalSize > 2147483648) {
-        window.location.replace("http://xshare.ga/register");
+        window.location.replace('http://xshare.ga/register');
         setAlert(
-          "You have to be registered to send files larger than 2GB",
-          "danger"
+          'You have to be registered to send files larger than 2GB',
+          'danger'
         );
         // return <Redirect to='/register' />;
       } else if (totalSize === 0) {
-        setAlert("Please select a file/folder to upload", "danger");
+        setAlert('Please select a file/folder to upload', 'danger');
         setFormData({ show: false });
-        window.location.replace("http://xshare.ga");
+        window.location.replace('http://xshare.ga');
       }
 
       return null;
     }
 
     // Upload Folder
-    if (fileType === "folder") {
+    if (fileType === 'folder') {
       const zip = new JSZip();
       let img;
 
@@ -67,25 +67,25 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
         });
         const totalSizes = sizesss.reduce((a, b) => a + b, 0);
         if (totalSizes > 2147483648) {
-          window.location.replace("http://xshare.ga/register");
+          window.location.replace('http://xshare.ga/register');
           setAlert(
-            "You have to be registered to send files larger than 2GB",
-            "danger"
+            'You have to be registered to send files larger than 2GB',
+            'danger'
           );
-        } else if (uploadedFile[0].webkitRelativePath !== "") {
-          const folderName = uploadedFile[0].webkitRelativePath.split("/");
+        } else if (uploadedFile[0].webkitRelativePath !== '') {
+          const folderName = uploadedFile[0].webkitRelativePath.split('/');
           img = zip.folder(folderName[0]);
         } else {
           // checks if drag and drop
-          const folderName = uploadedFile[0].path.split("/");
+          const folderName = uploadedFile[0].path.split('/');
           img = zip.folder(folderName[1]);
         }
         uploadedFile.map(i => {
           img.file(i.name, i, { base64: true });
         });
 
-        zip.generateAsync({ type: "blob" }).then(content => {
-          const folderArray = uploadedFile[0].webkitRelativePath.split("/");
+        zip.generateAsync({ type: 'blob' }).then(content => {
+          const folderArray = uploadedFile[0].webkitRelativePath.split('/');
           let folderName = folderArray[0];
           uploadFolder([content], email, folderName);
         });
@@ -119,6 +119,10 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
     });
   };
 
+  const goBackToUpload = () => {
+    setFormData({ show: false });
+  };
+
   const onDrop = useCallback(File => {
     setFormData({
       file: File,
@@ -141,7 +145,8 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
         </h4>
         <img
           className='left-section-image'
-          src='https://res.cloudinary.com/busola/image/upload/v1573038811/Webp.net-resizeimage.png'
+          rel='preconnect'
+          src='https://res.cloudinary.com/cavdy/image/upload/v1573077364/Webp.net-resizeimage_c04t3c.webp'
           alt=''
         />
       </div>
@@ -157,7 +162,11 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
             removeFile={removeFile}
           />
         ) : (
-          <UploadSuccess upload={upload} file={file} />
+          <UploadSuccess
+            upload={upload}
+            file={file}
+            goBackToUpload={goBackToUpload}
+          />
         )}
       </div>
     </main>
