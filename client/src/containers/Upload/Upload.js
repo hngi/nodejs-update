@@ -132,7 +132,9 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <main className='wrapper home-section d-flex justify-content-between align-items-center'>
+    <main
+      style={{ marginTop: '70px' }}
+      className='wrapper home-section d-flex justify-content-between align-items-center'>
       <div className='left-section'>
         <h1 className='left-section-title'>
           The most seamless

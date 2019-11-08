@@ -2,7 +2,7 @@ import React from 'react';
 import './Privacy.css';
 const Privacy = () => {
   return (
-    <main className='wrapper mt-4'>
+    <main style={{ marginTop: '70px' }} className='wrapper'>
       <h1 className='privacy-title mb-5'>Privacy Policy</h1>
       <div className='d-flex justify-content-between w-100 privacy'>
         <div className='privacy-left'>
@@ -13,7 +13,7 @@ const Privacy = () => {
             of information that is collected and recorded by Xshare and how we
             use it.If you have additional questions or require more information
             about our Privacy Policy,do not hesitate to contact us through email
-            at<a href='mailto:xshareng@gmail.com'>xshareng@gmail.com</a>
+            at {' '}<a href='mailto:xshareng@gmail.com'>xshareng@gmail.com</a>
           </p>
           <h3 className='privacy-content-title mt-4'>
             Cookies and Web Beacons

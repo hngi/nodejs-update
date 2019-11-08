@@ -37,7 +37,7 @@ const UserDashboard = ({
         <Redirect to='/login' />)
       ) : (
         <div className='main-grid'>
-          <section id='s1-left'>
+          <section style={{marginTop:'30px'}} id='s1-left'>
             <div className='l-two-grid'>
               <div className='l-two'>
                 <Link to='/'>

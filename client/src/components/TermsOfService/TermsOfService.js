@@ -2,7 +2,7 @@ import React from 'react';
 import './TermsOfService.css';
 const TermsOfService = () => {
   return (
-    <div>
+    <div style={{ marginTop: '100px' }}>
       <section id='s1-terms'>
         <div className='t-flex'>
           <article className='terms-left term'>

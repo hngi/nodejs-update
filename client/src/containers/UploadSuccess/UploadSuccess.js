@@ -188,7 +188,7 @@ const UploadSuccess = ({
                     window.location.reload();
                     return goBackToUpload;
                   }}>
-                  <i className='fas fa-chevron-left'></i>Go Back
+                  <i className='fas fa-chevron-left'></i>{' '}Go Back
                 </p>
               </div>
             </>
