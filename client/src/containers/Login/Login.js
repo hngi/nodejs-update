@@ -33,7 +33,6 @@ const Login = ({ login, history, loginAuth }) => {
             value={email}
             type='email'
             name='email'
-            autoComplete='off'
             required
             placeholder='Email'
             style={{ fontFamily: 'Arial, FontAwesome' }}
@@ -43,7 +42,6 @@ const Login = ({ login, history, loginAuth }) => {
             id='password'
             onChange={e => onChange(e)}
             value={password}
-            autoComplete='off'
             type='password'
             name='password'
             required
