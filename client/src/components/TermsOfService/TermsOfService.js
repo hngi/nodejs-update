@@ -4,7 +4,8 @@ const TermsOfService = () => {
   return (
     <div>
       <section id='s1-terms'>
-        <div className='t-flex'>
+        <div className='t-flex mt-5'>
+
           <article className='terms-left term'>
             <h2>Terms of Service</h2>
             <h3>Summary</h3>
