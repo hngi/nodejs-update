@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.3.1",
     "d3-ease": "^1.0.5",
     "file-saver": "^2.0.2",
@@ -15,6 +16,7 @@
     "rave-javascript-sdk": "^1.0.4",
     "rc-progress": "^2.5.2",
     "react": "^16.10.2",
+    "react-app-polyfill": "^1.0.4",
     "react-circular-progressbar": "^2.0.2",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.10.2",
@@ -48,7 +50,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie>=9"
     ],
     "development": [
       "last 1 chrome version",
