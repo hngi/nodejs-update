@@ -2,21 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { register } from '../../actions/auth';
 import { Link } from 'react-router-dom';
-
 import './Register.css';
 const Register = ({ register, history, registerAuth }) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
-    loading: false
+    loading: !1
   });
   const { username, email, password, loading } = formData;
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   useEffect(() => {
-    setFormData({ loading: false });
+    setFormData({ loading: !1 });
   }, [registerAuth.authData]);
   return (
     <div>
@@ -26,7 +25,7 @@ const Register = ({ register, history, registerAuth }) => {
         <form
           onSubmit={e => {
             e.preventDefault();
-            setFormData({ loading: true });
+            setFormData({ loading: !0 });
             register(username, email, password, history);
           }}>
           <label for='username'></label>
@@ -36,7 +35,6 @@ const Register = ({ register, history, registerAuth }) => {
             id='username'
             name='username'
             value={username}
-            autoComplete='off'
             placeholder='Username'
             style={{ fontFamily: 'Arial, FontAwesome' }}
             required
@@ -48,7 +46,6 @@ const Register = ({ register, history, registerAuth }) => {
             value={email}
             required
             onChange={e => onChange(e)}
-            autoComplete='off'
             type='email'
             placeholder='Email'
             style={{ fontFamily: 'Arial, FontAwesome' }}
@@ -58,7 +55,6 @@ const Register = ({ register, history, registerAuth }) => {
             type='password'
             name='password'
             id='password'
-            autoComplete='off'
             value={password}
             minLength={3}
             onChange={e => onChange(e)}
@@ -66,7 +62,6 @@ const Register = ({ register, history, registerAuth }) => {
             placeholder='Password'
             style={{ fontFamily: 'Arial, FontAwesome' }}
           />
-
           {loading ? (
             <button className='btn btn-secondary' type='button' disabled>
               <span
@@ -78,19 +73,14 @@ const Register = ({ register, history, registerAuth }) => {
             <button className='btn'>Create Account</button>
           )}
         </form>
-
         <p className='mt-4'>
-          Already have an account? <Link to='/login'>Login</Link>{' '}
+          Already have an account?<Link to='/login'>Login</Link>{' '}
         </p>
       </div>
     </div>
   );
 };
-
-const mapStateToProps = state => ({
-  registerAuth: state.auth
-});
-
+const mapStateToProps = state => ({ registerAuth: state.auth });
 export default connect(
   mapStateToProps,
   { register }

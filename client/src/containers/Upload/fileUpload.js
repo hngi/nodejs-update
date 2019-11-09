@@ -1,6 +1,5 @@
-import React from "react";
-import uuid from "uuid/v4";
-
+import React from 'react';
+import uuid from 'uuid/v4';
 export default function FileUpload({
   file,
   isDragActive,
@@ -13,33 +12,31 @@ export default function FileUpload({
 }) {
   return (
     <>
-      <div className="right-section-upload d-flex flex-column justify-content-center align-items-center p-3">
-        <label htmlFor="upload" className="upload-form-label">
+      <div className='right-section-upload d-flex flex-column justify-content-center align-items-center p-3'>
+        <label htmlFor='upload' className='upload-form-label'>
           {isDragActive ? (
             <div
-              style={{ background: "rgba(38,128,235,0.5)" }}
+              style={{ background: 'rgba(38,128,235,0.5)' }}
               {...getRootProps()}
-              className="d-flex flex-column align-items-center"
-            >
+              className='d-flex flex-column align-items-center'>
               <label
-                htmlFor="upload"
-                className="right-section-upload d-flex flex-column justify-content-center align-items-center"
-              >
-                <p style={{ color: "rgba(0,0,0,0.4)" }}>
+                htmlFor='upload'
+                className='right-section-upload d-flex flex-column justify-content-center align-items-center'>
+                <p style={{ color: 'rgba(0,0,0,0.4)' }}>
                   Drop the file here...
                 </p>
               </label>
             </div>
           ) : (
             <>
-              <div className="d-flex align-items-center mb-3">
+              <div className='d-flex align-items-center mb-3'>
                 <img
-                  src="https://res.cloudinary.com/cavdy/image/upload/v1573077364/Webp.net-resizeimage_1_ghz7o4.webp"
-                  alt=""
+                  src='https://res.cloudinary.com/cavdy/image/upload/v1573077364/Webp.net-resizeimage_1_ghz7o4.webp'
+                  alt=''
                 />
-                <p className="right-section-title mb-0 mt-2 ml-3">
-                  Select a file(s) to upload
-                  <span className="right-section-sub-title">
+                <p className='right-section-title mb-0 mt-2 ml-3'>
+                  Select a file(s)to upload
+                  <span className='right-section-sub-title'>
                     Up to 2GB for unregistered users
                   </span>
                 </p>
@@ -48,7 +45,7 @@ export default function FileUpload({
           )}
         </label>
         <>
-          <h6 className="right-section-content mt-2">
+          <h6 className='right-section-content mt-2'>
             {file ? (
               <>
                 {file.map(i => {
@@ -68,16 +65,16 @@ export default function FileUpload({
                     }
                   };
                   return (
-                    <span className="uploading-file mt-3" key={id}>
-                      <span className="upload-file-title">
+                    <span className='uploading-file mt-3' key={id}>
+                      <span className='upload-file-title'>
                         {`${i.name.substring(0, 28)}`}
                         <br />
-                        <span className="preview">{getSize(i.size)}</span>
-                      </span>{" "}
+                        <span className='preview'>{getSize(i.size)}</span>
+                      </span>{' '}
                       <img
-                        src="https://res.cloudinary.com/cavdy/image/upload/v1572357426/Group_1_gnjyx3.png"
-                        alt=""
-                        className="cancel-upload"
+                        src='https://res.cloudinary.com/cavdy/image/upload/v1572357426/Group_1_gnjyx3.png'
+                        alt=''
+                        className='cancel-upload'
                         onClick={e => removeFile(e, id, i.name)}
                       />
                     </span>
@@ -88,25 +85,24 @@ export default function FileUpload({
           </h6>
         </>
       </div>
-      <h3 className="upload-type" onClick={toggleUploadType}>
+      <h3 className='upload-type' onClick={toggleUploadType}>
         Click here to upload a folder
       </h3>
       <input
         {...getInputProps}
-        type="file"
-        name="file"
+        type='file'
+        name='file'
         onChange={e => onChange(e)}
-        className="input-file"
-        id="upload"
+        className='input-file'
+        id='upload'
         multiple
       />
       {file ? (
         <button
           onClick={() => {
-            upload("file");
+            upload('file');
           }}
-          className="upload-btn mt-4"
-        >
+          className='upload-btn mt-4'>
           Upload
         </button>
       ) : null}

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon server --ignore client",
-    "client": "npm start --prefix ../client",
+    "client": "npm run dev --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start-dev": "nodemon index.js",
     "test": "nyc mocha tests",
@@ -60,6 +60,7 @@
     "nodemailer-sendgrid": "^1.0.3",
     "path": "^0.12.7",
     "request": "^2.88.0",
+    "serve": "^11.2.0",
     "shortid": "^2.2.15",
     "url": "^0.11.0",
     "uuid": "^3.3.3",

@@ -1,7 +1,6 @@
 import React from 'react';
 import './style.css';
 import teamMembers from '../../assets/data/members.json';
-
 export default function index() {
   return (
     <>
@@ -9,8 +8,7 @@ export default function index() {
         return (
           <div
             className='team-member d-flex align-items-center p-3'
-            key={member.id}
-          >
+            key={member.id}>
             <img src={member.image} alt='' className='team-member-image' />
             <div className='ml-4'>
               <p className='team-member-name'>{member.name}</p>

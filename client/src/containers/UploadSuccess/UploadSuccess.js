@@ -8,7 +8,6 @@ import { setAlert } from '../../actions/alert';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { cancelUploadRequest } from '../../actions/upload';
 import 'react-circular-progressbar/dist/styles.css';
-
 const UploadSuccess = ({
   sendEmail,
   uploadstate,
@@ -20,43 +19,35 @@ const UploadSuccess = ({
     name: '',
     to: '',
     message: '',
-    loading: false,
-    show: false,
-    share: false,
+    loading: !1,
+    show: !1,
+    share: !1,
     shortenUrl: ''
   });
-
   const { name, message, to, show, loading, share, shortenUrl } = formData;
   const email = shortUrl => {
-    setFormData({ show: true, shortenUrl: shortUrl });
+    setFormData({ show: !0, shortenUrl: shortUrl });
   };
   const onChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onFormSubmit = (e, shortUrl) => {
     e.preventDefault();
-    setFormData({ loading: true, show: true, name: '', to: '', message: '' });
+    setFormData({ loading: !0, show: !0, name: '', to: '', message: '' });
     sendEmail(name, to, message, shortUrl);
     setTimeout(() => {
       setAlert(`The file was sent to ${to} successfully`, 'success');
-      setFormData({ loading: false, show: true });
+      setFormData({ loading: !1, show: !0 });
       window.location.reload();
     }, 3000);
   };
-
   const showUploads = () => {
-    setFormData({ show: false });
+    setFormData({ show: !1 });
   };
-
   const shareUrl = event => {
-    setFormData({ share: true });
+    setFormData({ share: !0 });
   };
-
   const { uploadstate: uploadData } = uploadstate;
-  // const shortUrl = uploadstate.success;
   const clipText =
     ' Please visit http://xshare.ga to share your files with ease';
   return (
@@ -84,20 +75,19 @@ const UploadSuccess = ({
                         id='upload-link'>
                         <div className='showme'>
                           <div className='showme-items'>
-
-                            <p>{short.fileName}</p><p> {short.size}</p>
+                            <p>{short.fileName}</p>
+                            <p>{short.size}</p>
                           </div>
                         </div>
                         <h5 className='short-link-url'>{short.shortUrl}</h5>
                       </div>
-
                       <div className='d-flex align-items-center'>
                         {!share ? (
                           <>
                             <CopyToClipboard
                               text={short.shortUrl}
                               onCopy={() => {
-                                setFormData({ copied: true });
+                                setFormData({ copied: !0 });
                                 short.shortUrl === null
                                   ? setAlert('Clipboard is empty', 'danger')
                                   : setAlert('Link Copied', 'success');
@@ -126,7 +116,7 @@ const UploadSuccess = ({
                           <>
                             <div
                               onClick={() => {
-                                setFormData({ share: false });
+                                setFormData({ share: !1 });
                               }}
                               className='mr-3 align-items-center'>
                               <i className='fas fa-chevron-left'></i>
@@ -185,15 +175,13 @@ const UploadSuccess = ({
                     </div>
                   );
                 })}
-
                 <p
                   className='upload-another'
                   onClick={() => {
                     window.location.reload();
                     return goBackToUpload;
-
                   }}>
-                  <i className='fas fa-chevron-left'></i> Go Back
+                  <i className='fas fa-chevron-left'></i>{' '}Go Back
                 </p>
               </div>
             </>
@@ -205,33 +193,26 @@ const UploadSuccess = ({
                   text={`${progressBar.progress || 0}%`}
                 />
               </div>
-              {/* <button
-                onClick={() => {
-                  setFormData({ share: true });
-                }}
-                className="upload-btn mt-4"
-              >
-                Cancel
-              </button> */}
+              {}
               <div
                 className='left-section-content mt-3'
                 style={{ textAlign: 'center', cursor: 'pointer' }}
                 onClick={() => {
                   window.location.reload();
                   setAlert('Upload cancelled', 'danger');
-
                   goBackToUpload();
                   cancelUploadRequest();
                 }}>
                 Cancel
               </div>
-              {/* </button>  */}
+              {}
               <div
                 className='left-section-content mt-3'
                 style={{ textAlign: 'center' }}>
                 <p>Please be patient while your file gets uploaded...</p>
                 <p className='mt-2'>
-                  Kindly note that larger files <br />
+                  Kindly note that larger files
+                  <br />
                   will take longer to be completed
                 </p>
               </div>
@@ -294,7 +275,6 @@ const UploadSuccess = ({
     </>
   );
 };
-
 const mapStateToProps = state => ({
   uploadstate: state.upload,
   progressBar: state.progress

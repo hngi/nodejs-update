@@ -1,14 +1,8 @@
 .team-member {
-  box-shadow: 0px 2px 9px #f3ebeb;
+  box-shadow: 0 2px 9px #f3ebeb;
   border-radius: 5px;
   transition: transform 0.4s ease-in-out;
 }
-
-/* .team-member:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-} */
-
 .team-member-image {
   width: 116.5px;
   height: 116.5px;
@@ -22,7 +16,6 @@
   margin: 0px !important;
   text-transform: capitalize;
 }
-
 .team-member-role,
 .team-member-email {
   font-size: 17px;
@@ -34,9 +27,8 @@
   font-size: 25px;
   line-height: 28px;
   color: #a9a9a9;
-  margin: 0px 5px !important;
+  margin: 0 5px !important;
 }
-
 @media (max-width: 600px) {
   .team-member-image {
     width: 90.5px;
@@ -44,17 +36,15 @@
   }
   .team-member-name {
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 700;
     line-height: normal;
   }
-
   .team-member-role,
   .team-member-email {
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 700;
   }
 }
-
 @media (max-width: 450px) {
   .team-member-image {
     width: 90.5px;
@@ -63,16 +53,14 @@
   }
   .team-member-name {
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 700;
   }
-
   .team-member-role,
   .team-member-email {
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 700;
   }
 }
-
 .gitHub {
   background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1568020185/personal/icons8-github-100_acmz7a.png);
   height: 30px;
@@ -96,7 +84,6 @@
   transition: all 0.4s ease-in-out;
   display: inline-block;
 }
-
 .email:hover {
   background-image: url(https://res.cloudinary.com/ibefx/image/upload/v1572858979/personal/github-9-128_o8bmmy.png);
 }

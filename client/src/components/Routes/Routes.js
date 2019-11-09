@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import Team from '../Team/Team';
 import Privacy from '../Privacy/Privacy';
 import NotFound from '../NotFound/NotFound';
 import Upload from '../../containers/Upload/Upload';
-import Register from '../../containers/Register/Register'
+import Register from '../../containers/Register/Register';
 import UserDashboard from '../../containers/Dashboard/UserDashboard';
 import Footer from '../Footer/Footer';
-import Terms from '../TermsOfService/TermsOfService'
-import Login from '../../containers/Login/Login'
+import Terms from '../TermsOfService/TermsOfService';
+import Login from '../../containers/Login/Login';
 import Payment from '../Payment/Payment';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 const Routes = () => {
@@ -33,6 +33,5 @@ const Routes = () => {
       </Router>
     </div>
   );
-}
-
-export default Routes
+};
+export default Routes;

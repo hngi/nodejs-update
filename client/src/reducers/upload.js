@@ -10,59 +10,32 @@ const initialState = {
   cloudinaryUrl: null,
   shortUrl: null,
   shortCode: null,
-  emailSent: false,
-  loading: false,
-  uploadstate: {
-    success: false
-  },
+  emailSent: !1,
+  loading: !1,
+  uploadstate: { success: !1 },
   uploads: []
 };
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case UPLOAD_FILE_SUCCESS:
-      return {
-        ...state,
-        uploadstate: payload,
-        loading: false
-      };
-
+      return { ...state, uploadstate: payload, loading: !1 };
     case UPLOAD_FILE_FAIL:
       return {
         ...state,
         cloudinaryUrl: null,
         shortUrl: null,
         shortCode: null,
-        loading: false
+        loading: !1
       };
     case SEND_EMAIL_SUCCESS:
-      return {
-        ...state,
-        //cloudinaryUrl: payload.longUrl,
-        loading: false,
-
-        emailSent: true
-      };
+      return { ...state, loading: !1, emailSent: !0 };
     case GET_USER_UPLOADS_SUCCESS:
-      return {
-        ...state,
-        uploads: payload.uploads,
-        emailSent: false,
-        loading: false
-      };
+      return { ...state, uploads: payload.uploads, emailSent: !1, loading: !1 };
     case GET_USER_UPLOADS_FAIL:
-      return {
-        ...state,
-        uploads: [],
-        emailSent: false,
-        loading: false
-      };
+      return { ...state, uploads: [], emailSent: !1, loading: !1 };
     case LOADING:
-      return {
-        ...state,
-        loading: true
-      };
-
+      return { ...state, loading: !0 };
     default:
       return state;
   }
