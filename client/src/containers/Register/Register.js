@@ -20,8 +20,8 @@ const Register = ({ register, history, registerAuth }) => {
   return (
     <div>
       <div class='reg-containerr'>
-      <p>Register with us to have access to up to 10gb of storage,view uploads history,track number of downloads on your uploaded files and many more.</p>
         <h2>Create account</h2>
+      <p className='benefit'>Register to have access to up to 10gb of storage,uploads history,track number of downloads on your uploaded files and many more.</p>
         <form
           onSubmit={e => {
             e.preventDefault();

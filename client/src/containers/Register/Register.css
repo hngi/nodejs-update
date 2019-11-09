@@ -60,6 +60,14 @@ input[type='password'] {
   letter-spacing: 0.03em;
   margin-top: 2rem;
 }
+
+.benefit {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  color: #A9A9A9;
+}
+
 @media (max-width: 768px) {
   .reg-containerr {
     padding: 3rem 1rem;
