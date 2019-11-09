@@ -11,23 +11,19 @@ const Login = ({ login, history, loginAuth }) => {
   });
 
   const { email, password, loading } = formData;
-  console.log(email, password);
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    console.log('use effect is running');
     setFormData({
       email: document.getElementById('email').value,
       password: document.getElementById('password').value,
       loading: !1
     });
 
-    console.log(formData);
   }, [loginAuth.authData]);
-  console.log(loginAuth.authData);
   return (
     <div>
       <div class='reg-container'>

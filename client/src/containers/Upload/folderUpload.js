@@ -77,7 +77,7 @@ export default function FolderUpload({
                       <img
                         src='https://res.cloudinary.com/cavdy/image/upload/v1572357426/Group_1_gnjyx3.png'
                         alt=''
-                        className='cancel-upload'
+                      
                         className='cancel-upload'
                         onClick={e => removeFile(e, id, i.name)}
                       />

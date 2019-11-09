@@ -2,10 +2,7 @@ const { getData } = require("../config/ga");
 
 const gaManual = (req, res) => {
   const { metrics, startDate, endDate } = req.query;
-  console.log(`Metrics: ${metrics}`);
-  console.log(`Start date: ${startDate}`);
-  console.log(`Enddate: ${endDate}`);
-
+  
   Promise.all(
     getData(metrics ? metrics.split(",") : metrics, startDate, endDate)
   )
@@ -17,7 +14,7 @@ const gaManual = (req, res) => {
           body[key] = value[key];
         });
       });
-      res.status(200).json({ data: body }), console.log("Done");
+      res.status(200).json({ data: body })
     })
     .catch(error => {
       console.error(`Error ${error}`);
@@ -29,7 +26,6 @@ const gaManual = (req, res) => {
 
 const gaGraph = (req, res) => {
   const { metric } = req.query;
-  console.log(`Requested graph of metric: ${metric}`);
   // 1 week time frame
   let promises = [];
   for (let i = 7; i >= 0; i -= 1) {
@@ -46,15 +42,10 @@ const gaGraph = (req, res) => {
           value[metric.startsWith("ga:") ? metric : `ga:${metric}`]
         );
       });
-      console.log(body);
       res.send({ data: body });
-      console.log("Done");
     })
     .catch(err => {
-      console.log("Error:");
-      console.log(err);
       res.send({ status: "Error", message: `${err}` });
-      console.log("Done");
     });
 };
 

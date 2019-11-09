@@ -14,8 +14,6 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const initialState = {};
-
 let store = createStore(
   persistedReducer,
   composeWithDevTools(applyMiddleware(thunk))

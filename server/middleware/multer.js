@@ -44,8 +44,7 @@ const uploadFileToS3 = async (req, res, next) => {
     var paramsName =req.params.file
     // Read content from the file
     const fileContent = await fs.readFileSync(`../download/${name}.zip`);
-    //console.log(paramsName)
-    // Setting up S3 upload parameters
+   
     const params = {
       Bucket: 'hng6bucket',
       ACL: 'public-read',

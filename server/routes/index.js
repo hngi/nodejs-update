@@ -27,7 +27,7 @@ const { gaGraph, gaManual } = require('../middleware/goanalytics');
 // Routes
 router.get('/:shortenId', findShortenUrl, (req, res) => {
   const response = [res.locals];
-  //console.log(response[0].downloadCount)
+
   var currentCount = response[0].downloadCount;
   var size = response[0].size;
   var fileName = response[0].fileName;

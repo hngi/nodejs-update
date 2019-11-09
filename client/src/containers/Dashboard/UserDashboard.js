@@ -37,7 +37,7 @@ const UserDashboard = ({
         <Redirect to='/login' />)
       ) : (
         <div className='main-grid'>
-          <section style={{marginTop:'30px'}} id='s1-left'>
+          <section style={{ marginTop: '30px' }} id='s1-left'>
             <div className='l-two-grid'>
               <div className='l-two'>
                 <Link to='/'>
@@ -119,7 +119,7 @@ const UserDashboard = ({
                             <br />
                             <br />
                             <h3>{upload.fileName}</h3>
-                            <a href>{upload.shortUrl}</a>
+                            <a href={upload.shortUrl}>{upload.shortUrl}</a>
                             <p>
                               {upload.downloadCount}{' '}
                               {upload.downloadCount === 1
@@ -131,7 +131,7 @@ const UserDashboard = ({
                             </p>
                           </div>
                           <div className='card-icons'>
-                            <Link>
+                            <Link to='#'>
                               <CopyToClipboard
                                 text={upload.shortUrl}
                                 onCopy={() => {
