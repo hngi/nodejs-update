@@ -1,9 +1,10 @@
 import "react-app-polyfill/ie9";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
-import "core-js/fn/number/is-nan";
-import "core-js/es7/";
-import "core-js/es6/";
+import "core-js";
+// import "core-js/fn/number/is-nan";
+// import "core-js/es7/";
+// import "core-js/es6/";
 import "raf/polyfill";
 import React from "react";
 import ReactDOM from "react-dom";
