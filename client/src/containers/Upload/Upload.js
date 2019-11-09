@@ -139,7 +139,7 @@ const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
         <h1 className='left-section-title'>
           The most seamless
           <br />
-          file transfer experience EVER
+          file transfer experience
         </h1>
         <h4 className='left-section-content'>
           Fast, Safe and Secure.... <br />

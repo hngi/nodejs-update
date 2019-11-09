@@ -15,7 +15,12 @@ const Register = ({ register, history, registerAuth }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   useEffect(() => {
-    setFormData({ loading: !1 });
+    setFormData({
+      username: document.getElementById('username').value,
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value,
+      loading: !1
+    });
   }, [registerAuth.authData]);
   return (
     <div>
@@ -73,13 +78,13 @@ const Register = ({ register, history, registerAuth }) => {
           )}
         </form>
         <p className='mt-4'>
-          Already have an account?<Link to='/login'>Login</Link>{' '}
+          Already have an account?<Link to='/login'> Login</Link>{' '}
         </p>
       </div>
     </div>
   );
 };
-const mapStateToProps = state => ({ registerAuth: state.auth });
+const mapStateToProps = state => ({ registerAuth: state.authError });
 export default connect(
   mapStateToProps,
   { register }

@@ -11,8 +11,10 @@ import {
 import { setAlert } from './alert';
 import axios from 'axios';
 const base_url = 'http://xshare.gq';
+// const base_url = 'http://localhost:4000';
 export const login = (email, password, history) => async dispatch => {
   const body = JSON.stringify({ email, password });
+  console.log(body);
   dispatch({ type: LOADING });
   const config = {
     headers: {
@@ -31,10 +33,12 @@ export const login = (email, password, history) => async dispatch => {
       dispatch(setAlert('Login was successful', 'success'));
       history.push('/dashboard');
     } else {
+      console.log(response.data.message);
       dispatch(setAlert(response.data.message, 'danger'));
       dispatch({ type: LOGIN_FAIL, payload: response.data.message });
     }
   } catch (error) {
+    console.log(error);
     dispatch(setAlert(error.toString(), 'danger'));
     dispatch({ type: LOGIN_FAIL, payload: error.toString() });
   }
@@ -46,6 +50,8 @@ export const register = (
   history
 ) => async dispatch => {
   const body = JSON.stringify({ username, email, password });
+    console.log(body);
+
   dispatch({ type: LOADING });
   const config = { headers: { 'Content-Type': 'application/json' } };
   try {

@@ -9,15 +9,25 @@ const Login = ({ login, history, loginAuth }) => {
     password: '',
     loading: !1
   });
+
   const { email, password, loading } = formData;
+  console.log(email, password);
+
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    setFormData({ loading: !1 });
-  }, [loginAuth.authData]);
+    console.log('use effect is running');
+    setFormData({
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value,
+      loading: !1
+    });
 
+    console.log(formData);
+  }, [loginAuth.authData]);
+  console.log(loginAuth.authData);
   return (
     <div>
       <div class='reg-container'>
@@ -27,13 +37,12 @@ const Login = ({ login, history, loginAuth }) => {
             e.preventDefault();
             setFormData({ loading: !0 });
             login(email, password, history);
-          }}
-        >
+          }}>
           <label for='email'></label>
           <input
             id='email'
             onChange={e => onChange(e)}
-            value={email}
+            // value={email}
             type='email'
             name='email'
             required
@@ -44,7 +53,7 @@ const Login = ({ login, history, loginAuth }) => {
           <input
             id='password'
             onChange={e => onChange(e)}
-            value={password}
+            // value={password}
             type='password'
             name='password'
             required
@@ -56,8 +65,7 @@ const Login = ({ login, history, loginAuth }) => {
               <span
                 className='mr-2 spinner-grow spinner-grow-sm'
                 role='status'
-                aria-hidden='true'
-              ></span>
+                aria-hidden='true'></span>
             </button>
           ) : (
             <button className='btn'>Login</button>
