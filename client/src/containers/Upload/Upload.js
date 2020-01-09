@@ -1,139 +1,175 @@
-import React, { useState, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
-import "./Upload.css";
-import { connect } from "react-redux";
-import { uploadFile } from "../../actions/upload";
-import { setAlert } from "../../actions/alert";
-import UploadSuccess from "../UploadSuccess/UploadSuccess";
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import './Upload.css';
+import { connect } from 'react-redux';
+import { uploadFile, uploadFolder } from '../../actions/upload';
+import { setAlert } from '../../actions/alert';
+import UploadSuccess from '../UploadSuccess/UploadSuccess';
+import UploadType from './uploadType';
+import JSZip from 'jszip';
 
-const Upload = ({ uploadFile, setAlert }) => {
+const Upload = ({ uploadFile, uploadFolder, setAlert, user }) => {
   const [formData, setFormData] = useState({
-    file: "",
+    file: '',
     show: false,
-    loader: true
+    loader: true,
+    fileType: ''
   });
   const { file, show } = formData;
+  if (!user) {
+    user = '';
+  }
+  let { email } = user;
+  const upload = fileType => {
+    if (file === '' || file === undefined || file === null) {
+      setAlert('Please select a file/folder to upload', 'danger');
+      setFormData({ show: false });
+      return null;
+    }
 
-  const upload = () => {
-    if (file === "" || file === undefined || file === null) {
-      setAlert("Please select a file to upload", "danger");
-      setFormData({ show: false });
-    } else if (file.size >= 104857600) {
-      setFormData({ show: false });
-      setAlert("Please select a file that is less than 100MB", "danger");
-    } else if (
-      file.name.match(
-        /.(jpeg|jpg|png|gif|mp4|mp3|fig|doc|docx|pdf|xlsx|avi|mkv|xml|exe)$/
-      )
-    ) {
+    // Convert Uploaded Files to Array
+    const uploadedFile = Object.values(file);
+
+    // upload file
+    if (fileType === 'file') {
       setFormData({ show: true });
-      uploadFile(file);
-    } else {
-      setFormData({ show: false });
-      setAlert(
-        "Only .mp4 .mp3 .avi .mkv .png .jpg .jpeg .doc .docx .pdf .gif .xml .exe files are supported",
-        "danger"
-      );
+      uploadFile(uploadedFile, email);
+      const sizes = uploadedFile.map(file => {
+        return file.size;
+      });
+      const totalSize = sizes.reduce((a, b) => a + b, 0);
+      if (totalSize > 2147483648) {
+        window.location.replace('http://xshare.ga/register');
+        setAlert(
+          'You have to be registered to send files larger than 2GB',
+          'danger'
+        );
+        // return <Redirect to='/register' />;
+      } else if (totalSize === 0) {
+        setAlert('Please select a file/folder to upload', 'danger');
+        setFormData({ show: false });
+        window.location.replace('http://xshare.ga');
+      }
+
+      return null;
+    }
+
+    // Upload Folder
+    if (fileType === 'folder') {
+      const zip = new JSZip();
+      let img;
+
+      if (Object.keys(uploadedFile).length !== 0) {
+        // Check if input field
+        var sizesss = uploadedFile.map(i => {
+          // img.file(i.name, i, { base64: true });
+          return i.size;
+        });
+        const totalSizes = sizesss.reduce((a, b) => a + b, 0);
+        if (totalSizes > 2147483648) {
+          window.location.replace('http://xshare.ga/register');
+          setAlert(
+            'You have to be registered to send files larger than 2GB',
+            'danger'
+          );
+        } else if (uploadedFile[0].webkitRelativePath !== '') {
+          const folderName = uploadedFile[0].webkitRelativePath.split('/');
+          img = zip.folder(folderName[0]);
+        } else {
+          // checks if drag and drop
+          const folderName = uploadedFile[0].path.split('/');
+          img = zip.folder(folderName[1]);
+        }
+        uploadedFile.map(i => {
+          return(
+          img.file(i.name, i, { base64: true }))
+        });
+
+        zip.generateAsync({ type: 'blob' }).then(content => {
+          const folderArray = uploadedFile[0].webkitRelativePath.split('/');
+          let folderName = folderArray[0];
+          uploadFolder([content], email, folderName);
+        });
+
+        setFormData({ show: true });
+      }
+
+      return null;
     }
   };
   const onChange = e => {
+    let files = e.target.files;
+
+    // checking if the files is an array
+    if (!Array.isArray(e.target.files)) {
+      files = Object.values(e.target.files);
+    }
+    const newData = [...file];
+    newData.push(...files);
     setFormData({
-      ...formData,
-      [e.target.name]:
-        e.target.name !== "file" ? e.target.value : e.target.files[0]
+      file: newData,
+      fileType: e.target.files
     });
   };
 
+  // Remove File
+  const removeFile = (event, id, fileName) => {
+    const newFiles = file.filter(f => f.name !== fileName);
+    setFormData({
+      file: newFiles
+    });
+  };
+
+  const goBackToUpload = () => {
+    setFormData({ show: false });
+  };
+
   const onDrop = useCallback(File => {
-    setFormData({ file: File[0] });
+    setFormData({
+      file: File,
+      fileType: File
+    });
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
   return (
-    <main className="wrapper home-section d-flex justify-content-between align-items-center">
-      <div className="left-section">
-        <h1 className="left-section-title">
+    <main
+      style={{ marginTop: '70px' }}
+      className='wrapper home-section d-flex justify-content-between align-items-center'>
+      <div className='left-section'>
+        <h1 className='left-section-title'>
           The most seamless
           <br />
           file transfer experience
         </h1>
-        <h4 className="left-section-content">
+        <h4 className='left-section-content'>
           Fast, Safe and Secure.... <br />
-          Simply upload a file and share it via email or a generated link{" "}
+          Simply upload a file and share it via email or a generated link{' '}
         </h4>
         <img
-          className="left-section-image"
-          src="https://res.cloudinary.com/busola/image/upload/v1571806133/icon.png"
-          alt=""
+          className='left-section-image'
+          rel='preconnect'
+          src='https://res.cloudinary.com/cavdy/image/upload/v1573077364/Webp.net-resizeimage_c04t3c.webp'
+          alt=''
         />
       </div>
-      <div className="right-section d-flex justify-content-center align-items-center">
+      <div className='right-section d-flex justify-content-center align-items-center'>
         {!show ? (
-          <div
-            {...getRootProps()}
-            className="d-flex flex-column align-items-center"
-            style={{ outline: "none" }}
-          >
-            <label
-              htmlFor="upload"
-              className="right-section-upload d-flex flex-column justify-content-center align-items-center"
-            >
-              {isDragActive ? (
-                <div
-                  style={{ background: "rgba(38,128,235,0.5)" }}
-                  {...getRootProps()}
-                  className="d-flex flex-column align-items-center"
-                >
-                  <label
-                    htmlFor="upload"
-                    className="right-section-upload d-flex flex-column justify-content-center align-items-center"
-                  >
-                    <p style={{ color: "rgba(0,0,0,0.4)" }}>
-                      Drop the file here...
-                    </p>
-                  </label>
-                </div>
-              ) : (
-                <>
-                  {" "}
-                  <img
-                    src="https://res.cloudinary.com/busola/image/upload/v1571806132/add.png"
-                    alt=""
-                  />
-                  <p className="right-section-title mt-2">
-                    Drag and drop or click to add a file
-                  </p>
-                  <h6 className="right-section-content">
-                    {file ? file.name : null}
-                  </h6>
-                  <br />
-                  <p className="right-section-content pl-4 pr-4">
-                    {""} ( max file size: 100MB | .mp4 .mp3 .avi .mkv .png
-                    .jpg .jpeg .doc .docx .pdf .gif .xml .exe files are
-                    supported)
-                  </p>
-                </>
-              )}
-            </label>
-            <input
-              {...getInputProps}
-              type="file"
-              name="file"
-              onChange={e => onChange(e)}
-              className="input-file"
-              id="upload"
-            />
-            <button
-              onClick={() => {
-                upload();
-                
-              }}
-              className="upload-btn mt-4"
-            >
-              Upload
-            </button>
-          </div>
+          <UploadType
+            upload={upload}
+            onChange={onChange}
+            file={file}
+            getInputProps={getInputProps}
+            isDragActive={isDragActive}
+            getRootProps={getRootProps}
+            removeFile={removeFile}
+          />
         ) : (
-          <UploadSuccess />
+          <UploadSuccess
+            upload={upload}
+            file={file}
+            goBackToUpload={goBackToUpload}
+          />
         )}
       </div>
     </main>
@@ -141,9 +177,11 @@ const Upload = ({ uploadFile, setAlert }) => {
 };
 
 const mapStateToProps = state => ({
-  uploadstate: state.upload
+  uploadstate: state.upload,
+  user: state.auth.user
 });
 
 export default connect(
-  mapStateToProps,{uploadFile,setAlert}
+  mapStateToProps,
+  { uploadFile, setAlert, uploadFolder }
 )(Upload);

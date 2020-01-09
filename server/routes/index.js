@@ -28,4 +28,16 @@ router.post(
   uploadFile.upload,
   shortenLink.shortenUrl
 );
+router.get("/api/auth/upload/", (req, res) => {
+  res.render("test");
+});
+
+// Google Analytics
+
+// For test
+//router.get("/api/auth/ga", gaManual);
+
+// To display as Graph => A query is required
+//router.get("/api/auth/ga", gaGraph);
+
 module.exports = router;

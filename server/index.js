@@ -7,10 +7,13 @@ require('./database/db');
 const router = require('./routes');
 // cloudinary import
 const { urlencoded, json } = require('body-parser');
+const cookieParser = require('cookie-parser');
 const { resolve } = require('path');
-const { uploader, cloudinaryConfig } = require('./config/cloudinary');
-const { multerUploads } = require('./middleware/multer');
-app.use('*', cloudinaryConfig);
+//const { uploader, s3Config } = require("./config/aws3");
+//const { multerUploads } = require("./middleware/multer");
+//app.use("*", s3Config);
+require('dotenv').config();
+
 app.get('/', (req, res) => {
   res.send('Connected');
 });
@@ -23,6 +26,12 @@ app.use(
     extended: false
   })
 );
+app.use(
+  express.urlencoded({
+    extended: true
+  })
+);
+app.use(cookieParser()); //Parse the cookie data (User ID).
 app.use(router);
 
 mongoose.set('useCreateIndex', true);
@@ -32,6 +41,5 @@ const port = process.env.PORT || 3500;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
 
 module.exports = app;

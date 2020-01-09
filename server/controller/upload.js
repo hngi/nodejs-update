@@ -26,16 +26,33 @@ const upload = (req, res, next) => {
       .catch(err => {
         console.log("upload.js fail", err);
 
-        res.status(400).json({
-          message: "Something went wrong while processing your request",
-          success: false,
-          data: {
-            err
-          }
-        });
+      res.locals.temp = temp;
+      next();
+    } else {
+      res.json({
+        message: 'Null'
       });
-  } else {
-    console.log(false);
+    }
+  },
+
+  del(req, res) {
+    const id = req.params.id;
+
+    temp.forEach(temp => {
+      if (id !== temp.id) {
+        return res.status(400).json({
+          message: `File with id ${id} does not exist`
+        });
+      }
+    });
+
+    const newTemp = temp.filter(temp => temp.id !== id);
+
+    temp = newTemp;
+    res.status(200).json({
+      status: 'success',
+      message: 'Deleted successfully'
+    });
   }
 };
 module.exports = { upload };

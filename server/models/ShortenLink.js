@@ -1,16 +1,31 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
 const urlShortenSchema = new Schema({
-  cloudinaryUrl: String,
+  awsUrl: String,
   shortUrlParam: String,
   shortUrl: String,
-  fileName:String,
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now }
+  downloadCount: {
+    type: Number,
+    default: 0
+  },
+  fileName: String,
+  uploadedBy: {
+    type: String,
+    required: false
+  },
+  size:String,
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-const shortenLink = mongoose.model('ShortLink', urlShortenSchema);
+const shortenLink = mongoose.model("ShortLink", urlShortenSchema);
 
 module.exports = shortenLink;

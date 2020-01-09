@@ -1,37 +1,27 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import { Provider } from "react-redux";
-import store from "./store";
-import Alert from "./components/Alert/Alert";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import Team from "./components/Team/Team";
-import Privacy from "./components/Privacy/Privacy";
-import NotFound from "./components/NotFound/NotFound";
-import Upload from "./containers/Upload/Upload";
-// import Home from "./components/Home/Home";
+import React from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store, persistor } from './store';
+import Alert from './components/Alert/Alert';
+import Routes from './components/Routes/Routes';
+import { PersistGate } from 'redux-persist/integration/react';
+import './oga.css';
 const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className="d-flex flex-column parent">
-          
-          <Navbar />
-          <Alert />
-          <Switch>
-            {/* <Route exact path="/" component={Home} /> */}
-            <Route exact path="/" component={Upload} />
-            <Route exact path="/privacy" component={Privacy} />
-            <Route exact path="/team" component={Team} />
-            {/* <Route exact path="/upload" component={Upload} /> */}
-            <Route component={NotFound} />
-          </Switch>
-          <Footer />
+        <div className='d-flex flex-column parent'>
+          <div className='oga'>
+            <Alert />
+            <Switch>
+              <PersistGate loading={null} persistor={persistor}>
+                <Routes />
+              </PersistGate>
+            </Switch>
+          </div>
         </div>
       </Router>
     </Provider>
   );
 };
-
 export default App;
