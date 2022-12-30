@@ -28,7 +28,7 @@
     "chai-http": "^4.3.0",
     "concurrently": "^5.0.0",
     "coveralls": "^3.0.7",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "nodemon": "^1.19.3",
     "nyc": "^14.1.1"
   },
